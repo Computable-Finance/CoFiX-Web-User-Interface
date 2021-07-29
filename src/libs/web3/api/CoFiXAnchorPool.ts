@@ -187,8 +187,12 @@ class CoFiXAnchorPool extends Contract {
     }
 
     info.emptyLiquidity = true
-    if (this.api.account) {
-      const myBalance = await xtoken.balanceOf(this.api.account)
+    if (this.api.account && xtoken.address) {
+      const [walletBalance, vaultBalance] = await Promise.all([
+        xtoken.balanceOf(this.api.account),
+        this.api.Contracts.CoFiXVaultForStaking.balanceOf(xtoken.address, this.api.account),
+      ])
+      const myBalance = walletBalance.plus(vaultBalance)
       info.emptyLiquidity = myBalance.isZero()
       if (info.xtokenTotalSupply && !info.xtokenTotalSupply.value.isZero()) {
         info.myPoolRatio = myBalance.div(info.xtokenTotalSupply.value).multipliedBy(100).toFixed(2) + '%'

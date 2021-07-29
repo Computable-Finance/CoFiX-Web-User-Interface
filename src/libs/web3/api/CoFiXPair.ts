@@ -111,14 +111,18 @@ class CoFiXPair extends ERC20Token {
 
     const tokens = [this.api.Tokens[this.pair[0].symbol], this.api.Tokens[this.pair[1].symbol]]
 
-    const [balances, ethAmounts, usdtAmounts, cofiUSDTAmount, pairBalance, pairTotalSupply] = await Promise.all([
-      Promise.all([this.contract.ethBalance(), tokens[1].balanceOf(this.address)]),
-      Promise.all([tokens[0].getValuePerETH(), tokens[1].getValuePerETH()]),
-      Promise.all([tokens[0].getUSDTAmount(), tokens[1].getUSDTAmount()]),
-      this.api.Tokens.COFI.getUSDTAmount(),
-      this.balanceOf(this.api.account || ''),
-      this.totalSupply(),
-    ])
+    const [balances, ethAmounts, usdtAmounts, cofiUSDTAmount, pairBalance, pairTotalSupply, vaultBalance] =
+      await Promise.all([
+        Promise.all([this.contract.ethBalance(), tokens[1].balanceOf(this.address)]),
+        Promise.all([tokens[0].getValuePerETH(), tokens[1].getValuePerETH()]),
+        Promise.all([tokens[0].getUSDTAmount(), tokens[1].getUSDTAmount()]),
+        this.api.Tokens.COFI.getUSDTAmount(),
+
+        this.balanceOf(this.api.account || ''),
+        this.totalSupply(),
+
+        this.api.Contracts.CoFiXVaultForStaking.balanceOf(this.address, this.api.account || ''),
+      ])
 
     const amounts = [tokens[0].amount(balances[0] || 0), tokens[1].amount(balances[1] || 0)]
     const formatAmounts = [
@@ -155,7 +159,7 @@ class CoFiXPair extends ERC20Token {
     let myPoolRatio = new BigNumber(0)
     let myPoolAmounts = ['0.0', '0.0']
     if (!pairTotalSupply.isZero()) {
-      myPoolRatio = pairBalance.div(pairTotalSupply)
+      myPoolRatio = pairBalance.plus(vaultBalance).div(pairTotalSupply)
 
       myPoolAmounts = [
         tokens[0].format(amounts[0].multipliedBy(myPoolRatio)),
