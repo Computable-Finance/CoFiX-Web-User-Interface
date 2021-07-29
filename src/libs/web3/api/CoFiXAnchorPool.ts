@@ -211,7 +211,7 @@ class CoFiXAnchorPool extends Contract {
       xtoken.balanceOf(this.api.Contracts.CoFiXVaultForStaking.address || ''),
       this.api.Contracts.CoFiXVaultForStaking.balanceOf(xtoken.address || '', this.api.account),
     ])
-    info.dailyMined = toBigNumber(this.cofiAmountPerBlock).multipliedBy(BLOCK_DAILY)
+    info.dailyMined = toBigNumber(xtoken.cofiAmountPerBlock || 0).multipliedBy(BLOCK_DAILY)
     info.stakedRatio = '--'
     if (!xTokenInPool.isZero()) {
       info.stakedRatio = `${stakedXToken.div(xTokenInPool).multipliedBy(100).toFixed(2)} %`
