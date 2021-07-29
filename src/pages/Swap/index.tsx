@@ -81,12 +81,12 @@ const Swap: FC = () => {
         amount,
       }
 
-      const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
+      const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
       if (info && amount) {
         const ratio = info.amountOut.div(amount)
         pair.src = {
           symbol: pair.src.symbol,
-          amount: toBigNumber(amount).div(ratio).toFixed(),
+          amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
         }
       }
 
