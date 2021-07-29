@@ -89,7 +89,9 @@ const TokenInput: FC<Props> = ({ ...props }) => {
 
     if (symbol === 'ETH' && gasFee) {
       // NOTICE: 50000 is estimate gas limit
-      setValue(api.Tokens.ETH.amount(balance.value.minus(gasFee.value.multipliedBy(50000))).toString())
+      setValue(
+        BigNumber.max(api.Tokens.ETH.amount(balance.value.minus(gasFee.value.multipliedBy(50000))), 0).toString()
+      )
     } else {
       setValue(balance.amount.toString())
     }
@@ -213,7 +215,7 @@ const TokenInput: FC<Props> = ({ ...props }) => {
                   {token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
                 </>
               </span>
-              {props.maximize && balance && (
+              {props.maximize && balance && toBigNumber(balance.value).gt(0) && (
                 <span className={`${classPrefix}-max`} onClick={handleMax}>
                   MAX
                 </span>
