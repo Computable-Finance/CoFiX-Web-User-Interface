@@ -4,7 +4,7 @@ import useWeb3 from 'src/libs/web3/hooks/useWeb3'
 import useInterval from '@use-it/interval'
 
 const useTokenBalance = (symbol: string, address?: string) => {
-  const { api } = useWeb3()
+  const { api, inited } = useWeb3()
 
   const [balance, setBalance] = useState<{
     value: BigNumber
@@ -39,8 +39,10 @@ const useTokenBalance = (symbol: string, address?: string) => {
   }
 
   useEffect(() => {
-    refresh()
-  }, [api, symbol, address])
+    if (api && inited) {
+      refresh()
+    }
+  }, [api, inited, symbol, address])
   useInterval(refresh, 3000)
 
   return { balance, loading }

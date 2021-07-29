@@ -57,7 +57,7 @@ const TokenInput: FC<Props> = ({ ...props }) => {
   const [balance, setBalance] = useState<Props['balance']>(props.balance || tokenBalance)
 
   useEffect(() => {
-    if (props.balance) {
+    if (typeof props.balance !== 'undefined') {
       setBalance(props.balance)
     } else {
       setBalance(tokenBalance)

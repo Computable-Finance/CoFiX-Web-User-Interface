@@ -46,7 +46,6 @@ const _useWeb3 = <T extends Web3Provider>() => {
       CoFiXDAO: CoFiXDAO,
       CoFiXVaultForStaking: CoFiXVaultForStaking,
     })
-    setAPI(api)
     api.init().then(async () => {
       setAPI(api)
       setInited(true)
