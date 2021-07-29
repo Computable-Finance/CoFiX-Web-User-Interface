@@ -46,7 +46,7 @@ type Props = {
 }
 
 const TokenInput: FC<Props> = ({ ...props }) => {
-  const [value, setValue] = useState(props.value && !isNaN(+props.value) ? props.value : undefined)
+  const [value, setValue] = useState(props.value && !isNaN(+props.value) ? props.value : '')
   const [symbol, setSymbol] = useState(props.symbol as string)
   const token = useToken(symbol)
 
@@ -198,7 +198,6 @@ const TokenInput: FC<Props> = ({ ...props }) => {
         <input
           className={`${classPrefix}-input`}
           value={value}
-          defaultValue={value}
           onChange={handleInput}
           placeholder={props.editable === false ? '--' : '0.0'}
           disabled={props.editable === false}
