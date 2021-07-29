@@ -21,7 +21,7 @@ const useDAOInfo = () => {
   useEffect(() => {
     refresh()
   }, [api])
-  useInterval(refresh, 1000)
+  useInterval(refresh, 3000)
 
   return info
 }

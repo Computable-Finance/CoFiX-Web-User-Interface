@@ -41,7 +41,7 @@ const useTokenBalance = (symbol: string, address?: string) => {
   useEffect(() => {
     refresh()
   }, [api, symbol, address])
-  useInterval(refresh, 1000)
+  useInterval(refresh, 3000)
 
   return { balance, loading }
 }

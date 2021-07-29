@@ -66,6 +66,13 @@ const TokenInput: FC<Props> = ({ ...props }) => {
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value
+    if (!/^\d*(\.\d*)?$/.test(v)) {
+      return
+    }
+
+    if (v[0] === '0' && v[1] !== '.' && v.length > 1) {
+      v = v.slice(1)
+    }
 
     if (v.length > 18) {
       return
@@ -87,14 +94,19 @@ const TokenInput: FC<Props> = ({ ...props }) => {
       return
     }
 
+    let v = value
+
     if (symbol === 'ETH' && gasFee) {
       // NOTICE: 50000 is estimate gas limit
-      setValue(
-        BigNumber.max(api.Tokens.ETH.amount(balance.value.minus(gasFee.value.multipliedBy(50000))), 0).toString()
-      )
+      const final = api.Tokens.ETH.amount(balance.value.minus(gasFee.value.multipliedBy(50000)))
+      if (final.gt(0)) {
+        v = final.toString()
+      }
     } else {
-      setValue(balance.amount.toString())
+      v = balance.amount.toString()
     }
+
+    setValue(v)
   }
 
   const handleSelectToken = (symbol: string) => {
@@ -182,18 +194,19 @@ const TokenInput: FC<Props> = ({ ...props }) => {
           )}
         </div>
 
-        {props.loading || shouldShowBalanceLoading ? (
-          <Skeleton width={100} />
-        ) : (
-          <input
-            type="number"
-            className={`${classPrefix}-input`}
-            value={value}
-            onChange={handleInput}
-            placeholder={props.editable === false ? '--' : '0.0'}
-            disabled={props.editable === false}
-          />
-        )}
+        {(props.loading || shouldShowBalanceLoading) && <Skeleton width={100} />}
+        <input
+          className={`${classPrefix}-input`}
+          value={value}
+          defaultValue={value}
+          onChange={handleInput}
+          placeholder={props.editable === false ? '--' : '0.0'}
+          disabled={props.editable === false}
+          style={{
+            display: props.loading || shouldShowBalanceLoading ? 'none' : 'unset',
+          }}
+          min={0}
+        />
       </div>
 
       {props.noExtra !== true && (

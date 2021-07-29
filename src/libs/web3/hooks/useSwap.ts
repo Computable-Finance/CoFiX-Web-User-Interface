@@ -6,6 +6,7 @@ import BigNumber from 'bignumber.js'
 import { toBigNumber, deadline } from '../util'
 import useSlippageTolerance from 'src/hooks/useSlippageTolerance'
 import { SwapInfo } from '../api'
+import { debounce } from 'lodash'
 
 const useSwap = (content: TansactionSwapContent) => {
   const { api, inited } = useWeb3()
@@ -44,8 +45,8 @@ const useSwap = (content: TansactionSwapContent) => {
     ethValue: string
   }>()
 
-  useEffect(() => {
-    ;(async () => {
+  const refetch = useCallback(
+    debounce(async ({ content, api }) => {
       try {
         setLoading(true)
 
@@ -110,7 +111,7 @@ const useSwap = (content: TansactionSwapContent) => {
             .toFixed(0)
         )
         const newArgs = {
-          paths: swapInfo.path.map((p) => api.Tokens[p].address || ADDRESS_ZERO),
+          paths: swapInfo.path.map((p: string) => api.Tokens[p].address || ADDRESS_ZERO),
           amountIn: srcToken.parse(content.src.amount).toFixed(0),
           amountOutMin: amountOutMin.toFixed(0),
           amountOutMinFormat: destToken.format(destToken.amount(amountOutMin)),
@@ -126,6 +127,15 @@ const useSwap = (content: TansactionSwapContent) => {
         }
       } finally {
         setLoading(false)
+      }
+    }, 500),
+    [api, inited]
+  )
+
+  useEffect(() => {
+    ;(async () => {
+      if (api && inited) {
+        refetch({ content, api })
       }
     })()
   }, [api, inited, content.src.amount, content.src.symbol, content.dest.amount, content.dest.symbol])

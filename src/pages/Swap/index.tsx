@@ -31,6 +31,7 @@ const Swap: FC = () => {
   const [confirm, setConfirm] = useState(false)
   const { checkRisk } = useRiskModal()
   const [insufficient, setInsufficient] = useState(false)
+  const [change, setChange] = useState('')
 
   const handleSwitch = () => {
     setPair({
@@ -46,6 +47,8 @@ const Swap: FC = () => {
       if (symbol === pair.src.symbol && amount === pair.src.amount) {
         return
       }
+
+      setChange('src')
 
       pair.src = {
         symbol,
@@ -70,6 +73,7 @@ const Swap: FC = () => {
         return
       }
 
+      setChange('dest')
       pair.dest = {
         symbol,
         amount,
@@ -89,6 +93,7 @@ const Swap: FC = () => {
     if (swap?.ratio) {
       handleChangeSrc(pair.src.amount, pair.src.symbol)
     }
+    setChange('')
   }, [swap?.ratio])
 
   const { src, dest } = pair
@@ -104,7 +109,7 @@ const Swap: FC = () => {
             onChange={handleChangeSrc}
             checkInsufficientBalance
             onInsufficientBalance={(b) => setInsufficient(b)}
-            loading={!swap.ratio || swap.loading}
+            loading={swap.loading && change != 'src'}
           />
           <SwitchOutline onClick={handleSwitch} />
           <TokenInput
@@ -112,7 +117,7 @@ const Swap: FC = () => {
             symbol={dest.symbol}
             value={dest.amount}
             onChange={handleChangeDest}
-            loading={!swap.ratio || swap.loading}
+            loading={swap.loading && change != 'dest'}
           />
         </div>
 
@@ -247,7 +252,7 @@ const Swap: FC = () => {
     <section>
       <Card title={t`Confirm Swap`} backward onBackwardClick={() => setConfirm(false)}>
         <Field name={t`FROM`} value={`${src.amount} ${src.symbol}`} />
-        <Field name={t`TO(ESTIMATED)`} value={`${dest.amount} ${dest.symbol}`} />
+        <Field name={t`TO(ESTIMATED)`} value={`${api?.Tokens[dest.symbol].format(dest.amount)} ${dest.symbol}`} />
         <Field name={t`Swap Rate`} value={`1 ${src.symbol} = ${swap?.amount?.finalFormat || '--'} ${dest.symbol}`} />
         <Field name={t`Swap Route`} value={paths} />
         {swap?.swapInfo?.fee && (

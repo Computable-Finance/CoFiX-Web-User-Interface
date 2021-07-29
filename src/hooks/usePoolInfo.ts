@@ -49,7 +49,7 @@ const usePoolInfo = <T extends PoolInfo | AnchorPoolInfo>(token0: string, token1
     refresh()
   }, [api, token0, token1])
 
-  useInterval(refresh, 1000)
+  useInterval(refresh, 3000)
 
   return { info, loading }
 }

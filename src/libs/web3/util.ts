@@ -29,5 +29,5 @@ export const formatNumber = (n: BigNumber | BigNumberish, decimals = 18, formatP
 }
 
 export function deadline(seconds = 60 * 10) {
-  return Math.ceil(Date.now() / 1000) + seconds
+  return Math.ceil(Date.now() / 3000) + seconds
 }

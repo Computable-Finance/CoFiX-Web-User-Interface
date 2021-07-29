@@ -42,7 +42,7 @@ const useStakeInfo = (token0: string, token1?: string) => {
   useEffect(() => {
     refresh()
   }, [api, token0, token1])
-  useInterval(refresh, 1000)
+  useInterval(refresh, 3000)
 
   return info
 }

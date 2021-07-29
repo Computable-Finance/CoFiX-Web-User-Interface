@@ -16,5 +16,8 @@ module.exports = {
 
       return webpackConfig
     },
+    babel: {
+      plugins: ['lodash'],
+    },
   },
 }

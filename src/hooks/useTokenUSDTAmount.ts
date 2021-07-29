@@ -29,7 +29,7 @@ const useTokenUSDTAmount = (token: string) => {
   useEffect(() => {
     refresh()
   }, [api, token])
-  useInterval(refresh, 1000)
+  useInterval(refresh, 3000)
 
   return amount
 }

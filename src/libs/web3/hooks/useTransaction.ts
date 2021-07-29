@@ -199,7 +199,7 @@ const _useTransaction = () => {
           updateCurrent(transaction)
           notifyTransaction(transaction)
         } else {
-          setTimeout(check, 1000)
+          setTimeout(check, 3000)
         }
       }
 

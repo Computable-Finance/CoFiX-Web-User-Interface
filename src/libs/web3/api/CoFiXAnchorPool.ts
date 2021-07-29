@@ -70,7 +70,7 @@ class CoFiXAnchorPool extends Contract {
 
   theta = toBigNumber(20)
   impactCostVOL = toBigNumber(1)
-  nt = toBigNumber(1000)
+  nt = toBigNumber(3000)
 
   constructor(api: API, props: CoFiXAnchorPoolProps) {
     super(api, props)
