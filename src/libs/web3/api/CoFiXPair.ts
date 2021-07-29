@@ -130,7 +130,7 @@ class CoFiXPair extends ERC20Token {
       return
     }
 
-    const totalFunds = amounts[0].multipliedBy(usdtAmounts[0]).plus(amounts[1]).multipliedBy(usdtAmounts[1])
+    const totalFunds = amounts[0].multipliedBy(usdtAmounts[0]).plus(amounts[1].multipliedBy(usdtAmounts[1]))
 
     let nav = new BigNumber(1)
     if (!totalFunds.isZero()) {
