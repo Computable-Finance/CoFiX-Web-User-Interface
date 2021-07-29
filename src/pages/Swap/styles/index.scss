@@ -1,0 +1,123 @@
+@use 'sass:math';
+@import 'src/styles/shared.scss';
+
+$switch-button-size: 72px;
+
+.cofi-page-swap {
+  .token-input-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+
+    & > .cofi-token-input {
+      width: 100%;
+    }
+
+    & > svg {
+      text-align: center;
+      cursor: pointer;
+      z-index: 1;
+      margin: math.div($space-md - $switch-button-size, 2) 0;
+
+      @include tablet {
+        margin: math.div($space - $switch-button-size, 2) 0;
+      }
+    }
+  }
+
+  &-trading-price {
+    &-container {
+      padding: $space-sm 0;
+      ul {
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: math.div($space-sm, 2);
+          padding-bottom: math.div($space-sm, 2);
+          padding-left: $space;
+          position: relative;
+
+          & > span:first-child {
+            color: $dim-color;
+            font-size: $font-size-sm;
+          }
+
+          &:before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: #c4c4c4;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+          }
+
+          &:after {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 100%;
+            background-color: #c4c4c4;
+            position: absolute;
+            left: 4px;
+          }
+
+          &:first-child::after {
+            height: 50%;
+            bottom: 0;
+          }
+          &:last-child::after {
+            height: 50%;
+            top: 0;
+          }
+        }
+      }
+    }
+
+    &-tip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: math.div($space-sm, 2) 0;
+
+      & > span:first-child {
+        color: $dim-color;
+        font-size: $font-size-sm;
+      }
+
+      & > .link {
+        white-space: nowrap;
+        cursor: pointer;
+      }
+    }
+
+    &-popup {
+      padding: $space $space-md;
+      @include tablet {
+        padding: $space-md $space;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: $font-size-sm;
+        color: #000000;
+        margin-bottom: $space-sm;
+      }
+
+      section + section {
+        margin-top: $space;
+      }
+
+      p {
+        font-size: $font-size-md;
+        line-height: $line-height;
+        color: $dim-color;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "name": "user-interface",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ethersproject/address": "^5.4.0",
+    "@ethersproject/providers": "^5.3.1",
+    "@lingui/detect-locale": "^3.10.4",
+    "@lingui/react": "^3.10.2",
+    "@loadable/component": "^5.15.0",
+    "@use-it/interval": "^1.0.0",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.2.0",
+    "bignumber.js": "^9.0.1",
+    "classnames": "^2.3.1",
+    "dayjs": "^1.10.6",
+    "ethers": "^5.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-loading-skeleton": "^2.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^7.0.4",
+    "reactjs-popup": "^2.0.4",
+    "unstated-next": "^1.1.0",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write src",
+    "lint": "eslint src --ext ts --ext tsx --ext js",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "i18n:extract": "lingui extract --clean",
+    "i18n:compile": "lingui compile --typescript",
+    "abi:generate": "npm run abi:generate-nest && npm run abi:generate-cofix",
+    "abi:generate-nest": "typechain --target ethers-v5 --out-dir src/abis/types/nest './src/abis/json/nest/**/*.json'",
+    "abi:generate-cofix": "typechain --target ethers-v5 --out-dir src/abis/types/cofix './src/abis/json/cofix/**/*.json'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^6.2.0",
+    "@lingui/cli": "^3.10.2",
+    "@lingui/loader": "^3.10.2",
+    "@lingui/macro": "^3.10.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.1.9",
+    "@typechain/ethers-v5": "^7.0.1",
+    "@types/jest": "^26.0.24",
+    "@types/loadable__component": "^5.13.3",
+    "@types/node": "^16.3.0",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.7",
+    "dynamic-cdn-webpack-plugin": "^5.0.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
+    "module-to-cdn": "^3.1.5",
+    "prettier": "^2.3.2",
+    "react-scripts": "^4.0.3",
+    "react-snap": "^1.23.0",
+    "sass": "^1.35.1",
+    "source-map-explorer": "^2.5.2",
+    "typechain": "^5.1.1",
+    "typescript": "^4.3.5"
+  }
+}

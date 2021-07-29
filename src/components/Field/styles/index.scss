@@ -1,0 +1,86 @@
+@import 'src/styles/shared.scss';
+
+.cofi-field {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  // max-width: $content-width;
+  padding: $space-md;
+  width: 100%;
+
+  @include tablet {
+    padding: $space-md 2 * $space;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-name {
+    display: flex;
+    align-items: center;
+    color: $dim-color;
+    font-size: $font-size-sm;
+    white-space: nowrap;
+  }
+
+  &-tooltip-icon {
+    line-height: 0;
+    margin-left: $space-sm;
+    cursor: pointer;
+
+    @include tablet {
+      margin-left: $space;
+    }
+  }
+
+  &-tooltip {
+    padding: $space $space-md;
+    @include tablet {
+      padding: $space-md $space;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: #000000;
+      margin-bottom: $space-sm;
+    }
+
+    section + section {
+      margin-top: $space;
+    }
+
+    p {
+      font-size: $font-size-md;
+      line-height: $line-height;
+      color: $dim-color;
+      margin: 0;
+    }
+  }
+
+  &-value {
+    display: flex;
+    align-items: center;
+    font-size: $font-size;
+    text-align: right;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-arrow-down {
+    margin-left: $space-sm;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter,
+      backdrop-filter;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+    &.flip {
+      transform: scale(-1);
+    }
+  }
+}

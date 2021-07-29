@@ -1,0 +1,37 @@
+@use 'sass:math';
+
+$tablet-width: 640px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+$text-gradient-color: linear-gradient(91.55deg, #5ac276 0%, #59c3b1 49.18%, #6fd8c4 99.39%);
+$button-gradient-color: linear-gradient(90.47deg, #6cceaf 0%, #6ccecf 32.29%, #b4fac9 100%);
+$light-gray-color: #eeeeee;
+$gray-color: #e5e5e5;
+$link-color: #3280e5;
+$dim-color: #878787;
+$light-color: #f8f8f8;
+$error-color: #ec4d3d;
+$dim-gray-color: #666666;
+
+$shadow-sm: 0px 0px 6px $gray-color;
+$shadow-lg: 0px 0px 50px $gray-color;
+$border-radius: 12px;
+
+$font-size-sm: 12px;
+$font-size-md: 14px;
+$font-size: 16px;
+$font-size-lg: 18px;
+
+$line-height: 24px;
+
+$space-sm: 10px;
+$space-md: 16px;
+$space: 22px;
+
+$content-width: 572px;
+$modal-width: 400px;

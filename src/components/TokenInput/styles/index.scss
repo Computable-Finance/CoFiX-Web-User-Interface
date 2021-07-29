@@ -1,0 +1,97 @@
+@import 'src/styles/shared.scss';
+
+.cofi-token-input {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  padding: $space-md;
+  width: 100%;
+
+  @include tablet {
+    padding: $space-md 2 * $space;
+  }
+
+  & > * + * {
+    margin-top: $space-sm;
+  }
+
+  &-title {
+    color: $dim-color;
+    font-size: $font-size-sm;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-token {
+    display: flex;
+    align-items: center;
+
+    & > * + * {
+      margin-left: $space-sm;
+    }
+  }
+
+  &-arrow {
+    cursor: pointer;
+    line-height: none;
+  }
+
+  &-input {
+    text-align: right;
+    font-size: $font-size;
+    color: #000000;
+    border: none;
+    width: 100%;
+    margin-left: $space;
+
+    &:disabled {
+      background: transparent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  &-extra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-balance {
+    color: $dim-color;
+    font-size: $font-size-sm;
+    margin-right: $space;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.error {
+      color: $error-color;
+    }
+  }
+
+  &-max {
+    color: $link-color;
+    cursor: pointer;
+    font-size: $font-size-sm;
+  }
+}

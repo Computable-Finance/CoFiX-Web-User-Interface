@@ -1,0 +1,44 @@
+@import 'src/styles/shared.scss';
+
+.cofi-token-pair-selector {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  max-width: calc(100% - #{$space-md * 2});
+  margin: auto;
+
+  padding: $space-sm 2 * $space-sm;
+  @include tablet {
+    padding: $space-md 2 * $space-md;
+    max-width: $content-width;
+  }
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > svg {
+    cursor: pointer;
+  }
+
+  &-pair {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-icon {
+    svg:last-child {
+      margin-left: -$space-sm;
+      float: right;
+    }
+  }
+
+  &-symbol {
+    margin-left: $space;
+  }
+}

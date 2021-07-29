@@ -1,0 +1,38 @@
+@import 'src/styles/shared.scss';
+
+.cofi-wallet-connect-button-modal {
+  .cofi-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &-title {
+    font-weight: 500;
+    font-size: $font-size-lg;
+  }
+
+  &-content {
+    color: $dim-color;
+    font-size: $font-size-sm;
+  }
+
+  ul {
+    width: 100%;
+    li {
+      width: 100%;
+    }
+
+    li + li {
+      margin-top: $space;
+    }
+  }
+
+  &-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

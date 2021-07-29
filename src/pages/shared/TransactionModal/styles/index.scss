@@ -1,0 +1,32 @@
+@import 'src/styles/shared.scss';
+
+.cofi-transaction-modal {
+  &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & > * + * {
+      margin-top: $space;
+      margin-bottom: 0;
+    }
+
+    h1 {
+      padding: 0;
+      font-size: $font-size-lg;
+    }
+    p {
+      color: $dim-color;
+      font-size: $font-size-sm;
+    }
+
+    button {
+      margin-top: $space * 2;
+    }
+  }
+  &-link {
+    color: $link-color;
+    cursor: pointer;
+  }
+}

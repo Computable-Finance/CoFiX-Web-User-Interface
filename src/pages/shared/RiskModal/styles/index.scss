@@ -1,0 +1,16 @@
+@import 'src/styles/shared.scss';
+
+.cofi-risk-modal {
+  &-card {
+    section + section {
+      margin-top: $space;
+    }
+
+    p {
+      font-size: $font-size;
+      line-height: $line-height;
+      color: $dim-color;
+      margin: 0;
+    }
+  }
+}

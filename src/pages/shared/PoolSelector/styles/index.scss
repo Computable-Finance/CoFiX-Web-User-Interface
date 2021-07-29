@@ -1,0 +1,108 @@
+@import 'src/styles/shared.scss';
+
+.cofi-pool-selector {
+  &-card {
+    background: #ffffff;
+    box-shadow: $shadow-sm;
+    border-radius: $border-radius;
+    margin: auto;
+    cursor: pointer;
+
+    padding: $space-sm;
+    @include tablet {
+      padding: $space-md 2 * $space-md;
+      max-width: $content-width;
+    }
+
+    &:hover {
+      box-shadow: $shadow-lg;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-token-pair {
+    display: flex;
+    align-items: center;
+    & > * + * {
+      margin-left: $space-sm;
+    }
+  }
+
+  &-token-pair-icon {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    & > * + * {
+      margin-left: -$space-sm;
+      float: right;
+    }
+  }
+
+  &-token-anchor {
+    display: flex;
+    align-items: center;
+    & > * + * {
+      margin-left: $space-sm;
+    }
+  }
+
+  &-token-anchor-icon {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    & > * + * {
+      margin-left: -$space-sm;
+      float: right;
+    }
+  }
+
+  &-token-anchor-name {
+    display: flex;
+    white-space: nowrap;
+  }
+
+  &-token-pair-name {
+    display: flex;
+    white-space: nowrap;
+  }
+
+  &-modal {
+    & > div + div {
+      margin-top: $space;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: $dim-color;
+      margin-bottom: $space;
+    }
+
+    ul {
+      width: 100%;
+      li {
+        width: 100%;
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          & > div > * + * {
+            margin-left: -$space-sm;
+            float: right;
+          }
+        }
+      }
+
+      li + li {
+        margin-top: $space;
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import 'src/styles/shared.scss';
+
+.cofi-anchor-selector {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  padding: $space-md;
+  width: 100%;
+
+  @include tablet {
+    padding: $space-md 2 * $space;
+  }
+
+  & > * + * {
+    margin-top: $space-sm;
+  }
+
+  &-title {
+    color: $dim-color;
+    font-size: $font-size-sm;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-token {
+    display: flex;
+    align-items: center;
+
+    & > * + * {
+      margin-left: $space-sm;
+    }
+  }
+
+  &-arrow {
+    cursor: pointer;
+    line-height: none;
+  }
+
+  &-extra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-balance {
+    color: $dim-color;
+    font-size: $font-size-sm;
+    margin-right: $space;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.error {
+      color: $error-color;
+    }
+  }
+
+  &-modal {
+    h1 {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: $dim-color;
+      margin-bottom: $space;
+    }
+
+    ul {
+      width: 100%;
+      li {
+        width: 100%;
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      li + li {
+        margin-top: $space;
+      }
+    }
+
+    &-token {
+      display: flex;
+      align-items: center;
+      div {
+        margin-left: $space-sm;
+      }
+    }
+
+    &-balance {
+      color: $dim-color;
+      font-size: $font-size-sm;
+      text-align: right;
+    }
+  }
+}

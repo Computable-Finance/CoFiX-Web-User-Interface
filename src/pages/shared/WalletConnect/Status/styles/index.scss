@@ -1,0 +1,18 @@
+@use 'sass:math';
+@import 'src/styles/shared.scss';
+
+.cofi-wallet-connect {
+  &-pending {
+    margin-right: $space;
+    line-height: 0;
+    position: relative;
+
+    & > svg {
+      position: absolute;
+      line-height: 0;
+      // TODO: fix magic number
+      top: -5px;
+      left: -9px;
+    }
+  }
+}

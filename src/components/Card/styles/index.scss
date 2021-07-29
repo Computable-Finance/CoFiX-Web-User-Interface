@@ -1,0 +1,73 @@
+@import 'src/styles/shared.scss';
+
+.popup-content {
+  width: 100%;
+  @include tablet {
+    width: auto;
+  }
+
+  .cofi-card {
+    width: calc(100% - #{$space-md * 2});
+
+    @include tablet {
+      width: $modal-width;
+    }
+  }
+}
+
+.cofi-card {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border: 1px solid $light-gray-color;
+  border-radius: $border-radius;
+  max-width: calc(100% - #{$space-md * 2});
+  margin: auto;
+
+  padding: $space-sm;
+  @include tablet {
+    padding: 2 * $space-md;
+    max-width: $content-width;
+  }
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: $space;
+  }
+
+  &-backward {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-title {
+    font-size: $font-size-lg;
+  }
+
+  &-closable {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-content {
+    & > * {
+      margin-top: $space-md;
+
+      @include tablet {
+        margin-top: $space;
+      }
+    }
+  }
+}

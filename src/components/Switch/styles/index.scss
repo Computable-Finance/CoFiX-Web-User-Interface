@@ -1,0 +1,56 @@
+@use 'sass:math';
+@import 'src/styles/shared.scss';
+
+$switch-width: 30px;
+$switch-height: 15px;
+$radius: 11px;
+
+.cofi-switch {
+  display: inline-block;
+  width: $switch-width;
+  height: $switch-height;
+  border-radius: $switch-height;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $gray-color;
+    border-radius: $switch-height;
+  }
+
+  &::after {
+    content: '';
+    width: $radius;
+    height: $radius;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    top: 2px;
+    z-index: 0;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter,
+      backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transform: translateX(math.div($switch-height - $radius, 2));
+  }
+
+  &:checked {
+    &::before {
+      background: $text-gradient-color;
+    }
+
+    &::after {
+      transform: translateX(($switch-width)- math.div(($switch-height - $radius), 2) - $radius);
+    }
+  }
+}

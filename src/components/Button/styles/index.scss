@@ -1,0 +1,94 @@
+@import 'src/styles/shared.scss';
+
+.cofi-button {
+  padding: $space-sm $space;
+
+  background: #ffffff;
+  color: #000000;
+
+  box-shadow: $shadow-sm;
+
+  border: none;
+  border-radius: $border-radius;
+
+  font-size: $font-size-lg;
+  text-align: center;
+
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    outline: none;
+    background-image: $button-gradient-color;
+  }
+
+  &.gradient {
+    border-image: $button-gradient-color;
+    border-image-slice: 10;
+
+    background-image: $button-gradient-color;
+    background-clip: text;
+    color: transparent;
+
+    &:hover {
+      background-clip: unset;
+      color: #000000;
+    }
+
+    &.primary {
+      background-image: $button-gradient-color;
+      background-clip: unset;
+      color: #000000;
+    }
+  }
+
+  &.flow {
+    background: $button-gradient-color;
+    background-size: 200% 200%;
+
+    animation: flow 1s linear infinite;
+
+    @keyframes flow {
+      0% {
+        background-position: 10% 0%;
+      }
+      50% {
+        background-position: 91% 100%;
+      }
+      100% {
+        background-position: 10% 0%;
+      }
+    }
+  }
+
+  &.primary {
+    background-image: $button-gradient-color;
+  }
+
+  &.block {
+    width: 100%;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    background: $gray-color;
+    color: #ffffff;
+
+    &.primary {
+      background: $gray-color;
+      color: #ffffff;
+    }
+
+    &.gradient {
+      background: $gray-color;
+      color: #ffffff;
+    }
+
+    &:hover {
+      background: $gray-color;
+      color: #ffffff;
+    }
+  }
+}

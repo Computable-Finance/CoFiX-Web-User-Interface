@@ -1,0 +1,39 @@
+@import 'src/styles/shared.scss';
+
+.cofi-page-mining {
+  &-notice {
+    padding: 0 $space-md $space;
+    @include tablet {
+      padding: 0 $space * 2 $space-md * 2;
+    }
+
+    @include tablet {
+      width: 100%;
+      max-width: 1440px;
+    }
+
+    .cofi-card {
+      width: 100%;
+      max-width: unset;
+
+      &-content > * {
+        margin-top: 0;
+      }
+    }
+
+    section + section {
+      margin-top: $space;
+    }
+
+    p {
+      font-size: $font-size;
+      line-height: $line-height;
+      color: $dim-color;
+      margin: 0;
+    }
+
+    a.link {
+      margin-left: $space-sm;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import 'src/styles/shared.scss';
+
+.cofi-collapse-card {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  max-width: calc(100% - #{$space-md * 2});
+  margin: auto;
+
+  @include tablet {
+    max-width: $content-width;
+  }
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    padding: 2 * $space-sm $space-md;
+    @include tablet {
+      padding: 2 * $space-md 2 * $space;
+    }
+  }
+
+  &-title {
+    font-size: $font-size-lg;
+    &::selection {
+      background: none;
+    }
+  }
+
+  &-arrow {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter,
+      backdrop-filter;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+    &.flip {
+      transform: scale(-1);
+    }
+  }
+
+  &-content {
+    padding: 0 $space-md $space;
+    @include tablet {
+      padding: 0 $space * 2 $space-md * 2;
+    }
+
+    section + section {
+      margin-top: $space;
+    }
+
+    p {
+      font-size: $font-size;
+      line-height: $line-height;
+      color: $dim-color;
+      margin: 0;
+    }
+  }
+}

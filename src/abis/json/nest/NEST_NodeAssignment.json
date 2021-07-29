@@ -1,0 +1,20 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "fromAdd",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "toAdd",
+        "type": "address"
+      }
+    ],
+    "name": "nodeCount",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

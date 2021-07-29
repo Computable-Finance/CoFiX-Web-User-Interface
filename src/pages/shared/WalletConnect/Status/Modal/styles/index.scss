@@ -1,0 +1,103 @@
+@import 'src/styles/shared.scss';
+
+.cofi-wallet-connect-status-modal {
+  width: 100%;
+  max-width: calc(100% - #{$space-md * 2});
+
+  @include tablet {
+    max-width: $content-width;
+  }
+
+  &-wallet {
+    background: #ffffff;
+    box-shadow: $shadow-sm;
+    border-radius: $border-radius;
+
+    padding: $space-sm;
+    @include tablet {
+      padding: $space-md;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    color: $link-color;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: $font-size-sm;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: $space-sm;
+  }
+
+  &-title {
+    font-size: $font-size-lg;
+    text-align: center;
+  }
+
+  ul {
+    margin-top: $space;
+    width: 100%;
+
+    li {
+      width: 100%;
+    }
+    li + li {
+      margin-top: $space;
+    }
+  }
+}
+
+.cofi-wallet-transaction {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+
+  padding: $space-sm;
+  @include tablet {
+    padding: $space-md;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  font-size: $font-size-sm;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &-title {
+    margin-left: $space-sm;
+    color: $dim-color;
+  }
+
+  &-content {
+    margin-left: $space-sm;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-link {
+    color: $link-color;
+    cursor: pointer;
+    margin-left: $space;
+  }
+}

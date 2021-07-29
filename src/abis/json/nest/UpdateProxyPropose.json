@@ -1,0 +1,37 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "nestVoteAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "proxyAdminAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "proxyAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "newImplAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "run",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

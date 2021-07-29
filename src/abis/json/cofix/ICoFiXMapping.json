@@ -1,0 +1,202 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ICoFiXMapping",
+  "sourceName": "contracts/interfaces/ICoFiXMapping.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "key",
+          "type": "string"
+        }
+      ],
+      "name": "checkAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBuiltinAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "cofiToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofiNode",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixDAO",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixRouter",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixController",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixVaultForStaking",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoFiNodeAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoFiTokenAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoFiXControllerAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoFiXDAOAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoFiXRouterAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCoFiXVaultForStakingAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "registerAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "cofiToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofiNode",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixDAO",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixRouter",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixController",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "cofixVaultForStaking",
+          "type": "address"
+        }
+      ],
+      "name": "setBuiltinAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

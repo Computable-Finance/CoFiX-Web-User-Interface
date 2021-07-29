@@ -1,0 +1,4110 @@
+{
+  "contractName": "INestQuery",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "triggeredPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "triggeredPriceInfo",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "avgPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sigmaSQ",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "height",
+          "type": "uint256"
+        }
+      ],
+      "name": "findPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "latestPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "name": "lastPriceList",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "latestPriceAndTriggeredPriceInfo",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "latestPriceBlockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "latestPriceValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredPriceBlockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredPriceValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredAvgPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredSigmaSQ",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "name": "lastPriceListAndTriggeredPriceInfo",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "prices",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredPriceBlockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredPriceValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredAvgPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "triggeredSigmaSQ",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "triggeredPrice2",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenBlockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenPrice",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "triggeredPriceInfo2",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "avgPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sigmaSQ",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenBlockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenAvgPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenSigmaSQ",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "latestPrice2",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenBlockNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ntokenPrice",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"}],\"name\":\"findPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"name\":\"lastPriceList\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"name\":\"lastPriceListAndTriggeredPriceInfo\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"prices\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256\",\"name\":\"triggeredPriceBlockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredPriceValue\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredAvgPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredSigmaSQ\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"latestPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"latestPrice2\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenBlockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenPrice\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"latestPriceAndTriggeredPriceInfo\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"latestPriceBlockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"latestPriceValue\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredPriceBlockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredPriceValue\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredAvgPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"triggeredSigmaSQ\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"triggeredPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"triggeredPrice2\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenBlockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenPrice\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"triggeredPriceInfo\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"avgPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sigmaSQ\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"}],\"name\":\"triggeredPriceInfo2\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"avgPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"sigmaSQ\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenBlockNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenAvgPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ntokenSigmaSQ\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This interface defines the methods for price query\",\"kind\":\"dev\",\"methods\":{\"findPrice(address,uint256)\":{\"details\":\"Find the price at block number\",\"params\":{\"height\":\"Destination block number\",\"tokenAddress\":\"Destination token address\"},\"returns\":{\"blockNumber\":\"The block number of price\",\"price\":\"The token price. (1eth equivalent to (price) token)\"}},\"lastPriceList(address,uint256)\":{\"details\":\"Get the last (num) effective price\",\"params\":{\"count\":\"The number of prices that want to return\",\"tokenAddress\":\"Destination token address\"},\"returns\":{\"_0\":\"An array which length is num * 2, each two element expresses one price like blockNumber\\uff5cprice\"}},\"lastPriceListAndTriggeredPriceInfo(address,uint256)\":{\"details\":\"Returns lastPriceList and triggered price info\",\"params\":{\"count\":\"The number of prices that want to return\",\"tokenAddress\":\"Destination token address\"},\"returns\":{\"prices\":\"An array which length is num * 2, each two element expresses one price like blockNumber\\uff5cprice\",\"triggeredAvgPrice\":\"Average price\",\"triggeredPriceBlockNumber\":\"The block number of triggered price\",\"triggeredPriceValue\":\"The token triggered price. (1eth equivalent to (price) token)\",\"triggeredSigmaSQ\":\"The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed\"}},\"latestPrice(address)\":{\"details\":\"Get the latest effective price\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"blockNumber\":\"The block number of price\",\"price\":\"The token price. (1eth equivalent to (price) token)\"}},\"latestPrice2(address)\":{\"details\":\"Get the latest effective price. (token and ntoken)\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"blockNumber\":\"The block number of price\",\"ntokenBlockNumber\":\"The block number of ntoken price\",\"ntokenPrice\":\"The ntoken price. (1eth equivalent to (price) ntoken)\",\"price\":\"The token price. (1eth equivalent to (price) token)\"}},\"latestPriceAndTriggeredPriceInfo(address)\":{\"details\":\"Returns the results of latestPrice() and triggeredPriceInfo()\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"latestPriceBlockNumber\":\"The block number of latest price\",\"latestPriceValue\":\"The token latest price. (1eth equivalent to (price) token)\",\"triggeredAvgPrice\":\"Average price\",\"triggeredPriceBlockNumber\":\"The block number of triggered price\",\"triggeredPriceValue\":\"The token triggered price. (1eth equivalent to (price) token)\",\"triggeredSigmaSQ\":\"The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed\"}},\"triggeredPrice(address)\":{\"details\":\"Get the latest trigger price\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"blockNumber\":\"The block number of price\",\"price\":\"The token price. (1eth equivalent to (price) token)\"}},\"triggeredPrice2(address)\":{\"details\":\"Get the latest trigger price. (token and ntoken)\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"blockNumber\":\"The block number of price\",\"ntokenBlockNumber\":\"The block number of ntoken price\",\"ntokenPrice\":\"The ntoken price. (1eth equivalent to (price) ntoken)\",\"price\":\"The token price. (1eth equivalent to (price) token)\"}},\"triggeredPriceInfo(address)\":{\"details\":\"Get the full information of latest trigger price\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"avgPrice\":\"Average price\",\"blockNumber\":\"The block number of price\",\"price\":\"The token price. (1eth equivalent to (price) token)\",\"sigmaSQ\":\"The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed\"}},\"triggeredPriceInfo2(address)\":{\"details\":\"Get the full information of latest trigger price. (token and ntoken)\",\"params\":{\"tokenAddress\":\"Destination token address\"},\"returns\":{\"avgPrice\":\"Average price\",\"blockNumber\":\"The block number of price\",\"ntokenAvgPrice\":\"Average price of ntoken\",\"ntokenBlockNumber\":\"The block number of ntoken price\",\"ntokenPrice\":\"The ntoken price. (1eth equivalent to (price) ntoken)\",\"ntokenSigmaSQ\":\"The square of the volatility (18 decimal places). The current implementation assumes that         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed\",\"price\":\"The token price. (1eth equivalent to (price) token)\",\"sigmaSQ\":\"The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,          it means that the volatility has exceeded the range that can be expressed\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/lianer/002.\\u9879\\u76ee/007.NEST3.6/NEST-Oracle-V3.6/contracts/interface/INestQuery.sol\":\"INestQuery\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":256},\"remappings\":[]},\"sources\":{\"/D/lianer/002.\\u9879\\u76ee/007.NEST3.6/NEST-Oracle-V3.6/contracts/interface/INestQuery.sol\":{\"keccak256\":\"0x048bea64363b182fa45e5b930b662d976881945c954e32990483cac19071d23c\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://5412d65b3c553cfe4af909cfcf66d5888bd9ca870d4892ae3f71701ca10e62b5\",\"dweb:/ipfs/QmYpQSJBkWtJCFtX3UgXMsVT9qVkCk5P6i2P45He18bjhY\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-3.0-or-later\r\n\r\npragma solidity ^0.8.6;\r\n\r\n/// @dev This interface defines the methods for price query\r\ninterface INestQuery {\r\n    \r\n    /// @dev Get the latest trigger price\r\n    /// @param tokenAddress Destination token address\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    function triggeredPrice(address tokenAddress) external view returns (uint blockNumber, uint price);\r\n\r\n    /// @dev Get the full information of latest trigger price\r\n    /// @param tokenAddress Destination token address\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    /// @return avgPrice Average price\r\n    /// @return sigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \r\n    ///         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\r\n    ///         it means that the volatility has exceeded the range that can be expressed\r\n    function triggeredPriceInfo(address tokenAddress) external view returns (\r\n        uint blockNumber,\r\n        uint price,\r\n        uint avgPrice,\r\n        uint sigmaSQ\r\n    );\r\n\r\n    /// @dev Find the price at block number\r\n    /// @param tokenAddress Destination token address\r\n    /// @param height Destination block number\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    function findPrice(\r\n        address tokenAddress,\r\n        uint height\r\n    ) external view returns (uint blockNumber, uint price);\r\n\r\n    /// @dev Get the latest effective price\r\n    /// @param tokenAddress Destination token address\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    function latestPrice(address tokenAddress) external view returns (uint blockNumber, uint price);\r\n\r\n    /// @dev Get the last (num) effective price\r\n    /// @param tokenAddress Destination token address\r\n    /// @param count The number of prices that want to return\r\n    /// @return An array which length is num * 2, each two element expresses one price like blockNumber｜price\r\n    function lastPriceList(address tokenAddress, uint count) external view returns (uint[] memory);\r\n\r\n    /// @dev Returns the results of latestPrice() and triggeredPriceInfo()\r\n    /// @param tokenAddress Destination token address\r\n    /// @return latestPriceBlockNumber The block number of latest price\r\n    /// @return latestPriceValue The token latest price. (1eth equivalent to (price) token)\r\n    /// @return triggeredPriceBlockNumber The block number of triggered price\r\n    /// @return triggeredPriceValue The token triggered price. (1eth equivalent to (price) token)\r\n    /// @return triggeredAvgPrice Average price\r\n    /// @return triggeredSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \r\n    ///         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\r\n    ///         it means that the volatility has exceeded the range that can be expressed\r\n    function latestPriceAndTriggeredPriceInfo(address tokenAddress) external view \r\n    returns (\r\n        uint latestPriceBlockNumber,\r\n        uint latestPriceValue,\r\n        uint triggeredPriceBlockNumber,\r\n        uint triggeredPriceValue,\r\n        uint triggeredAvgPrice,\r\n        uint triggeredSigmaSQ\r\n    );\r\n\r\n    /// @dev Returns lastPriceList and triggered price info\r\n    /// @param tokenAddress Destination token address\r\n    /// @param count The number of prices that want to return\r\n    /// @return prices An array which length is num * 2, each two element expresses one price like blockNumber｜price\r\n    /// @return triggeredPriceBlockNumber The block number of triggered price\r\n    /// @return triggeredPriceValue The token triggered price. (1eth equivalent to (price) token)\r\n    /// @return triggeredAvgPrice Average price\r\n    /// @return triggeredSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \r\n    ///         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\r\n    ///         it means that the volatility has exceeded the range that can be expressed\r\n    function lastPriceListAndTriggeredPriceInfo(address tokenAddress, uint count) external view \r\n    returns (\r\n        uint[] memory prices,\r\n        uint triggeredPriceBlockNumber,\r\n        uint triggeredPriceValue,\r\n        uint triggeredAvgPrice,\r\n        uint triggeredSigmaSQ\r\n    );\r\n\r\n    /// @dev Get the latest trigger price. (token and ntoken)\r\n    /// @param tokenAddress Destination token address\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    /// @return ntokenBlockNumber The block number of ntoken price\r\n    /// @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)\r\n    function triggeredPrice2(address tokenAddress) external view returns (\r\n        uint blockNumber,\r\n        uint price,\r\n        uint ntokenBlockNumber,\r\n        uint ntokenPrice\r\n    );\r\n\r\n    /// @dev Get the full information of latest trigger price. (token and ntoken)\r\n    /// @param tokenAddress Destination token address\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    /// @return avgPrice Average price\r\n    /// @return sigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \r\n    ///         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447, \r\n    ///         it means that the volatility has exceeded the range that can be expressed\r\n    /// @return ntokenBlockNumber The block number of ntoken price\r\n    /// @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)\r\n    /// @return ntokenAvgPrice Average price of ntoken\r\n    /// @return ntokenSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that\r\n    ///         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\r\n    ///         it means that the volatility has exceeded the range that can be expressed\r\n    function triggeredPriceInfo2(address tokenAddress) external view returns (\r\n        uint blockNumber,\r\n        uint price,\r\n        uint avgPrice,\r\n        uint sigmaSQ,\r\n        uint ntokenBlockNumber,\r\n        uint ntokenPrice,\r\n        uint ntokenAvgPrice,\r\n        uint ntokenSigmaSQ\r\n    );\r\n\r\n    /// @dev Get the latest effective price. (token and ntoken)\r\n    /// @param tokenAddress Destination token address\r\n    /// @return blockNumber The block number of price\r\n    /// @return price The token price. (1eth equivalent to (price) token)\r\n    /// @return ntokenBlockNumber The block number of ntoken price\r\n    /// @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)\r\n    function latestPrice2(address tokenAddress) external view returns (\r\n        uint blockNumber,\r\n        uint price,\r\n        uint ntokenBlockNumber,\r\n        uint ntokenPrice\r\n    );\r\n}",
+  "sourcePath": "D:\\lianer\\002.项目\\007.NEST3.6\\NEST-Oracle-V3.6\\contracts\\interface\\INestQuery.sol",
+  "ast": {
+    "absolutePath": "/D/lianer/002.项目/007.NEST3.6/NEST-Oracle-V3.6/contracts/interface/INestQuery.sol",
+    "exportedSymbols": {
+      "INestQuery": [
+        11096
+      ]
+    },
+    "id": 11097,
+    "license": "GPL-3.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10950,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "48:23:20"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 10951,
+          "nodeType": "StructuredDocumentation",
+          "src": "75:61:20",
+          "text": "@dev This interface defines the methods for price query"
+        },
+        "fullyImplemented": false,
+        "id": 11096,
+        "linearizedBaseContracts": [
+          11096
+        ],
+        "name": "INestQuery",
+        "nameLocation": "146:10:20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 10952,
+              "nodeType": "StructuredDocumentation",
+              "src": "170:222:20",
+              "text": "@dev Get the latest trigger price\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)"
+            },
+            "functionSelector": "4aede2e1",
+            "id": 10961,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPrice",
+            "nameLocation": "407:14:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10955,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10954,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "430:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10961,
+                  "src": "422:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10953,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "422:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "421:22:20"
+            },
+            "returnParameters": {
+              "id": 10960,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10957,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "472:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10961,
+                  "src": "467:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10956,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "467:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10959,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "490:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10961,
+                  "src": "485:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10958,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "485:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "466:30:20"
+            },
+            "scope": 11096,
+            "src": "398:99:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10962,
+              "nodeType": "StructuredDocumentation",
+              "src": "505:609:20",
+              "text": "@dev Get the full information of latest trigger price\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return avgPrice Average price\n @return sigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "a1974848",
+            "id": 10975,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPriceInfo",
+            "nameLocation": "1129:18:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10964,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1156:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1148:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10963,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1148:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1147:22:20"
+            },
+            "returnParameters": {
+              "id": 10974,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10967,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "1208:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1203:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10966,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1203:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10969,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1235:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1230:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10968,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1230:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10971,
+                  "mutability": "mutable",
+                  "name": "avgPrice",
+                  "nameLocation": "1256:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1251:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10970,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1251:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10973,
+                  "mutability": "mutable",
+                  "name": "sigmaSQ",
+                  "nameLocation": "1280:7:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1275:12:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10972,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1275:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1192:102:20"
+            },
+            "scope": 11096,
+            "src": "1120:175:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10976,
+              "nodeType": "StructuredDocumentation",
+              "src": "1303:272:20",
+              "text": "@dev Find the price at block number\n @param tokenAddress Destination token address\n @param height Destination block number\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)"
+            },
+            "functionSelector": "9932e820",
+            "id": 10987,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findPrice",
+            "nameLocation": "1590:9:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10981,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10978,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1618:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1610:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10977,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1610:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10980,
+                  "mutability": "mutable",
+                  "name": "height",
+                  "nameLocation": "1646:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1641:11:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10979,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1641:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1599:60:20"
+            },
+            "returnParameters": {
+              "id": 10986,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10983,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "1688:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1683:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10982,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1683:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10985,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1706:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1701:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10984,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1701:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1682:30:20"
+            },
+            "scope": 11096,
+            "src": "1581:132:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10988,
+              "nodeType": "StructuredDocumentation",
+              "src": "1721:224:20",
+              "text": "@dev Get the latest effective price\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)"
+            },
+            "functionSelector": "53084eff",
+            "id": 10997,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestPrice",
+            "nameLocation": "1960:11:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10991,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10990,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1980:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10997,
+                  "src": "1972:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10989,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1972:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1971:22:20"
+            },
+            "returnParameters": {
+              "id": 10996,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10993,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "2022:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10997,
+                  "src": "2017:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10992,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2017:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10995,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "2040:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10997,
+                  "src": "2035:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10994,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2035:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2016:30:20"
+            },
+            "scope": 11096,
+            "src": "1951:96:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10998,
+              "nodeType": "StructuredDocumentation",
+              "src": "2055:274:20",
+              "text": "@dev Get the last (num) effective price\n @param tokenAddress Destination token address\n @param count The number of prices that want to return\n @return An array which length is num * 2, each two element expresses one price like blockNumber｜price"
+            },
+            "functionSelector": "e2171444",
+            "id": 11008,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lastPriceList",
+            "nameLocation": "2344:13:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11003,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11000,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "2366:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11008,
+                  "src": "2358:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10999,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2358:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11002,
+                  "mutability": "mutable",
+                  "name": "count",
+                  "nameLocation": "2385:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11008,
+                  "src": "2380:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11001,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2380:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2357:34:20"
+            },
+            "returnParameters": {
+              "id": 11007,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11006,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11008,
+                  "src": "2415:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 11004,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2415:4:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 11005,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2415:6:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2414:15:20"
+            },
+            "scope": 11096,
+            "src": "2335:95:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11009,
+              "nodeType": "StructuredDocumentation",
+              "src": "2438:854:20",
+              "text": "@dev Returns the results of latestPrice() and triggeredPriceInfo()\n @param tokenAddress Destination token address\n @return latestPriceBlockNumber The block number of latest price\n @return latestPriceValue The token latest price. (1eth equivalent to (price) token)\n @return triggeredPriceBlockNumber The block number of triggered price\n @return triggeredPriceValue The token triggered price. (1eth equivalent to (price) token)\n @return triggeredAvgPrice Average price\n @return triggeredSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "4b072685",
+            "id": 11026,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestPriceAndTriggeredPriceInfo",
+            "nameLocation": "3307:32:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11012,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11011,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "3348:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3340:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11010,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3340:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3339:22:20"
+            },
+            "returnParameters": {
+              "id": 11025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11014,
+                  "mutability": "mutable",
+                  "name": "latestPriceBlockNumber",
+                  "nameLocation": "3406:22:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3401:27:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11013,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3401:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11016,
+                  "mutability": "mutable",
+                  "name": "latestPriceValue",
+                  "nameLocation": "3444:16:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3439:21:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11015,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3439:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11018,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceBlockNumber",
+                  "nameLocation": "3476:25:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3471:30:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11017,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3471:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11020,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceValue",
+                  "nameLocation": "3517:19:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3512:24:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11019,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3512:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11022,
+                  "mutability": "mutable",
+                  "name": "triggeredAvgPrice",
+                  "nameLocation": "3552:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3547:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11021,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3547:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11024,
+                  "mutability": "mutable",
+                  "name": "triggeredSigmaSQ",
+                  "nameLocation": "3585:16:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3580:21:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11023,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3580:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3390:218:20"
+            },
+            "scope": 11096,
+            "src": "3298:311:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11027,
+              "nodeType": "StructuredDocumentation",
+              "src": "3617:856:20",
+              "text": "@dev Returns lastPriceList and triggered price info\n @param tokenAddress Destination token address\n @param count The number of prices that want to return\n @return prices An array which length is num * 2, each two element expresses one price like blockNumber｜price\n @return triggeredPriceBlockNumber The block number of triggered price\n @return triggeredPriceValue The token triggered price. (1eth equivalent to (price) token)\n @return triggeredAvgPrice Average price\n @return triggeredSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "350239ef",
+            "id": 11045,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lastPriceListAndTriggeredPriceInfo",
+            "nameLocation": "4488:34:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11032,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11029,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "4531:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4523:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11028,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4523:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11031,
+                  "mutability": "mutable",
+                  "name": "count",
+                  "nameLocation": "4550:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4545:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11030,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4545:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4522:34:20"
+            },
+            "returnParameters": {
+              "id": 11044,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11035,
+                  "mutability": "mutable",
+                  "name": "prices",
+                  "nameLocation": "4610:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4596:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 11033,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "4596:4:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 11034,
+                    "nodeType": "ArrayTypeName",
+                    "src": "4596:6:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11037,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceBlockNumber",
+                  "nameLocation": "4632:25:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4627:30:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11036,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4627:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11039,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceValue",
+                  "nameLocation": "4673:19:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4668:24:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11038,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4668:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11041,
+                  "mutability": "mutable",
+                  "name": "triggeredAvgPrice",
+                  "nameLocation": "4708:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4703:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11040,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4703:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11043,
+                  "mutability": "mutable",
+                  "name": "triggeredSigmaSQ",
+                  "nameLocation": "4741:16:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4736:21:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11042,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4736:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4585:179:20"
+            },
+            "scope": 11096,
+            "src": "4479:286:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11046,
+              "nodeType": "StructuredDocumentation",
+              "src": "4773:393:20",
+              "text": "@dev Get the latest trigger price. (token and ntoken)\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return ntokenBlockNumber The block number of ntoken price\n @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)"
+            },
+            "functionSelector": "7d6f1e5c",
+            "id": 11059,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPrice2",
+            "nameLocation": "5181:15:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11049,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11048,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "5205:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5197:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11047,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5197:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5196:22:20"
+            },
+            "returnParameters": {
+              "id": 11058,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11051,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "5257:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5252:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11050,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5252:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11053,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "5284:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5279:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11052,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5279:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11055,
+                  "mutability": "mutable",
+                  "name": "ntokenBlockNumber",
+                  "nameLocation": "5305:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5300:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11054,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5300:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11057,
+                  "mutability": "mutable",
+                  "name": "ntokenPrice",
+                  "nameLocation": "5338:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5333:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11056,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5333:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5241:115:20"
+            },
+            "scope": 11096,
+            "src": "5172:185:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11060,
+              "nodeType": "StructuredDocumentation",
+              "src": "5365:1169:20",
+              "text": "@dev Get the full information of latest trigger price. (token and ntoken)\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return avgPrice Average price\n @return sigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447, \n         it means that the volatility has exceeded the range that can be expressed\n @return ntokenBlockNumber The block number of ntoken price\n @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)\n @return ntokenAvgPrice Average price of ntoken\n @return ntokenSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that\n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "96bf988a",
+            "id": 11081,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPriceInfo2",
+            "nameLocation": "6549:19:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11063,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11062,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "6577:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6569:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11061,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6569:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6568:22:20"
+            },
+            "returnParameters": {
+              "id": 11080,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11065,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "6629:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6624:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11064,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6624:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11067,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "6656:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6651:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11066,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6651:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11069,
+                  "mutability": "mutable",
+                  "name": "avgPrice",
+                  "nameLocation": "6677:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6672:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11068,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6672:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11071,
+                  "mutability": "mutable",
+                  "name": "sigmaSQ",
+                  "nameLocation": "6701:7:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6696:12:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11070,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6696:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11073,
+                  "mutability": "mutable",
+                  "name": "ntokenBlockNumber",
+                  "nameLocation": "6724:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6719:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11072,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6719:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11075,
+                  "mutability": "mutable",
+                  "name": "ntokenPrice",
+                  "nameLocation": "6757:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6752:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11074,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6752:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11077,
+                  "mutability": "mutable",
+                  "name": "ntokenAvgPrice",
+                  "nameLocation": "6784:14:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6779:19:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11076,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6779:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11079,
+                  "mutability": "mutable",
+                  "name": "ntokenSigmaSQ",
+                  "nameLocation": "6814:13:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6809:18:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11078,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6809:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6613:221:20"
+            },
+            "scope": 11096,
+            "src": "6540:295:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11082,
+              "nodeType": "StructuredDocumentation",
+              "src": "6843:395:20",
+              "text": "@dev Get the latest effective price. (token and ntoken)\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return ntokenBlockNumber The block number of ntoken price\n @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)"
+            },
+            "functionSelector": "fbb03cce",
+            "id": 11095,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestPrice2",
+            "nameLocation": "7253:12:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11085,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11084,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "7274:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7266:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11083,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7266:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7265:22:20"
+            },
+            "returnParameters": {
+              "id": 11094,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11087,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "7326:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7321:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11086,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7321:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11089,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "7353:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7348:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11088,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7348:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11091,
+                  "mutability": "mutable",
+                  "name": "ntokenBlockNumber",
+                  "nameLocation": "7374:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7369:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11090,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7369:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11093,
+                  "mutability": "mutable",
+                  "name": "ntokenPrice",
+                  "nameLocation": "7407:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7402:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11092,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7402:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7310:115:20"
+            },
+            "scope": 11096,
+            "src": "7244:182:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 11097,
+        "src": "136:7293:20",
+        "usedErrors": []
+      }
+    ],
+    "src": "48:7381:20"
+  },
+  "legacyAST": {
+    "absolutePath": "/D/lianer/002.项目/007.NEST3.6/NEST-Oracle-V3.6/contracts/interface/INestQuery.sol",
+    "exportedSymbols": {
+      "INestQuery": [
+        11096
+      ]
+    },
+    "id": 11097,
+    "license": "GPL-3.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10950,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "48:23:20"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 10951,
+          "nodeType": "StructuredDocumentation",
+          "src": "75:61:20",
+          "text": "@dev This interface defines the methods for price query"
+        },
+        "fullyImplemented": false,
+        "id": 11096,
+        "linearizedBaseContracts": [
+          11096
+        ],
+        "name": "INestQuery",
+        "nameLocation": "146:10:20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 10952,
+              "nodeType": "StructuredDocumentation",
+              "src": "170:222:20",
+              "text": "@dev Get the latest trigger price\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)"
+            },
+            "functionSelector": "4aede2e1",
+            "id": 10961,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPrice",
+            "nameLocation": "407:14:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10955,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10954,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "430:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10961,
+                  "src": "422:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10953,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "422:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "421:22:20"
+            },
+            "returnParameters": {
+              "id": 10960,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10957,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "472:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10961,
+                  "src": "467:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10956,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "467:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10959,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "490:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10961,
+                  "src": "485:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10958,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "485:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "466:30:20"
+            },
+            "scope": 11096,
+            "src": "398:99:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10962,
+              "nodeType": "StructuredDocumentation",
+              "src": "505:609:20",
+              "text": "@dev Get the full information of latest trigger price\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return avgPrice Average price\n @return sigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "a1974848",
+            "id": 10975,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPriceInfo",
+            "nameLocation": "1129:18:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10964,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1156:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1148:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10963,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1148:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1147:22:20"
+            },
+            "returnParameters": {
+              "id": 10974,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10967,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "1208:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1203:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10966,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1203:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10969,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1235:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1230:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10968,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1230:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10971,
+                  "mutability": "mutable",
+                  "name": "avgPrice",
+                  "nameLocation": "1256:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1251:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10970,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1251:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10973,
+                  "mutability": "mutable",
+                  "name": "sigmaSQ",
+                  "nameLocation": "1280:7:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10975,
+                  "src": "1275:12:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10972,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1275:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1192:102:20"
+            },
+            "scope": 11096,
+            "src": "1120:175:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10976,
+              "nodeType": "StructuredDocumentation",
+              "src": "1303:272:20",
+              "text": "@dev Find the price at block number\n @param tokenAddress Destination token address\n @param height Destination block number\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)"
+            },
+            "functionSelector": "9932e820",
+            "id": 10987,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findPrice",
+            "nameLocation": "1590:9:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10981,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10978,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1618:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1610:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10977,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1610:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10980,
+                  "mutability": "mutable",
+                  "name": "height",
+                  "nameLocation": "1646:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1641:11:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10979,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1641:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1599:60:20"
+            },
+            "returnParameters": {
+              "id": 10986,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10983,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "1688:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1683:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10982,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1683:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10985,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1706:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10987,
+                  "src": "1701:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10984,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1701:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1682:30:20"
+            },
+            "scope": 11096,
+            "src": "1581:132:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10988,
+              "nodeType": "StructuredDocumentation",
+              "src": "1721:224:20",
+              "text": "@dev Get the latest effective price\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)"
+            },
+            "functionSelector": "53084eff",
+            "id": 10997,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestPrice",
+            "nameLocation": "1960:11:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10991,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10990,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "1980:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10997,
+                  "src": "1972:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10989,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1972:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1971:22:20"
+            },
+            "returnParameters": {
+              "id": 10996,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10993,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "2022:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10997,
+                  "src": "2017:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10992,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2017:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10995,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "2040:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10997,
+                  "src": "2035:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10994,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2035:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2016:30:20"
+            },
+            "scope": 11096,
+            "src": "1951:96:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10998,
+              "nodeType": "StructuredDocumentation",
+              "src": "2055:274:20",
+              "text": "@dev Get the last (num) effective price\n @param tokenAddress Destination token address\n @param count The number of prices that want to return\n @return An array which length is num * 2, each two element expresses one price like blockNumber｜price"
+            },
+            "functionSelector": "e2171444",
+            "id": 11008,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lastPriceList",
+            "nameLocation": "2344:13:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11003,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11000,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "2366:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11008,
+                  "src": "2358:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10999,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2358:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11002,
+                  "mutability": "mutable",
+                  "name": "count",
+                  "nameLocation": "2385:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11008,
+                  "src": "2380:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11001,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2380:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2357:34:20"
+            },
+            "returnParameters": {
+              "id": 11007,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11006,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11008,
+                  "src": "2415:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 11004,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2415:4:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 11005,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2415:6:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2414:15:20"
+            },
+            "scope": 11096,
+            "src": "2335:95:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11009,
+              "nodeType": "StructuredDocumentation",
+              "src": "2438:854:20",
+              "text": "@dev Returns the results of latestPrice() and triggeredPriceInfo()\n @param tokenAddress Destination token address\n @return latestPriceBlockNumber The block number of latest price\n @return latestPriceValue The token latest price. (1eth equivalent to (price) token)\n @return triggeredPriceBlockNumber The block number of triggered price\n @return triggeredPriceValue The token triggered price. (1eth equivalent to (price) token)\n @return triggeredAvgPrice Average price\n @return triggeredSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "4b072685",
+            "id": 11026,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestPriceAndTriggeredPriceInfo",
+            "nameLocation": "3307:32:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11012,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11011,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "3348:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3340:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11010,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3340:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3339:22:20"
+            },
+            "returnParameters": {
+              "id": 11025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11014,
+                  "mutability": "mutable",
+                  "name": "latestPriceBlockNumber",
+                  "nameLocation": "3406:22:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3401:27:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11013,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3401:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11016,
+                  "mutability": "mutable",
+                  "name": "latestPriceValue",
+                  "nameLocation": "3444:16:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3439:21:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11015,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3439:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11018,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceBlockNumber",
+                  "nameLocation": "3476:25:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3471:30:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11017,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3471:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11020,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceValue",
+                  "nameLocation": "3517:19:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3512:24:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11019,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3512:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11022,
+                  "mutability": "mutable",
+                  "name": "triggeredAvgPrice",
+                  "nameLocation": "3552:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3547:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11021,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3547:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11024,
+                  "mutability": "mutable",
+                  "name": "triggeredSigmaSQ",
+                  "nameLocation": "3585:16:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11026,
+                  "src": "3580:21:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11023,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3580:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3390:218:20"
+            },
+            "scope": 11096,
+            "src": "3298:311:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11027,
+              "nodeType": "StructuredDocumentation",
+              "src": "3617:856:20",
+              "text": "@dev Returns lastPriceList and triggered price info\n @param tokenAddress Destination token address\n @param count The number of prices that want to return\n @return prices An array which length is num * 2, each two element expresses one price like blockNumber｜price\n @return triggeredPriceBlockNumber The block number of triggered price\n @return triggeredPriceValue The token triggered price. (1eth equivalent to (price) token)\n @return triggeredAvgPrice Average price\n @return triggeredSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "350239ef",
+            "id": 11045,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lastPriceListAndTriggeredPriceInfo",
+            "nameLocation": "4488:34:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11032,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11029,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "4531:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4523:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11028,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4523:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11031,
+                  "mutability": "mutable",
+                  "name": "count",
+                  "nameLocation": "4550:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4545:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11030,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4545:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4522:34:20"
+            },
+            "returnParameters": {
+              "id": 11044,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11035,
+                  "mutability": "mutable",
+                  "name": "prices",
+                  "nameLocation": "4610:6:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4596:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 11033,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "4596:4:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 11034,
+                    "nodeType": "ArrayTypeName",
+                    "src": "4596:6:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11037,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceBlockNumber",
+                  "nameLocation": "4632:25:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4627:30:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11036,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4627:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11039,
+                  "mutability": "mutable",
+                  "name": "triggeredPriceValue",
+                  "nameLocation": "4673:19:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4668:24:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11038,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4668:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11041,
+                  "mutability": "mutable",
+                  "name": "triggeredAvgPrice",
+                  "nameLocation": "4708:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4703:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11040,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4703:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11043,
+                  "mutability": "mutable",
+                  "name": "triggeredSigmaSQ",
+                  "nameLocation": "4741:16:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11045,
+                  "src": "4736:21:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11042,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4736:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4585:179:20"
+            },
+            "scope": 11096,
+            "src": "4479:286:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11046,
+              "nodeType": "StructuredDocumentation",
+              "src": "4773:393:20",
+              "text": "@dev Get the latest trigger price. (token and ntoken)\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return ntokenBlockNumber The block number of ntoken price\n @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)"
+            },
+            "functionSelector": "7d6f1e5c",
+            "id": 11059,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPrice2",
+            "nameLocation": "5181:15:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11049,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11048,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "5205:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5197:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11047,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5197:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5196:22:20"
+            },
+            "returnParameters": {
+              "id": 11058,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11051,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "5257:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5252:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11050,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5252:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11053,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "5284:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5279:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11052,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5279:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11055,
+                  "mutability": "mutable",
+                  "name": "ntokenBlockNumber",
+                  "nameLocation": "5305:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5300:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11054,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5300:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11057,
+                  "mutability": "mutable",
+                  "name": "ntokenPrice",
+                  "nameLocation": "5338:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11059,
+                  "src": "5333:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11056,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5333:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5241:115:20"
+            },
+            "scope": 11096,
+            "src": "5172:185:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11060,
+              "nodeType": "StructuredDocumentation",
+              "src": "5365:1169:20",
+              "text": "@dev Get the full information of latest trigger price. (token and ntoken)\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return avgPrice Average price\n @return sigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that \n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447, \n         it means that the volatility has exceeded the range that can be expressed\n @return ntokenBlockNumber The block number of ntoken price\n @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)\n @return ntokenAvgPrice Average price of ntoken\n @return ntokenSigmaSQ The square of the volatility (18 decimal places). The current implementation assumes that\n         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,\n         it means that the volatility has exceeded the range that can be expressed"
+            },
+            "functionSelector": "96bf988a",
+            "id": 11081,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "triggeredPriceInfo2",
+            "nameLocation": "6549:19:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11063,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11062,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "6577:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6569:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11061,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6569:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6568:22:20"
+            },
+            "returnParameters": {
+              "id": 11080,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11065,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "6629:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6624:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11064,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6624:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11067,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "6656:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6651:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11066,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6651:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11069,
+                  "mutability": "mutable",
+                  "name": "avgPrice",
+                  "nameLocation": "6677:8:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6672:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11068,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6672:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11071,
+                  "mutability": "mutable",
+                  "name": "sigmaSQ",
+                  "nameLocation": "6701:7:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6696:12:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11070,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6696:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11073,
+                  "mutability": "mutable",
+                  "name": "ntokenBlockNumber",
+                  "nameLocation": "6724:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6719:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11072,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6719:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11075,
+                  "mutability": "mutable",
+                  "name": "ntokenPrice",
+                  "nameLocation": "6757:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6752:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11074,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6752:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11077,
+                  "mutability": "mutable",
+                  "name": "ntokenAvgPrice",
+                  "nameLocation": "6784:14:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6779:19:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11076,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6779:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11079,
+                  "mutability": "mutable",
+                  "name": "ntokenSigmaSQ",
+                  "nameLocation": "6814:13:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11081,
+                  "src": "6809:18:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11078,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6809:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6613:221:20"
+            },
+            "scope": 11096,
+            "src": "6540:295:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 11082,
+              "nodeType": "StructuredDocumentation",
+              "src": "6843:395:20",
+              "text": "@dev Get the latest effective price. (token and ntoken)\n @param tokenAddress Destination token address\n @return blockNumber The block number of price\n @return price The token price. (1eth equivalent to (price) token)\n @return ntokenBlockNumber The block number of ntoken price\n @return ntokenPrice The ntoken price. (1eth equivalent to (price) ntoken)"
+            },
+            "functionSelector": "fbb03cce",
+            "id": 11095,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestPrice2",
+            "nameLocation": "7253:12:20",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11085,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11084,
+                  "mutability": "mutable",
+                  "name": "tokenAddress",
+                  "nameLocation": "7274:12:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7266:20:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11083,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7266:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7265:22:20"
+            },
+            "returnParameters": {
+              "id": 11094,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11087,
+                  "mutability": "mutable",
+                  "name": "blockNumber",
+                  "nameLocation": "7326:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7321:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11086,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7321:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11089,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "7353:5:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7348:10:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11088,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7348:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11091,
+                  "mutability": "mutable",
+                  "name": "ntokenBlockNumber",
+                  "nameLocation": "7374:17:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7369:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11090,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7369:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11093,
+                  "mutability": "mutable",
+                  "name": "ntokenPrice",
+                  "nameLocation": "7407:11:20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11095,
+                  "src": "7402:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11092,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7402:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7310:115:20"
+            },
+            "scope": 11096,
+            "src": "7244:182:20",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 11097,
+        "src": "136:7293:20",
+        "usedErrors": []
+      }
+    ],
+    "src": "48:7381:20"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.6+commit.11564f7e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-07-17T09:40:53.510Z",
+  "devdoc": {
+    "details": "This interface defines the methods for price query",
+    "kind": "dev",
+    "methods": {
+      "findPrice(address,uint256)": {
+        "details": "Find the price at block number",
+        "params": {
+          "height": "Destination block number",
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "blockNumber": "The block number of price",
+          "price": "The token price. (1eth equivalent to (price) token)"
+        }
+      },
+      "lastPriceList(address,uint256)": {
+        "details": "Get the last (num) effective price",
+        "params": {
+          "count": "The number of prices that want to return",
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "_0": "An array which length is num * 2, each two element expresses one price like blockNumber｜price"
+        }
+      },
+      "lastPriceListAndTriggeredPriceInfo(address,uint256)": {
+        "details": "Returns lastPriceList and triggered price info",
+        "params": {
+          "count": "The number of prices that want to return",
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "prices": "An array which length is num * 2, each two element expresses one price like blockNumber｜price",
+          "triggeredAvgPrice": "Average price",
+          "triggeredPriceBlockNumber": "The block number of triggered price",
+          "triggeredPriceValue": "The token triggered price. (1eth equivalent to (price) token)",
+          "triggeredSigmaSQ": "The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed"
+        }
+      },
+      "latestPrice(address)": {
+        "details": "Get the latest effective price",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "blockNumber": "The block number of price",
+          "price": "The token price. (1eth equivalent to (price) token)"
+        }
+      },
+      "latestPrice2(address)": {
+        "details": "Get the latest effective price. (token and ntoken)",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "blockNumber": "The block number of price",
+          "ntokenBlockNumber": "The block number of ntoken price",
+          "ntokenPrice": "The ntoken price. (1eth equivalent to (price) ntoken)",
+          "price": "The token price. (1eth equivalent to (price) token)"
+        }
+      },
+      "latestPriceAndTriggeredPriceInfo(address)": {
+        "details": "Returns the results of latestPrice() and triggeredPriceInfo()",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "latestPriceBlockNumber": "The block number of latest price",
+          "latestPriceValue": "The token latest price. (1eth equivalent to (price) token)",
+          "triggeredAvgPrice": "Average price",
+          "triggeredPriceBlockNumber": "The block number of triggered price",
+          "triggeredPriceValue": "The token triggered price. (1eth equivalent to (price) token)",
+          "triggeredSigmaSQ": "The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed"
+        }
+      },
+      "triggeredPrice(address)": {
+        "details": "Get the latest trigger price",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "blockNumber": "The block number of price",
+          "price": "The token price. (1eth equivalent to (price) token)"
+        }
+      },
+      "triggeredPrice2(address)": {
+        "details": "Get the latest trigger price. (token and ntoken)",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "blockNumber": "The block number of price",
+          "ntokenBlockNumber": "The block number of ntoken price",
+          "ntokenPrice": "The ntoken price. (1eth equivalent to (price) ntoken)",
+          "price": "The token price. (1eth equivalent to (price) token)"
+        }
+      },
+      "triggeredPriceInfo(address)": {
+        "details": "Get the full information of latest trigger price",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "avgPrice": "Average price",
+          "blockNumber": "The block number of price",
+          "price": "The token price. (1eth equivalent to (price) token)",
+          "sigmaSQ": "The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed"
+        }
+      },
+      "triggeredPriceInfo2(address)": {
+        "details": "Get the full information of latest trigger price. (token and ntoken)",
+        "params": {
+          "tokenAddress": "Destination token address"
+        },
+        "returns": {
+          "avgPrice": "Average price",
+          "blockNumber": "The block number of price",
+          "ntokenAvgPrice": "Average price of ntoken",
+          "ntokenBlockNumber": "The block number of ntoken price",
+          "ntokenPrice": "The ntoken price. (1eth equivalent to (price) ntoken)",
+          "ntokenSigmaSQ": "The square of the volatility (18 decimal places). The current implementation assumes that         the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,         it means that the volatility has exceeded the range that can be expressed",
+          "price": "The token price. (1eth equivalent to (price) token)",
+          "sigmaSQ": "The square of the volatility (18 decimal places). The current implementation assumes that          the volatility cannot exceed 1. Correspondingly, when the return value is equal to 999999999999996447,          it means that the volatility has exceeded the range that can be expressed"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

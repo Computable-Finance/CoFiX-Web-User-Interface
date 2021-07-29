@@ -1,0 +1,47 @@
+@import 'src/styles/shared.scss';
+
+.cofi-token-radio-group {
+  background: #ffffff;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  max-width: $content-width;
+  padding: $space-md;
+
+  @include tablet {
+    padding: $space-md 2 * $space;
+  }
+
+  &-header {
+    color: $dim-color;
+    font-size: $font-size-sm;
+  }
+
+  &-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+
+    & > * + * {
+      margin-left: $space-md;
+    }
+  }
+
+  &-extra {
+    color: $dim-color;
+    font-size: $font-size-sm;
+    margin-top: $space-md;
+  }
+
+  li {
+    margin-top: $space-md;
+
+    input[type='radio'] {
+      cursor: pointer;
+    }
+  }
+}

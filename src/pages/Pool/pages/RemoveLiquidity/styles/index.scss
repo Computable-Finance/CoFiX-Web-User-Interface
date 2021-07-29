@@ -1,0 +1,9 @@
+@import 'src/styles/shared.scss';
+
+.cofi-page-pool-add-liquidity {
+  &-tip {
+    font-size: $font-size-sm;
+    color: $dim-color;
+    text-align: center;
+  }
+}

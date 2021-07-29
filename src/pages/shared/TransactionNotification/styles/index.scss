@@ -1,0 +1,27 @@
+@import 'src/styles/shared.scss';
+
+.cofi-transaction-notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &-desc {
+    margin-left: $space-sm;
+    color: $dim-gray-color;
+    font-size: $font-size-sm;
+  }
+
+  &-content {
+    margin-top: 4px;
+  }
+
+  &-link {
+    color: $link-color;
+    font-size: $font-size-sm;
+  }
+}
