@@ -2,7 +2,6 @@ import './styles'
 
 import { t, Trans } from '@lingui/macro'
 import { FC, useState } from 'react'
-import { useEffect } from 'react'
 import { useMemo } from 'react'
 import Popup from 'reactjs-popup'
 import Card from 'src/components/Card'
@@ -40,7 +39,7 @@ const Swap: FC = () => {
     })
   }
 
-  const handleChangeSrc = (amount: string, symbol: string) => {
+  const handleChangeSrc = async (amount: string, symbol: string) => {
     if (symbol === pair.dest.symbol) {
       handleSwitch()
     } else {
@@ -54,10 +53,13 @@ const Swap: FC = () => {
         symbol,
         amount,
       }
-      if (swap?.ratio && amount) {
+      const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
+
+      if (info && amount) {
+        const ratio = info.amountOut.div(amount)
         pair.dest = {
           symbol: pair.dest.symbol,
-          amount: toBigNumber(amount).multipliedBy(swap?.ratio).toFixed(),
+          amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
         }
       }
 
@@ -65,7 +67,7 @@ const Swap: FC = () => {
     }
   }
 
-  const handleChangeDest = (amount: string, symbol: string) => {
+  const handleChangeDest = async (amount: string, symbol: string) => {
     if (symbol === pair.src.symbol) {
       handleSwitch()
     } else {
@@ -78,23 +80,19 @@ const Swap: FC = () => {
         symbol,
         amount,
       }
-      if (swap?.ratio && amount) {
+
+      const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
+      if (info && amount) {
+        const ratio = info.amountOut.div(amount)
         pair.src = {
           symbol: pair.src.symbol,
-          amount: toBigNumber(amount).div(swap?.ratio).toFixed(),
+          amount: toBigNumber(amount).div(ratio).toFixed(),
         }
       }
 
       setPair({ ...pair })
     }
   }
-
-  useEffect(() => {
-    if (swap?.ratio) {
-      handleChangeSrc(pair.src.amount, pair.src.symbol)
-    }
-    setChange('')
-  }, [swap?.ratio])
 
   const { src, dest } = pair
   const classPrefix = 'cofi-page-swap'
