@@ -31,7 +31,6 @@ const Swap: FC = () => {
   const [confirm, setConfirm] = useState(false)
   const { checkRisk } = useRiskModal()
   const [insufficient, setInsufficient] = useState(false)
-  const [change, setChange] = useState<string>()
 
   const handleSwitch = () => {
     setPair({
@@ -48,7 +47,6 @@ const Swap: FC = () => {
         return
       }
 
-      setChange('src')
       pair.src = {
         symbol,
         amount,
@@ -61,7 +59,6 @@ const Swap: FC = () => {
       }
 
       setPair({ ...pair })
-      setChange(undefined)
     }
   }
 
@@ -73,7 +70,6 @@ const Swap: FC = () => {
         return
       }
 
-      setChange('dest')
       pair.dest = {
         symbol,
         amount,
@@ -86,7 +82,6 @@ const Swap: FC = () => {
       }
 
       setPair({ ...pair })
-      setChange(undefined)
     }
   }
 
@@ -109,7 +104,7 @@ const Swap: FC = () => {
             onChange={handleChangeSrc}
             checkInsufficientBalance
             onInsufficientBalance={(b) => setInsufficient(b)}
-            loading={!swap.ratio || (swap.loading && change === 'dest')}
+            loading={!swap.ratio || swap.loading}
           />
           <SwitchOutline onClick={handleSwitch} />
           <TokenInput
@@ -117,13 +112,13 @@ const Swap: FC = () => {
             symbol={dest.symbol}
             value={dest.amount}
             onChange={handleChangeDest}
-            loading={!swap.ratio || (swap.loading && change === 'src')}
+            loading={!swap.ratio || swap.loading}
           />
         </div>
 
         <Field
           name={t`Trading Price`}
-          loading={!swap?.amount?.finalFormat}
+          loading={swap.loading}
           value={`1 ${src.symbol} = ${swap?.amount?.finalFormat || '--'} ${dest.symbol}`}
           tooltip={
             <>
@@ -199,7 +194,7 @@ const Swap: FC = () => {
 
         <Field
           name={t`Oracle Call Fee`}
-          loading={!swap?.oracleCallFee?.format}
+          loading={swap.loading}
           value={`+ ${swap?.oracleCallFee?.format || '--'} ETH`}
           tooltip={
             <>

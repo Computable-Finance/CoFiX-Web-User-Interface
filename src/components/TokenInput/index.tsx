@@ -120,8 +120,8 @@ const TokenInput: FC<Props> = ({ ...props }) => {
 
   useEffect(() => {
     if (value !== props.value || symbol !== props.symbol) {
-      if (props.onChange && value) {
-        props.onChange(value, symbol)
+      if (props.onChange) {
+        props.onChange(value as string, symbol)
       }
     }
   }, [value, symbol])
