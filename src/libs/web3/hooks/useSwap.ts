@@ -129,7 +129,7 @@ const useSwap = (content: TansactionSwapContent) => {
         setLoading(false)
       }
     }, 500),
-    [api, inited]
+    []
   )
 
   useEffect(() => {
