@@ -55,12 +55,12 @@ const Swap: FC = () => {
         amount,
       }
       const curVer = ++ver
+      setChange('src')
       const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
       if (ver > curVer) {
         return
       }
 
-      setChange('src')
       if (info && amount) {
         const ratio = info.amountOut.div(amount)
         pair.dest = {
@@ -87,12 +87,12 @@ const Swap: FC = () => {
       }
 
       const curVer = ++ver
+      setChange('dest')
       const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
       if (ver > curVer) {
         return
       }
 
-      setChange('dest')
       if (info && amount) {
         const ratio = info.amountOut.div(amount)
         pair.src = {
