@@ -1,7 +1,7 @@
 import './styles'
 
 import { t, Trans } from '@lingui/macro'
-import { FC, useCallback, useState } from 'react'
+import { FC, useState } from 'react'
 import { useMemo } from 'react'
 import Popup from 'reactjs-popup'
 import Card from 'src/components/Card'
@@ -17,8 +17,8 @@ import { toBigNumber } from 'src/libs/web3/util'
 
 import { RiskAction, useRiskModal } from '../shared/RiskModal'
 import TransactionButtonGroup from '../shared/TransactionButtonGroup'
-import { debounce } from 'lodash'
 
+let ver = 0
 const Swap: FC = () => {
   const { api } = useWeb3()
   const { ratio: slippageTolerance } = useSlippageTolerance()
@@ -40,67 +40,72 @@ const Swap: FC = () => {
     }))
   }
 
-  const handleChange = useCallback(
-    debounce(async (action: 'src' | 'dest', amount: string, symbol: string, pair: any) => {
-      if (action === 'src') {
-        if (symbol === pair.dest.symbol) {
-          handleSwitch()
-        }
-
-        if (symbol === pair.src.symbol && amount === pair.src.amount) {
-          return
-        }
-
-        setChange('src')
-
-        pair.src = {
-          symbol,
-          amount,
-        }
-        const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
-
-        if (info && amount) {
-          const ratio = info.amountOut.div(amount)
-          pair.dest = {
-            symbol: pair.dest.symbol,
-            amount: toBigNumber(amount)
-              .multipliedBy(ratio)
-              .toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8)),
-          }
-        }
-
-        setPair({ ...pair })
-      } else {
-        if (symbol === pair.src.symbol) {
-          handleSwitch()
-        }
-
-        if (symbol === pair.dest.symbol && amount === pair.dest.amount) {
-          return
-        }
-
-        setChange('dest')
-        pair.dest = {
-          symbol,
-          amount,
-        }
-
-        const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
-        if (info && amount) {
-          const ratio = info.amountOut.div(amount)
-          pair.src = {
-            symbol: pair.src.symbol,
-            amount: toBigNumber(amount)
-              .multipliedBy(ratio)
-              .toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8)),
-          }
-        }
-
-        setPair({ ...pair })
+  const handleChange = async (action: 'src' | 'dest', amount: string, symbol: string) => {
+    if (action === 'src') {
+      if (symbol === pair.dest.symbol) {
+        handleSwitch()
       }
-    }, 200),
-    [api]
-  )
+
+      if (symbol === pair.src.symbol && amount === pair.src.amount) {
+        return
+      }
+
+      pair.src = {
+        symbol,
+        amount,
+      }
+      const curVer = ++ver
+      const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
+      if (ver > curVer) {
+        return
+      }
+
+      setChange('src')
+      if (info && amount) {
+        const ratio = info.amountOut.div(amount)
+        pair.dest = {
+          symbol: pair.dest.symbol,
+          amount: toBigNumber(amount)
+            .multipliedBy(ratio)
+            .toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8)),
+        }
+      }
+
+      setPair({ ...pair })
+    } else {
+      if (symbol === pair.src.symbol) {
+        handleSwitch()
+      }
+
+      if (symbol === pair.dest.symbol && amount === pair.dest.amount) {
+        return
+      }
+
+      pair.dest = {
+        symbol,
+        amount,
+      }
+
+      const curVer = ++ver
+      const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
+      if (ver > curVer) {
+        return
+      }
+
+      setChange('dest')
+      if (info && amount) {
+        const ratio = info.amountOut.div(amount)
+        pair.src = {
+          symbol: pair.src.symbol,
+          amount: toBigNumber(amount)
+            .multipliedBy(ratio)
+            .toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8)),
+        }
+      }
+
+      setPair({ ...pair })
+    }
+  }
 
   const { src, dest } = pair
   const classPrefix = 'cofi-page-swap'
@@ -112,7 +117,7 @@ const Swap: FC = () => {
             title={t`FROM`}
             symbol={src.symbol}
             value={src.amount}
-            onChange={(amount: string, symbol: string) => handleChange('src', amount, symbol, pair)}
+            onChange={(amount: string, symbol: string) => handleChange('src', amount, symbol)}
             checkInsufficientBalance
             onInsufficientBalance={(b) => setInsufficient(b)}
             loading={swap.loading && change != 'src'}
@@ -122,7 +127,7 @@ const Swap: FC = () => {
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}
             value={dest.amount}
-            onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol, pair)}
+            onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol)}
             loading={swap.loading && change != 'dest'}
           />
         </div>
