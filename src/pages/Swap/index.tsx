@@ -63,7 +63,9 @@ const Swap: FC = () => {
           const ratio = info.amountOut.div(amount)
           pair.dest = {
             symbol: pair.dest.symbol,
-            amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
+            amount: toBigNumber(amount)
+              .multipliedBy(ratio)
+              .toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8)),
           }
         }
 
@@ -88,7 +90,9 @@ const Swap: FC = () => {
           const ratio = info.amountOut.div(amount)
           pair.src = {
             symbol: pair.src.symbol,
-            amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
+            amount: toBigNumber(amount)
+              .multipliedBy(ratio)
+              .toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8)),
           }
         }
 

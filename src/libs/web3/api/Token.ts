@@ -55,7 +55,7 @@ abstract class Token extends Contract {
   }
 
   format(n: BigNumber | BigNumberish) {
-    return formatNumber(n, this.decimals, this.formatPrecision)
+    return formatNumber(n, this.decimals, Math.min(this.formatPrecision || this.decimals, 8))
   }
 
   async getETHValue() {

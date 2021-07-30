@@ -64,6 +64,15 @@ const TokenInput: FC<Props> = ({ ...props }) => {
     }
   }, [props.balance, tokenBalance])
 
+  const fixValue = (v: string) => {
+    const slices = v.split('.')
+    if (slices.length !== 2) {
+      return v
+    }
+
+    return slices[0] + '.' + slices[1].slice(0, Math.min(8, token?.decimals || 18))
+  }
+
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     let v = e.target.value
     if (!/^\d*(\.\d*)?$/.test(v)) {
@@ -74,11 +83,12 @@ const TokenInput: FC<Props> = ({ ...props }) => {
       v = v.slice(1)
     }
 
-    const value = toBigNumber(v)
-    if (value.lt(0)) {
+    const bv = toBigNumber(v)
+    if (bv.lt(0)) {
       v = '0'
     }
 
+    v = fixValue(v)
     setValue(v)
     if (props.onChange) {
       props.onChange(v, symbol)
@@ -105,6 +115,12 @@ const TokenInput: FC<Props> = ({ ...props }) => {
       v = balance.amount.toString()
     }
 
+    const bv = toBigNumber(v)
+    if (bv.lt(0)) {
+      v = '0'
+    }
+
+    v = fixValue(v)
     setValue(v)
     if (props.onChange) {
       props.onChange(v, symbol)
