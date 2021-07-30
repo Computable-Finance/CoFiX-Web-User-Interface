@@ -80,6 +80,9 @@ const TokenInput: FC<Props> = ({ ...props }) => {
     }
 
     setValue(v)
+    if (props.onChange) {
+      props.onChange(v, symbol)
+    }
   }
 
   const handleMax = () => {
@@ -103,11 +106,17 @@ const TokenInput: FC<Props> = ({ ...props }) => {
     }
 
     setValue(v)
+    if (props.onChange) {
+      props.onChange(v, symbol)
+    }
   }
 
   const handleSelectToken = (symbol: string) => {
     setSymbol(symbol)
     modal.current.close()
+    if (props.onChange) {
+      props.onChange(value, symbol)
+    }
   }
 
   useEffect(() => {
@@ -127,14 +136,6 @@ const TokenInput: FC<Props> = ({ ...props }) => {
 
     setSymbol(props.symbol)
   }, [props.symbol])
-
-  useEffect(() => {
-    if (value !== props.value || symbol !== props.symbol) {
-      if (props.onChange) {
-        props.onChange(value as string, symbol)
-      }
-    }
-  }, [value, symbol])
 
   const insufficientBalance = useMemo(() => {
     return !!value && !!props.checkInsufficientBalance && !!balance && toBigNumber(value).gt(balance.amount)

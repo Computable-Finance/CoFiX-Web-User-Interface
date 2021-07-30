@@ -2,6 +2,10 @@ import { BigNumberish } from '@ethersproject/bignumber'
 import BigNumber from 'bignumber.js'
 
 export const toBigNumber = (n: BigNumberish | BigNumber) => {
+  if (n === '') {
+    return new BigNumber(0)
+  }
+
   if (typeof n === 'undefined') {
     return new BigNumber(NaN)
   }
