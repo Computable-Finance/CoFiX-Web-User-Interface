@@ -1,7 +1,7 @@
 import './styles'
 
 import { t, Trans } from '@lingui/macro'
-import { FC, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import { useMemo } from 'react'
 import Popup from 'reactjs-popup'
 import Card from 'src/components/Card'
@@ -17,6 +17,7 @@ import { toBigNumber } from 'src/libs/web3/util'
 
 import { RiskAction, useRiskModal } from '../shared/RiskModal'
 import TransactionButtonGroup from '../shared/TransactionButtonGroup'
+import { debounce } from 'lodash'
 
 const Swap: FC = () => {
   const { api } = useWeb3()
@@ -33,66 +34,69 @@ const Swap: FC = () => {
   const [change, setChange] = useState('')
 
   const handleSwitch = () => {
-    setPair({
+    setPair((pair) => ({
       src: pair.dest,
       dest: pair.src,
-    })
+    }))
   }
 
-  const handleChangeSrc = async (amount: string, symbol: string) => {
-    if (symbol === pair.dest.symbol) {
-      handleSwitch()
-    } else {
-      if (symbol === pair.src.symbol && amount === pair.src.amount) {
-        return
-      }
-
-      setChange('src')
-
-      pair.src = {
-        symbol,
-        amount,
-      }
-      const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
-
-      if (info && amount) {
-        const ratio = info.amountOut.div(amount)
-        pair.dest = {
-          symbol: pair.dest.symbol,
-          amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
+  const handleChange = useCallback(
+    debounce(async (action: 'src' | 'dest', amount: string, symbol: string, pair: any) => {
+      if (action === 'src') {
+        if (symbol === pair.dest.symbol) {
+          handleSwitch()
         }
-      }
 
-      setPair({ ...pair })
-    }
-  }
+        if (symbol === pair.src.symbol && amount === pair.src.amount) {
+          return
+        }
 
-  const handleChangeDest = async (amount: string, symbol: string) => {
-    if (symbol === pair.src.symbol) {
-      handleSwitch()
-    } else {
-      if (symbol === pair.dest.symbol && amount === pair.dest.amount) {
-        return
-      }
+        setChange('src')
 
-      setChange('dest')
-      pair.dest = {
-        symbol,
-        amount,
-      }
-
-      const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
-      if (info && amount) {
-        const ratio = info.amountOut.div(amount)
         pair.src = {
-          symbol: pair.src.symbol,
-          amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
+          symbol,
+          amount,
         }
-      }
+        const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
 
-      setPair({ ...pair })
-    }
-  }
+        if (info && amount) {
+          const ratio = info.amountOut.div(amount)
+          pair.dest = {
+            symbol: pair.dest.symbol,
+            amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
+          }
+        }
+
+        setPair({ ...pair })
+      } else {
+        if (symbol === pair.src.symbol) {
+          handleSwitch()
+        }
+
+        if (symbol === pair.dest.symbol && amount === pair.dest.amount) {
+          return
+        }
+
+        setChange('dest')
+        pair.dest = {
+          symbol,
+          amount,
+        }
+
+        const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
+        if (info && amount) {
+          const ratio = info.amountOut.div(amount)
+          pair.src = {
+            symbol: pair.src.symbol,
+            amount: toBigNumber(amount).multipliedBy(ratio).toFixed(),
+          }
+        }
+
+        setPair({ ...pair })
+      }
+    }, 200),
+    [api]
+  )
 
   const { src, dest } = pair
   const classPrefix = 'cofi-page-swap'
@@ -104,7 +108,7 @@ const Swap: FC = () => {
             title={t`FROM`}
             symbol={src.symbol}
             value={src.amount}
-            onChange={handleChangeSrc}
+            onChange={(amount: string, symbol: string) => handleChange('src', amount, symbol, pair)}
             checkInsufficientBalance
             onInsufficientBalance={(b) => setInsufficient(b)}
             loading={swap.loading && change != 'src'}
@@ -114,7 +118,7 @@ const Swap: FC = () => {
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}
             value={dest.amount}
-            onChange={handleChangeDest}
+            onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol, pair)}
             loading={swap.loading && change != 'dest'}
           />
         </div>
