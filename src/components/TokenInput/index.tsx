@@ -74,10 +74,6 @@ const TokenInput: FC<Props> = ({ ...props }) => {
       v = v.slice(1)
     }
 
-    if (v.length > 18) {
-      return
-    }
-
     const value = toBigNumber(v)
     if (value.lt(0)) {
       v = '0'
