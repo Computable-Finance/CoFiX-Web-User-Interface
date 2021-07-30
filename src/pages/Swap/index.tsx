@@ -54,6 +54,15 @@ const Swap: FC = () => {
         symbol,
         amount,
       }
+      if (toBigNumber(amount).eq(0)) {
+        pair.dest = {
+          symbol: pair.dest.symbol,
+          amount: amount,
+        }
+        setPair({ ...pair })
+        return
+      }
+
       const curVer = ++ver
       setChange('src')
       const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
@@ -84,6 +93,14 @@ const Swap: FC = () => {
       pair.dest = {
         symbol,
         amount,
+      }
+      if (toBigNumber(amount).eq(0)) {
+        pair.src = {
+          symbol: pair.src.symbol,
+          amount: amount,
+        }
+        setPair({ ...pair })
+        return
       }
 
       const curVer = ++ver
