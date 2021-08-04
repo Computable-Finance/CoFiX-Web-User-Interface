@@ -43,6 +43,8 @@ type Props = {
   loading?: boolean
 
   tokens?: Array<string>
+
+  onFocus?: () => any
 }
 
 const TokenInput: FC<Props> = ({ ...props }) => {
@@ -135,6 +137,12 @@ const TokenInput: FC<Props> = ({ ...props }) => {
     }
   }
 
+  const handleFocus = () => {
+    if (props.onFocus) {
+      props.onFocus()
+    }
+  }
+
   useEffect(() => {
     if (typeof props.value === 'undefined') {
       return
@@ -218,6 +226,7 @@ const TokenInput: FC<Props> = ({ ...props }) => {
             display: props.loading || shouldShowBalanceLoading ? 'none' : 'unset',
           }}
           min={0}
+          onFocus={handleFocus}
         />
       </div>
 

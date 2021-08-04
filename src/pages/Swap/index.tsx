@@ -138,6 +138,7 @@ const Swap: FC = () => {
             checkInsufficientBalance
             onInsufficientBalance={(b) => setInsufficient(b)}
             loading={swap.loading && change != 'src'}
+            onFocus={() => setChange('src')}
           />
           <SwitchOutline onClick={handleSwitch} />
           <TokenInput
@@ -146,6 +147,7 @@ const Swap: FC = () => {
             value={dest.amount}
             onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol)}
             loading={swap.loading && change != 'dest'}
+            onFocus={() => setChange('dest')}
           />
         </div>
 
