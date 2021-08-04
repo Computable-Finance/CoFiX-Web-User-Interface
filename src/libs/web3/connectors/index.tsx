@@ -1,7 +1,9 @@
+import { AbstractConnector } from '@web3-react/abstract-connector'
 import { TokenETH } from 'src/components/Icon'
+
+import imToken from './im-token'
 import injected from './injected'
 import walletConnect from './wallet-connect'
-import { AbstractConnector } from '@web3-react/abstract-connector'
 
 export type Connector = {
   id: string
@@ -10,4 +12,4 @@ export type Connector = {
   connector: AbstractConnector
 }
 
-export const SupportedConnectors: Array<Connector> = [injected, walletConnect]
+export const SupportedConnectors: Array<Connector> = [injected, walletConnect, ...(window.imToken ? [imToken] : [])]

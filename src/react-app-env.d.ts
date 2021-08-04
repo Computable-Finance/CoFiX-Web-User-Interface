@@ -28,4 +28,6 @@ type ethereum = {
 
 interface Window {
   ethereum: ethereum
+
+  imToken?: boolean
 }
