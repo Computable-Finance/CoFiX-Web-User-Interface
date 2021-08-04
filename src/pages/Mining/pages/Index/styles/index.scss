@@ -15,19 +15,25 @@
   }
 
   &-mining {
+    &-container {
+      padding: 0 $space-md 0 $space-md;
+      @include tablet {
+        padding: 0 $space * 2 0 $space * 2;
+      }
+    }
+
     padding: $space-md;
     background: #ffffff;
     box-shadow: $shadow-sm;
     border: 1px solid $light-gray-color;
     border-radius: $border-radius;
 
-    @include tablet {
-      padding: 0;
-      padding-top: $space;
-    }
-
     &:hover {
       box-shadow: $shadow-lg;
+    }
+
+    @include tablet {
+      padding: 2 * $space-md;
     }
 
     & > * + * {

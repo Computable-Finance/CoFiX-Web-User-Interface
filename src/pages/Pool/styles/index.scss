@@ -2,9 +2,9 @@
 
 .cofi-page-pool {
 	&-notice {
-    padding: 0 $space-md $space;
+    padding: 0 $space-md 0 $space-md;
     @include tablet {
-      padding: 0 $space * 2 $space-md * 2;
+      padding: 0 $space * 2 0 $space * 2 ;
     }
 
     @include tablet {

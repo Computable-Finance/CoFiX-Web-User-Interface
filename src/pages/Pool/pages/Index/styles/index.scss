@@ -3,12 +3,18 @@
 
 .cofi-page-pool-index {
   &-pool {
+    &-container {
+      padding: 0 $space-md 0 $space-md;
+      @include tablet {
+        padding: 0 $space * 2 0 $space * 2;
+      }
+    }
+
     padding: $space-md;
     background: #ffffff;
     box-shadow: $shadow-sm;
     border: 1px solid $light-gray-color;
     border-radius: $border-radius;
-    margin: auto $space-md;
 
     &:hover {
       box-shadow: $shadow-lg;

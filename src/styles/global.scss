@@ -59,11 +59,12 @@ li {
 }
 
 .cofi-page {
-  padding-bottom: 100px;
+  padding-bottom: $space + 4 * $space-md;
   @include tablet {
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
+    padding-bottom: $space * 2;
   }
 
   & > section {

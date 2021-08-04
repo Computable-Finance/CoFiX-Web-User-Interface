@@ -54,202 +54,206 @@ const Mining: FC = () => {
   const classPrefix = 'cofi-page-mining-index'
 
   const sectionPairPool = token0 && token1 && (
-    <section className={`${classPrefix}-mining`}>
-      <PoolSelector symbol={pair} onChange={(p) => setPair(p)} />
+    <section className={`${classPrefix}-mining-container`}>
+      <div className={`${classPrefix}-mining`}>
+        <PoolSelector symbol={pair} onChange={(p) => setPair(p)} />
 
-      <div className={`${classPrefix}-info`}>
-        <div className={`${classPrefix}-info-container`}>
-          <h1 className={`${classPrefix}-h1`}>{`${token0.symbol}-${token1.symbol} ${t`Pool`}`}</h1>
+        <div className={`${classPrefix}-info`}>
+          <div className={`${classPrefix}-info-container`}>
+            <h1 className={`${classPrefix}-h1`}>{`${token0.symbol}-${token1.symbol} ${t`Pool`}`}</h1>
 
-          <Card>
-            <div className={`${classPrefix}-section`}>
-              <ul className={`${classPrefix}-simple-ul`}>
-                <li>
-                  <Item
-                    title={t`XToken In Mining Pool`}
-                    content={`${pairStakeInfo ? pairStakeInfo.xTokenInPool.formatAmount : '--'} XToken`}
-                    loading={!pairStakeInfo}
-                  />
-                </li>
+            <Card>
+              <div className={`${classPrefix}-section`}>
+                <ul className={`${classPrefix}-simple-ul`}>
+                  <li>
+                    <Item
+                      title={t`XToken In Mining Pool`}
+                      content={`${pairStakeInfo ? pairStakeInfo.xTokenInPool.formatAmount : '--'} XToken`}
+                      loading={!pairStakeInfo}
+                    />
+                  </li>
 
-                <li>
-                  <Item
-                    title={t`XToken Staked`}
-                    content={`${pairStakeInfo ? pairStakeInfo.stakedXToken.formatAmount : '--'} XToken`}
-                    loading={!pairStakeInfo}
-                  />
-                </li>
+                  <li>
+                    <Item
+                      title={t`XToken Staked`}
+                      content={`${pairStakeInfo ? pairStakeInfo.stakedXToken.formatAmount : '--'} XToken`}
+                      loading={!pairStakeInfo}
+                    />
+                  </li>
 
-                <li>
-                  <Item
-                    title={t`Percentage`}
-                    content={pairStakeInfo ? pairStakeInfo.stakedRatio : '--'}
-                    loading={!pairStakeInfo}
-                  />
-                </li>
+                  <li>
+                    <Item
+                      title={t`Percentage`}
+                      content={pairStakeInfo ? pairStakeInfo.stakedRatio : '--'}
+                      loading={!pairStakeInfo}
+                    />
+                  </li>
 
-                <li>
-                  <Item
-                    title={t`Estimated Daily Mined`}
-                    content={`${pairStakeInfo ? pairStakeInfo.dailyMined.toString() : '--'} COFI`}
-                    loading={!pairStakeInfo}
-                  />
-                </li>
-              </ul>
-            </div>
-          </Card>
+                  <li>
+                    <Item
+                      title={t`Estimated Daily Mined`}
+                      content={`${pairStakeInfo ? pairStakeInfo.dailyMined.toString() : '--'} COFI`}
+                      loading={!pairStakeInfo}
+                    />
+                  </li>
+                </ul>
+              </div>
+            </Card>
 
-          <ButtonGroup block responsive>
-            <Button block gradient primary>
-              <Link to={`/mining/stake-xtoken/${token0.symbol}/${token1.symbol}`}>
-                <Trans>Stake XToken</Trans>
-              </Link>
-            </Button>
-
-            {pairStakeInfo?.stakedXToken.value.gt(0) && (
-              <Button block gradient>
-                <Link to={`/mining/withdraw-xtoken/${token0.symbol}/${token1.symbol}`}>
-                  <Trans>Withdraw XToken</Trans>
+            <ButtonGroup block responsive>
+              <Button block gradient primary>
+                <Link to={`/mining/stake-xtoken/${token0.symbol}/${token1.symbol}`}>
+                  <Trans>Stake XToken</Trans>
                 </Link>
               </Button>
-            )}
-          </ButtonGroup>
-        </div>
 
-        <div className={`${classPrefix}-info-container`}>
-          <h1 className={`${classPrefix}-h1`}>{t`Claim COFI`}</h1>
+              {pairStakeInfo?.stakedXToken.value.gt(0) && (
+                <Button block gradient>
+                  <Link to={`/mining/withdraw-xtoken/${token0.symbol}/${token1.symbol}`}>
+                    <Trans>Withdraw XToken</Trans>
+                  </Link>
+                </Button>
+              )}
+            </ButtonGroup>
+          </div>
 
-          <TokenInput
-            title={t`Available COFI Amount to Claim`}
-            symbol="COFI"
-            value={pairEarnedCOFI?.amount.toFixed(4) || ''}
-            selectable={false}
-            editable={false}
-            noExtra
-            className={`${classPrefix}-token-input`}
-            loading={!pairEarnedCOFI}
-          />
+          <div className={`${classPrefix}-info-container`}>
+            <h1 className={`${classPrefix}-h1`}>{t`Claim COFI`}</h1>
 
-          <Field
-            name={t`COFI Market Price (Nest Oracle)`}
-            value={`
+            <TokenInput
+              title={t`Available COFI Amount to Claim`}
+              symbol="COFI"
+              value={pairEarnedCOFI?.amount.toFixed(4) || ''}
+              selectable={false}
+              editable={false}
+              noExtra
+              className={`${classPrefix}-token-input`}
+              loading={!pairEarnedCOFI}
+            />
+
+            <Field
+              name={t`COFI Market Price (Nest Oracle)`}
+              value={`
           ${cofiUSDTAmount ? cofiUSDTAmount.formatAmount : '--'} USD
           `}
-            loading={!cofiUSDTAmount?.formatAmount}
-          />
+              loading={!cofiUSDTAmount?.formatAmount}
+            />
 
-          <TransactionButtonGroup
-            onClick={handlePairClaimCOFI.handler}
-            disabled={!pairEarnedCOFI || pairEarnedCOFI.value.lte(0)}
-          >
-            <Trans>Claim COFI</Trans>
-          </TransactionButtonGroup>
+            <TransactionButtonGroup
+              onClick={handlePairClaimCOFI.handler}
+              disabled={!pairEarnedCOFI || pairEarnedCOFI.value.lte(0)}
+            >
+              <Trans>Claim COFI</Trans>
+            </TransactionButtonGroup>
+          </div>
         </div>
       </div>
     </section>
   )
 
   const sectionAnchorPool = token && (
-    <section className={`${classPrefix}-mining`}>
-      <PoolSelector symbol={[symbol]} onChange={(t) => setSymbol(t[0])} />
+    <section className={`${classPrefix}-mining-container`}>
+      <div className={`${classPrefix}-mining`}>
+        <PoolSelector symbol={[symbol]} onChange={(t) => setSymbol(t[0])} />
 
-      <div className={`${classPrefix}-info`}>
-        <div className={`${classPrefix}-info-container`}>
-          <h1 className={`${classPrefix}-h1`}>{`${token.symbol} ${t`Pool`}`}</h1>
+        <div className={`${classPrefix}-info`}>
+          <div className={`${classPrefix}-info-container`}>
+            <h1 className={`${classPrefix}-h1`}>{`${token.symbol} ${t`Pool`}`}</h1>
 
-          <Card>
-            <div className={`${classPrefix}-section`}>
-              <ul className={`${classPrefix}-simple-ul`}>
-                <li>
-                  <Item
-                    title={t`XToken In Mining Pool`}
-                    content={`${anchorStakeInfo ? anchorStakeInfo.xTokenInPool.formatAmount : '--'} XToken`}
-                    loading={!anchorStakeInfo}
-                  />
-                </li>
+            <Card>
+              <div className={`${classPrefix}-section`}>
+                <ul className={`${classPrefix}-simple-ul`}>
+                  <li>
+                    <Item
+                      title={t`XToken In Mining Pool`}
+                      content={`${anchorStakeInfo ? anchorStakeInfo.xTokenInPool.formatAmount : '--'} XToken`}
+                      loading={!anchorStakeInfo}
+                    />
+                  </li>
 
-                <li>
-                  <Item
-                    title={t`XToken Staked`}
-                    content={`${anchorStakeInfo ? anchorStakeInfo.stakedXToken.formatAmount : '--'} XToken`}
-                    loading={!anchorStakeInfo}
-                  />
-                </li>
+                  <li>
+                    <Item
+                      title={t`XToken Staked`}
+                      content={`${anchorStakeInfo ? anchorStakeInfo.stakedXToken.formatAmount : '--'} XToken`}
+                      loading={!anchorStakeInfo}
+                    />
+                  </li>
 
-                <li>
-                  <Item
-                    title={t`Percentage`}
-                    content={anchorStakeInfo ? anchorStakeInfo.stakedRatio : '--'}
-                    loading={!anchorStakeInfo}
-                  />
-                </li>
+                  <li>
+                    <Item
+                      title={t`Percentage`}
+                      content={anchorStakeInfo ? anchorStakeInfo.stakedRatio : '--'}
+                      loading={!anchorStakeInfo}
+                    />
+                  </li>
 
-                <li>
-                  <Item
-                    title={t`Estimated Daily Mined`}
-                    content={`${anchorStakeInfo ? anchorStakeInfo.dailyMined.toString() : '--'} COFI`}
-                    loading={!anchorStakeInfo}
-                  />
-                </li>
-              </ul>
-            </div>
-          </Card>
+                  <li>
+                    <Item
+                      title={t`Estimated Daily Mined`}
+                      content={`${anchorStakeInfo ? anchorStakeInfo.dailyMined.toString() : '--'} COFI`}
+                      loading={!anchorStakeInfo}
+                    />
+                  </li>
+                </ul>
+              </div>
+            </Card>
 
-          <ButtonGroup block responsive>
-            <Button block gradient primary>
-              <Link to={`/mining/stake-xtoken/${token.symbol}`}>
-                <Trans>Stake XToken</Trans>
-              </Link>
-            </Button>
-
-            {anchorStakeInfo?.stakedXToken.value.gt(0) && (
-              <Button block gradient>
-                <Link to={`/mining/withdraw-xtoken/${token.symbol}`}>
-                  <Trans>Withdraw XToken</Trans>
+            <ButtonGroup block responsive>
+              <Button block gradient primary>
+                <Link to={`/mining/stake-xtoken/${token.symbol}`}>
+                  <Trans>Stake XToken</Trans>
                 </Link>
               </Button>
-            )}
-          </ButtonGroup>
-        </div>
 
-        <div className={`${classPrefix}-info-container`}>
-          <h1 className={`${classPrefix}-h1`}>{t`Claim COFI`}</h1>
+              {anchorStakeInfo?.stakedXToken.value.gt(0) && (
+                <Button block gradient>
+                  <Link to={`/mining/withdraw-xtoken/${token.symbol}`}>
+                    <Trans>Withdraw XToken</Trans>
+                  </Link>
+                </Button>
+              )}
+            </ButtonGroup>
+          </div>
 
-          <TokenInput
-            title={t`Available COFI Amount to Claim`}
-            symbol="COFI"
-            value={anchorEarnedCOFI?.amount.toFixed(4) || ''}
-            selectable={false}
-            editable={false}
-            noExtra
-            className={`${classPrefix}-token-input`}
-            loading={!anchorEarnedCOFI}
-          />
+          <div className={`${classPrefix}-info-container`}>
+            <h1 className={`${classPrefix}-h1`}>{t`Claim COFI`}</h1>
 
-          <Field
-            name={t`COFI Market Price (Nest Oracle)`}
-            value={`
+            <TokenInput
+              title={t`Available COFI Amount to Claim`}
+              symbol="COFI"
+              value={anchorEarnedCOFI?.amount.toFixed(4) || ''}
+              selectable={false}
+              editable={false}
+              noExtra
+              className={`${classPrefix}-token-input`}
+              loading={!anchorEarnedCOFI}
+            />
+
+            <Field
+              name={t`COFI Market Price (Nest Oracle)`}
+              value={`
           ${cofiUSDTAmount ? cofiUSDTAmount.formatAmount : '--'} USD
           `}
-            loading={!cofiUSDTAmount?.formatAmount}
-          />
+              loading={!cofiUSDTAmount?.formatAmount}
+            />
 
-          <TransactionButtonGroup
-            onClick={handleAnchorClaimCOFI.handler}
-            disabled={!anchorEarnedCOFI || anchorEarnedCOFI.value.lte(0)}
-          >
-            <Trans>Claim COFI</Trans>
-          </TransactionButtonGroup>
+            <TransactionButtonGroup
+              onClick={handleAnchorClaimCOFI.handler}
+              disabled={!anchorEarnedCOFI || anchorEarnedCOFI.value.lte(0)}
+            >
+              <Trans>Claim COFI</Trans>
+            </TransactionButtonGroup>
+          </div>
         </div>
       </div>
     </section>
   )
 
   return (
-    <div className="cofi-page cofi-page-mining-index">
+    <>
       {sectionPairPool}
       {sectionAnchorPool}
-    </div>
+    </>
   )
 }
 
