@@ -67,7 +67,7 @@ const useRepurchase = (content: TransactionRepurchaseContent) => {
           }
           newArgs.ethAmount = {
             value: api.Tokens.ETH.parse(eth),
-            amount: usdt,
+            amount: eth,
             formatAmount: api.Tokens.ETH.format(eth),
           }
         }
