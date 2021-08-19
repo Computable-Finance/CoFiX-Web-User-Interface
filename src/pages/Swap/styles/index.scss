@@ -15,14 +15,35 @@ $switch-button-size: 72px;
       width: 100%;
     }
 
-    & > svg {
-      text-align: center;
-      cursor: pointer;
-      z-index: 1;
+    &-middleButton {
+      border-radius: 50%;
+      width: $switch-button-size;
+      height: $switch-button-size;
       margin: math.div($space-md - $switch-button-size, 2) 0;
+      z-index: 1;
+      border: 0;
+      background: white;
+      box-shadow: $shadow-sm;
 
       @include tablet {
         margin: math.div($space - $switch-button-size, 2) 0;
+      }
+
+      svg {
+        text-align: center;
+        cursor: pointer;
+      }
+
+      &:hover {
+        background: $button-gradient-color;
+        svg {
+          path {
+            fill: black;
+          }
+          .backContent {
+            color: black;
+          }
+        }
       }
     }
   }

@@ -27,11 +27,12 @@
   }
 
   li {
-    &:hover {
+    &:active {
       background: $text-gradient-color;
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      font-weight: bold;
     }
 
     &.active {
@@ -39,6 +40,7 @@
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      font-weight: bold;
     }
   }
 }

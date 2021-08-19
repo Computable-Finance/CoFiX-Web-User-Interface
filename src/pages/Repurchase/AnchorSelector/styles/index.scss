@@ -7,6 +7,12 @@
   padding: $space-md;
   width: 100%;
 
+  & + .cofi-token-input {
+    hr {
+      background-color: white;
+    }
+  }
+
   @include tablet {
     padding: $space-md 2 * $space;
   }

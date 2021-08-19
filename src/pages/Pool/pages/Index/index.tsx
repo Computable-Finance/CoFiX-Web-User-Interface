@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import Button from 'src/components/Button'
 import Card from 'src/components/Card'
 import { BarGraphOutline, DashboardOutline, DollarOutline, Empty, PercentageSignOutline } from 'src/components/Icon'
-import Tag from 'src/components/Tag'
+// import Tag from 'src/components/Tag'
 import usePoolInfo from 'src/hooks/usePoolInfo'
 import useToken from 'src/hooks/useToken'
 import { AnchorPoolInfo } from 'src/libs/web3/api/CoFiXAnchorPool'
@@ -67,7 +67,7 @@ const Pool: FC = () => {
                 <div className={`${classPrefix}-header`}>
                   <div className={`${classPrefix}-title`}>
                     <span>{`${token0.symbol}-${token1.symbol} ${t`Pool`}`}</span>
-                    <Tag>{`${t`Mining`} x2`}</Tag>
+                    {/* <Tag>{`${t`Mining`} x2`}</Tag> */}
                   </div>
                 </div>
 
@@ -141,7 +141,7 @@ const Pool: FC = () => {
                   <div className={`${classPrefix}-header`}>
                     <div className={`${classPrefix}-title`}>
                       <span>{`${token0.symbol}-${token1.symbol} ${t`Pool`}`}</span>
-                      <Tag>{`${t`Mining`} x2`}</Tag>
+                      {/* <Tag>{`${t`Mining`} x2`}</Tag> */}
                     </div>
 
                     <div className={`${classPrefix}-extra`}>
@@ -203,7 +203,7 @@ const Pool: FC = () => {
                 <div className={`${classPrefix}-header`}>
                   <div className={`${classPrefix}-title`}>
                     <span>{`${token.symbol} ${t`Pool`}`}</span>
-                    <Tag>{`${t`Mining`}`}</Tag>
+                    {/* <Tag>{`${t`Mining`}`}</Tag> */}
                   </div>
                 </div>
 
@@ -273,7 +273,7 @@ const Pool: FC = () => {
                   <div className={`${classPrefix}-header`}>
                     <div className={`${classPrefix}-title`}>
                       <span>{`${token.symbol} ${t`Pool`}`}</span>
-                      <Tag>{`${t`Mining`}`}</Tag>
+                      {/* <Tag>{`${t`Mining`}`}</Tag> */}
                     </div>
 
                     <div className={`${classPrefix}-extra`}>

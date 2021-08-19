@@ -1,1 +1,5 @@
 @import 'src/styles/shared.scss';
+
+section + .cofi-card {
+    margin-top: $space * 2;
+}

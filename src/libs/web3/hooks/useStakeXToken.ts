@@ -24,7 +24,7 @@ const useStakeXToken = (content: TransactionStakeXTokenContent) => {
         if (!address) {
           return
         }
-
+        
         return api.Contracts.CoFiXVaultForStaking.contract?.stake(
           address,
           toBigNumber(content.amount).shiftedBy(18).toFixed(0)

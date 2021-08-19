@@ -65,7 +65,7 @@ const Pool: FC = () => {
       </Switch>
 
       <section>
-        <CollapseCard title={t`How it works?`}>
+        <CollapseCard title={t`risk warning`}>
           <section>
             <p>
               <Trans>

@@ -1,7 +1,7 @@
 import './styles'
 
 import { t, Trans } from '@lingui/macro'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useMemo } from 'react'
 import Popup from 'reactjs-popup'
 import Card from 'src/components/Card'
@@ -40,15 +40,12 @@ const Swap: FC = () => {
     }))
   }
 
+  useEffect(() => {
+    handleChange('src', pair.src.amount, pair.src.symbol)
+  }, [pair.dest.symbol, pair.src.symbol])
+
   const handleChange = async (action: 'src' | 'dest', amount: string, symbol: string) => {
     if (action === 'src') {
-      if (symbol === pair.dest.symbol) {
-        handleSwitch()
-      }
-
-      if (symbol === pair.src.symbol && amount === pair.src.amount) {
-        return
-      }
 
       pair.src = {
         symbol,
@@ -66,6 +63,7 @@ const Swap: FC = () => {
       const curVer = ++ver
       setChange('src')
       const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
+      
       if (ver > curVer) {
         return
       }
@@ -82,9 +80,6 @@ const Swap: FC = () => {
 
       setPair({ ...pair })
     } else {
-      if (symbol === pair.src.symbol) {
-        handleSwitch()
-      }
 
       if (symbol === pair.dest.symbol && amount === pair.dest.amount) {
         return
@@ -105,17 +100,17 @@ const Swap: FC = () => {
 
       const curVer = ++ver
       setChange('dest')
-      const info = await api?.getSwapInfo(symbol, pair.src.symbol, amount)
+      const info = await api?.getSwapInfo(pair.src.symbol, symbol, "1")
       if (ver > curVer) {
         return
       }
 
       if (info && amount) {
-        const ratio = info.amountOut.div(amount)
+        // const ratio = info.amountOut.div(amount)
         pair.src = {
           symbol: pair.src.symbol,
           amount: toBigNumber(amount)
-            .multipliedBy(ratio)
+            .div(info.amountOut)
             .toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8)),
         }
       }
@@ -140,7 +135,10 @@ const Swap: FC = () => {
             loading={swap.loading && change != 'src'}
             onFocus={() => setChange('src')}
           />
-          <SwitchOutline onClick={handleSwitch} />
+          <button className="token-input-pair-middleButton" onClick={handleSwitch}>
+            <SwitchOutline/>
+          </button>
+          
           <TokenInput
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}

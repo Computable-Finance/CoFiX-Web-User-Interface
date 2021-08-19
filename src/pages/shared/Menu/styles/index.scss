@@ -3,7 +3,6 @@
 
 .cofi-menu {
   background: #ffffff;
-  border-radius: $border-radius;
   box-shadow: $shadow-lg;
 
   position: fixed;
@@ -11,11 +10,11 @@
   left: 0;
   right: 0;
   margin: 0;
-  padding: $space-sm * 2 0 $space-sm * 4;
 
   @include tablet {
     position: relative;
-    padding: $space-sm 0 $space;
+    padding: $space-sm+6px 0 0;
+    
     width: 100%;
   }
 
@@ -78,5 +77,14 @@
 
   &:hover {
     background: $text-gradient-color;
+
+    svg {
+      path {
+        fill: black;
+      }
+      .backContent {
+        color: black;
+      }
+    }
   }
 }

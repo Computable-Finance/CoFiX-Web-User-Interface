@@ -15,7 +15,7 @@
     .cofi-card {
       width: 100%;
       max-width: unset;
-
+      
       &-content > * {
         margin-top: 0;
       }
@@ -35,5 +35,8 @@
     a.link {
       margin-left: $space-sm;
     }
+  }
+  .cofi-card + section {
+    margin-top: $space * 2;
   }
 }

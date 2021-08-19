@@ -3,10 +3,19 @@
   border-radius: 12px;
   max-height: calc(100% - 24px);
   overflow: scroll;
+  background-color: white;
 
   &::-webkit-scrollbar {
     width: 0;
     background-color: transparent;
+  }
+
+  .cofi-card {
+    box-shadow: none;
+    border: 0px;
+    &:hover{
+      box-shadow: none;
+    }
   }
 }
 

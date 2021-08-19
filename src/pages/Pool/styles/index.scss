@@ -36,4 +36,8 @@
       margin-left: $space-sm;
     }
   }
+
+  .cofi-card + section {
+    margin-top: $space * 2;
+  }
 }

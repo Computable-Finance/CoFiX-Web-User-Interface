@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    hr {
+      background-color: white;
+    }
   }
 
   &-mining {

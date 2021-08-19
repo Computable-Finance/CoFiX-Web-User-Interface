@@ -179,12 +179,12 @@ msgid "Current available amount of repurchase"
 msgstr "Current available amount of repurchase"
 
 #: src/pages/Repurchase/index.tsx
-msgid "Current locked in DAO (ETH-Anchor)"
-msgstr "Current locked in DAO (ETH-Anchor)"
+msgid "DAO balance（ETH-Anchor）"
+msgstr "DAO balance（ETH-Anchor）"
 
 #: src/pages/Repurchase/index.tsx
-msgid "Current locked in DAO (USDT-Anchor)"
-msgstr "Current locked in DAO (USDT-Anchor)"
+msgid "DAO balance（USD-Anchor）"
+msgstr "DAO balance（USD-Anchor）"
 
 #: src/pages/Pool/pages/AddLiquidity/index.tsx
 msgid "Deposit received XToken to the Mining Pool"
@@ -253,8 +253,8 @@ msgid "How is this calculated?"
 msgstr "How is this calculated?"
 
 #: src/pages/Pool/index.tsx
-msgid "How it works?"
-msgstr "How it works?"
+msgid "risk warning"
+msgstr "risk warning"
 
 #: src/pages/Swap/index.tsx
 msgid "If you receive less than this amount, the transaction will be rejected"

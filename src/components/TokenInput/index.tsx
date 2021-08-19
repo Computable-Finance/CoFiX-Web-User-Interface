@@ -216,18 +216,22 @@ const TokenInput: FC<Props> = ({ ...props }) => {
         </div>
 
         {(props.loading || shouldShowBalanceLoading) && <Skeleton width={100} />}
-        <input
-          className={`${classPrefix}-input`}
-          value={value}
-          onChange={handleInput}
-          placeholder={props.editable === false ? '--' : '0.0'}
-          disabled={props.editable === false}
-          style={{
-            display: props.loading || shouldShowBalanceLoading ? 'none' : 'unset',
-          }}
-          min={0}
-          onFocus={handleFocus}
-        />
+        <div className={`${classPrefix}-inputDiv`}>
+          <input
+            className={`${classPrefix}-input`}
+            value={value}
+            onChange={handleInput}
+            placeholder={props.editable === false ? '--' : '0.0'}
+            disabled={props.editable === false}
+            style={{
+              display: props.loading || shouldShowBalanceLoading ? 'none' : 'unset',
+            }}
+            min={0}
+            onFocus={handleFocus}
+          />
+          <hr/>
+        </div>
+        
       </div>
 
       {props.noExtra !== true && (

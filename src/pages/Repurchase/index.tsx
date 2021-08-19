@@ -38,7 +38,7 @@ const Repurchase: FC = () => {
 
   const [amount, setAmount] = useState('')
   const [symbol, setSymbol] = useState('ETH')
-  const { balance: ethBalance } = useTokenBalance('ETH', account || '')
+  // const { balance: ethBalance } = useTokenBalance('ETH', account || '')
   const { balance: cofiBalance } = useTokenBalance('COFI', account || '')
   const anchorPool = api?.CoFixAnchorPools[symbol]
   const [insufficient, setInsufficient] = useState(false)
@@ -65,13 +65,14 @@ const Repurchase: FC = () => {
 
   const classPrefix = 'cofi-page-repurchase'
 
+
   return (
     <div className={`cofi-page ${classPrefix}`}>
       <section className={`${classPrefix}-summary`}>
         <ul>
           <li>
             <RepurchaseCard
-              title={t`Current locked in DAO (ETH-Anchor)`}
+              title={t`DAO balance（ETH-Anchor）`}
               value={daoInfo ? api?.Tokens.ETH.format(daoInfo.ethAmount) : '--'}
               icon={<GrayTokenETH />}
               loading={!daoInfo}
@@ -79,7 +80,7 @@ const Repurchase: FC = () => {
           </li>
           <li>
             <RepurchaseCard
-              title={t`Current locked in DAO (USDT-Anchor)`}
+              title={t`DAO balance（USD-Anchor）`}
               value={daoInfo ? api?.Tokens.USDT.format(daoInfo.usdtAmount) : '--'}
               icon={<GrayTokenUSDT />}
               loading={!daoInfo}
@@ -162,11 +163,11 @@ const Repurchase: FC = () => {
               loading={!daoInfo}
             />
           )}
-          <Field
+          {/* <Field
             name={t`ETH Balance in your wallet`}
             value={`${ethBalance ? ethBalance.formatAmount : '--'} ETH`}
             loading={!ethBalance || ethBalance.value.lt(0)}
-          />
+          /> */}
 
           <TransactionButtonGroup
             approve={{
