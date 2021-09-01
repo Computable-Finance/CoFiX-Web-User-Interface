@@ -169,10 +169,10 @@ class CoFiXAnchorPool extends Contract {
 
     info.amount = token.amount(balance)
     info.formatAmount = token.format(info.amount)
-    info.totalFunds = info.amount.multipliedBy(usdtAmount)
     info.miningSpeed = xtoken.cofiAmountPerBlock
     info.xtokenTotalSupplys = xtokenTotalSupplys
     info.xtokenTotalSupply = xtokenTotalSupplys.find((x) => x.symbol === xtoken.symbol)?.totalSupply
+    info.totalFunds = (info.xtokenTotalSupply?.amount || new BigNumber(0)).multipliedBy(usdtAmount)
     info.apr = '--'
     if (!info.totalFunds.isZero()) {
       info.apr =
