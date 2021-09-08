@@ -103,7 +103,7 @@ const useRepurchase = (content: TransactionRepurchaseContent) => {
         } else {
           return api.Contracts.CoFiXDAO.contract?.redeemToken(
             api.Tokens[content.symbol].address || '',
-            api.Tokens.USDT.parse(content.amount).toFixed(0),
+            api.Tokens.ETH.parse(content.amount).toFixed(0),
             api.account || '',
             {
               value: args.oracleFee.value.toFixed(0),
