@@ -1,8 +1,8 @@
-import { ContractTransaction } from '@ethersproject/contracts'
-import { t } from '@lingui/macro'
-import { useEffect, useState } from 'react'
-import { notifyTransaction } from 'src/pages/shared/TransactionNotification'
-import { createContainer } from 'unstated-next'
+import {ContractTransaction} from '@ethersproject/contracts'
+import {t} from '@lingui/macro'
+import {useEffect, useState} from 'react'
+import {notifyTransaction} from 'src/pages/shared/TransactionNotification'
+import {createContainer} from 'unstated-next'
 
 import useWeb3 from './useWeb3'
 
@@ -160,6 +160,24 @@ const _useTransaction = () => {
     upsertTranasction(transaction)
   }
 
+  const check = async (transaction: Transaction) => {
+    if (transaction == undefined || transaction.status !== TransactionStatus.Success) {
+      return
+    }
+
+    const receipt = await api?.provider?.getTransactionReceipt(transaction.hash!)
+    if (typeof receipt?.status !== 'undefined') {
+      transaction.receiptStatus = receipt.status
+        ? (transaction.receiptStatus = TransactionReceiptStatus.Successful)
+        : (transaction.receiptStatus = TransactionReceiptStatus.Reverted)
+      updateCurrent(transaction)
+      notifyTransaction(transaction)
+    } else {
+      setTimeout(await check, 3000)
+    }
+    return transaction
+  }
+
   const push = async (transaction: Transaction, t: () => Promise<ContractTransaction | undefined>) => {
     try {
       transaction.id = `${Date.now()}`
@@ -258,7 +276,7 @@ const _useTransaction = () => {
     return transactions.find((t) => t.id === id)
   }
 
-  return { transactions, push, current, showModal, closeModal, getTransactionById }
+  return { transactions, push, check, current, showModal, closeModal, getTransactionById }
 }
 
 const transaction = createContainer(_useTransaction)

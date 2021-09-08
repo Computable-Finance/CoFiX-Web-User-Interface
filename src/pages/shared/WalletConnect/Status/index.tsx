@@ -17,11 +17,12 @@ const WalletConnectStatus: FC = () => {
   }
 
   const [open, setOpen] = useState(false)
-  const { transactions } = useTransaction()
+  const { transactions, check } = useTransaction()
 
   const pendingTransactions = (transactions || []).filter(
     (t) => t?.receiptStatus === TransactionReceiptStatus.Unknown && t?.status === TransactionStatus.Success
-  ).length
+  )
+  pendingTransactions.map((tx)=>check(tx))
 
   const classPrefix = 'cofi-wallet-connect'
   return (
@@ -32,10 +33,10 @@ const WalletConnectStatus: FC = () => {
       trigger={
         <span>
           <Button className={`${classPrefix}-button`} onClick={() => setOpen(true)}>
-            {!!pendingTransactions && (
+            {!!pendingTransactions.length && (
               <span className={`${classPrefix}-pending`}>
                 <Loading className="animation-spin" height={30} width={30} />
-                <span>{pendingTransactions}</span>
+                <span>{pendingTransactions.length}</span>
               </span>
             )}
             {account.slice(0, 6)}...{account.slice(38, 42)}
