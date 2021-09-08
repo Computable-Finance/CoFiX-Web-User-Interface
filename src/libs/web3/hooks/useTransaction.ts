@@ -171,9 +171,9 @@ const _useTransaction = () => {
         ? (transaction.receiptStatus = TransactionReceiptStatus.Successful)
         : (transaction.receiptStatus = TransactionReceiptStatus.Reverted)
       updateCurrent(transaction)
-      notifyTransaction(transaction)
+      // notifyTransaction(transaction)
     } else {
-      setTimeout(await check, 3000)
+      setTimeout(check, 3000)
     }
     return transaction
   }
