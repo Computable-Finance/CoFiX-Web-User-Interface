@@ -1,0 +1,102 @@
+@import 'src/styles/shared.scss';
+
+.cofi-token-withdraw {
+  background: #ffffff;
+  margin: -8px 0 -8px 0;
+  width: 100%;
+
+  @include tablet {
+    padding: $space-md;
+  }
+
+  & > * + * {
+    margin-top: $space-sm;
+  }
+
+  &-title {
+    color: $dim-color;
+    font-size: $font-size-sm;
+  }
+  &-inputDiv {
+    width: 50%;
+
+    hr{
+      width: 100%;
+      height: 1px;
+      background-color: $gray-color;
+      border: none;
+    }
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-token {
+    display: flex;
+    align-items: center;
+
+    & > * + * {
+      margin-left: $space-sm;
+    }
+  }
+
+  &-arrow {
+    cursor: pointer;
+    line-height: none;
+  }
+
+  &-switch {
+    text-align: right;
+    font-size: $font-size;
+    color: #000000;
+    border: none;
+
+    &:disabled {
+      background: transparent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  &-extra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-balance {
+    color: $dim-color;
+    font-size: $font-size-sm;
+    margin-right: $space;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.error {
+      color: $error-color;
+    }
+  }
+
+  &-result {
+    color: black;
+    cursor: pointer;
+    font-size: $font-size-sm;
+  }
+}

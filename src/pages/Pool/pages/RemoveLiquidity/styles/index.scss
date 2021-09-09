@@ -6,4 +6,16 @@
     color: $dim-color;
     text-align: center;
   }
+
+  &-left-title {
+    font-size: $font-size-sm;
+    color: black;
+    text-align: start;
+    padding-left: 20px;
+  }
+
+  &-choice-list {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 }

@@ -15,6 +15,7 @@ import useWeb3 from 'src/libs/web3/hooks/useWeb3'
 import useXToken from 'src/libs/web3/hooks/useXToken'
 import { toBigNumber } from 'src/libs/web3/util'
 import TransactionButtonGroup from 'src/pages/shared/TransactionButtonGroup'
+import TokenWithdraw from 'src/components/TokenWithdraw'
 
 const RemoveLiquidity: FC = () => {
   const history = useHistory()
@@ -55,6 +56,7 @@ const RemoveLiquidity: FC = () => {
     liquidity: amount,
   })
 
+  // console.log(handleRemoveLiquidity)
   const classPrefix = 'cofi-page-pool-add-liquidity'
 
   return (
@@ -83,6 +85,27 @@ const RemoveLiquidity: FC = () => {
             />
           )
         })}
+
+      <div className={`${classPrefix}-choice-list`}>
+        <div className={`${classPrefix}-left-title`}>请选择收到代币</div>
+        <hr/>
+        <TokenWithdraw
+          symbol={"USDT"}
+          balance={poolInfo?.xtokenBalance}
+          choice={true}
+        />
+        <hr/>
+        <TokenWithdraw
+          symbol={"PUSD"}
+          balance={poolInfo?.xtokenBalance}
+        />
+        <hr/>
+        <TokenWithdraw
+          symbol={"USDC"}
+          balance={poolInfo?.xtokenBalance}
+        />
+        <hr/>
+      </div>
 
       <TransactionButtonGroup
         approve={{
