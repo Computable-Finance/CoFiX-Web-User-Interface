@@ -132,7 +132,7 @@ const Pool: FC = () => {
 
             {anchorPoolInfo?.miningSpeed === 0 && (
               <div className={`${classPrefix}-footer`}>
-                <span>当前资金池已不出矿</span>
+                <span>The current fund pool is no longer mined</span>
               </div>
             )}
 
