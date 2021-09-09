@@ -1,5 +1,7 @@
 # CoFiX User Interface
 
+[![deploy](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/ci.yml/badge.svg)](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/ci.yml)
+
 ## Introduction
 
 This repository is the CoFiX Dapp for users.
