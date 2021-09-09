@@ -51,4 +51,4 @@ export const ETHCOFI: CoFiXPairProps = {
   cofiRewardPercentage: 0.9,
 }
 
-export const CoFiXPairWhitelist = [ETHUSDT, ETHHBTC, ETHNEST, ETHCOFI]
+export const CoFiXPairWhitelist = [ETHNEST, ETHHBTC, ETHCOFI, ETHUSDT]
