@@ -84,7 +84,6 @@ const AddLiquidity: FC = () => {
     <Card backward onBackwardClick={() => history.push(`/pool`)} title={t`Add Liquidity`}>
       <TokenInput
         selectable={false}
-        maximize={false}
         symbol={symbol[0]}
         title={`${t`Input`} ${symbol[0]} ${t`Amount`}`}
         value={amount[0]}
@@ -96,7 +95,6 @@ const AddLiquidity: FC = () => {
       {symbol[1] && (
         <TokenInput
           selectable={false}
-          maximize={false}
           symbol={symbol[1]}
           title={`${t`Input`} ${symbol[1]} ${t`Amount`}`}
           value={amount[1]}
