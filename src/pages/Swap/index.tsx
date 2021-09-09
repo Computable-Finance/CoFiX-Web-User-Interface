@@ -143,6 +143,7 @@ const Swap: FC = () => {
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}
             value={dest.amount}
+            noExtra={dest.symbol === "ETH" && src.symbol === "USDT" || dest.symbol === "USDT" && src.symbol === "ETH"}
             onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol)}
             loading={swap.loading && change != 'dest'}
             onFocus={() => setChange('dest')}
