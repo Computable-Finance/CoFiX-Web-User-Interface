@@ -118,9 +118,7 @@ msgstr "关闭"
 #: src/pages/Mining/index.tsx
 #: src/pages/Pool/index.tsx
 msgid "CoFiX 2.1 brand new upgrade fund pool contract, CoFiX 2.0 pool needs to be manually migrated to CoFiX 2.1 version, V2.0 version of the pool certificate XToken is abandoned, staking will not generate COFI rewards, please Take out the staking XToken from V2.0 as soon as possible, and withdraw Token from the pool, re-add liquidity in CoFiX 2.1, generate new XToken for mining."
-msgstr "CoFiX 2.1 全新升级资金池合约，新增了锚定池，CoFiX 2.0 的资金池需要手动迁移到 CoFiX 2.1 版本，v2.0 版本的资金池凭证 XToken 被废弃，
-质押也不会产生挖矿收益，请尽快从V2.0中取出质押的XToken，并从资金池中取出资金，在 CoFiX 2.1中重新添加流动性，
-生成新的 XToken 进行挖矿。"
+msgstr "CoFiX 2.1 全新升级资金池合约，新增了锚定池，CoFiX 2.0 的资金池需要手动迁移到 CoFiX 2.1 版本，v2.0 版本的资金池凭证 XToken 被废弃，质押也不会产生挖矿收益，请尽快从V2.0中取出质押的XToken，并从资金池中取出资金，在 CoFiX 2.1中重新添加流动性，生成新的 XToken 进行挖矿。"
 
 #: src/pages/Repurchase/index.tsx
 msgid "CoFiX DAO contract address:"
@@ -610,3 +608,7 @@ msgstr "您可以在任意时间领取您挖到的 COFI。"
 #: src/pages/shared/TransactionModal/index.tsx
 msgid "You failed confirming the transaction"
 msgstr "交易确认失败"
+
+#: src/pages/Pool/pages/Index/index.tsx
+msgid "The current fund pool is no longer mined"
+msgstr "当前资金池已不出矿"

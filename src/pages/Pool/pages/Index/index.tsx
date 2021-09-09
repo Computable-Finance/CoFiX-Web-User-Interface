@@ -3,7 +3,7 @@ import './styles'
 import { t, Trans } from '@lingui/macro'
 import { FC, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { Link } from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import Button from 'src/components/Button'
 import Card from 'src/components/Card'
 import { BarGraphOutline, DashboardOutline, DollarOutline, Empty, PercentageSignOutline } from 'src/components/Icon'
@@ -35,7 +35,7 @@ const Item: FC<{
 
 const Pool: FC = () => {
   const { api } = useWeb3()
-  const [pair, setPair] = useState(['ETH', 'USDT'])
+  const [pair, setPair] = useState(['ETH', 'NEST'])
   const [symbol, setSymbol] = useState('USDT')
   const { info: poolInfo } = usePoolInfo<PoolInfo>(pair[0], pair[1])
   const { info: anchorPoolInfo } = usePoolInfo<AnchorPoolInfo>(symbol)
@@ -53,6 +53,8 @@ const Pool: FC = () => {
       </div>
     </div>
   )
+
+  const history = useHistory()
 
   const sectionPairPool = token0 && token1 && (
     <section className={`${classPrefix}-pool-container`}>
@@ -124,11 +126,16 @@ const Pool: FC = () => {
               </div>
             </Card>
 
-            <Button block gradient primary>
-              <Link to={`/pool/add-liquidity/${token0.symbol}/${token1.symbol}`}>
-                <Trans>Add Liquidity</Trans>
-              </Link>
+            <Button block gradient primary disabled={anchorPoolInfo?.miningSpeed === 0} onClick={() => history.push(`/pool/add-liquidity/${token0.symbol}/${token1.symbol}`)}>
+              <Trans>Add Liquidity</Trans>
             </Button>
+
+            {anchorPoolInfo?.miningSpeed === 0 && (
+              <div className={`${classPrefix}-footer`}>
+                <span>当前资金池已不出矿</span>
+              </div>
+            )}
+
           </div>
 
           <div className={`${classPrefix}-info-container`}>
@@ -256,11 +263,15 @@ const Pool: FC = () => {
               </div>
             </Card>
 
-            <Button block gradient primary>
-              <Link to={`/pool/add-liquidity/${token.symbol}`}>
-                <Trans>Add Liquidity</Trans>
-              </Link>
+            <Button block gradient primary disabled={anchorPoolInfo?.miningSpeed === 0} onClick={() => history.push(`/pool/add-liquidity/${token.symbol}`)}>
+              <Trans>Add Liquidity</Trans>
             </Button>
+
+            {anchorPoolInfo?.miningSpeed === 0 && (
+              <div className={`${classPrefix}-footer`}>
+                <span>The current fund pool is no longer mined</span>
+              </div>
+            )}
           </div>
 
           <div className={`${classPrefix}-info-container`}>

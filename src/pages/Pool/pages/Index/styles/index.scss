@@ -144,6 +144,14 @@
     font-size: $font-size-sm;
   }
 
+  &-footer {
+    color: #e7a259;
+    display: flex;
+    width: 100%;
+    font-size: $font-size-sm;
+    margin-top: 12px;
+  }
+
   &-title {
     & > * + * {
       margin-left: $space-sm;

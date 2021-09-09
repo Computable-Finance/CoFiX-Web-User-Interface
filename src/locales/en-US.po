@@ -608,3 +608,7 @@ msgstr "You can claim new mined COFI Tokens any time."
 #: src/pages/shared/TransactionModal/index.tsx
 msgid "You failed confirming the transaction"
 msgstr "You failed confirming the transaction"
+
+#: src/pages/Pool/pages/Index/index.tsx
+msgid "The current fund pool is no longer mined"
+msgstr "The current fund pool is no longer mined"
