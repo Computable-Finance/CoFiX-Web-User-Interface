@@ -87,7 +87,7 @@ const RemoveLiquidity: FC = () => {
         })}
 
       <div className={`${classPrefix}-choice-list`}>
-        <div className={`${classPrefix}-left-title`}>请选择收到代币</div>
+        <div className={`${classPrefix}-left-title`}>{`${t`Please select received token`}`}</div>
         <hr/>
         <TokenWithdraw
           symbol={"USDT"}

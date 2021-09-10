@@ -612,3 +612,7 @@ msgstr "交易确认失败"
 #: src/pages/Pool/pages/Index/index.tsx
 msgid "The current fund pool is no longer mined"
 msgstr "当前资金池已不出矿"
+
+#: src/pages/Pool/pages/RemoveLiquidity
+msgid "Please select received token"
+msgstr "请选择收到代币"

@@ -612,3 +612,7 @@ msgstr "You failed confirming the transaction"
 #: src/pages/Pool/pages/Index/index.tsx
 msgid "The current fund pool is no longer mined"
 msgstr "The current fund pool is no longer mined"
+
+#: src/pages/Pool/pages/RemoveLiquidity
+msgid "Please select received token"
+msgstr "Please select received token"
