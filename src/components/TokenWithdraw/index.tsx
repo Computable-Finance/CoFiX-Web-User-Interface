@@ -1,63 +1,58 @@
 import './styles'
 
-import { t } from '@lingui/macro'
-import BigNumber from 'bignumber.js'
+import {t, Trans} from '@lingui/macro'
 import classNames from 'classnames'
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { TokenXToken } from 'src/components/Icon'
 import useToken from 'src/hooks/useToken'
-import useTokenBalance from 'src/hooks/useTokenBalance'
-import useWeb3 from 'src/libs/web3/hooks/useWeb3'
-import { toBigNumber } from 'src/libs/web3/util'
 import Switch from 'src/components/Switch'
+import usePoolInfo from "../../hooks/usePoolInfo";
+import {AnchorPoolInfo} from "../../libs/web3/api/CoFiXAnchorPool";
 
 type Props = {
-  symbol?: string
-  choice?: boolean
-  balance?: {
-    amount: BigNumber
-    value: BigNumber
-    formatAmount: string
-  }
+  symbol: string
+  choice: string
+  balance?: string
   balanceTitle?: string
   className?: string
-  value?: string
-  onChange?: (amount: string, symbol: string) => any
-  onInsufficientBalance?: (insufficient: boolean) => any
-  checkInsufficientBalance?: boolean
+  handleChoice: (symbol: string) => void
   loading?: boolean
 }
 
 const TokenWithdraw: FC<Props> = ({ ...props }) => {
-  const [value, setValue] = useState(props.value && !isNaN(+props.value) ? props.value : '')
   const [symbol, setSymbol] = useState(props.symbol as string)
   const token = useToken(symbol)
-  const [choice, setChoice] = useState(props.choice)
-  const {account } = useWeb3()
-  const { balance: tokenBalance, loading: loadingBalance } = useTokenBalance(symbol, account || '')
-  const [balance, setBalance] = useState<Props['balance']>(props.balance || tokenBalance)
+  const [value, setValue] = useState(props.choice === symbol)
+  const { info: AnchorPoolInfo } = usePoolInfo<AnchorPoolInfo>(symbol)
+  const [balance, setBalance] = useState(props.balance)
 
+  const handleClick = (value: boolean) => {
+    setValue(value)
+    if (value) {
+      props.handleChoice(symbol)
+      return
+    }
+    if (props.choice === symbol && !value){
+      props.handleChoice("Null")
+    }
+  }
+
+  useEffect(() => {
+    if (props.choice !== "Null" && props.choice !== symbol && value) {
+      setValue(false)
+    }
+  })
 
   useEffect(() => {
     if (typeof props.balance !== 'undefined') {
       setBalance(props.balance)
     } else {
-      setBalance(tokenBalance)
+      setBalance(AnchorPoolInfo?.formatAmount)
     }
-  }, [props.balance, tokenBalance])
-
-  useEffect(() => {
-    if (typeof props.value === 'undefined') {
-      return
-    }
-
-    if (!isNaN(+props.value)) {
-      setValue(props.value)
-    }
-  }, [props.value])
+  }, [props.balance, AnchorPoolInfo?.formatAmount])
 
   useEffect(() => {
     if (typeof props.symbol === 'undefined') {
@@ -66,31 +61,6 @@ const TokenWithdraw: FC<Props> = ({ ...props }) => {
 
     setSymbol(props.symbol)
   }, [props.symbol])
-
-  const insufficientBalance = useMemo(() => {
-    return !!value && !!props.checkInsufficientBalance && !!balance && toBigNumber(value).gt(balance.amount)
-  }, [value, balance, balance?.amount, props.balance])
-
-  useEffect(() => {
-    if (props.onInsufficientBalance) {
-      props.onInsufficientBalance(insufficientBalance)
-    }
-  }, [insufficientBalance])
-
-  const shouldShowBalanceLoading = useMemo(() => {
-    if (!tokenBalance) {
-      return true
-    }
-    if (tokenBalance?.amount.lt(0)) {
-      return true
-    }
-
-    if (tokenBalance) {
-      return false
-    }
-
-    return loadingBalance
-  }, [props.balance, loadingBalance])
 
   const classPrefix = 'cofi-token-withdraw'
   return (
@@ -103,44 +73,33 @@ const TokenWithdraw: FC<Props> = ({ ...props }) => {
 
         {/*props.loading || shouldShowBalanceLoading*/}
         <div className={`${classPrefix}-switch`}>
-          {typeof choice === 'boolean' ? (
-            <Switch value={choice} onChange={(v) => setChoice(v)}/>
+          {typeof value === 'boolean' ? (
+            <Switch value={value} onChange={(v) => handleClick(v)}/>
           ) : (
-            <span>{choice}</span>
+            <span>{value}</span>
           )}
         </div>
 
       </div>
       <div className={`${classPrefix}-extra`}>
-        {shouldShowBalanceLoading ? (
-          <span className="w100">
-              <Skeleton/>
-            </span>
-        ) : (
-          <>
               <span
                 className={classNames({
                   [`${classPrefix}-balance`]: true,
-                  error: insufficientBalance,
                 })}
               >
                 <>
-                  {`${props.balanceTitle || t`Balance:`} ${balance ? balance.formatAmount : '--'} `}
+                  {`${props.balanceTitle || t`Balance:`} ${balance ? balance : '--'} `}
                   {token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
                 </>
               </span>
-            <span className={`${classPrefix}-result`}>
-              预计获得：{token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
+        <span className={`${classPrefix}-result`}>
+              <Trans>Received Tokens (Estimated)</Trans>
+              :
+              {token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
             </span>
-          </>
-        )}
       </div>
     </div>
   )
-}
-
-TokenWithdraw.defaultProps = {
-  choice: false
 }
 
 export default TokenWithdraw

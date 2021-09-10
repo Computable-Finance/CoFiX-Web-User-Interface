@@ -5,7 +5,6 @@ import { FC, useEffect } from 'react'
 import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import Card from 'src/components/Card'
-import Field from 'src/components/Field'
 import TokenInput from 'src/components/TokenInput'
 import usePoolInfo from 'src/hooks/usePoolInfo'
 import { PoolInfo } from 'src/libs/web3/api/CoFiXPair'
@@ -30,6 +29,11 @@ const RemoveLiquidity: FC = () => {
   const { info: poolInfo } = usePoolInfo<PoolInfo>(symbol[0], symbol[1])
   const xtoken = useXToken(symbol[0], symbol[1])
   const [insufficient, setInsufficient] = useState(false)
+  const [choice, setChoice] = useState("USDT")
+
+  const handleChoice = (symbol: string) => {
+    setChoice(symbol)
+  }
 
   useEffect(() => {
     if (!api) {
@@ -55,8 +59,6 @@ const RemoveLiquidity: FC = () => {
     token1: symbol[1],
     liquidity: amount,
   })
-
-  // console.log(handleRemoveLiquidity)
   const classPrefix = 'cofi-page-pool-add-liquidity'
 
   return (
@@ -75,37 +77,33 @@ const RemoveLiquidity: FC = () => {
         onInsufficientBalance={(i) => setInsufficient(i)}
       />
 
-      {handleRemoveLiquidity.receive &&
-        handleRemoveLiquidity.receive.map((r) => {
-          return (
-            <Field
-              key={r.symbol}
-              name={`${t`Receive`} ${r.symbol} ${t`Amount`}`}
-              value={`${r.amount || '--'} ${r.symbol}`}
-            />
-          )
-        })}
-
-      <div className={`${classPrefix}-choice-list`}>
-        <div className={`${classPrefix}-left-title`}>{`${t`Please select received token`}`}</div>
-        <hr/>
-        <TokenWithdraw
-          symbol={"USDT"}
-          balance={poolInfo?.xtokenBalance}
-          choice={true}
-        />
-        <hr/>
-        <TokenWithdraw
-          symbol={"PUSD"}
-          balance={poolInfo?.xtokenBalance}
-        />
-        <hr/>
-        <TokenWithdraw
-          symbol={"USDC"}
-          balance={poolInfo?.xtokenBalance}
-        />
-        <hr/>
-      </div>
+      {handleRemoveLiquidity.receive && (
+        <div className={`${classPrefix}-choice-list`}>
+          <div className={`${classPrefix}-left-title`}><Trans>Please select received token</Trans></div>
+          <hr/>
+          <TokenWithdraw
+            symbol={"USDT"}
+            balanceTitle={"Pool Balance"}
+            choice={choice}
+            handleChoice={handleChoice}
+          />
+          <hr/>
+          <TokenWithdraw
+            symbol={"PUSD"}
+            balanceTitle={"Pool Balance"}
+            choice={choice}
+            handleChoice={handleChoice}
+          />
+          <hr/>
+          <TokenWithdraw
+            symbol={"USDC"}
+            balanceTitle={"Pool Balance"}
+            choice={choice}
+            handleChoice={handleChoice}
+          />
+          <hr/>
+        </div>
+      )}
 
       <TransactionButtonGroup
         approve={{
@@ -113,7 +111,7 @@ const RemoveLiquidity: FC = () => {
           token: [symbol[0], symbol[1]],
         }}
         onClick={handleRemoveLiquidity.handler}
-        disabled={insufficient || !amount || toBigNumber(amount).lte(0)}
+        disabled={insufficient || !amount || toBigNumber(amount).lte(0) || choice === "Null"}
       >
         <Trans>Remove Liquidity</Trans>
       </TransactionButtonGroup>
