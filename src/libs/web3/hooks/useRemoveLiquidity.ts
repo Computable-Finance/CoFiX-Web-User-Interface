@@ -140,7 +140,7 @@ const useRemoveLiquidity = (content: TransactionRemoveLiquidityContent) => {
           sendETHValue: api.Tokens.ETH.parse(0).toFixed(0),
           receive: content.receive,
         }
-
+        console.log(token.address, pool.address)
         if (JSON.stringify(newArgs) !== JSON.stringify(args)) {
           setArgs(newArgs)
         }
@@ -158,7 +158,6 @@ const useRemoveLiquidity = (content: TransactionRemoveLiquidityContent) => {
         if (!args || !api) {
           return
         }
-
         return api.Contracts.CoFiXRouter.contract?.removeLiquidityGetTokenAndETH(
           args.pool,
           args.token,

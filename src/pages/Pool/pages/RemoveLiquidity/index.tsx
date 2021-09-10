@@ -55,10 +55,11 @@ const RemoveLiquidity: FC = () => {
   }, [api, params])
 
   const handleRemoveLiquidity = useRemoveLiquidity({
-    token0: symbol[0],
+    token0: choice,
     token1: symbol[1],
     liquidity: amount,
   })
+
   const classPrefix = 'cofi-page-pool-add-liquidity'
 
   return (
@@ -85,6 +86,7 @@ const RemoveLiquidity: FC = () => {
             symbol={"USDT"}
             balanceTitle={"Pool Balance"}
             choice={choice}
+            withdraw={amount}
             handleChoice={handleChoice}
           />
           <hr/>
@@ -92,6 +94,7 @@ const RemoveLiquidity: FC = () => {
             symbol={"PUSD"}
             balanceTitle={"Pool Balance"}
             choice={choice}
+            withdraw={amount}
             handleChoice={handleChoice}
           />
           <hr/>
@@ -99,6 +102,7 @@ const RemoveLiquidity: FC = () => {
             symbol={"USDC"}
             balanceTitle={"Pool Balance"}
             choice={choice}
+            withdraw={amount}
             handleChoice={handleChoice}
           />
           <hr/>

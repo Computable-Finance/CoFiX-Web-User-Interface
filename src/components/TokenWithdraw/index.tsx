@@ -2,7 +2,7 @@ import './styles'
 
 import {t, Trans} from '@lingui/macro'
 import classNames from 'classnames'
-import { FC } from 'react'
+import {FC, useMemo} from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton'
@@ -11,8 +11,10 @@ import useToken from 'src/hooks/useToken'
 import Switch from 'src/components/Switch'
 import usePoolInfo from "../../hooks/usePoolInfo";
 import {AnchorPoolInfo} from "../../libs/web3/api/CoFiXAnchorPool";
+import {toBigNumber} from "../../libs/web3/util";
 
 type Props = {
+  withdraw: string
   symbol: string
   choice: string
   balance?: string
@@ -40,8 +42,12 @@ const TokenWithdraw: FC<Props> = ({ ...props }) => {
     }
   }
 
+  const insufficientBalance = useMemo(() => {
+    return !!balance && toBigNumber(props.withdraw).gt(balance)
+  }, [balance, props.withdraw, balance])
+
   useEffect(() => {
-    if (props.choice !== "Null" && props.choice !== symbol && value) {
+    if (props.choice !== "Null" && props.choice !== symbol && value || insufficientBalance) {
       setValue(false)
     }
   })
@@ -73,30 +79,22 @@ const TokenWithdraw: FC<Props> = ({ ...props }) => {
 
         {/*props.loading || shouldShowBalanceLoading*/}
         <div className={`${classPrefix}-switch`}>
-          {typeof value === 'boolean' ? (
-            <Switch value={value} onChange={(v) => handleClick(v)}/>
-          ) : (
-            <span>{value}</span>
-          )}
+          <Switch value={value} onChange={(v) => handleClick(v)}/>
         </div>
 
       </div>
       <div className={`${classPrefix}-extra`}>
-              <span
-                className={classNames({
-                  [`${classPrefix}-balance`]: true,
-                })}
-              >
-                <>
-                  {`${props.balanceTitle || t`Balance:`} ${balance ? balance : '--'} `}
-                  {token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
-                </>
-              </span>
+          <span className={classNames({[`${classPrefix}-balance`]: true, error: insufficientBalance})}>
+          <>
+            {`${props.balanceTitle || t`Balance:`} ${balance ? balance : '--'} `}
+            {token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
+          </>
+        </span>
         <span className={`${classPrefix}-result`}>
-              <Trans>Received Tokens (Estimated)</Trans>
-              :
-              {token ? (token.isXToken ? 'XToken' : token.symbol) : ''}
-            </span>
+          <Trans>Received Tokens (Estimated)</Trans>
+          {props.withdraw !== "" ? " " + props.withdraw : " 0.0"}
+          {token ? (token.isXToken ? 'XToken' : " " + token.symbol) : ''}
+        </span>
       </div>
     </div>
   )
