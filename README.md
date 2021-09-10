@@ -1,6 +1,6 @@
 # CoFiX User Interface
 
-[![deploy](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/ci.yml/badge.svg)](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/ci.yml)
+[![build](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/build.yml/badge.svg)](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/build.yml) [![deploy](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/deploy.yml/badge.svg)](https://github.com/Computable-Finance/CoFiX-Web-User-Interface/actions/workflows/deploy.yml)
 
 ## Introduction
 
