@@ -164,8 +164,8 @@ const _useTransaction = () => {
     if (transaction == undefined || transaction.status !== TransactionStatus.Success) {
       return
     }
-
-    const receipt = await api?.provider?.getTransactionReceipt(transaction.hash!)
+    if (transaction.hash === undefined) { return }
+    const receipt = await api?.provider?.getTransactionReceipt(transaction.hash)
     if (typeof receipt?.status !== 'undefined') {
       transaction.receiptStatus = receipt.status
         ? (transaction.receiptStatus = TransactionReceiptStatus.Successful)
