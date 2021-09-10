@@ -58,7 +58,6 @@ const WithdrawXToken: FC = () => {
     <Card backward onBackwardClick={() => history.push('/mining')} title={t`Claim XToken`}>
       <TokenInput
         selectable={false}
-        maximize={false}
         symbol={xtoken.symbol}
         title={`${t`Input Claim Amount (XToken)`}`}
         balanceTitle={t`Staked Amount:`}
