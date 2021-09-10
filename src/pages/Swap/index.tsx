@@ -143,6 +143,7 @@ const Swap: FC = () => {
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}
             value={dest.amount}
+            noExtra={dest.symbol === "ETH" && src.symbol === "USDT" || dest.symbol === "USDT" && src.symbol === "ETH"}
             onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol)}
             loading={swap.loading && change != 'dest'}
             onFocus={() => setChange('dest')}
@@ -224,28 +225,29 @@ const Swap: FC = () => {
             </div>
           )}
         </Field>
+        { !(src.symbol === "ETH" && dest.symbol === "USDT" || src.symbol === "USDT" && dest.symbol === "ETH") && (
+          <Field
+            name={t`Oracle Call Fee`}
+            loading={swap.loading}
+            value={`+ ${swap?.oracleCallFee?.format || '--'} ETH`}
+            tooltip={
+              <>
+                <h1>
+                  <Trans>Oracle Call Fee</Trans>
+                </h1>
 
-        <Field
-          name={t`Oracle Call Fee`}
-          loading={swap.loading}
-          value={`+ ${swap?.oracleCallFee?.format || '--'} ETH`}
-          tooltip={
-            <>
-              <h1>
-                <Trans>Oracle Call Fee</Trans>
-              </h1>
-
-              <section>
-                <p>
-                  <Trans>
-                    Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the
-                    smart contract.
-                  </Trans>
-                </p>
-              </section>
-            </>
-          }
-        />
+                <section>
+                  <p>
+                    <Trans>
+                      Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the
+                      smart contract.
+                    </Trans>
+                  </p>
+                </section>
+              </>
+            }
+          />
+        )}
 
         <TransactionButtonGroup
           approve={{
@@ -297,26 +299,28 @@ const Swap: FC = () => {
             }
           />
         )}
-        <Field
-          name={t`Oracle Call Fee`}
-          value={`+ ${swap?.oracleCallFee?.format || '--'} ETH`}
-          tooltip={
-            <>
-              <h1>
-                <Trans>Oracle Call Fee</Trans>
-              </h1>
+        { !(src.symbol === "ETH" && dest.symbol === "USDT" || src.symbol === "USDT" && dest.symbol === "ETH") && (
+          <Field
+            name={t`Oracle Call Fee`}
+            value={`+ ${swap?.oracleCallFee?.format || '--'} ETH`}
+            tooltip={
+              <>
+                <h1>
+                  <Trans>Oracle Call Fee</Trans>
+                </h1>
 
-              <section>
-                <p>
-                  <Trans>
-                    Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the
-                    smart contract.
-                  </Trans>
-                </p>
-              </section>
-            </>
-          }
-        />
+                <section>
+                  <p>
+                    <Trans>
+                      Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the
+                      smart contract.
+                    </Trans>
+                  </p>
+                </section>
+              </>
+            }
+          />
+        )}
         <Field
           tooltip={
             <>
