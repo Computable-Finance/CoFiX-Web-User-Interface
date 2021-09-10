@@ -63,7 +63,6 @@ const StakeXToken: FC = () => {
     <Card backward onBackwardClick={() => history.push('/mining')} title={t`Stake XToken`}>
       <TokenInput
         selectable={false}
-        maximize={false}
         symbol={xtoken.symbol}
         title={`${t`Input Stake Amount (XToken)`}`}
         balance={poolInfo?.xtokenBalance}
