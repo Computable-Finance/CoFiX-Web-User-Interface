@@ -9,7 +9,6 @@ import CollapseCard from 'src/components/CollapaseCard'
 import Field from 'src/components/Field'
 import { SwitchOutline } from 'src/components/Icon'
 import TokenInput from 'src/components/TokenInput'
-import useSlippageTolerance from 'src/hooks/useSlippageTolerance'
 import useSwap from 'src/libs/web3/hooks/useSwap'
 import { TransactionType } from 'src/libs/web3/hooks/useTransaction'
 import useWeb3 from 'src/libs/web3/hooks/useWeb3'
@@ -21,7 +20,6 @@ import TransactionButtonGroup from '../shared/TransactionButtonGroup'
 let ver = 0
 const Swap: FC = () => {
   const { api } = useWeb3()
-  const { ratio: slippageTolerance } = useSlippageTolerance()
 
   const [pair, setPair] = useState({
     src: { symbol: 'ETH', amount: '' },
@@ -333,22 +331,6 @@ const Swap: FC = () => {
           }
           name={t`Minimum Received`}
           value={`${swap.amountOutMinFormat} ${dest.symbol}`}
-        />
-        <Field
-          tooltip={
-            <>
-              <section>
-                <p>
-                  <Trans>
-                    If your actual exchange rate is {`${slippageTolerance * 100} %`} higher than the current page, the
-                    transaction will be rejected
-                  </Trans>
-                </p>
-              </section>
-            </>
-          }
-          name={t`Slippage Tolerance`}
-          value={`${slippageTolerance * 100} %`}
         />
 
         <TransactionButtonGroup
