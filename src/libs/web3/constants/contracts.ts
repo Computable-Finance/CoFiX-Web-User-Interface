@@ -1,3 +1,4 @@
+import { UniswapQuoterProps } from './../api/UniswapQuoter';
 import { CoFiXControllerProps } from '../api/CoFiXController'
 import { CoFiXDAOProps } from '../api/CoFixDAO'
 import { CoFiXRouterProps } from '../api/CoFiXRouter'
@@ -9,6 +10,13 @@ export const NestPriceFacade: NestPriceFacadeProps = {
   addresses: {
     [Mainnet.chainId]: '0xB5D2890c061c321A5B6A4a4254bb1522425BAF0A',
     [Rinkeby.chainId]: '0x40C3EB032f27fDa7AdcF1B753c75B84e27f26838',
+  },
+}
+
+export const UniswapQuoter: UniswapQuoterProps = {
+  addresses: {
+    [Mainnet.chainId]: '0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6',
+    [Rinkeby.chainId]: '',
   },
 }
 
