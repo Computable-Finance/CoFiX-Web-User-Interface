@@ -175,7 +175,7 @@ const Swap: FC = () => {
               <ul>
                 <li>
                   <span>
-                    <Trans>NEST Oracle Price</Trans>
+                    <Trans>{src.symbol === "USDT" && dest.symbol === "ETH" || src.symbol === "ETH" && dest.symbol === "USDT" ? "Uniswap" : "NEST Oracle" } Price</Trans>
                   </span>
                   <span>{`1 ${src.symbol} = ${swap?.amount?.oracleFormat || '--'} ${dest.symbol}`}</span>
                 </li>
