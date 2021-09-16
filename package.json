@@ -86,6 +86,8 @@
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.7",
+    "@uniswap/sdk-core": "^3.0.1",
+    "@uniswap/v3-sdk": "^3.5.1",
     "dynamic-cdn-webpack-plugin": "^5.0.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
