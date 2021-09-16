@@ -223,7 +223,7 @@ const Swap: FC = () => {
             </div>
           )}
         </Field>
-        { !(src.symbol === "ETH" && dest.symbol === "USDT" || src.symbol === "USDT" && dest.symbol === "ETH") && (
+        { (swap?.oracleCallFee?.format !== undefined) && (swap?.oracleCallFee?.format !== "0.00") && (
           <Field
             name={t`Oracle Call Fee`}
             loading={swap.loading}
@@ -297,7 +297,7 @@ const Swap: FC = () => {
             }
           />
         )}
-        { !(src.symbol === "ETH" && dest.symbol === "USDT" || src.symbol === "USDT" && dest.symbol === "ETH") && (
+        { (swap?.oracleCallFee?.format !== undefined) && (swap?.oracleCallFee?.format !== "0.00") && (
           <Field
             name={t`Oracle Call Fee`}
             value={`+ ${swap?.oracleCallFee?.format || '--'} ETH`}
