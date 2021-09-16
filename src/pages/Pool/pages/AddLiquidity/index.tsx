@@ -105,9 +105,7 @@ const AddLiquidity: FC = () => {
       )}
 
       <Field name={t`Received Tokens (Estimated)`} value={`${handleAddLiquidity.liquidity || '--'} XToken`} />
-      {handleAddLiquidity.oracleCallFee && (
-        <Field name={t`Oracle Call Fee`} value={`+ ${handleAddLiquidity.oracleCallFee || '--'} ETH`} />
-      )}
+
       <Field
         name={t`Deposit received XToken to the Mining Pool`}
         value={autoStake}

@@ -133,11 +133,6 @@ const Repurchase: FC = () => {
           />
 
           <Field
-            name={t`Oracle Call Fee`}
-            value={`${handleRepurchase.oracleFee ? handleRepurchase.oracleFee.formatAmount : '--'}  ETH`}
-            loading={!handleRepurchase.oracleFee}
-          />
-          <Field
             name={t`Current available amount of repurchase`}
             value={daoInfo ? daoInfo.quota.toFixed(0) : `--`}
             loading={!daoInfo}
