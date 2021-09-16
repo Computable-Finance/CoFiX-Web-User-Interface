@@ -266,7 +266,7 @@ msgstr "如果您实际兑换的汇率于高出当前页面 {0} %，交易将被
 
 #: src/pages/Swap/index.tsx
 msgid "Includes Risk Compensation,Trading Fee and Price Impact"
-msgstr "兑换价格基于去中心化预言机 NEST Oracle 提供价格，结合精确量化的风险补偿系数和额外的交易手续费计算得出。"
+msgstr "包含做市风险补偿，交易费和价格冲击成本"
 
 #: src/pages/Pool/pages/AddLiquidity/index.tsx
 #: src/pages/Pool/pages/AddLiquidity/index.tsx
@@ -492,10 +492,6 @@ msgstr "资金总额（$）"
 
 #: src/pages/Swap/index.tsx
 msgid "The Trade Price is calculated based on the Decentralised NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
-msgstr "兑换价格基于去中心化预言机 NEST Oracle提供价格，结合精确量化的风险补偿系数和额外的交易手续费计算得出。"
-
-#: src/pages/Swap/index.tsx
-msgid "The Trade Price is calculated based on the Decentralized NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
 msgstr "兑换价格基于去中心化预言机 NEST Oracle提供价格，结合精确量化的风险补偿系数和额外的交易手续费计算得出。"
 
 #: src/pages/Mining/index.tsx
