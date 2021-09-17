@@ -1,4 +1,12 @@
-import { TokenCOFI, TokenHBTC, TokenNEST, TokenPETH, TokenPUSD, TokenUSDC, TokenUSDT } from 'src/components/Icon'
+import {
+  TokenCOFI,
+  TokenHBTC,
+  TokenNEST,
+  TokenPETH,
+  TokenPUSD,
+  TokenUSDC,
+  TokenUSDT, TokenWETH
+} from 'src/components/Icon'
 
 import { TokenProps } from '../api/Token'
 import { Mainnet, Rinkeby } from './chains'
@@ -64,6 +72,15 @@ export const COFI: TokenProps = {
   addresses: {
     [Mainnet.chainId]: '0x1a23a6BfBAdB59fa563008c0fB7cf96dfCF34Ea1',
     [Rinkeby.chainId]: '0x61EA050b28Ccca539F0faf79Fd26F6Df31b9f15B',
+  },
+}
+
+export const WETH: TokenProps = {
+  symbol: 'WETH',
+  Icon: TokenWETH,
+  addresses: {
+    [Mainnet.chainId]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    [Rinkeby.chainId]: '0xc778417E063141139Fce010982780140Aa0cD5Ab',
   },
 }
 
