@@ -255,11 +255,15 @@ class CoFiXPair extends ERC20Token {
       throw new Error(`coifx pair ${this.symbol} not found`)
     }
 
+    if (!this.api.chainId) {
+      throw new Error(`coifx pair ${this.symbol} not found`)
+    }
+
     if (src === "ETH" && dest === "USDT" || src === "USDT" && dest === "ETH") {
       const amountIn = toBigNumber(amount)
       if (src === "ETH"){
-        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId ?? 1], USDT.addresses[this.api.chainId ?? 1], this.api.Tokens.ETH.parse(amountIn).toFixed(0))
-        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId ?? 1], USDT.addresses[this.api.chainId ?? 1], this.api.Tokens.ETH.parse(1).toFixed(0))
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId], USDT.addresses[this.api.chainId], this.api.Tokens.ETH.parse(amountIn).toFixed(0))
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId], USDT.addresses[this.api.chainId], this.api.Tokens.ETH.parse(1).toFixed(0))
 
         return {
           fee: {
@@ -272,8 +276,8 @@ class CoFiXPair extends ERC20Token {
         }
 
       }else{
-        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId ?? 1], WETH.addresses[this.api.chainId ?? 1], this.api.Tokens.USDT.parse(amountIn).toFixed(0))
-        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId ?? 1], WETH.addresses[this.api.chainId ?? 1], this.api.Tokens.USDT.parse(1).toFixed(0))
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId], WETH.addresses[this.api.chainId], this.api.Tokens.USDT.parse(amountIn).toFixed(0))
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId], WETH.addresses[this.api.chainId], this.api.Tokens.USDT.parse(1).toFixed(0))
 
         return {
           fee: {
