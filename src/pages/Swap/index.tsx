@@ -12,7 +12,7 @@ import TokenInput from 'src/components/TokenInput'
 import useSwap from 'src/libs/web3/hooks/useSwap'
 import { TransactionType } from 'src/libs/web3/hooks/useTransaction'
 import useWeb3 from 'src/libs/web3/hooks/useWeb3'
-import { toBigNumber } from 'src/libs/web3/util'
+import {formatETH, formatUSDT, toBigNumber} from 'src/libs/web3/util'
 
 import { RiskAction, useRiskModal } from '../shared/RiskModal'
 import TransactionButtonGroup from '../shared/TransactionButtonGroup'
@@ -69,7 +69,7 @@ const Swap: FC = () => {
         if (info && amount) {
           pair.dest = {
             symbol: pair.dest.symbol,
-            amount: (Number(info)/1000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+            amount: (formatUSDT(info)).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
           }
         }
         setPair({ ...pair })
@@ -82,7 +82,7 @@ const Swap: FC = () => {
         if (info && amount) {
           pair.dest = {
             symbol: pair.dest.symbol,
-            amount: (Number(info)/1000000000000000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+            amount: (formatETH(info)).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
           }
         }
         setPair({ ...pair })
@@ -133,7 +133,7 @@ const Swap: FC = () => {
         if (info && amount) {
           pair.src = {
             symbol: pair.src.symbol,
-            amount: (Number(info)/1000000000000000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+            amount: (formatETH(info)).toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8))
           }
         }
         setPair({ ...pair })
@@ -145,7 +145,7 @@ const Swap: FC = () => {
         if (info && amount) {
           pair.src = {
             symbol: pair.src.symbol,
-            amount: (Number(info)/1000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+            amount: (formatUSDT(info)).toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8))
           }
         }
         setPair({ ...pair })

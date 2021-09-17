@@ -32,6 +32,14 @@ export const formatNumber = (n: BigNumber | BigNumberish, decimals = 18, formatP
     .replace(/\.0+$/, '')
 }
 
+export const formatETH = (n: BigNumber | BigNumberish) => {
+  return Number(n)/1000000000000000000
+}
+
+export const formatUSDT = (n: BigNumber | BigNumberish) => {
+  return Number(n)/1000000
+}
+
 export function deadline(seconds = 60 * 10) {
   return Math.ceil(Date.now() / 1000) + seconds
 }
