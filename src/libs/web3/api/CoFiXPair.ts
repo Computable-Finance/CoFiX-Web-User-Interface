@@ -5,7 +5,7 @@ import { TIME_TO_NEXT_BLOCK } from 'src/constants/parameter'
 
 import API from '.'
 import { BLOCK_DAILY } from '../constants/constant'
-import { toBigNumber } from '../util'
+import {formatETH, formatUSDT, toBigNumber} from '../util'
 import ERC20Token, { ERC20TokenProps } from './ERC20Token'
 import Token from './Token'
 
@@ -254,47 +254,78 @@ class CoFiXPair extends ERC20Token {
       throw new Error(`coifx pair ${this.symbol} not found`)
     }
 
-    const { k, tokenAmount } = await this.api.Tokens[this.pair[1].symbol].queryOracle()
-    const amountIn = toBigNumber(amount)
+    if (src === "ETH" && dest === "USDT" || src === "USDT" && dest === "ETH") {
+      const amountIn = toBigNumber(amount)
+      if (src === "ETH"){
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdAC17F958D2ee523a2206206994597C13D831ec7", this.api.Tokens.ETH.parse(amountIn).toFixed(0))
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdAC17F958D2ee523a2206206994597C13D831ec7", this.api.Tokens.ETH.parse(1).toFixed(0))
 
-    if (src === 'ETH' && dest === this.pair[1].symbol) {
-      const fee = amountIn.multipliedBy(this.theta).div(10000)
-      const c = toBigNumber(
-        await this.contract.impactCostForSellOutETH(this.api.Tokens.ETH.parse(amountIn).toFixed(0))
-      ).shiftedBy(-18)
-      const amountOut = amountIn.minus(fee).multipliedBy(tokenAmount).div(toBigNumber(1).plus(k).plus(c))
+        return {
+          fee: {
+            symbol: "ETH",
+            amount: toBigNumber(0),
+          },
+          oracleOut: toBigNumber(formatUSDT(oraclePrice)).multipliedBy(amountIn),
+          amountOut: toBigNumber(formatUSDT(realPrice)),
+          oracleFee: toBigNumber(0)
+        }
 
-      return {
-        fee: {
-          symbol: 'ETH',
-          amount: fee,
-        },
-        oracleOut: amountIn.multipliedBy(tokenAmount),
-        amountOut: amountOut,
-        oracleFee: toBigNumber(dest === 'USDT' ? 0 : 0.01),
+      }else{
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xdAC17F958D2ee523a2206206994597C13D831ec7", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", this.api.Tokens.USDT.parse(amountIn).toFixed(0))
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xdAC17F958D2ee523a2206206994597C13D831ec7", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", this.api.Tokens.USDT.parse(1).toFixed(0))
+
+        return {
+          fee: {
+            symbol: "ETH",
+            amount: toBigNumber(0),
+          },
+          oracleOut: toBigNumber(formatETH(oraclePrice)).multipliedBy(amountIn),
+          amountOut: toBigNumber(formatETH(realPrice)),
+          oracleFee: toBigNumber(0)
+        }
       }
-    } else if (src === this.pair[1].symbol && dest === 'ETH') {
-      let amountOut = amountIn.div(tokenAmount)
 
-      const c = toBigNumber(
-        await this.contract.impactCostForBuyInETH(this.api.Tokens.ETH.parse(amountOut).toFixed(0))
-      ).shiftedBy(-18)
+    }else{
+      const { k, tokenAmount } = await this.api.Tokens[this.pair[1].symbol].queryOracle()
+      const amountIn = toBigNumber(amount)
+      if (src === 'ETH' && dest === this.pair[1].symbol) {
+        const fee = amountIn.multipliedBy(this.theta).div(10000)
+        const c = toBigNumber(
+          await this.contract.impactCostForSellOutETH(this.api.Tokens.ETH.parse(amountIn).toFixed(0))
+        ).shiftedBy(-18)
+        const amountOut = amountIn.minus(fee).multipliedBy(tokenAmount).div(toBigNumber(1).plus(k).plus(c))
+        return {
+          fee: {
+            symbol: 'ETH',
+            amount: fee,
+          },
+          oracleOut: amountIn.multipliedBy(tokenAmount),
+          amountOut: amountOut,
+          oracleFee: toBigNumber(0.01),
+        }
+      } else if (src === this.pair[1].symbol && dest === 'ETH') {
+        let amountOut = amountIn.div(tokenAmount)
 
-      amountOut = amountOut.div(toBigNumber(1).plus(k).plus(c))
-      const fee = amountOut.multipliedBy(this.theta).div(10000)
-      amountOut = amountOut.minus(fee)
+        const c = toBigNumber(
+          await this.contract.impactCostForBuyInETH(this.api.Tokens.ETH.parse(amountOut).toFixed(0))
+        ).shiftedBy(-18)
 
-      return {
-        fee: {
-          symbol: 'ETH',
-          amount: fee,
-        },
-        oracleOut: amountIn.div(tokenAmount),
-        amountOut: amountOut,
-        oracleFee: toBigNumber(src === 'USDT' ? 0 : 0.01),
+        amountOut = amountOut.div(toBigNumber(1).plus(k).plus(c))
+        const fee = amountOut.multipliedBy(this.theta).div(10000)
+        amountOut = amountOut.minus(fee)
+
+        return {
+          fee: {
+            symbol: 'ETH',
+            amount: fee,
+          },
+          oracleOut: amountIn.div(tokenAmount),
+          amountOut: amountOut,
+          oracleFee: toBigNumber(0.01),
+        }
+      } else {
+        throw new Error(`can not swap ${src} to ${dest}`)
       }
-    } else {
-      throw new Error(`can not swap ${src} to ${dest}`)
     }
   }
 }
