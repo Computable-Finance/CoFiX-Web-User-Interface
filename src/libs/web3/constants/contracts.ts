@@ -1,4 +1,4 @@
-import { UniswapQuoterProps } from './../api/UniswapQuoter';
+import { UniswapQuoterProps } from '../api/UniswapQuoter'
 import { CoFiXControllerProps } from '../api/CoFiXController'
 import { CoFiXDAOProps } from '../api/CoFixDAO'
 import { CoFiXRouterProps } from '../api/CoFiXRouter'
