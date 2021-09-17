@@ -38,7 +38,8 @@
     "i18n:compile": "lingui compile --typescript",
     "abi:generate": "npm run abi:generate-nest && npm run abi:generate-cofix",
     "abi:generate-nest": "typechain --target ethers-v5 --out-dir src/abis/types/nest './src/abis/json/nest/**/*.json'",
-    "abi:generate-cofix": "typechain --target ethers-v5 --out-dir src/abis/types/cofix './src/abis/json/cofix/**/*.json'"
+    "abi:generate-cofix": "typechain --target ethers-v5 --out-dir src/abis/types/cofix './src/abis/json/cofix/**/*.json'",
+    "abi:generate-uniswap": "typechain --target ethers-v5 --out-dir src/abis/types/uniswap './src/abis/json/uniswap/**/*.json'"
   },
   "husky": {
     "hooks": {
