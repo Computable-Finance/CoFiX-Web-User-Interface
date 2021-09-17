@@ -16,7 +16,7 @@ export const NestPriceFacade: NestPriceFacadeProps = {
 export const UniswapQuoter: UniswapQuoterProps = {
   addresses: {
     [Mainnet.chainId]: '0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6',
-    [Rinkeby.chainId]: '',
+    [Rinkeby.chainId]: '0xA3091BbDe2A1517AFf8e38a97A7D755fC36b7Eb9',
   },
 }
 

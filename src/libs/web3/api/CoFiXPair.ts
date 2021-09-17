@@ -8,6 +8,7 @@ import { BLOCK_DAILY } from '../constants/constant'
 import {formatETH, formatUSDT, toBigNumber} from '../util'
 import ERC20Token, { ERC20TokenProps } from './ERC20Token'
 import Token from './Token'
+import {USDT, WETH} from "../constants/tokens";
 
 export type PoolInfo = {
   totalFunds: BigNumber
@@ -257,8 +258,8 @@ class CoFiXPair extends ERC20Token {
     if (src === "ETH" && dest === "USDT" || src === "USDT" && dest === "ETH") {
       const amountIn = toBigNumber(amount)
       if (src === "ETH"){
-        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdAC17F958D2ee523a2206206994597C13D831ec7", this.api.Tokens.ETH.parse(amountIn).toFixed(0))
-        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdAC17F958D2ee523a2206206994597C13D831ec7", this.api.Tokens.ETH.parse(1).toFixed(0))
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId!], USDT.addresses[this.api.chainId!], this.api.Tokens.ETH.parse(amountIn).toFixed(0))
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId!], USDT.addresses[this.api.chainId!], this.api.Tokens.ETH.parse(1).toFixed(0))
 
         return {
           fee: {
@@ -271,8 +272,8 @@ class CoFiXPair extends ERC20Token {
         }
 
       }else{
-        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xdAC17F958D2ee523a2206206994597C13D831ec7", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", this.api.Tokens.USDT.parse(amountIn).toFixed(0))
-        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle("0xdAC17F958D2ee523a2206206994597C13D831ec7", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", this.api.Tokens.USDT.parse(1).toFixed(0))
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId!], WETH.addresses[this.api.chainId!], this.api.Tokens.USDT.parse(amountIn).toFixed(0))
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId!], WETH.addresses[this.api.chainId!], this.api.Tokens.USDT.parse(1).toFixed(0))
 
         return {
           fee: {
