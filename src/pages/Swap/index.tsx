@@ -60,25 +60,51 @@ const Swap: FC = () => {
 
       const curVer = ++ver
       setChange('src')
-      const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
-      
-      if (ver > curVer) {
-        return
-      }
 
-      if (info && amount) {
-        const ratio = info.amountOut.div(amount)
-        pair.dest = {
-          symbol: pair.dest.symbol,
-          amount: toBigNumber(amount)
-            .multipliedBy(ratio)
-            .toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8)),
+      if (src.symbol === "ETH" && dest.symbol === "USDT"){
+        const info = await api?.Contracts.UniswapQuoter.quoteExactInputSingle("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdAC17F958D2ee523a2206206994597C13D831ec7", api.Tokens.ETH.parse(amount).toFixed(0))
+        if (ver > curVer) {
+          return
         }
+        if (info && amount) {
+          pair.dest = {
+            symbol: pair.dest.symbol,
+            amount: (Number(info)/1000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+          }
+        }
+        setPair({ ...pair })
+
+      }else if (src.symbol === "USDT" && dest.symbol === "ETH") {
+        const info = await api?.Contracts.UniswapQuoter.quoteExactInputSingle("0xdAC17F958D2ee523a2206206994597C13D831ec7", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", api.Tokens.USDT.parse(amount).toFixed(0))
+        if (ver > curVer) {
+          return
+        }
+        if (info && amount) {
+          pair.dest = {
+            symbol: pair.dest.symbol,
+            amount: (Number(info)/1000000000000000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+          }
+        }
+        setPair({ ...pair })
+
+      } else{
+        const info = await api?.getSwapInfo(symbol, pair.dest.symbol, amount)
+        if (ver > curVer) {
+          return
+        }
+
+        if (info && amount) {
+          const ratio = info.amountOut.div(amount)
+          pair.dest = {
+            symbol: pair.dest.symbol,
+            amount: toBigNumber(amount)
+              .multipliedBy(ratio)
+              .toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8)),
+          }
+        }
+        setPair({ ...pair })
       }
-
-      setPair({ ...pair })
     } else {
-
       if (symbol === pair.dest.symbol && amount === pair.dest.amount) {
         return
       }
@@ -98,22 +124,49 @@ const Swap: FC = () => {
 
       const curVer = ++ver
       setChange('dest')
-      const info = await api?.getSwapInfo(pair.src.symbol, symbol, "1")
-      if (ver > curVer) {
-        return
-      }
 
-      if (info && amount) {
-        // const ratio = info.amountOut.div(amount)
-        pair.src = {
-          symbol: pair.src.symbol,
-          amount: toBigNumber(amount)
-            .div(info.amountOut)
-            .toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8)),
+      if (src.symbol === "ETH" && dest.symbol === "USDT"){
+        const info = await api?.Contracts.UniswapQuoter.quoteExactOutputSingle("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdAC17F958D2ee523a2206206994597C13D831ec7", api.Tokens.USDT.parse(amount).toFixed(0))
+        if (ver > curVer) {
+          return
         }
-      }
+        if (info && amount) {
+          pair.src = {
+            symbol: pair.src.symbol,
+            amount: (Number(info)/1000000000000000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+          }
+        }
+        setPair({ ...pair })
+      }else if(src.symbol === "USDT" && dest.symbol === "ETH"){
+        const info = await api?.Contracts.UniswapQuoter.quoteExactOutputSingle("0xdAC17F958D2ee523a2206206994597C13D831ec7", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", api.Tokens.ETH.parse(amount).toFixed(0))
+        if (ver > curVer) {
+          return
+        }
+        if (info && amount) {
+          pair.src = {
+            symbol: pair.src.symbol,
+            amount: (Number(info)/1000000).toFixed(Math.min(api?.Tokens[pair.dest.symbol].decimals || 18, 8))
+          }
+        }
+        setPair({ ...pair })
+      } else{
+        const info = await api?.getSwapInfo(pair.src.symbol, symbol, "1")
+        if (ver > curVer) {
+          return
+        }
 
-      setPair({ ...pair })
+        if (info && amount) {
+          // const ratio = info.amountOut.div(amount)
+          pair.src = {
+            symbol: pair.src.symbol,
+            amount: toBigNumber(amount)
+              .div(info.amountOut)
+              .toFixed(Math.min(api?.Tokens[pair.src.symbol].decimals || 18, 8)),
+          }
+        }
+
+        setPair({ ...pair })
+      }
     }
   }
 
