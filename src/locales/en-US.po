@@ -206,10 +206,6 @@ msgstr "Double-Sided Pool"
 msgid "ETH Anchor"
 msgstr "ETH Anchor"
 
-#: src/pages/Repurchase/index.tsx
-msgid "ETH Balance in your wallet"
-msgstr "ETH Balance in your wallet"
-
 #: src/pages/Pool/pages/Index/index.tsx
 msgid "Empty Liquidity"
 msgstr "Empty Liquidity"
@@ -252,17 +248,9 @@ msgstr "Helpful Tips"
 msgid "How is this calculated?"
 msgstr "How is this calculated?"
 
-#: src/pages/Pool/index.tsx
-msgid "risk warning"
-msgstr "risk warning"
-
 #: src/pages/Swap/index.tsx
 msgid "If you receive less than this amount, the transaction will be rejected"
 msgstr "If you receive less than this amount, the transaction will be rejected"
-
-#: src/pages/Swap/index.tsx
-msgid "If your actual exchange rate is {0} % higher than the current page, the transaction will be rejected"
-msgstr "If your actual exchange rate is {0} % higher than the current page, the transaction will be rejected"
 
 #: src/pages/Swap/index.tsx
 msgid "Includes Risk Compensation,Trading Fee and Price Impact"
@@ -306,10 +294,6 @@ msgstr "MetaMask"
 msgid "Minimum Received"
 msgstr "Minimum Received"
 
-#: src/pages/Pool/pages/Index/index.tsx
-#: src/pages/Pool/pages/Index/index.tsx
-#: src/pages/Pool/pages/Index/index.tsx
-#: src/pages/Pool/pages/Index/index.tsx
 #: src/pages/shared/Header/index.tsx
 msgid "Mining"
 msgstr "Mining"
@@ -335,20 +319,6 @@ msgstr "Net worth"
 #: src/pages/shared/RiskModal/index.tsx
 msgid "Ok, I understand the risk"
 msgstr "Ok, I understand the risk"
-
-#: src/pages/Pool/pages/AddLiquidity/index.tsx
-#: src/pages/Repurchase/index.tsx
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-msgid "Oracle Call Fee"
-msgstr "Oracle Call Fee"
-
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-msgid "Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the smart contract."
-msgstr "Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the smart contract."
 
 #: src/pages/Mining/pages/Index/index.tsx
 #: src/pages/Mining/pages/Index/index.tsx
@@ -447,10 +417,6 @@ msgstr "Select token to repurchase"
 msgid "Single-Sided Pool"
 msgstr "Single-Sided Pool"
 
-#: src/pages/Swap/index.tsx
-msgid "Slippage Tolerance"
-msgstr "Slippage Tolerance"
-
 #: src/libs/web3/hooks/useTransaction.ts
 #: src/pages/Mining/pages/Index/index.tsx
 #: src/pages/Mining/pages/Index/index.tsx
@@ -491,9 +457,6 @@ msgid "TVL"
 msgstr "TVL"
 
 #: src/pages/Swap/index.tsx
-msgid "The Trade Price is calculated based on the Decentralised NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
-msgstr "The Trade Price is calculated based on the Decentralised NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
-
 #: src/pages/Swap/index.tsx
 msgid "The Trade Price is calculated based on the Decentralized NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
 msgstr "The Trade Price is calculated based on the Decentralized NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
@@ -538,6 +501,10 @@ msgstr "Transaction Submitted"
 #: src/libs/web3/constants/anchor-pool.ts
 msgid "USD Anchor"
 msgstr "USD Anchor"
+
+#: src/pages/Swap/index.tsx
+msgid "Uniswap Price"
+msgstr "Uniswap Price"
 
 #: src/libs/web3/hooks/useTransaction.ts
 msgid "Unsupported Content"
@@ -609,6 +576,10 @@ msgstr "You can claim new mined COFI Tokens any time."
 msgid "You failed confirming the transaction"
 msgstr "You failed confirming the transaction"
 
-#: src/pages/Pool/pages/Index/index.tsx
-msgid "The current fund pool is no longer mined"
-msgstr "The current fund pool is no longer mined"
+#: src/libs/web3/connectors/im-token.tsx
+msgid "imToken"
+msgstr "imToken"
+
+#: src/pages/Pool/index.tsx
+msgid "risk warning"
+msgstr "risk warning"

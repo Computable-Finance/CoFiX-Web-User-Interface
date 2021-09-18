@@ -174,7 +174,7 @@ const Swap: FC = () => {
               <ul>
                 <li>
                   <span>
-                    <Trans>{src.symbol === "USDT" && dest.symbol === "ETH" || src.symbol === "ETH" && dest.symbol === "USDT" ? "Uniswap" : "NEST Oracle" } Price</Trans>
+                    {src.symbol === "USDT" && dest.symbol === "ETH" || src.symbol === "ETH" && dest.symbol === "USDT" ? t`Uniswap Price`: t`NEST Oracle Price`}
                   </span>
                   <span>{`1 ${src.symbol} = ${swap?.amount?.oracleFormat || '--'} ${dest.symbol}`}</span>
                 </li>
@@ -210,7 +210,7 @@ const Swap: FC = () => {
                     <section>
                       <p>
                         <Trans>
-                          The Trade Price is calculated based on the Decentralised NEST Oracle Price, the Computable
+                          The Trade Price is calculated based on the Decentralized NEST Oracle Price, the Computable
                           Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all
                           the COFI holders.
                         </Trans>

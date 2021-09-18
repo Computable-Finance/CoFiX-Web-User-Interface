@@ -206,10 +206,6 @@ msgstr "双币种池"
 msgid "ETH Anchor"
 msgstr "ETH 锚定币"
 
-#: src/pages/Repurchase/index.tsx
-msgid "ETH Balance in your wallet"
-msgstr "您钱包内的 ETH 余额"
-
 #: src/pages/Pool/pages/Index/index.tsx
 msgid "Empty Liquidity"
 msgstr "当前没有添加流动性"
@@ -252,17 +248,9 @@ msgstr "有用的提示"
 msgid "How is this calculated?"
 msgstr "如何计算？"
 
-#: src/pages/Pool/index.tsx
-msgid "risk warning"
-msgstr "风险提示"
-
 #: src/pages/Swap/index.tsx
 msgid "If you receive less than this amount, the transaction will be rejected"
 msgstr "如果您收到的数量少于该数额，交易将被拒绝"
-
-#: src/pages/Swap/index.tsx
-msgid "If your actual exchange rate is {0} % higher than the current page, the transaction will be rejected"
-msgstr "如果您实际兑换的汇率于高出当前页面 {0} %，交易将被拒绝"
 
 #: src/pages/Swap/index.tsx
 msgid "Includes Risk Compensation,Trading Fee and Price Impact"
@@ -306,10 +294,6 @@ msgstr "MetaMask"
 msgid "Minimum Received"
 msgstr "收到的最低数额"
 
-#: src/pages/Pool/pages/Index/index.tsx
-#: src/pages/Pool/pages/Index/index.tsx
-#: src/pages/Pool/pages/Index/index.tsx
-#: src/pages/Pool/pages/Index/index.tsx
 #: src/pages/shared/Header/index.tsx
 msgid "Mining"
 msgstr "挖矿"
@@ -335,20 +319,6 @@ msgstr "当前净值"
 #: src/pages/shared/RiskModal/index.tsx
 msgid "Ok, I understand the risk"
 msgstr "我明白风险"
-
-#: src/pages/Pool/pages/AddLiquidity/index.tsx
-#: src/pages/Repurchase/index.tsx
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-msgid "Oracle Call Fee"
-msgstr "预言机调用费"
-
-#: src/pages/Swap/index.tsx
-#: src/pages/Swap/index.tsx
-msgid "Oracle Fee is what you pay to the NEST protocol for providing accurate market price data to the smart contract."
-msgstr "您需要向NEST协议支付预言机价格使用费，以便为智能合约提供准确的市场价格数据。"
 
 #: src/pages/Mining/pages/Index/index.tsx
 #: src/pages/Mining/pages/Index/index.tsx
@@ -447,10 +417,6 @@ msgstr "选择回售资产"
 msgid "Single-Sided Pool"
 msgstr "单币种池"
 
-#: src/pages/Swap/index.tsx
-msgid "Slippage Tolerance"
-msgstr "滑点"
-
 #: src/libs/web3/hooks/useTransaction.ts
 #: src/pages/Mining/pages/Index/index.tsx
 #: src/pages/Mining/pages/Index/index.tsx
@@ -491,7 +457,8 @@ msgid "TVL"
 msgstr "资金总额（$）"
 
 #: src/pages/Swap/index.tsx
-msgid "The Trade Price is calculated based on the Decentralised NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
+#: src/pages/Swap/index.tsx
+msgid "The Trade Price is calculated based on the Decentralized NEST Oracle Price, the Computable Risk Compensation Coefficient, the Price Impact, and a Trading Fee. Trading Fee goes to all the COFI holders."
 msgstr "兑换价格基于去中心化预言机 NEST Oracle提供价格，结合精确量化的风险补偿系数和额外的交易手续费计算得出。"
 
 #: src/pages/Mining/index.tsx
@@ -534,6 +501,10 @@ msgstr "交易已提交"
 #: src/libs/web3/constants/anchor-pool.ts
 msgid "USD Anchor"
 msgstr "USD 锚定币"
+
+#: src/pages/Swap/index.tsx
+msgid "Uniswap Price"
+msgstr "Uniswap 价格"
 
 #: src/libs/web3/hooks/useTransaction.ts
 msgid "Unsupported Content"
@@ -605,6 +576,10 @@ msgstr "您可以在任意时间领取您挖到的 COFI。"
 msgid "You failed confirming the transaction"
 msgstr "交易确认失败"
 
-#: src/pages/Pool/pages/Index/index.tsx
-msgid "The current fund pool is no longer mined"
-msgstr "当前资金池已不出矿"
+#: src/libs/web3/connectors/im-token.tsx
+msgid "imToken"
+msgstr "imToken"
+
+#: src/pages/Pool/index.tsx
+msgid "risk warning"
+msgstr "风险提示"
