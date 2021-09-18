@@ -126,11 +126,11 @@ const Pool: FC = () => {
               </div>
             </Card>
 
-            <Button block gradient primary disabled={anchorPoolInfo?.miningSpeed === 0} onClick={() => history.push(`/pool/add-liquidity/${token0.symbol}/${token1.symbol}`)}>
+            <Button block gradient primary disabled={token0.symbol === "ETH" && token1.symbol === "USDT"} onClick={() => history.push(`/pool/add-liquidity/${token0.symbol}/${token1.symbol}`)}>
               <Trans>Add Liquidity</Trans>
             </Button>
 
-            {anchorPoolInfo?.miningSpeed === 0 && (
+            {token0.symbol === "ETH" && token1.symbol === "USDT"  && (
               <div className={`${classPrefix}-footer`}>
                 <span>The current fund pool is no longer mined</span>
               </div>
