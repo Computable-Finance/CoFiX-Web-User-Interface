@@ -469,6 +469,10 @@ msgstr "The amount of XToken you deposited to the mining Pool impacts the number
 msgid "The current exchange price is calculated based on the NEST oracle quotation and comprehensive risk compensation, and may be slightly higher than the market price. When the oracle quotation is not timely or the risk compensation is too large, it will cause losses. Please understand the CoFiX trading mechanism thoroughly before trading."
 msgstr "The current exchange price is calculated based on the NEST oracle quotation and comprehensive risk compensation, and may be slightly higher than the market price. When the oracle quotation is not timely or the risk compensation is too large, it will cause losses. Please understand the CoFiX trading mechanism thoroughly before trading."
 
+#: src/pages/Pool/pages/Index/index.tsx
+msgid "The current fund pool is no longer mined"
+msgstr "The current fund pool is no longer mined"
+
 #: src/pages/Pool/pages/RemoveLiquidity/index.tsx
 msgid "The pledged XToken needs to be withdrawn to the wallet before it can be used to remove liquidity"
 msgstr "The pledged XToken needs to be withdrawn to the wallet before it can be used to remove liquidity"

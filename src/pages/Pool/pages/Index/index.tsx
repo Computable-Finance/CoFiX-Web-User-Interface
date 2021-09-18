@@ -132,7 +132,7 @@ const Pool: FC = () => {
 
             {token0.symbol === "ETH" && token1.symbol === "USDT"  && (
               <div className={`${classPrefix}-footer`}>
-                <span>The current fund pool is no longer mined</span>
+                <span><Trans>The current fund pool is no longer mined</Trans></span>
               </div>
             )}
 
