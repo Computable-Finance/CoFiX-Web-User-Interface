@@ -73,8 +73,8 @@ const useRemoveLiquidity = (content: TransactionRemoveLiquidityContent) => {
           liquidity: liquidity.shiftedBy(18).toFixed(0),
           amountETHMin: api.Tokens.ETH.parse(ethAmountOut.multipliedBy(1 - slippageTolerance)).toFixed(0),
           to: api.account || '',
-          oracleCallFee: api.Tokens.ETH.parse(0.01).toFixed(0),
-          sendETHValue: api.Tokens.ETH.parse(0.01).toFixed(0),
+          oracleCallFee: api.Tokens.ETH.parse(0.001).toFixed(0),
+          sendETHValue: api.Tokens.ETH.parse(0.001).toFixed(0),
           receive: content.receive,
         }
 

@@ -45,7 +45,7 @@ const useRepurchase = (content: TransactionRepurchaseContent) => {
         const amount = toBigNumber(content.amount)
         const anchorPool = api.CoFixAnchorPools[content.symbol]
 
-        const oracleFee = anchorPool.anchorToken === 'ETH' ? toBigNumber(0.01) : toBigNumber(0.02)
+        const oracleFee = anchorPool.anchorToken === 'ETH' ? toBigNumber(0.001) : toBigNumber(0.002)
         const newArgs: Partial<typeof args> = {
           symbol: content.symbol,
           amount,
