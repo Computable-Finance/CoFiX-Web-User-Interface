@@ -2,305 +2,302 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { INestMapping, INestMappingInterface } from "../INestMapping";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { INestMapping, INestMappingInterface } from '../INestMapping'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestTokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestTokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestNodeAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestNodeAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestLedgerAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestLedgerAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestMiningAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestMiningAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "ntokenMiningAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenMiningAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestPriceFacadeAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestPriceFacadeAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestVoteAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestVoteAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestQueryAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestQueryAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nnIncomeAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nnIncomeAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nTokenControllerAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nTokenControllerAddress',
+        type: 'address',
       },
     ],
-    name: "setBuiltinAddress",
+    name: 'setBuiltinAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getBuiltinAddress",
+    name: 'getBuiltinAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "nestTokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestTokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestNodeAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestNodeAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestLedgerAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestLedgerAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestMiningAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestMiningAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "ntokenMiningAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenMiningAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestPriceFacadeAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestPriceFacadeAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestVoteAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestVoteAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nestQueryAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestQueryAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nnIncomeAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nnIncomeAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "nTokenControllerAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nTokenControllerAddress',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestTokenAddress",
+    name: 'getNestTokenAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestNodeAddress",
+    name: 'getNestNodeAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestLedgerAddress",
+    name: 'getNestLedgerAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestMiningAddress",
+    name: 'getNestMiningAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNTokenMiningAddress",
+    name: 'getNTokenMiningAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestPriceFacadeAddress",
+    name: 'getNestPriceFacadeAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestVoteAddress",
+    name: 'getNestVoteAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNestQueryAddress",
+    name: 'getNestQueryAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNnIncomeAddress",
+    name: 'getNnIncomeAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNTokenControllerAddress",
+    name: 'getNTokenControllerAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "string",
-        name: "key",
-        type: "string",
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
       },
       {
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
       },
     ],
-    name: "registerAddress",
+    name: 'registerAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "string",
-        name: "key",
-        type: "string",
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
       },
     ],
-    name: "checkAddress",
+    name: 'checkAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
-];
+]
 
 export class INestMapping__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): INestMappingInterface {
-    return new utils.Interface(_abi) as INestMappingInterface;
+    return new utils.Interface(_abi) as INestMappingInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): INestMapping {
-    return new Contract(address, _abi, signerOrProvider) as INestMapping;
+  static connect(address: string, signerOrProvider: Signer | Provider): INestMapping {
+    return new Contract(address, _abi, signerOrProvider) as INestMapping
   }
 }

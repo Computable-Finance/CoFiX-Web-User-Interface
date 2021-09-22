@@ -2,60 +2,54 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type {
-  UpdateProxyPropose,
-  UpdateProxyProposeInterface,
-} from "../UpdateProxyPropose";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { UpdateProxyPropose, UpdateProxyProposeInterface } from '../UpdateProxyPropose'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestVoteAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestVoteAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "proxyAdminAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'proxyAdminAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "proxyAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'proxyAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "newImplAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'newImplAddress',
+        type: 'address',
       },
     ],
-    name: "setAddress",
+    name: 'setAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "run",
+    name: 'run',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
-];
+]
 
 export class UpdateProxyPropose__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): UpdateProxyProposeInterface {
-    return new utils.Interface(_abi) as UpdateProxyProposeInterface;
+    return new utils.Interface(_abi) as UpdateProxyProposeInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): UpdateProxyPropose {
-    return new Contract(address, _abi, signerOrProvider) as UpdateProxyPropose;
+  static connect(address: string, signerOrProvider: Signer | Provider): UpdateProxyPropose {
+    return new Contract(address, _abi, signerOrProvider) as UpdateProxyPropose
   }
 }

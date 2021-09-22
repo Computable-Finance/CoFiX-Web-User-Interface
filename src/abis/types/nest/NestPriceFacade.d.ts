@@ -14,1358 +14,1081 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface NestPriceFacadeInterface extends ethers.utils.Interface {
   functions: {
-    "_governance()": FunctionFragment;
-    "initialize(address)": FunctionFragment;
-    "migrate(address,uint256)": FunctionFragment;
-    "update(address)": FunctionFragment;
-    "setConfig(tuple)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "setAddressFlag(address,uint256)": FunctionFragment;
-    "getAddressFlag(address)": FunctionFragment;
-    "setNestQuery(address,address)": FunctionFragment;
-    "getNestQuery(address)": FunctionFragment;
-    "setNTokenAddress(address,address)": FunctionFragment;
-    "getNTokenAddress(address)": FunctionFragment;
-    "getTokenFee(address)": FunctionFragment;
-    "settle(address)": FunctionFragment;
-    "triggeredPrice(address)": FunctionFragment;
-    "triggeredPriceInfo(address,address)": FunctionFragment;
-    "findPrice(address,uint256)": FunctionFragment;
-    "latestPrice(address)": FunctionFragment;
-    "lastPriceList(address,uint256,address)": FunctionFragment;
-    "latestPriceAndTriggeredPriceInfo(address)": FunctionFragment;
-    "triggeredPrice2(address)": FunctionFragment;
-    "triggeredPriceInfo2(address,address)": FunctionFragment;
-    "latestPrice2(address,address)": FunctionFragment;
-  };
+    '_governance()': FunctionFragment
+    'initialize(address)': FunctionFragment
+    'migrate(address,uint256)': FunctionFragment
+    'update(address)': FunctionFragment
+    'setConfig(tuple)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'setAddressFlag(address,uint256)': FunctionFragment
+    'getAddressFlag(address)': FunctionFragment
+    'setNestQuery(address,address)': FunctionFragment
+    'getNestQuery(address)': FunctionFragment
+    'setNTokenAddress(address,address)': FunctionFragment
+    'getNTokenAddress(address)': FunctionFragment
+    'getTokenFee(address)': FunctionFragment
+    'settle(address)': FunctionFragment
+    'triggeredPrice(address)': FunctionFragment
+    'triggeredPriceInfo(address,address)': FunctionFragment
+    'findPrice(address,uint256)': FunctionFragment
+    'latestPrice(address)': FunctionFragment
+    'lastPriceList(address,uint256,address)': FunctionFragment
+    'latestPriceAndTriggeredPriceInfo(address)': FunctionFragment
+    'triggeredPrice2(address)': FunctionFragment
+    'triggeredPriceInfo2(address,address)': FunctionFragment
+    'latestPrice2(address,address)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: '_governance', values?: undefined): string
+  encodeFunctionData(functionFragment: 'initialize', values: [string]): string
+  encodeFunctionData(functionFragment: 'migrate', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'update', values: [string]): string
   encodeFunctionData(
-    functionFragment: "_governance",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "initialize", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "migrate",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "update", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "setConfig",
+    functionFragment: 'setConfig',
     values: [
       {
-        singleFee: BigNumberish;
-        doubleFee: BigNumberish;
-        normalFlag: BigNumberish;
+        singleFee: BigNumberish
+        doubleFee: BigNumberish
+        normalFlag: BigNumberish
       }
     ]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "setAddressFlag",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getAddressFlag",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setNestQuery",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNestQuery",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setNTokenAddress",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNTokenAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "getTokenFee", values: [string]): string;
-  encodeFunctionData(functionFragment: "settle", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "triggeredPrice",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "triggeredPriceInfo",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "findPrice",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "latestPrice", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "lastPriceList",
-    values: [string, BigNumberish, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "latestPriceAndTriggeredPriceInfo",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "triggeredPrice2",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "triggeredPriceInfo2",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "latestPrice2",
-    values: [string, string]
-  ): string;
+  ): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'setAddressFlag', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getAddressFlag', values: [string]): string
+  encodeFunctionData(functionFragment: 'setNestQuery', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'getNestQuery', values: [string]): string
+  encodeFunctionData(functionFragment: 'setNTokenAddress', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'getNTokenAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'getTokenFee', values: [string]): string
+  encodeFunctionData(functionFragment: 'settle', values: [string]): string
+  encodeFunctionData(functionFragment: 'triggeredPrice', values: [string]): string
+  encodeFunctionData(functionFragment: 'triggeredPriceInfo', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'findPrice', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'latestPrice', values: [string]): string
+  encodeFunctionData(functionFragment: 'lastPriceList', values: [string, BigNumberish, string]): string
+  encodeFunctionData(functionFragment: 'latestPriceAndTriggeredPriceInfo', values: [string]): string
+  encodeFunctionData(functionFragment: 'triggeredPrice2', values: [string]): string
+  encodeFunctionData(functionFragment: 'triggeredPriceInfo2', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'latestPrice2', values: [string, string]): string
 
-  decodeFunctionResult(
-    functionFragment: "_governance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "migrate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "update", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setAddressFlag",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getAddressFlag",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setNestQuery",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNestQuery",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setNTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getTokenFee",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "settle", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "triggeredPrice",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "triggeredPriceInfo",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "findPrice", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "latestPrice",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "lastPriceList",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "latestPriceAndTriggeredPriceInfo",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "triggeredPrice2",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "triggeredPriceInfo2",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "latestPrice2",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: '_governance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'migrate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'update', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setAddressFlag', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getAddressFlag', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setNestQuery', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNestQuery', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setNTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getTokenFee', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'settle', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'triggeredPrice', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'triggeredPriceInfo', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'findPrice', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'latestPrice', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'lastPriceList', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'latestPriceAndTriggeredPriceInfo', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'triggeredPrice2', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'triggeredPriceInfo2', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'latestPrice2', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class NestPriceFacade extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: NestPriceFacadeInterface;
+  interface: NestPriceFacadeInterface
 
   functions: {
-    _governance(overrides?: CallOverrides): Promise<[string]>;
+    _governance(overrides?: CallOverrides): Promise<[string]>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setConfig(
       config: {
-        singleFee: BigNumberish;
-        doubleFee: BigNumberish;
-        normalFlag: BigNumberish;
+        singleFee: BigNumberish
+        doubleFee: BigNumberish
+        normalFlag: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [
         [number, number, number] & {
-          singleFee: number;
-          doubleFee: number;
-          normalFlag: number;
+          singleFee: number
+          doubleFee: number
+          normalFlag: number
         }
       ]
-    >;
+    >
 
     setAddressFlag(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getAddressFlag(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getAddressFlag(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     setNestQuery(
       tokenAddress: string,
       nestQueryAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getNestQuery(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getNestQuery(tokenAddress: string, overrides?: CallOverrides): Promise<[string]>
 
     setNTokenAddress(
       tokenAddress: string,
       ntokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<[string]>
 
-    getTokenFee(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getTokenFee(tokenAddress: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     settle(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "triggeredPrice(address)"(
+    'triggeredPrice(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "triggeredPrice(address,address)"(
+    'triggeredPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "triggeredPriceInfo(address,address)"(
+    'triggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "triggeredPriceInfo(address)"(
+    'triggeredPriceInfo(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        avgPrice: BigNumber;
-        sigmaSQ: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        avgPrice: BigNumber
+        sigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "findPrice(address,uint256)"(
+    'findPrice(address,uint256)'(
       tokenAddress: string,
       height: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "findPrice(address,uint256,address)"(
+    'findPrice(address,uint256,address)'(
       tokenAddress: string,
       height: BigNumberish,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "latestPrice(address)"(
+    'latestPrice(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "latestPrice(address,address)"(
+    'latestPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "lastPriceList(address,uint256,address)"(
+    'lastPriceList(address,uint256,address)'(
       tokenAddress: string,
       count: BigNumberish,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "lastPriceList(address,uint256)"(
+    'lastPriceList(address,uint256)'(
       tokenAddress: string,
       count: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber[]]>;
+    ): Promise<[BigNumber[]]>
 
-    "latestPriceAndTriggeredPriceInfo(address)"(
+    'latestPriceAndTriggeredPriceInfo(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
-        latestPriceBlockNumber: BigNumber;
-        latestPriceValue: BigNumber;
-        triggeredPriceBlockNumber: BigNumber;
-        triggeredPriceValue: BigNumber;
-        triggeredAvgPrice: BigNumber;
-        triggeredSigmaSQ: BigNumber;
+        latestPriceBlockNumber: BigNumber
+        latestPriceValue: BigNumber
+        triggeredPriceBlockNumber: BigNumber
+        triggeredPriceValue: BigNumber
+        triggeredAvgPrice: BigNumber
+        triggeredSigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "latestPriceAndTriggeredPriceInfo(address,address)"(
+    'latestPriceAndTriggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "triggeredPrice2(address)"(
+    'triggeredPrice2(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
       }
-    >;
+    >
 
-    "triggeredPrice2(address,address)"(
+    'triggeredPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "triggeredPriceInfo2(address,address)"(
+    'triggeredPriceInfo2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "triggeredPriceInfo2(address)"(
+    'triggeredPriceInfo2(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
-      [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        avgPrice: BigNumber;
-        sigmaSQ: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
-        ntokenAvgPrice: BigNumber;
-        ntokenSigmaSQ: BigNumber;
+      [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
+        blockNumber: BigNumber
+        price: BigNumber
+        avgPrice: BigNumber
+        sigmaSQ: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
+        ntokenAvgPrice: BigNumber
+        ntokenSigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "latestPrice2(address,address)"(
+    'latestPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    "latestPrice2(address)"(
+    'latestPrice2(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
       }
-    >;
-  };
+    >
+  }
 
-  _governance(overrides?: CallOverrides): Promise<string>;
+  _governance(overrides?: CallOverrides): Promise<string>
 
   initialize(
     nestGovernanceAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   migrate(
     tokenAddress: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   update(
     nestGovernanceAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setConfig(
     config: {
-      singleFee: BigNumberish;
-      doubleFee: BigNumberish;
-      normalFlag: BigNumberish;
+      singleFee: BigNumberish
+      doubleFee: BigNumberish
+      normalFlag: BigNumberish
     },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
+  getConfig(overrides?: CallOverrides): Promise<
     [number, number, number] & {
-      singleFee: number;
-      doubleFee: number;
-      normalFlag: number;
+      singleFee: number
+      doubleFee: number
+      normalFlag: number
     }
-  >;
+  >
 
   setAddressFlag(
     addr: string,
     flag: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getAddressFlag(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+  getAddressFlag(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
   setNestQuery(
     tokenAddress: string,
     nestQueryAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getNestQuery(
-    tokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getNestQuery(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
   setNTokenAddress(
     tokenAddress: string,
     ntokenAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getNTokenAddress(
-    tokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
-  getTokenFee(
-    tokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  getTokenFee(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
   settle(
     tokenAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "triggeredPrice(address)"(
+  'triggeredPrice(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-  >;
+  ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-  "triggeredPrice(address,address)"(
+  'triggeredPrice(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "triggeredPriceInfo(address,address)"(
+  'triggeredPriceInfo(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "triggeredPriceInfo(address)"(
+  'triggeredPriceInfo(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
   ): Promise<
     [BigNumber, BigNumber, BigNumber, BigNumber] & {
-      blockNumber: BigNumber;
-      price: BigNumber;
-      avgPrice: BigNumber;
-      sigmaSQ: BigNumber;
+      blockNumber: BigNumber
+      price: BigNumber
+      avgPrice: BigNumber
+      sigmaSQ: BigNumber
     }
-  >;
+  >
 
-  "findPrice(address,uint256)"(
+  'findPrice(address,uint256)'(
     tokenAddress: string,
     height: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-  >;
+  ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-  "findPrice(address,uint256,address)"(
+  'findPrice(address,uint256,address)'(
     tokenAddress: string,
     height: BigNumberish,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "latestPrice(address)"(
+  'latestPrice(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-  >;
+  ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-  "latestPrice(address,address)"(
+  'latestPrice(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "lastPriceList(address,uint256,address)"(
+  'lastPriceList(address,uint256,address)'(
     tokenAddress: string,
     count: BigNumberish,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "lastPriceList(address,uint256)"(
+  'lastPriceList(address,uint256)'(
     tokenAddress: string,
     count: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<BigNumber[]>;
+  ): Promise<BigNumber[]>
 
-  "latestPriceAndTriggeredPriceInfo(address)"(
+  'latestPriceAndTriggeredPriceInfo(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
   ): Promise<
     [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
-      latestPriceBlockNumber: BigNumber;
-      latestPriceValue: BigNumber;
-      triggeredPriceBlockNumber: BigNumber;
-      triggeredPriceValue: BigNumber;
-      triggeredAvgPrice: BigNumber;
-      triggeredSigmaSQ: BigNumber;
+      latestPriceBlockNumber: BigNumber
+      latestPriceValue: BigNumber
+      triggeredPriceBlockNumber: BigNumber
+      triggeredPriceValue: BigNumber
+      triggeredAvgPrice: BigNumber
+      triggeredSigmaSQ: BigNumber
     }
-  >;
+  >
 
-  "latestPriceAndTriggeredPriceInfo(address,address)"(
+  'latestPriceAndTriggeredPriceInfo(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "triggeredPrice2(address)"(
+  'triggeredPrice2(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
   ): Promise<
     [BigNumber, BigNumber, BigNumber, BigNumber] & {
-      blockNumber: BigNumber;
-      price: BigNumber;
-      ntokenBlockNumber: BigNumber;
-      ntokenPrice: BigNumber;
+      blockNumber: BigNumber
+      price: BigNumber
+      ntokenBlockNumber: BigNumber
+      ntokenPrice: BigNumber
     }
-  >;
+  >
 
-  "triggeredPrice2(address,address)"(
+  'triggeredPrice2(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "triggeredPriceInfo2(address,address)"(
+  'triggeredPriceInfo2(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "triggeredPriceInfo2(address)"(
+  'triggeredPriceInfo2(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
   ): Promise<
-    [
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber
-    ] & {
-      blockNumber: BigNumber;
-      price: BigNumber;
-      avgPrice: BigNumber;
-      sigmaSQ: BigNumber;
-      ntokenBlockNumber: BigNumber;
-      ntokenPrice: BigNumber;
-      ntokenAvgPrice: BigNumber;
-      ntokenSigmaSQ: BigNumber;
+    [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
+      blockNumber: BigNumber
+      price: BigNumber
+      avgPrice: BigNumber
+      sigmaSQ: BigNumber
+      ntokenBlockNumber: BigNumber
+      ntokenPrice: BigNumber
+      ntokenAvgPrice: BigNumber
+      ntokenSigmaSQ: BigNumber
     }
-  >;
+  >
 
-  "latestPrice2(address,address)"(
+  'latestPrice2(address,address)'(
     tokenAddress: string,
     paybackAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  "latestPrice2(address)"(
+  'latestPrice2(address)'(
     tokenAddress: string,
     overrides?: CallOverrides
   ): Promise<
     [BigNumber, BigNumber, BigNumber, BigNumber] & {
-      blockNumber: BigNumber;
-      price: BigNumber;
-      ntokenBlockNumber: BigNumber;
-      ntokenPrice: BigNumber;
+      blockNumber: BigNumber
+      price: BigNumber
+      ntokenBlockNumber: BigNumber
+      ntokenPrice: BigNumber
     }
-  >;
+  >
 
   callStatic: {
-    _governance(overrides?: CallOverrides): Promise<string>;
+    _governance(overrides?: CallOverrides): Promise<string>
 
-    initialize(
-      nestGovernanceAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    initialize(nestGovernanceAddress: string, overrides?: CallOverrides): Promise<void>
 
-    migrate(
-      tokenAddress: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    migrate(tokenAddress: string, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    update(
-      nestGovernanceAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    update(nestGovernanceAddress: string, overrides?: CallOverrides): Promise<void>
 
     setConfig(
       config: {
-        singleFee: BigNumberish;
-        doubleFee: BigNumberish;
-        normalFlag: BigNumberish;
+        singleFee: BigNumberish
+        doubleFee: BigNumberish
+        normalFlag: BigNumberish
       },
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [number, number, number] & {
-        singleFee: number;
-        doubleFee: number;
-        normalFlag: number;
+        singleFee: number
+        doubleFee: number
+        normalFlag: number
       }
-    >;
+    >
 
-    setAddressFlag(
-      addr: string,
-      flag: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setAddressFlag(addr: string, flag: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    getAddressFlag(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+    getAddressFlag(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    setNestQuery(
-      tokenAddress: string,
-      nestQueryAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setNestQuery(tokenAddress: string, nestQueryAddress: string, overrides?: CallOverrides): Promise<void>
 
-    getNestQuery(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getNestQuery(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
-    setNTokenAddress(
-      tokenAddress: string,
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setNTokenAddress(tokenAddress: string, ntokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    getNTokenAddress(
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<string>
+
+    getTokenFee(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
+
+    settle(tokenAddress: string, overrides?: CallOverrides): Promise<void>
+
+    'triggeredPrice(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
-    ): Promise<string>;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    getTokenFee(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    settle(tokenAddress: string, overrides?: CallOverrides): Promise<void>;
-
-    "triggeredPrice(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
-
-    "triggeredPrice(address,address)"(
+    'triggeredPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "triggeredPriceInfo(address,address)"(
+    'triggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        avgPrice: BigNumber;
-        sigmaSQ: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        avgPrice: BigNumber
+        sigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "triggeredPriceInfo(address)"(
+    'triggeredPriceInfo(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        avgPrice: BigNumber;
-        sigmaSQ: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        avgPrice: BigNumber
+        sigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "findPrice(address,uint256)"(
+    'findPrice(address,uint256)'(
       tokenAddress: string,
       height: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "findPrice(address,uint256,address)"(
+    'findPrice(address,uint256,address)'(
       tokenAddress: string,
       height: BigNumberish,
       paybackAddress: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "latestPrice(address)"(
+    'latestPrice(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "latestPrice(address,address)"(
+    'latestPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { blockNumber: BigNumber; price: BigNumber }>
 
-    "lastPriceList(address,uint256,address)"(
+    'lastPriceList(address,uint256,address)'(
       tokenAddress: string,
       count: BigNumberish,
       paybackAddress: string,
       overrides?: CallOverrides
-    ): Promise<BigNumber[]>;
+    ): Promise<BigNumber[]>
 
-    "lastPriceList(address,uint256)"(
+    'lastPriceList(address,uint256)'(
       tokenAddress: string,
       count: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber[]>;
+    ): Promise<BigNumber[]>
 
-    "latestPriceAndTriggeredPriceInfo(address)"(
+    'latestPriceAndTriggeredPriceInfo(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
-        latestPriceBlockNumber: BigNumber;
-        latestPriceValue: BigNumber;
-        triggeredPriceBlockNumber: BigNumber;
-        triggeredPriceValue: BigNumber;
-        triggeredAvgPrice: BigNumber;
-        triggeredSigmaSQ: BigNumber;
+        latestPriceBlockNumber: BigNumber
+        latestPriceValue: BigNumber
+        triggeredPriceBlockNumber: BigNumber
+        triggeredPriceValue: BigNumber
+        triggeredAvgPrice: BigNumber
+        triggeredSigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "latestPriceAndTriggeredPriceInfo(address,address)"(
+    'latestPriceAndTriggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
-        latestPriceBlockNumber: BigNumber;
-        latestPriceValue: BigNumber;
-        triggeredPriceBlockNumber: BigNumber;
-        triggeredPriceValue: BigNumber;
-        triggeredAvgPrice: BigNumber;
-        triggeredSigmaSQ: BigNumber;
+        latestPriceBlockNumber: BigNumber
+        latestPriceValue: BigNumber
+        triggeredPriceBlockNumber: BigNumber
+        triggeredPriceValue: BigNumber
+        triggeredAvgPrice: BigNumber
+        triggeredSigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "triggeredPrice2(address)"(
+    'triggeredPrice2(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
       }
-    >;
+    >
 
-    "triggeredPrice2(address,address)"(
+    'triggeredPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
       }
-    >;
+    >
 
-    "triggeredPriceInfo2(address,address)"(
+    'triggeredPriceInfo2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
     ): Promise<
-      [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        avgPrice: BigNumber;
-        sigmaSQ: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
-        ntokenAvgPrice: BigNumber;
-        ntokenSigmaSQ: BigNumber;
+      [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
+        blockNumber: BigNumber
+        price: BigNumber
+        avgPrice: BigNumber
+        sigmaSQ: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
+        ntokenAvgPrice: BigNumber
+        ntokenSigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "triggeredPriceInfo2(address)"(
+    'triggeredPriceInfo2(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
-      [
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        avgPrice: BigNumber;
-        sigmaSQ: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
-        ntokenAvgPrice: BigNumber;
-        ntokenSigmaSQ: BigNumber;
+      [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
+        blockNumber: BigNumber
+        price: BigNumber
+        avgPrice: BigNumber
+        sigmaSQ: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
+        ntokenAvgPrice: BigNumber
+        ntokenSigmaSQ: BigNumber
       }
-    >;
+    >
 
-    "latestPrice2(address,address)"(
+    'latestPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
       }
-    >;
+    >
 
-    "latestPrice2(address)"(
+    'latestPrice2(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        price: BigNumber;
-        ntokenBlockNumber: BigNumber;
-        ntokenPrice: BigNumber;
+        blockNumber: BigNumber
+        price: BigNumber
+        ntokenBlockNumber: BigNumber
+        ntokenPrice: BigNumber
       }
-    >;
-  };
+    >
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    _governance(overrides?: CallOverrides): Promise<BigNumber>;
+    _governance(overrides?: CallOverrides): Promise<BigNumber>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setConfig(
       config: {
-        singleFee: BigNumberish;
-        doubleFee: BigNumberish;
-        normalFlag: BigNumberish;
+        singleFee: BigNumberish
+        doubleFee: BigNumberish
+        normalFlag: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
     setAddressFlag(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getAddressFlag(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+    getAddressFlag(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
     setNestQuery(
       tokenAddress: string,
       nestQueryAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getNestQuery(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNestQuery(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
     setNTokenAddress(
       tokenAddress: string,
       ntokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getTokenFee(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getTokenFee(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    settle(
-      tokenAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    settle(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    "triggeredPrice(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    'triggeredPrice(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    "triggeredPrice(address,address)"(
+    'triggeredPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "triggeredPriceInfo(address,address)"(
+    'triggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "triggeredPriceInfo(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    'triggeredPriceInfo(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    "findPrice(address,uint256)"(
+    'findPrice(address,uint256)'(
       tokenAddress: string,
       height: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "findPrice(address,uint256,address)"(
+    'findPrice(address,uint256,address)'(
       tokenAddress: string,
       height: BigNumberish,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "latestPrice(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    'latestPrice(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    "latestPrice(address,address)"(
+    'latestPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "lastPriceList(address,uint256,address)"(
+    'lastPriceList(address,uint256,address)'(
       tokenAddress: string,
       count: BigNumberish,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "lastPriceList(address,uint256)"(
+    'lastPriceList(address,uint256)'(
       tokenAddress: string,
       count: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "latestPriceAndTriggeredPriceInfo(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    'latestPriceAndTriggeredPriceInfo(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    "latestPriceAndTriggeredPriceInfo(address,address)"(
+    'latestPriceAndTriggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "triggeredPrice2(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    'triggeredPrice2(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    "triggeredPrice2(address,address)"(
+    'triggeredPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "triggeredPriceInfo2(address,address)"(
+    'triggeredPriceInfo2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "triggeredPriceInfo2(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    'triggeredPriceInfo2(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    "latestPrice2(address,address)"(
+    'latestPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    "latestPrice2(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
+    'latestPrice2(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setConfig(
       config: {
-        singleFee: BigNumberish;
-        doubleFee: BigNumberish;
-        normalFlag: BigNumberish;
+        singleFee: BigNumberish
+        doubleFee: BigNumberish
+        normalFlag: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setAddressFlag(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getAddressFlag(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getAddressFlag(addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setNestQuery(
       tokenAddress: string,
       nestQueryAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getNestQuery(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getNestQuery(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setNTokenAddress(
       tokenAddress: string,
       ntokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getTokenFee(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getTokenFee(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     settle(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "triggeredPrice(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'triggeredPrice(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    "triggeredPrice(address,address)"(
+    'triggeredPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "triggeredPriceInfo(address,address)"(
+    'triggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "triggeredPriceInfo(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'triggeredPriceInfo(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    "findPrice(address,uint256)"(
+    'findPrice(address,uint256)'(
       tokenAddress: string,
       height: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "findPrice(address,uint256,address)"(
+    'findPrice(address,uint256,address)'(
       tokenAddress: string,
       height: BigNumberish,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "latestPrice(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'latestPrice(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    "latestPrice(address,address)"(
+    'latestPrice(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "lastPriceList(address,uint256,address)"(
+    'lastPriceList(address,uint256,address)'(
       tokenAddress: string,
       count: BigNumberish,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "lastPriceList(address,uint256)"(
+    'lastPriceList(address,uint256)'(
       tokenAddress: string,
       count: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "latestPriceAndTriggeredPriceInfo(address)"(
+    'latestPriceAndTriggeredPriceInfo(address)'(
       tokenAddress: string,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "latestPriceAndTriggeredPriceInfo(address,address)"(
+    'latestPriceAndTriggeredPriceInfo(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "triggeredPrice2(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'triggeredPrice2(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    "triggeredPrice2(address,address)"(
+    'triggeredPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "triggeredPriceInfo2(address,address)"(
+    'triggeredPriceInfo2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "triggeredPriceInfo2(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    'triggeredPriceInfo2(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    "latestPrice2(address,address)"(
+    'latestPrice2(address,address)'(
       tokenAddress: string,
       paybackAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    "latestPrice2(address)"(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
+    'latestPrice2(address)'(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

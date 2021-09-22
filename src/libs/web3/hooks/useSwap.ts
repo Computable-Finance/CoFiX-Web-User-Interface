@@ -166,5 +166,4 @@ const useSwap = (content: TansactionSwapContent) => {
   return { ...result, handler, paths: args?.paths, amountOutMinFormat: args?.amountOutMinFormat, loading }
 }
 
-
 export default useSwap

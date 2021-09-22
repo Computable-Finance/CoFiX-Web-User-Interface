@@ -2,12 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type {
-  INTokenController,
-  INTokenControllerInterface,
-} from "../INTokenController";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { INTokenController, INTokenControllerInterface } from '../INTokenController'
 
 const _abi = [
   {
@@ -15,338 +12,335 @@ const _abi = [
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "NTokenDisabled",
-    type: "event",
+    name: 'NTokenDisabled',
+    type: 'event',
   },
   {
     anonymous: false,
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "NTokenEnabled",
-    type: "event",
+    name: 'NTokenEnabled',
+    type: 'event',
   },
   {
     anonymous: false,
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "address",
-        name: "owner",
-        type: "address",
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
       },
     ],
-    name: "NTokenOpened",
-    type: "event",
+    name: 'NTokenOpened',
+    type: 'event',
   },
   {
     inputs: [
       {
         components: [
           {
-            internalType: "uint96",
-            name: "openFeeNestAmount",
-            type: "uint96",
+            internalType: 'uint96',
+            name: 'openFeeNestAmount',
+            type: 'uint96',
           },
           {
-            internalType: "uint8",
-            name: "state",
-            type: "uint8",
+            internalType: 'uint8',
+            name: 'state',
+            type: 'uint8',
           },
         ],
-        internalType: "struct INTokenController.Config",
-        name: "config",
-        type: "tuple",
+        internalType: 'struct INTokenController.Config',
+        name: 'config',
+        type: 'tuple',
       },
     ],
-    name: "setConfig",
+    name: 'setConfig',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getConfig",
+    name: 'getConfig',
     outputs: [
       {
         components: [
           {
-            internalType: "uint96",
-            name: "openFeeNestAmount",
-            type: "uint96",
+            internalType: 'uint96',
+            name: 'openFeeNestAmount',
+            type: 'uint96',
           },
           {
-            internalType: "uint8",
-            name: "state",
-            type: "uint8",
+            internalType: 'uint8',
+            name: 'state',
+            type: 'uint8',
           },
         ],
-        internalType: "struct INTokenController.Config",
-        name: "",
-        type: "tuple",
+        internalType: 'struct INTokenController.Config',
+        name: '',
+        type: 'tuple',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "state",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'state',
+        type: 'uint256',
       },
     ],
-    name: "setNTokenMapping",
+    name: 'setNTokenMapping',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
     ],
-    name: "getTokenAddress",
+    name: 'getTokenAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "getNTokenAddress",
+    name: 'getNTokenAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "disable",
+    name: 'disable',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "enable",
+    name: 'enable',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "open",
+    name: 'open',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
     ],
-    name: "getNTokenTag",
+    name: 'getNTokenTag',
     outputs: [
       {
         components: [
           {
-            internalType: "address",
-            name: "ntokenAddress",
-            type: "address",
+            internalType: 'address',
+            name: 'ntokenAddress',
+            type: 'address',
           },
           {
-            internalType: "uint96",
-            name: "nestFee",
-            type: "uint96",
+            internalType: 'uint96',
+            name: 'nestFee',
+            type: 'uint96',
           },
           {
-            internalType: "address",
-            name: "tokenAddress",
-            type: "address",
+            internalType: 'address',
+            name: 'tokenAddress',
+            type: 'address',
           },
           {
-            internalType: "uint40",
-            name: "index",
-            type: "uint40",
+            internalType: 'uint40',
+            name: 'index',
+            type: 'uint40',
           },
           {
-            internalType: "uint48",
-            name: "startTime",
-            type: "uint48",
+            internalType: 'uint48',
+            name: 'startTime',
+            type: 'uint48',
           },
           {
-            internalType: "uint8",
-            name: "state",
-            type: "uint8",
+            internalType: 'uint8',
+            name: 'state',
+            type: 'uint8',
           },
         ],
-        internalType: "struct INTokenController.NTokenTag",
-        name: "",
-        type: "tuple",
+        internalType: 'struct INTokenController.NTokenTag',
+        name: '',
+        type: 'tuple',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getNTokenCount",
+    name: 'getNTokenCount',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "offset",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'offset',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "count",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'count',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "order",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'order',
+        type: 'uint256',
       },
     ],
-    name: "list",
+    name: 'list',
     outputs: [
       {
         components: [
           {
-            internalType: "address",
-            name: "ntokenAddress",
-            type: "address",
+            internalType: 'address',
+            name: 'ntokenAddress',
+            type: 'address',
           },
           {
-            internalType: "uint96",
-            name: "nestFee",
-            type: "uint96",
+            internalType: 'uint96',
+            name: 'nestFee',
+            type: 'uint96',
           },
           {
-            internalType: "address",
-            name: "tokenAddress",
-            type: "address",
+            internalType: 'address',
+            name: 'tokenAddress',
+            type: 'address',
           },
           {
-            internalType: "uint40",
-            name: "index",
-            type: "uint40",
+            internalType: 'uint40',
+            name: 'index',
+            type: 'uint40',
           },
           {
-            internalType: "uint48",
-            name: "startTime",
-            type: "uint48",
+            internalType: 'uint48',
+            name: 'startTime',
+            type: 'uint48',
           },
           {
-            internalType: "uint8",
-            name: "state",
-            type: "uint8",
+            internalType: 'uint8',
+            name: 'state',
+            type: 'uint8',
           },
         ],
-        internalType: "struct INTokenController.NTokenTag[]",
-        name: "",
-        type: "tuple[]",
+        internalType: 'struct INTokenController.NTokenTag[]',
+        name: '',
+        type: 'tuple[]',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
-];
+]
 
 export class INTokenController__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): INTokenControllerInterface {
-    return new utils.Interface(_abi) as INTokenControllerInterface;
+    return new utils.Interface(_abi) as INTokenControllerInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): INTokenController {
-    return new Contract(address, _abi, signerOrProvider) as INTokenController;
+  static connect(address: string, signerOrProvider: Signer | Provider): INTokenController {
+    return new Contract(address, _abi, signerOrProvider) as INTokenController
   }
 }

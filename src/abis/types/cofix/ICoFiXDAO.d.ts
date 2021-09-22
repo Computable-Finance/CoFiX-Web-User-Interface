@@ -14,228 +14,175 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface ICoFiXDAOInterface extends ethers.utils.Interface {
   functions: {
-    "addETHReward(address)": FunctionFragment;
-    "checkApplication(address)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "getTokenExchange(address)": FunctionFragment;
-    "quotaOf()": FunctionFragment;
-    "redeem(uint256,address)": FunctionFragment;
-    "redeemToken(address,uint256,address)": FunctionFragment;
-    "setApplication(address,uint256)": FunctionFragment;
-    "setConfig(tuple)": FunctionFragment;
-    "setTokenExchange(address,address,uint256)": FunctionFragment;
-    "settle(address,address,address,uint256)": FunctionFragment;
-    "totalETHRewards(address)": FunctionFragment;
-  };
+    'addETHReward(address)': FunctionFragment
+    'checkApplication(address)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'getTokenExchange(address)': FunctionFragment
+    'quotaOf()': FunctionFragment
+    'redeem(uint256,address)': FunctionFragment
+    'redeemToken(address,uint256,address)': FunctionFragment
+    'setApplication(address,uint256)': FunctionFragment
+    'setConfig(tuple)': FunctionFragment
+    'setTokenExchange(address,address,uint256)': FunctionFragment
+    'settle(address,address,address,uint256)': FunctionFragment
+    'totalETHRewards(address)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: 'addETHReward', values: [string]): string
+  encodeFunctionData(functionFragment: 'checkApplication', values: [string]): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getTokenExchange', values: [string]): string
+  encodeFunctionData(functionFragment: 'quotaOf', values?: undefined): string
+  encodeFunctionData(functionFragment: 'redeem', values: [BigNumberish, string]): string
+  encodeFunctionData(functionFragment: 'redeemToken', values: [string, BigNumberish, string]): string
+  encodeFunctionData(functionFragment: 'setApplication', values: [string, BigNumberish]): string
   encodeFunctionData(
-    functionFragment: "addETHReward",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "checkApplication",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "getTokenExchange",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "quotaOf", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "redeem",
-    values: [BigNumberish, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "redeemToken",
-    values: [string, BigNumberish, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setApplication",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setConfig",
+    functionFragment: 'setConfig',
     values: [
       {
-        status: BigNumberish;
-        cofiPerBlock: BigNumberish;
-        cofiLimit: BigNumberish;
-        priceDeviationLimit: BigNumberish;
+        status: BigNumberish
+        cofiPerBlock: BigNumberish
+        cofiLimit: BigNumberish
+        priceDeviationLimit: BigNumberish
       }
     ]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setTokenExchange",
-    values: [string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "settle",
-    values: [string, string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "totalETHRewards",
-    values: [string]
-  ): string;
+  ): string
+  encodeFunctionData(functionFragment: 'setTokenExchange', values: [string, string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'settle', values: [string, string, string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'totalETHRewards', values: [string]): string
 
-  decodeFunctionResult(
-    functionFragment: "addETHReward",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "checkApplication",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getTokenExchange",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "quotaOf", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "redeem", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "redeemToken",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setApplication",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setTokenExchange",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "settle", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "totalETHRewards",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'addETHReward', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'checkApplication', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getTokenExchange', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'quotaOf', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'redeem', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'redeemToken', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setApplication', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setTokenExchange', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'settle', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'totalETHRewards', data: BytesLike): Result
 
   events: {
-    "ApplicationChanged(address,uint256)": EventFragment;
-  };
+    'ApplicationChanged(address,uint256)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "ApplicationChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ApplicationChanged'): EventFragment
 }
 
 export class ICoFiXDAO extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: ICoFiXDAOInterface;
+  interface: ICoFiXDAOInterface
 
   functions: {
     addETHReward(
       pool: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [
         [number, number, number, number] & {
-          status: number;
-          cofiPerBlock: number;
-          cofiLimit: number;
-          priceDeviationLimit: number;
+          status: number
+          cofiPerBlock: number
+          cofiLimit: number
+          priceDeviationLimit: number
         }
       ]
-    >;
+    >
 
     getTokenExchange(
       token: string,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { target: string; exchange: BigNumber }>;
+    ): Promise<[string, BigNumber] & { target: string; exchange: BigNumber }>
 
-    quotaOf(overrides?: CallOverrides): Promise<[BigNumber]>;
+    quotaOf(overrides?: CallOverrides): Promise<[BigNumber]>
 
     redeem(
       amount: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     redeemToken(
       token: string,
       amount: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setApplication(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setConfig(
       config: {
-        status: BigNumberish;
-        cofiPerBlock: BigNumberish;
-        cofiLimit: BigNumberish;
-        priceDeviationLimit: BigNumberish;
+        status: BigNumberish
+        cofiPerBlock: BigNumberish
+        cofiLimit: BigNumberish
+        priceDeviationLimit: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setTokenExchange(
       token: string,
       target: string,
       exchange: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     settle(
       pool: string,
@@ -243,74 +190,69 @@ export class ICoFiXDAO extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    totalETHRewards(
-      pool: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-  };
+    totalETHRewards(pool: string, overrides?: CallOverrides): Promise<[BigNumber]>
+  }
 
   addETHReward(
     pool: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+  checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
+  getConfig(overrides?: CallOverrides): Promise<
     [number, number, number, number] & {
-      status: number;
-      cofiPerBlock: number;
-      cofiLimit: number;
-      priceDeviationLimit: number;
+      status: number
+      cofiPerBlock: number
+      cofiLimit: number
+      priceDeviationLimit: number
     }
-  >;
+  >
 
   getTokenExchange(
     token: string,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { target: string; exchange: BigNumber }>;
+  ): Promise<[string, BigNumber] & { target: string; exchange: BigNumber }>
 
-  quotaOf(overrides?: CallOverrides): Promise<BigNumber>;
+  quotaOf(overrides?: CallOverrides): Promise<BigNumber>
 
   redeem(
     amount: BigNumberish,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   redeemToken(
     token: string,
     amount: BigNumberish,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setApplication(
     addr: string,
     flag: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setConfig(
     config: {
-      status: BigNumberish;
-      cofiPerBlock: BigNumberish;
-      cofiLimit: BigNumberish;
-      priceDeviationLimit: BigNumberish;
+      status: BigNumberish
+      cofiPerBlock: BigNumberish
+      cofiLimit: BigNumberish
+      priceDeviationLimit: BigNumberish
     },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setTokenExchange(
     token: string,
     target: string,
     exchange: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   settle(
     pool: string,
@@ -318,71 +260,48 @@ export class ICoFiXDAO extends BaseContract {
     to: string,
     value: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  totalETHRewards(pool: string, overrides?: CallOverrides): Promise<BigNumber>;
+  totalETHRewards(pool: string, overrides?: CallOverrides): Promise<BigNumber>
 
   callStatic: {
-    addETHReward(pool: string, overrides?: CallOverrides): Promise<void>;
+    addETHReward(pool: string, overrides?: CallOverrides): Promise<void>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [number, number, number, number] & {
-        status: number;
-        cofiPerBlock: number;
-        cofiLimit: number;
-        priceDeviationLimit: number;
+        status: number
+        cofiPerBlock: number
+        cofiLimit: number
+        priceDeviationLimit: number
       }
-    >;
+    >
 
     getTokenExchange(
       token: string,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { target: string; exchange: BigNumber }>;
+    ): Promise<[string, BigNumber] & { target: string; exchange: BigNumber }>
 
-    quotaOf(overrides?: CallOverrides): Promise<BigNumber>;
+    quotaOf(overrides?: CallOverrides): Promise<BigNumber>
 
-    redeem(
-      amount: BigNumberish,
-      payback: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    redeem(amount: BigNumberish, payback: string, overrides?: CallOverrides): Promise<void>
 
-    redeemToken(
-      token: string,
-      amount: BigNumberish,
-      payback: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    redeemToken(token: string, amount: BigNumberish, payback: string, overrides?: CallOverrides): Promise<void>
 
-    setApplication(
-      addr: string,
-      flag: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setApplication(addr: string, flag: BigNumberish, overrides?: CallOverrides): Promise<void>
 
     setConfig(
       config: {
-        status: BigNumberish;
-        cofiPerBlock: BigNumberish;
-        cofiLimit: BigNumberish;
-        priceDeviationLimit: BigNumberish;
+        status: BigNumberish
+        cofiPerBlock: BigNumberish
+        cofiLimit: BigNumberish
+        priceDeviationLimit: BigNumberish
       },
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    setTokenExchange(
-      token: string,
-      target: string,
-      exchange: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setTokenExchange(token: string, target: string, exchange: BigNumberish, overrides?: CallOverrides): Promise<void>
 
     settle(
       pool: string,
@@ -390,76 +309,64 @@ export class ICoFiXDAO extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    totalETHRewards(
-      pool: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
+    totalETHRewards(pool: string, overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   filters: {
     ApplicationChanged(
       addr?: null,
       flag?: null
-    ): TypedEventFilter<[string, BigNumber], { addr: string; flag: BigNumber }>;
-  };
+    ): TypedEventFilter<[string, BigNumber], { addr: string; flag: BigNumber }>
+  }
 
   estimateGas: {
-    addETHReward(
-      pool: string,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    addETHReward(pool: string, overrides?: PayableOverrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
-    getTokenExchange(
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getTokenExchange(token: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    quotaOf(overrides?: CallOverrides): Promise<BigNumber>;
+    quotaOf(overrides?: CallOverrides): Promise<BigNumber>
 
     redeem(
       amount: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     redeemToken(
       token: string,
       amount: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setApplication(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setConfig(
       config: {
-        status: BigNumberish;
-        cofiPerBlock: BigNumberish;
-        cofiLimit: BigNumberish;
-        priceDeviationLimit: BigNumberish;
+        status: BigNumberish
+        cofiPerBlock: BigNumberish
+        cofiLimit: BigNumberish
+        priceDeviationLimit: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setTokenExchange(
       token: string,
       target: string,
       exchange: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     settle(
       pool: string,
@@ -467,69 +374,60 @@ export class ICoFiXDAO extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    totalETHRewards(
-      pool: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
+    totalETHRewards(pool: string, overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
     addETHReward(
       pool: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getTokenExchange(
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getTokenExchange(token: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    quotaOf(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    quotaOf(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     redeem(
       amount: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     redeemToken(
       token: string,
       amount: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setApplication(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setConfig(
       config: {
-        status: BigNumberish;
-        cofiPerBlock: BigNumberish;
-        cofiLimit: BigNumberish;
-        priceDeviationLimit: BigNumberish;
+        status: BigNumberish
+        cofiPerBlock: BigNumberish
+        cofiLimit: BigNumberish
+        priceDeviationLimit: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setTokenExchange(
       token: string,
       target: string,
       exchange: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     settle(
       pool: string,
@@ -537,11 +435,8 @@ export class ICoFiXDAO extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    totalETHRewards(
-      pool: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
+    totalETHRewards(pool: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

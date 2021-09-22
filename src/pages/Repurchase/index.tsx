@@ -65,7 +65,6 @@ const Repurchase: FC = () => {
 
   const classPrefix = 'cofi-page-repurchase'
 
-
   return (
     <div className={`cofi-page ${classPrefix}`}>
       <section className={`${classPrefix}-summary`}>

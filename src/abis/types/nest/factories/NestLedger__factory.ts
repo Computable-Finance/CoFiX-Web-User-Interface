@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { NestLedger, NestLedgerInterface } from "../NestLedger";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { NestLedger, NestLedgerInterface } from '../NestLedger'
 
 const _abi = [
   {
@@ -12,266 +12,263 @@ const _abi = [
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "flag",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'flag',
+        type: 'uint256',
       },
     ],
-    name: "ApplicationChanged",
-    type: "event",
+    name: 'ApplicationChanged',
+    type: 'event',
   },
   {
     inputs: [],
-    name: "_governance",
+    name: '_governance',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestGovernanceAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestGovernanceAddress',
+        type: 'address',
       },
     ],
-    name: "initialize",
+    name: 'initialize',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
       },
     ],
-    name: "migrate",
+    name: 'migrate',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestGovernanceAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestGovernanceAddress',
+        type: 'address',
       },
     ],
-    name: "update",
+    name: 'update',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
         components: [
           {
-            internalType: "uint16",
-            name: "nestRewardScale",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'nestRewardScale',
+            type: 'uint16',
           },
         ],
-        internalType: "struct INestLedger.Config",
-        name: "config",
-        type: "tuple",
+        internalType: 'struct INestLedger.Config',
+        name: 'config',
+        type: 'tuple',
       },
     ],
-    name: "setConfig",
+    name: 'setConfig',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getConfig",
+    name: 'getConfig',
     outputs: [
       {
         components: [
           {
-            internalType: "uint16",
-            name: "nestRewardScale",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'nestRewardScale',
+            type: 'uint16',
           },
         ],
-        internalType: "struct INestLedger.Config",
-        name: "",
-        type: "tuple",
+        internalType: 'struct INestLedger.Config',
+        name: '',
+        type: 'tuple',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "flag",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'flag',
+        type: 'uint256',
       },
     ],
-    name: "setApplication",
+    name: 'setApplication',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
       },
     ],
-    name: "checkApplication",
+    name: 'checkApplication',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
     ],
-    name: "carveETHReward",
+    name: 'carveETHReward',
     outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
     ],
-    name: "addETHReward",
+    name: 'addETHReward',
     outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
     ],
-    name: "totalETHRewards",
+    name: 'totalETHRewards',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
       },
     ],
-    name: "pay",
+    name: 'pay',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
       },
     ],
-    name: "settle",
+    name: 'settle',
     outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
-];
+]
 
 export class NestLedger__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): NestLedgerInterface {
-    return new utils.Interface(_abi) as NestLedgerInterface;
+    return new utils.Interface(_abi) as NestLedgerInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): NestLedger {
-    return new Contract(address, _abi, signerOrProvider) as NestLedger;
+  static connect(address: string, signerOrProvider: Signer | Provider): NestLedger {
+    return new Contract(address, _abi, signerOrProvider) as NestLedger
   }
 }

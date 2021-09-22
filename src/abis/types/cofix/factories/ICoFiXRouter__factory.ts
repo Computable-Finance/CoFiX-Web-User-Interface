@@ -2,336 +2,333 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { ICoFiXRouter, ICoFiXRouterInterface } from "../ICoFiXRouter";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { ICoFiXRouter, ICoFiXRouterInterface } from '../ICoFiXRouter'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "pool",
-        type: "address",
+        internalType: 'address',
+        name: 'pool',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "amountETH",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountToken",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "liquidityMin",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidityMin',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "deadline",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
       },
     ],
-    name: "addLiquidity",
+    name: 'addLiquidity',
     outputs: [
       {
-        internalType: "address",
-        name: "xtoken",
-        type: "address",
+        internalType: 'address',
+        name: 'xtoken',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "pool",
-        type: "address",
+        internalType: 'address',
+        name: 'pool',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "amountETH",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountToken",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "liquidityMin",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidityMin',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "deadline",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
       },
     ],
-    name: "addLiquidityAndStake",
+    name: 'addLiquidityAndStake',
     outputs: [
       {
-        internalType: "address",
-        name: "xtoken",
-        type: "address",
+        internalType: 'address',
+        name: 'xtoken',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "src",
-        type: "address",
+        internalType: 'address',
+        name: 'src',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "dest",
-        type: "address",
+        internalType: 'address',
+        name: 'dest',
+        type: 'address',
       },
     ],
-    name: "getRouterPath",
+    name: 'getRouterPath',
     outputs: [
       {
-        internalType: "address[]",
-        name: "path",
-        type: "address[]",
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "xtoken",
-        type: "address",
+        internalType: 'address',
+        name: 'xtoken',
+        type: 'address',
       },
     ],
-    name: "getTradeReward",
+    name: 'getTradeReward',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token0",
-        type: "address",
+        internalType: 'address',
+        name: 'token0',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "token1",
-        type: "address",
+        internalType: 'address',
+        name: 'token1',
+        type: 'address',
       },
     ],
-    name: "pairFor",
+    name: 'pairFor',
     outputs: [
       {
-        internalType: "address",
-        name: "pool",
-        type: "address",
+        internalType: 'address',
+        name: 'pool',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token0",
-        type: "address",
+        internalType: 'address',
+        name: 'token0',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "token1",
-        type: "address",
+        internalType: 'address',
+        name: 'token1',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "pool",
-        type: "address",
+        internalType: 'address',
+        name: 'pool',
+        type: 'address',
       },
     ],
-    name: "registerPair",
+    name: 'registerPair',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "src",
-        type: "address",
+        internalType: 'address',
+        name: 'src',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "dest",
-        type: "address",
+        internalType: 'address',
+        name: 'dest',
+        type: 'address',
       },
       {
-        internalType: "address[]",
-        name: "path",
-        type: "address[]",
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
       },
     ],
-    name: "registerRouterPath",
+    name: 'registerRouterPath',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "pool",
-        type: "address",
+        internalType: 'address',
+        name: 'pool',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountETHMin",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETHMin',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "deadline",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
       },
     ],
-    name: "removeLiquidityGetTokenAndETH",
+    name: 'removeLiquidityGetTokenAndETH',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountETH",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountToken",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address[]",
-        name: "path",
-        type: "address[]",
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
       },
       {
-        internalType: "uint256",
-        name: "amountIn",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountOutMin",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "rewardTo",
-        type: "address",
+        internalType: 'address',
+        name: 'rewardTo',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "deadline",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
       },
     ],
-    name: "swapExactTokensForTokens",
+    name: 'swapExactTokensForTokens',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
-];
+]
 
 export class ICoFiXRouter__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): ICoFiXRouterInterface {
-    return new utils.Interface(_abi) as ICoFiXRouterInterface;
+    return new utils.Interface(_abi) as ICoFiXRouterInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): ICoFiXRouter {
-    return new Contract(address, _abi, signerOrProvider) as ICoFiXRouter;
+  static connect(address: string, signerOrProvider: Signer | Provider): ICoFiXRouter {
+    return new Contract(address, _abi, signerOrProvider) as ICoFiXRouter
   }
 }

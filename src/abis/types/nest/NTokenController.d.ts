@@ -13,246 +13,184 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface NTokenControllerInterface extends ethers.utils.Interface {
   functions: {
-    "_governance()": FunctionFragment;
-    "_nTokenTags(address)": FunctionFragment;
-    "initialize(address)": FunctionFragment;
-    "migrate(address,uint256)": FunctionFragment;
-    "update(address)": FunctionFragment;
-    "setConfig(tuple)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "setNTokenMapping(address,address,uint256)": FunctionFragment;
-    "getTokenAddress(address)": FunctionFragment;
-    "getNTokenAddress(address)": FunctionFragment;
-    "disable(address)": FunctionFragment;
-    "enable(address)": FunctionFragment;
-    "open(address)": FunctionFragment;
-    "getNTokenTag(address)": FunctionFragment;
-    "getNTokenCount()": FunctionFragment;
-    "list(uint256,uint256,uint256)": FunctionFragment;
-    "strConcat(string,string)": FunctionFragment;
-    "getAddressStr(uint256)": FunctionFragment;
-  };
+    '_governance()': FunctionFragment
+    '_nTokenTags(address)': FunctionFragment
+    'initialize(address)': FunctionFragment
+    'migrate(address,uint256)': FunctionFragment
+    'update(address)': FunctionFragment
+    'setConfig(tuple)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'setNTokenMapping(address,address,uint256)': FunctionFragment
+    'getTokenAddress(address)': FunctionFragment
+    'getNTokenAddress(address)': FunctionFragment
+    'disable(address)': FunctionFragment
+    'enable(address)': FunctionFragment
+    'open(address)': FunctionFragment
+    'getNTokenTag(address)': FunctionFragment
+    'getNTokenCount()': FunctionFragment
+    'list(uint256,uint256,uint256)': FunctionFragment
+    'strConcat(string,string)': FunctionFragment
+    'getAddressStr(uint256)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: '_governance', values?: undefined): string
+  encodeFunctionData(functionFragment: '_nTokenTags', values: [string]): string
+  encodeFunctionData(functionFragment: 'initialize', values: [string]): string
+  encodeFunctionData(functionFragment: 'migrate', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'update', values: [string]): string
   encodeFunctionData(
-    functionFragment: "_governance",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "_nTokenTags", values: [string]): string;
-  encodeFunctionData(functionFragment: "initialize", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "migrate",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "update", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "setConfig",
+    functionFragment: 'setConfig',
     values: [{ openFeeNestAmount: BigNumberish; state: BigNumberish }]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "setNTokenMapping",
-    values: [string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getTokenAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNTokenAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "disable", values: [string]): string;
-  encodeFunctionData(functionFragment: "enable", values: [string]): string;
-  encodeFunctionData(functionFragment: "open", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "getNTokenTag",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNTokenCount",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "list",
-    values: [BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "strConcat",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getAddressStr",
-    values: [BigNumberish]
-  ): string;
+  ): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'setNTokenMapping', values: [string, string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getTokenAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'getNTokenAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'disable', values: [string]): string
+  encodeFunctionData(functionFragment: 'enable', values: [string]): string
+  encodeFunctionData(functionFragment: 'open', values: [string]): string
+  encodeFunctionData(functionFragment: 'getNTokenTag', values: [string]): string
+  encodeFunctionData(functionFragment: 'getNTokenCount', values?: undefined): string
+  encodeFunctionData(functionFragment: 'list', values: [BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'strConcat', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'getAddressStr', values: [BigNumberish]): string
 
-  decodeFunctionResult(
-    functionFragment: "_governance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "_nTokenTags",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "migrate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "update", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setNTokenMapping",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "disable", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "enable", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "open", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getNTokenTag",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNTokenCount",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "list", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "strConcat", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getAddressStr",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: '_governance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: '_nTokenTags', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'migrate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'update', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setNTokenMapping', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'disable', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'enable', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'open', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNTokenTag', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNTokenCount', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'list', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'strConcat', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getAddressStr', data: BytesLike): Result
 
   events: {
-    "NTokenDisabled(address)": EventFragment;
-    "NTokenEnabled(address)": EventFragment;
-    "NTokenOpened(address,address,address)": EventFragment;
-  };
+    'NTokenDisabled(address)': EventFragment
+    'NTokenEnabled(address)': EventFragment
+    'NTokenOpened(address,address,address)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "NTokenDisabled"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "NTokenEnabled"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "NTokenOpened"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'NTokenDisabled'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'NTokenEnabled'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'NTokenOpened'): EventFragment
 }
 
 export class NTokenController extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: NTokenControllerInterface;
+  interface: NTokenControllerInterface
 
   functions: {
-    _governance(overrides?: CallOverrides): Promise<[string]>;
+    _governance(overrides?: CallOverrides): Promise<[string]>
 
-    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setConfig(
       config: { openFeeNestAmount: BigNumberish; state: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     getConfig(
       overrides?: CallOverrides
-    ): Promise<
-      [[BigNumber, number] & { openFeeNestAmount: BigNumber; state: number }]
-    >;
+    ): Promise<[[BigNumber, number] & { openFeeNestAmount: BigNumber; state: number }]>
 
     setNTokenMapping(
       tokenAddress: string,
       ntokenAddress: string,
       state: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getTokenAddress(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getTokenAddress(ntokenAddress: string, overrides?: CallOverrides): Promise<[string]>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<[string]>
 
     disable(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     enable(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     open(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     getNTokenTag(
       tokenAddress: string,
@@ -260,17 +198,17 @@ export class NTokenController extends BaseContract {
     ): Promise<
       [
         [string, BigNumber, string, number, number, number] & {
-          ntokenAddress: string;
-          nestFee: BigNumber;
-          tokenAddress: string;
-          index: number;
-          startTime: number;
-          state: number;
+          ntokenAddress: string
+          nestFee: BigNumber
+          tokenAddress: string
+          index: number
+          startTime: number
+          state: number
         }
       ]
-    >;
+    >
 
-    getNTokenCount(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getNTokenCount(overrides?: CallOverrides): Promise<[BigNumber]>
 
     list(
       offset: BigNumberish,
@@ -280,106 +218,86 @@ export class NTokenController extends BaseContract {
     ): Promise<
       [
         ([string, BigNumber, string, number, number, number] & {
-          ntokenAddress: string;
-          nestFee: BigNumber;
-          tokenAddress: string;
-          index: number;
-          startTime: number;
-          state: number;
+          ntokenAddress: string
+          nestFee: BigNumber
+          tokenAddress: string
+          index: number
+          startTime: number
+          state: number
         })[]
       ]
-    >;
+    >
 
-    strConcat(
-      _a: string,
-      _b: string,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    strConcat(_a: string, _b: string, overrides?: CallOverrides): Promise<[string]>
 
-    getAddressStr(
-      iv: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-  };
+    getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<[string]>
+  }
 
-  _governance(overrides?: CallOverrides): Promise<string>;
+  _governance(overrides?: CallOverrides): Promise<string>
 
-  _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+  _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<BigNumber>
 
   initialize(
     nestGovernanceAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   migrate(
     tokenAddress: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   update(
     nestGovernanceAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setConfig(
     config: { openFeeNestAmount: BigNumberish; state: BigNumberish },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, number] & { openFeeNestAmount: BigNumber; state: number }
-  >;
+  getConfig(overrides?: CallOverrides): Promise<[BigNumber, number] & { openFeeNestAmount: BigNumber; state: number }>
 
   setNTokenMapping(
     tokenAddress: string,
     ntokenAddress: string,
     state: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getTokenAddress(
-    ntokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getTokenAddress(ntokenAddress: string, overrides?: CallOverrides): Promise<string>
 
-  getNTokenAddress(
-    tokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
   disable(
     tokenAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   enable(
     tokenAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  open(
-    tokenAddress: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  open(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   getNTokenTag(
     tokenAddress: string,
     overrides?: CallOverrides
   ): Promise<
     [string, BigNumber, string, number, number, number] & {
-      ntokenAddress: string;
-      nestFee: BigNumber;
-      tokenAddress: string;
-      index: number;
-      startTime: number;
-      state: number;
+      ntokenAddress: string
+      nestFee: BigNumber
+      tokenAddress: string
+      index: number
+      startTime: number
+      state: number
     }
-  >;
+  >
 
-  getNTokenCount(overrides?: CallOverrides): Promise<BigNumber>;
+  getNTokenCount(overrides?: CallOverrides): Promise<BigNumber>
 
   list(
     offset: BigNumberish,
@@ -388,89 +306,69 @@ export class NTokenController extends BaseContract {
     overrides?: CallOverrides
   ): Promise<
     ([string, BigNumber, string, number, number, number] & {
-      ntokenAddress: string;
-      nestFee: BigNumber;
-      tokenAddress: string;
-      index: number;
-      startTime: number;
-      state: number;
+      ntokenAddress: string
+      nestFee: BigNumber
+      tokenAddress: string
+      index: number
+      startTime: number
+      state: number
     })[]
-  >;
+  >
 
-  strConcat(_a: string, _b: string, overrides?: CallOverrides): Promise<string>;
+  strConcat(_a: string, _b: string, overrides?: CallOverrides): Promise<string>
 
-  getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<string>
 
   callStatic: {
-    _governance(overrides?: CallOverrides): Promise<string>;
+    _governance(overrides?: CallOverrides): Promise<string>
 
-    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    initialize(
-      nestGovernanceAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    initialize(nestGovernanceAddress: string, overrides?: CallOverrides): Promise<void>
 
-    migrate(
-      tokenAddress: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    migrate(tokenAddress: string, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    update(
-      nestGovernanceAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    update(nestGovernanceAddress: string, overrides?: CallOverrides): Promise<void>
 
     setConfig(
       config: { openFeeNestAmount: BigNumberish; state: BigNumberish },
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, number] & { openFeeNestAmount: BigNumber; state: number }
-    >;
+    getConfig(overrides?: CallOverrides): Promise<[BigNumber, number] & { openFeeNestAmount: BigNumber; state: number }>
 
     setNTokenMapping(
       tokenAddress: string,
       ntokenAddress: string,
       state: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    getTokenAddress(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getTokenAddress(ntokenAddress: string, overrides?: CallOverrides): Promise<string>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
-    disable(tokenAddress: string, overrides?: CallOverrides): Promise<void>;
+    disable(tokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    enable(tokenAddress: string, overrides?: CallOverrides): Promise<void>;
+    enable(tokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    open(tokenAddress: string, overrides?: CallOverrides): Promise<void>;
+    open(tokenAddress: string, overrides?: CallOverrides): Promise<void>
 
     getNTokenTag(
       tokenAddress: string,
       overrides?: CallOverrides
     ): Promise<
       [string, BigNumber, string, number, number, number] & {
-        ntokenAddress: string;
-        nestFee: BigNumber;
-        tokenAddress: string;
-        index: number;
-        startTime: number;
-        state: number;
+        ntokenAddress: string
+        nestFee: BigNumber
+        tokenAddress: string
+        index: number
+        startTime: number
+        state: number
       }
-    >;
+    >
 
-    getNTokenCount(overrides?: CallOverrides): Promise<BigNumber>;
+    getNTokenCount(overrides?: CallOverrides): Promise<BigNumber>
 
     list(
       offset: BigNumberish,
@@ -479,215 +377,155 @@ export class NTokenController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       ([string, BigNumber, string, number, number, number] & {
-        ntokenAddress: string;
-        nestFee: BigNumber;
-        tokenAddress: string;
-        index: number;
-        startTime: number;
-        state: number;
+        ntokenAddress: string
+        nestFee: BigNumber
+        tokenAddress: string
+        index: number
+        startTime: number
+        state: number
       })[]
-    >;
+    >
 
-    strConcat(
-      _a: string,
-      _b: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    strConcat(_a: string, _b: string, overrides?: CallOverrides): Promise<string>
 
-    getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<string>;
-  };
+    getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<string>
+  }
 
   filters: {
-    NTokenDisabled(
-      tokenAddress?: null
-    ): TypedEventFilter<[string], { tokenAddress: string }>;
+    NTokenDisabled(tokenAddress?: null): TypedEventFilter<[string], { tokenAddress: string }>
 
-    NTokenEnabled(
-      tokenAddress?: null
-    ): TypedEventFilter<[string], { tokenAddress: string }>;
+    NTokenEnabled(tokenAddress?: null): TypedEventFilter<[string], { tokenAddress: string }>
 
     NTokenOpened(
       tokenAddress?: null,
       ntokenAddress?: null,
       owner?: null
-    ): TypedEventFilter<
-      [string, string, string],
-      { tokenAddress: string; ntokenAddress: string; owner: string }
-    >;
-  };
+    ): TypedEventFilter<[string, string, string], { tokenAddress: string; ntokenAddress: string; owner: string }>
+  }
 
   estimateGas: {
-    _governance(overrides?: CallOverrides): Promise<BigNumber>;
+    _governance(overrides?: CallOverrides): Promise<BigNumber>
 
-    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<BigNumber>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setConfig(
       config: { openFeeNestAmount: BigNumberish; state: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
     setNTokenMapping(
       tokenAddress: string,
       ntokenAddress: string,
       state: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getTokenAddress(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getTokenAddress(ntokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    disable(
-      tokenAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    disable(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    enable(
-      tokenAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    enable(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    open(
-      tokenAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    open(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    getNTokenTag(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNTokenTag(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getNTokenCount(overrides?: CallOverrides): Promise<BigNumber>;
+    getNTokenCount(overrides?: CallOverrides): Promise<BigNumber>
 
-    list(
-      offset: BigNumberish,
-      count: BigNumberish,
-      order: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    list(offset: BigNumberish, count: BigNumberish, order: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    strConcat(
-      _a: string,
-      _b: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    strConcat(_a: string, _b: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getAddressStr(
-      iv: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
+    getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    _nTokenTags(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    _nTokenTags(arg0: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setConfig(
       config: { openFeeNestAmount: BigNumberish; state: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setNTokenMapping(
       tokenAddress: string,
       ntokenAddress: string,
       state: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getTokenAddress(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getTokenAddress(ntokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     disable(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     enable(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     open(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getNTokenTag(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getNTokenTag(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getNTokenCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getNTokenCount(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     list(
       offset: BigNumberish,
       count: BigNumberish,
       order: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    strConcat(
-      _a: string,
-      _b: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    strConcat(_a: string, _b: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getAddressStr(
-      iv: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
+    getAddressStr(iv: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

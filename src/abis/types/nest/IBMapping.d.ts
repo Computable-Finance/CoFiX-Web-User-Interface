@@ -12,115 +12,97 @@ import {
   BaseContract,
   ContractTransaction,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface IBMappingInterface extends ethers.utils.Interface {
   functions: {
-    "checkAddress(string)": FunctionFragment;
-    "checkOwners(address)": FunctionFragment;
-  };
+    'checkAddress(string)': FunctionFragment
+    'checkOwners(address)': FunctionFragment
+  }
 
-  encodeFunctionData(
-    functionFragment: "checkAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "checkOwners", values: [string]): string;
+  encodeFunctionData(functionFragment: 'checkAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'checkOwners', values: [string]): string
 
-  decodeFunctionResult(
-    functionFragment: "checkAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "checkOwners",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'checkAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'checkOwners', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class IBMapping extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: IBMappingInterface;
+  interface: IBMappingInterface
 
   functions: {
-    checkAddress(
-      name: string,
-      overrides?: CallOverrides
-    ): Promise<[string] & { contractAddress: string }>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<[string] & { contractAddress: string }>
 
-    checkOwners(man: string, overrides?: CallOverrides): Promise<[boolean]>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<[boolean]>
+  }
 
-  checkAddress(name: string, overrides?: CallOverrides): Promise<string>;
+  checkAddress(name: string, overrides?: CallOverrides): Promise<string>
 
-  checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>;
+  checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>
 
   callStatic: {
-    checkAddress(name: string, overrides?: CallOverrides): Promise<string>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<string>
 
-    checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    checkAddress(name: string, overrides?: CallOverrides): Promise<BigNumber>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    checkOwners(man: string, overrides?: CallOverrides): Promise<BigNumber>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    checkAddress(
-      name: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    checkOwners(
-      man: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

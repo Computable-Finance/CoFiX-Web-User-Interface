@@ -14,181 +14,117 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface CoFiXRouterInterface extends ethers.utils.Interface {
   functions: {
-    "_governance()": FunctionFragment;
-    "addLiquidity(address,address,uint256,uint256,uint256,address,uint256)": FunctionFragment;
-    "addLiquidityAndStake(address,address,uint256,uint256,uint256,address,uint256)": FunctionFragment;
-    "getRouterPath(address,address)": FunctionFragment;
-    "getTradeReward(address)": FunctionFragment;
-    "initialize(address)": FunctionFragment;
-    "migrate(address,uint256)": FunctionFragment;
-    "pairFor(address,address)": FunctionFragment;
-    "registerPair(address,address,address)": FunctionFragment;
-    "registerRouterPath(address,address,address[])": FunctionFragment;
-    "removeLiquidityGetTokenAndETH(address,address,uint256,uint256,address,uint256)": FunctionFragment;
-    "swapExactTokensForTokens(address[],uint256,uint256,address,address,uint256)": FunctionFragment;
-    "update(address)": FunctionFragment;
-  };
+    '_governance()': FunctionFragment
+    'addLiquidity(address,address,uint256,uint256,uint256,address,uint256)': FunctionFragment
+    'addLiquidityAndStake(address,address,uint256,uint256,uint256,address,uint256)': FunctionFragment
+    'getRouterPath(address,address)': FunctionFragment
+    'getTradeReward(address)': FunctionFragment
+    'initialize(address)': FunctionFragment
+    'migrate(address,uint256)': FunctionFragment
+    'pairFor(address,address)': FunctionFragment
+    'registerPair(address,address,address)': FunctionFragment
+    'registerRouterPath(address,address,address[])': FunctionFragment
+    'removeLiquidityGetTokenAndETH(address,address,uint256,uint256,address,uint256)': FunctionFragment
+    'swapExactTokensForTokens(address[],uint256,uint256,address,address,uint256)': FunctionFragment
+    'update(address)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: '_governance', values?: undefined): string
   encodeFunctionData(
-    functionFragment: "_governance",
-    values?: undefined
-  ): string;
+    functionFragment: 'addLiquidity',
+    values: [string, string, BigNumberish, BigNumberish, BigNumberish, string, BigNumberish]
+  ): string
   encodeFunctionData(
-    functionFragment: "addLiquidity",
-    values: [
-      string,
-      string,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      string,
-      BigNumberish
-    ]
-  ): string;
+    functionFragment: 'addLiquidityAndStake',
+    values: [string, string, BigNumberish, BigNumberish, BigNumberish, string, BigNumberish]
+  ): string
+  encodeFunctionData(functionFragment: 'getRouterPath', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'getTradeReward', values: [string]): string
+  encodeFunctionData(functionFragment: 'initialize', values: [string]): string
+  encodeFunctionData(functionFragment: 'migrate', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'pairFor', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'registerPair', values: [string, string, string]): string
+  encodeFunctionData(functionFragment: 'registerRouterPath', values: [string, string, string[]]): string
   encodeFunctionData(
-    functionFragment: "addLiquidityAndStake",
-    values: [
-      string,
-      string,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      string,
-      BigNumberish
-    ]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getRouterPath",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getTradeReward",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "initialize", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "migrate",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "pairFor",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "registerPair",
-    values: [string, string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "registerRouterPath",
-    values: [string, string, string[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "removeLiquidityGetTokenAndETH",
+    functionFragment: 'removeLiquidityGetTokenAndETH',
     values: [string, string, BigNumberish, BigNumberish, string, BigNumberish]
-  ): string;
+  ): string
   encodeFunctionData(
-    functionFragment: "swapExactTokensForTokens",
+    functionFragment: 'swapExactTokensForTokens',
     values: [string[], BigNumberish, BigNumberish, string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "update", values: [string]): string;
+  ): string
+  encodeFunctionData(functionFragment: 'update', values: [string]): string
 
-  decodeFunctionResult(
-    functionFragment: "_governance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addLiquidity",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addLiquidityAndStake",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getRouterPath",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getTradeReward",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "migrate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "pairFor", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "registerPair",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "registerRouterPath",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "removeLiquidityGetTokenAndETH",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "swapExactTokensForTokens",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "update", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: '_governance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addLiquidity', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addLiquidityAndStake', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getRouterPath', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getTradeReward', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'migrate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'pairFor', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'registerPair', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'registerRouterPath', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'removeLiquidityGetTokenAndETH', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'swapExactTokensForTokens', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'update', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class CoFiXRouter extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: CoFiXRouterInterface;
+  interface: CoFiXRouterInterface
 
   functions: {
-    _governance(overrides?: CallOverrides): Promise<[string]>;
+    _governance(overrides?: CallOverrides): Promise<[string]>
 
     addLiquidity(
       pool: string,
@@ -199,7 +135,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     addLiquidityAndStake(
       pool: string,
@@ -210,49 +146,38 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getRouterPath(
-      src: string,
-      dest: string,
-      overrides?: CallOverrides
-    ): Promise<[string[]] & { path: string[] }>;
+    getRouterPath(src: string, dest: string, overrides?: CallOverrides): Promise<[string[]] & { path: string[] }>
 
-    getTradeReward(
-      xtoken: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getTradeReward(xtoken: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     initialize(
       governance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    pairFor(
-      token0: string,
-      token1: string,
-      overrides?: CallOverrides
-    ): Promise<[string] & { pool: string }>;
+    pairFor(token0: string, token1: string, overrides?: CallOverrides): Promise<[string] & { pool: string }>
 
     registerPair(
       token0: string,
       token1: string,
       pool: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     registerRouterPath(
       src: string,
       dest: string,
       path: string[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     removeLiquidityGetTokenAndETH(
       pool: string,
@@ -262,7 +187,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     swapExactTokensForTokens(
       path: string[],
@@ -272,15 +197,15 @@ export class CoFiXRouter extends BaseContract {
       rewardTo: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     update(
       newGovernance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
-  _governance(overrides?: CallOverrides): Promise<string>;
+  _governance(overrides?: CallOverrides): Promise<string>
 
   addLiquidity(
     pool: string,
@@ -291,7 +216,7 @@ export class CoFiXRouter extends BaseContract {
     to: string,
     deadline: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   addLiquidityAndStake(
     pool: string,
@@ -302,46 +227,38 @@ export class CoFiXRouter extends BaseContract {
     to: string,
     deadline: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getRouterPath(
-    src: string,
-    dest: string,
-    overrides?: CallOverrides
-  ): Promise<string[]>;
+  getRouterPath(src: string, dest: string, overrides?: CallOverrides): Promise<string[]>
 
-  getTradeReward(xtoken: string, overrides?: CallOverrides): Promise<BigNumber>;
+  getTradeReward(xtoken: string, overrides?: CallOverrides): Promise<BigNumber>
 
   initialize(
     governance: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   migrate(
     tokenAddress: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  pairFor(
-    token0: string,
-    token1: string,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  pairFor(token0: string, token1: string, overrides?: CallOverrides): Promise<string>
 
   registerPair(
     token0: string,
     token1: string,
     pool: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   registerRouterPath(
     src: string,
     dest: string,
     path: string[],
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   removeLiquidityGetTokenAndETH(
     pool: string,
@@ -351,7 +268,7 @@ export class CoFiXRouter extends BaseContract {
     to: string,
     deadline: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   swapExactTokensForTokens(
     path: string[],
@@ -361,15 +278,15 @@ export class CoFiXRouter extends BaseContract {
     rewardTo: string,
     deadline: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   update(
     newGovernance: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    _governance(overrides?: CallOverrides): Promise<string>;
+    _governance(overrides?: CallOverrides): Promise<string>
 
     addLiquidity(
       pool: string,
@@ -380,7 +297,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { xtoken: string; liquidity: BigNumber }>;
+    ): Promise<[string, BigNumber] & { xtoken: string; liquidity: BigNumber }>
 
     addLiquidityAndStake(
       pool: string,
@@ -391,46 +308,21 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { xtoken: string; liquidity: BigNumber }>;
+    ): Promise<[string, BigNumber] & { xtoken: string; liquidity: BigNumber }>
 
-    getRouterPath(
-      src: string,
-      dest: string,
-      overrides?: CallOverrides
-    ): Promise<string[]>;
+    getRouterPath(src: string, dest: string, overrides?: CallOverrides): Promise<string[]>
 
-    getTradeReward(
-      xtoken: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getTradeReward(xtoken: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    initialize(governance: string, overrides?: CallOverrides): Promise<void>;
+    initialize(governance: string, overrides?: CallOverrides): Promise<void>
 
-    migrate(
-      tokenAddress: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    migrate(tokenAddress: string, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    pairFor(
-      token0: string,
-      token1: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    pairFor(token0: string, token1: string, overrides?: CallOverrides): Promise<string>
 
-    registerPair(
-      token0: string,
-      token1: string,
-      pool: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    registerPair(token0: string, token1: string, pool: string, overrides?: CallOverrides): Promise<void>
 
-    registerRouterPath(
-      src: string,
-      dest: string,
-      path: string[],
-      overrides?: CallOverrides
-    ): Promise<void>;
+    registerRouterPath(src: string, dest: string, path: string[], overrides?: CallOverrides): Promise<void>
 
     removeLiquidityGetTokenAndETH(
       pool: string,
@@ -440,9 +332,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { amountETH: BigNumber; amountToken: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { amountETH: BigNumber; amountToken: BigNumber }>
 
     swapExactTokensForTokens(
       path: string[],
@@ -452,15 +342,15 @@ export class CoFiXRouter extends BaseContract {
       rewardTo: string,
       deadline: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    update(newGovernance: string, overrides?: CallOverrides): Promise<void>;
-  };
+    update(newGovernance: string, overrides?: CallOverrides): Promise<void>
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    _governance(overrides?: CallOverrides): Promise<BigNumber>;
+    _governance(overrides?: CallOverrides): Promise<BigNumber>
 
     addLiquidity(
       pool: string,
@@ -471,7 +361,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     addLiquidityAndStake(
       pool: string,
@@ -482,49 +372,35 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getRouterPath(
-      src: string,
-      dest: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getRouterPath(src: string, dest: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getTradeReward(
-      xtoken: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getTradeReward(xtoken: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    initialize(
-      governance: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    initialize(governance: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    pairFor(
-      token0: string,
-      token1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    pairFor(token0: string, token1: string, overrides?: CallOverrides): Promise<BigNumber>
 
     registerPair(
       token0: string,
       token1: string,
       pool: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     registerRouterPath(
       src: string,
       dest: string,
       path: string[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     removeLiquidityGetTokenAndETH(
       pool: string,
@@ -534,7 +410,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     swapExactTokensForTokens(
       path: string[],
@@ -544,16 +420,13 @@ export class CoFiXRouter extends BaseContract {
       rewardTo: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    update(
-      newGovernance: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    update(newGovernance: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     addLiquidity(
       pool: string,
@@ -564,7 +437,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     addLiquidityAndStake(
       pool: string,
@@ -575,49 +448,38 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getRouterPath(
-      src: string,
-      dest: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getRouterPath(src: string, dest: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getTradeReward(
-      xtoken: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getTradeReward(xtoken: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     initialize(
       governance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    pairFor(
-      token0: string,
-      token1: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    pairFor(token0: string, token1: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     registerPair(
       token0: string,
       token1: string,
       pool: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     registerRouterPath(
       src: string,
       dest: string,
       path: string[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     removeLiquidityGetTokenAndETH(
       pool: string,
@@ -627,7 +489,7 @@ export class CoFiXRouter extends BaseContract {
       to: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     swapExactTokensForTokens(
       path: string[],
@@ -637,11 +499,11 @@ export class CoFiXRouter extends BaseContract {
       rewardTo: string,
       deadline: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     update(
       newGovernance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

@@ -1,4 +1,4 @@
-import UniswapQuoter, { UniswapQuoterProps } from './UniswapQuoter';
+import UniswapQuoter, { UniswapQuoterProps } from './UniswapQuoter'
 import { Web3Provider } from '@ethersproject/providers'
 import CoFiXController, { CoFiXControllerProps } from './CoFiXController'
 import CoFiXDAO, { CoFiXDAOProps } from './CoFixDAO'
@@ -123,7 +123,7 @@ class API {
       CoFiXRouter: new CoFiXRouter(this, props.CoFiXRouter),
       CoFiXVaultForStaking: new CoFiXVaultForStaking(this, props.CoFiXVaultForStaking),
       CoFiXDAO: new CoFiXDAO(this, props.CoFiXDAO),
-      UniswapQuoter: new UniswapQuoter(this, props.UniswapQuoter)
+      UniswapQuoter: new UniswapQuoter(this, props.UniswapQuoter),
     }
 
     const map: Record<string, Record<string, CoFiXPair | CoFiXAnchorPool>> = {}

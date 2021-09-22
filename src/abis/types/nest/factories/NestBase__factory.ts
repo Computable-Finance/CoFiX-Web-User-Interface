@@ -2,79 +2,76 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { NestBase, NestBaseInterface } from "../NestBase";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { NestBase, NestBaseInterface } from '../NestBase'
 
 const _abi = [
   {
     inputs: [],
-    name: "_governance",
+    name: '_governance',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestGovernanceAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestGovernanceAddress',
+        type: 'address',
       },
     ],
-    name: "initialize",
+    name: 'initialize',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestGovernanceAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestGovernanceAddress',
+        type: 'address',
       },
     ],
-    name: "update",
+    name: 'update',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
       },
     ],
-    name: "migrate",
+    name: 'migrate',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
-];
+]
 
 export class NestBase__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): NestBaseInterface {
-    return new utils.Interface(_abi) as NestBaseInterface;
+    return new utils.Interface(_abi) as NestBaseInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): NestBase {
-    return new Contract(address, _abi, signerOrProvider) as NestBase;
+  static connect(address: string, signerOrProvider: Signer | Provider): NestBase {
+    return new Contract(address, _abi, signerOrProvider) as NestBase
   }
 }

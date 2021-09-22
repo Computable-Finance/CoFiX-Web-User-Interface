@@ -4,7 +4,7 @@
   &-notice {
     padding: 0 $space-md 0 $space-md;
     @include tablet {
-      padding: 0 $space * 2 0 $space * 2 ;
+      padding: 0 $space * 2 0 $space * 2;
     }
 
     @include tablet {
@@ -15,7 +15,7 @@
     .cofi-card {
       width: 100%;
       max-width: unset;
-      
+
       &-content > * {
         margin-top: 0;
       }

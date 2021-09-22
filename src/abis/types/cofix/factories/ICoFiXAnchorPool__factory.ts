@@ -2,12 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type {
-  ICoFiXAnchorPool,
-  ICoFiXAnchorPoolInterface,
-} from "../ICoFiXAnchorPool";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { ICoFiXAnchorPool, ICoFiXAnchorPoolInterface } from '../ICoFiXAnchorPool'
 
 const _abi = [
   {
@@ -15,309 +12,306 @@ const _abi = [
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "amountETHOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETHOut',
+        type: 'uint256',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "amountTokenOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountTokenOut',
+        type: 'uint256',
       },
     ],
-    name: "Burn",
-    type: "event",
+    name: 'Burn',
+    type: 'event',
   },
   {
     anonymous: false,
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "amountETH",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "amountToken",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
     ],
-    name: "Mint",
-    type: "event",
+    name: 'Mint',
+    type: 'event',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "payback",
-        type: "address",
+        internalType: 'address',
+        name: 'payback',
+        type: 'address',
       },
     ],
-    name: "burn",
+    name: 'burn',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountETHOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETHOut',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountTokenOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountTokenOut',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "newBalance",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'newBalance',
+        type: 'uint256',
       },
     ],
-    name: "estimate",
+    name: 'estimate',
     outputs: [
       {
-        internalType: "uint256",
-        name: "mined",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'mined',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getConfig",
+    name: 'getConfig',
     outputs: [
       {
-        internalType: "uint16",
-        name: "theta",
-        type: "uint16",
+        internalType: 'uint16',
+        name: 'theta',
+        type: 'uint16',
       },
       {
-        internalType: "uint16",
-        name: "impactCostVOL",
-        type: "uint16",
+        internalType: 'uint16',
+        name: 'impactCostVOL',
+        type: 'uint16',
       },
       {
-        internalType: "uint56",
-        name: "nt",
-        type: "uint56",
+        internalType: 'uint56',
+        name: 'nt',
+        type: 'uint56',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
     ],
-    name: "getXToken",
+    name: 'getXToken',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "token",
-        type: "address",
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "amountETH",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "amountToken",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "payback",
-        type: "address",
+        internalType: 'address',
+        name: 'payback',
+        type: 'address',
       },
     ],
-    name: "mint",
+    name: 'mint',
     outputs: [
       {
-        internalType: "address",
-        name: "xtoken",
-        type: "address",
+        internalType: 'address',
+        name: 'xtoken',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "liquidity",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint16",
-        name: "theta",
-        type: "uint16",
+        internalType: 'uint16',
+        name: 'theta',
+        type: 'uint16',
       },
       {
-        internalType: "uint16",
-        name: "impactCostVOL",
-        type: "uint16",
+        internalType: 'uint16',
+        name: 'impactCostVOL',
+        type: 'uint16',
       },
       {
-        internalType: "uint56",
-        name: "nt",
-        type: "uint56",
+        internalType: 'uint56',
+        name: 'nt',
+        type: 'uint56',
       },
     ],
-    name: "setConfig",
+    name: 'setConfig',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "skim",
+    name: 'skim',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "src",
-        type: "address",
+        internalType: 'address',
+        name: 'src',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "dest",
-        type: "address",
+        internalType: 'address',
+        name: 'dest',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "amountIn",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "payback",
-        type: "address",
+        internalType: 'address',
+        name: 'payback',
+        type: 'address',
       },
     ],
-    name: "swap",
+    name: 'swap',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "mined",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'mined',
+        type: 'uint256',
       },
     ],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
-];
+]
 
 export class ICoFiXAnchorPool__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): ICoFiXAnchorPoolInterface {
-    return new utils.Interface(_abi) as ICoFiXAnchorPoolInterface;
+    return new utils.Interface(_abi) as ICoFiXAnchorPoolInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): ICoFiXAnchorPool {
-    return new Contract(address, _abi, signerOrProvider) as ICoFiXAnchorPool;
+  static connect(address: string, signerOrProvider: Signer | Provider): ICoFiXAnchorPool {
+    return new Contract(address, _abi, signerOrProvider) as ICoFiXAnchorPool
   }
 }

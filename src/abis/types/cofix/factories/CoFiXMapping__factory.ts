@@ -2,270 +2,267 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { CoFiXMapping, CoFiXMappingInterface } from "../CoFiXMapping";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { CoFiXMapping, CoFiXMappingInterface } from '../CoFiXMapping'
 
 const _abi = [
   {
     inputs: [],
-    name: "_governance",
+    name: '_governance',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "string",
-        name: "key",
-        type: "string",
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
       },
     ],
-    name: "checkAddress",
+    name: 'checkAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getBuiltinAddress",
+    name: 'getBuiltinAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "cofiToken",
-        type: "address",
+        internalType: 'address',
+        name: 'cofiToken',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofiNode",
-        type: "address",
+        internalType: 'address',
+        name: 'cofiNode',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixDAO",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixDAO',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixRouter",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixRouter',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixController",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixController',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixVaultForStaking",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixVaultForStaking',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getCoFiNodeAddress",
+    name: 'getCoFiNodeAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getCoFiTokenAddress",
+    name: 'getCoFiTokenAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getCoFiXControllerAddress",
+    name: 'getCoFiXControllerAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getCoFiXDAOAddress",
+    name: 'getCoFiXDAOAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getCoFiXRouterAddress",
+    name: 'getCoFiXRouterAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getCoFiXVaultForStakingAddress",
+    name: 'getCoFiXVaultForStakingAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "governance",
-        type: "address",
+        internalType: 'address',
+        name: 'governance',
+        type: 'address',
       },
     ],
-    name: "initialize",
+    name: 'initialize',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
       },
     ],
-    name: "migrate",
+    name: 'migrate',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "string",
-        name: "key",
-        type: "string",
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
       },
       {
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
       },
     ],
-    name: "registerAddress",
+    name: 'registerAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "cofiToken",
-        type: "address",
+        internalType: 'address',
+        name: 'cofiToken',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofiNode",
-        type: "address",
+        internalType: 'address',
+        name: 'cofiNode',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixDAO",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixDAO',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixRouter",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixRouter',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixController",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixController',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "cofixVaultForStaking",
-        type: "address",
+        internalType: 'address',
+        name: 'cofixVaultForStaking',
+        type: 'address',
       },
     ],
-    name: "setBuiltinAddress",
+    name: 'setBuiltinAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "newGovernance",
-        type: "address",
+        internalType: 'address',
+        name: 'newGovernance',
+        type: 'address',
       },
     ],
-    name: "update",
+    name: 'update',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
-];
+]
 
 export class CoFiXMapping__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): CoFiXMappingInterface {
-    return new utils.Interface(_abi) as CoFiXMappingInterface;
+    return new utils.Interface(_abi) as CoFiXMappingInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): CoFiXMapping {
-    return new Contract(address, _abi, signerOrProvider) as CoFiXMapping;
+  static connect(address: string, signerOrProvider: Signer | Provider): CoFiXMapping {
+    return new Contract(address, _abi, signerOrProvider) as CoFiXMapping
   }
 }

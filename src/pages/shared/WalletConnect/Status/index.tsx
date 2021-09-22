@@ -22,7 +22,7 @@ const WalletConnectStatus: FC = () => {
   const pendingTransactions = (transactions || []).filter(
     (t) => t?.receiptStatus === TransactionReceiptStatus.Unknown && t?.status === TransactionStatus.Success
   )
-  pendingTransactions.map((tx)=>check(tx))
+  pendingTransactions.map((tx) => check(tx))
 
   const classPrefix = 'cofi-wallet-connect'
   return (

@@ -14,253 +14,180 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface CoFiXPairInterface extends ethers.utils.Interface {
   functions: {
-    "_governance()": FunctionFragment;
-    "allowance(address,address)": FunctionFragment;
-    "approve(address,uint256)": FunctionFragment;
-    "balanceOf(address)": FunctionFragment;
-    "burn(address,address,uint256,address)": FunctionFragment;
-    "decimals()": FunctionFragment;
-    "estimate(uint256,uint256,uint256,uint256)": FunctionFragment;
-    "ethBalance()": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "getInitialAssetRatio()": FunctionFragment;
-    "getNAVPerShare(uint256,uint256)": FunctionFragment;
-    "getXToken(address)": FunctionFragment;
-    "impactCostForBuyInETH(uint256)": FunctionFragment;
-    "impactCostForSellOutETH(uint256)": FunctionFragment;
-    "init(address,string,string,address,uint48,uint48)": FunctionFragment;
-    "initialize(address)": FunctionFragment;
-    "migrate(address,uint256)": FunctionFragment;
-    "mint(address,address,uint256,uint256,address)": FunctionFragment;
-    "name()": FunctionFragment;
-    "setConfig(uint16,uint96,uint96)": FunctionFragment;
-    "settle()": FunctionFragment;
-    "swap(address,address,uint256,address,address)": FunctionFragment;
-    "symbol()": FunctionFragment;
-    "totalFee()": FunctionFragment;
-    "totalSupply()": FunctionFragment;
-    "transfer(address,uint256)": FunctionFragment;
-    "transferFrom(address,address,uint256)": FunctionFragment;
-    "update(address)": FunctionFragment;
-  };
+    '_governance()': FunctionFragment
+    'allowance(address,address)': FunctionFragment
+    'approve(address,uint256)': FunctionFragment
+    'balanceOf(address)': FunctionFragment
+    'burn(address,address,uint256,address)': FunctionFragment
+    'decimals()': FunctionFragment
+    'estimate(uint256,uint256,uint256,uint256)': FunctionFragment
+    'ethBalance()': FunctionFragment
+    'getConfig()': FunctionFragment
+    'getInitialAssetRatio()': FunctionFragment
+    'getNAVPerShare(uint256,uint256)': FunctionFragment
+    'getXToken(address)': FunctionFragment
+    'impactCostForBuyInETH(uint256)': FunctionFragment
+    'impactCostForSellOutETH(uint256)': FunctionFragment
+    'init(address,string,string,address,uint48,uint48)': FunctionFragment
+    'initialize(address)': FunctionFragment
+    'migrate(address,uint256)': FunctionFragment
+    'mint(address,address,uint256,uint256,address)': FunctionFragment
+    'name()': FunctionFragment
+    'setConfig(uint16,uint96,uint96)': FunctionFragment
+    'settle()': FunctionFragment
+    'swap(address,address,uint256,address,address)': FunctionFragment
+    'symbol()': FunctionFragment
+    'totalFee()': FunctionFragment
+    'totalSupply()': FunctionFragment
+    'transfer(address,uint256)': FunctionFragment
+    'transferFrom(address,address,uint256)': FunctionFragment
+    'update(address)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: '_governance', values?: undefined): string
+  encodeFunctionData(functionFragment: 'allowance', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'approve', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'balanceOf', values: [string]): string
+  encodeFunctionData(functionFragment: 'burn', values: [string, string, BigNumberish, string]): string
+  encodeFunctionData(functionFragment: 'decimals', values?: undefined): string
   encodeFunctionData(
-    functionFragment: "_governance",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "allowance",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "approve",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "burn",
-    values: [string, string, BigNumberish, string]
-  ): string;
-  encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "estimate",
+    functionFragment: 'estimate',
     values: [BigNumberish, BigNumberish, BigNumberish, BigNumberish]
-  ): string;
+  ): string
+  encodeFunctionData(functionFragment: 'ethBalance', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getInitialAssetRatio', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getNAVPerShare', values: [BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getXToken', values: [string]): string
+  encodeFunctionData(functionFragment: 'impactCostForBuyInETH', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: 'impactCostForSellOutETH', values: [BigNumberish]): string
   encodeFunctionData(
-    functionFragment: "ethBalance",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "getInitialAssetRatio",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNAVPerShare",
-    values: [BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "getXToken", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "impactCostForBuyInETH",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "impactCostForSellOutETH",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "init",
+    functionFragment: 'init',
     values: [string, string, string, string, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "initialize", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "migrate",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "mint",
-    values: [string, string, BigNumberish, BigNumberish, string]
-  ): string;
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "setConfig",
-    values: [BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "settle", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "swap",
-    values: [string, string, BigNumberish, string, string]
-  ): string;
-  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
-  encodeFunctionData(functionFragment: "totalFee", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "totalSupply",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transfer",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferFrom",
-    values: [string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "update", values: [string]): string;
+  ): string
+  encodeFunctionData(functionFragment: 'initialize', values: [string]): string
+  encodeFunctionData(functionFragment: 'migrate', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'mint', values: [string, string, BigNumberish, BigNumberish, string]): string
+  encodeFunctionData(functionFragment: 'name', values?: undefined): string
+  encodeFunctionData(functionFragment: 'setConfig', values: [BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'settle', values?: undefined): string
+  encodeFunctionData(functionFragment: 'swap', values: [string, string, BigNumberish, string, string]): string
+  encodeFunctionData(functionFragment: 'symbol', values?: undefined): string
+  encodeFunctionData(functionFragment: 'totalFee', values?: undefined): string
+  encodeFunctionData(functionFragment: 'totalSupply', values?: undefined): string
+  encodeFunctionData(functionFragment: 'transfer', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'transferFrom', values: [string, string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'update', values: [string]): string
 
-  decodeFunctionResult(
-    functionFragment: "_governance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "burn", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "estimate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "ethBalance", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getInitialAssetRatio",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNAVPerShare",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getXToken", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "impactCostForBuyInETH",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "impactCostForSellOutETH",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "init", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "migrate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "settle", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "swap", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "totalFee", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "totalSupply",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "transfer", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "transferFrom",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "update", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: '_governance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'allowance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'approve', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'burn', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'decimals', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'estimate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'ethBalance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getInitialAssetRatio', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNAVPerShare', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getXToken', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'impactCostForBuyInETH', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'impactCostForSellOutETH', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'init', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'migrate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'mint', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'name', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'settle', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'swap', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'symbol', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'totalFee', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'totalSupply', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'transfer', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'transferFrom', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'update', data: BytesLike): Result
 
   events: {
-    "Approval(address,address,uint256)": EventFragment;
-    "Burn(address,address,uint256,uint256,uint256)": EventFragment;
-    "Mint(address,address,uint256,uint256,uint256)": EventFragment;
-    "SwapForETH(uint256,address,uint256,uint256)": EventFragment;
-    "SwapForToken(uint256,address,uint256,uint256)": EventFragment;
-    "Transfer(address,address,uint256)": EventFragment;
-  };
+    'Approval(address,address,uint256)': EventFragment
+    'Burn(address,address,uint256,uint256,uint256)': EventFragment
+    'Mint(address,address,uint256,uint256,uint256)': EventFragment
+    'SwapForETH(uint256,address,uint256,uint256)': EventFragment
+    'SwapForToken(uint256,address,uint256,uint256)': EventFragment
+    'Transfer(address,address,uint256)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Burn"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Mint"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SwapForETH"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SwapForToken"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Approval'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'Burn'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'Mint'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'SwapForETH'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'SwapForToken'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'Transfer'): EventFragment
 }
 
 export class CoFiXPair extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: CoFiXPairInterface;
+  interface: CoFiXPairInterface
 
   functions: {
-    _governance(overrides?: CallOverrides): Promise<[string]>;
+    _governance(overrides?: CallOverrides): Promise<[string]>
 
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    allowance(arg0: string, arg1: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     approve(
       spender: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    balanceOf(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+    balanceOf(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     burn(
       token: string,
@@ -268,9 +195,9 @@ export class CoFiXPair extends BaseContract {
       liquidity: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    decimals(overrides?: CallOverrides): Promise<[number]>;
+    decimals(overrides?: CallOverrides): Promise<[number]>
 
     estimate(
       newBalance0: BigNumberish,
@@ -278,46 +205,42 @@ export class CoFiXPair extends BaseContract {
       ethAmount: BigNumberish,
       tokenAmount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { mined: BigNumber }>;
+    ): Promise<[BigNumber] & { mined: BigNumber }>
 
-    ethBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
+    ethBalance(overrides?: CallOverrides): Promise<[BigNumber]>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [number, BigNumber, BigNumber] & {
-        theta: number;
-        impactCostVOL: BigNumber;
-        nt: BigNumber;
+        theta: number
+        impactCostVOL: BigNumber
+        nt: BigNumber
       }
-    >;
+    >
 
-    getInitialAssetRatio(
-      overrides?: CallOverrides
-    ): Promise<
+    getInitialAssetRatio(overrides?: CallOverrides): Promise<
       [BigNumber, BigNumber] & {
-        initToken0Amount: BigNumber;
-        initToken1Amount: BigNumber;
+        initToken0Amount: BigNumber
+        initToken1Amount: BigNumber
       }
-    >;
+    >
 
     getNAVPerShare(
       ethAmount: BigNumberish,
       tokenAmount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { navps: BigNumber }>;
+    ): Promise<[BigNumber] & { navps: BigNumber }>
 
-    getXToken(token: string, overrides?: CallOverrides): Promise<[string]>;
+    getXToken(token: string, overrides?: CallOverrides): Promise<[string]>
 
     impactCostForBuyInETH(
       vol: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { impactCost: BigNumber }>;
+    ): Promise<[BigNumber] & { impactCost: BigNumber }>
 
     impactCostForSellOutETH(
       vol: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { impactCost: BigNumber }>;
+    ): Promise<[BigNumber] & { impactCost: BigNumber }>
 
     init(
       governance: string,
@@ -327,18 +250,18 @@ export class CoFiXPair extends BaseContract {
       initToken0Amount: BigNumberish,
       initToken1Amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     initialize(
       governance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     mint(
       token: string,
@@ -347,20 +270,18 @@ export class CoFiXPair extends BaseContract {
       amountToken: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    name(overrides?: CallOverrides): Promise<[string]>;
+    name(overrides?: CallOverrides): Promise<[string]>
 
     setConfig(
       theta: BigNumberish,
       impactCostVOL: BigNumberish,
       nt: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    settle(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    settle(overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
     swap(
       src: string,
@@ -369,48 +290,44 @@ export class CoFiXPair extends BaseContract {
       to: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    symbol(overrides?: CallOverrides): Promise<[string]>;
+    symbol(overrides?: CallOverrides): Promise<[string]>
 
-    totalFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+    totalFee(overrides?: CallOverrides): Promise<[BigNumber]>
 
-    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
+    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>
 
     transfer(
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     transferFrom(
       from: string,
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     update(
       newGovernance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
-  _governance(overrides?: CallOverrides): Promise<string>;
+  _governance(overrides?: CallOverrides): Promise<string>
 
-  allowance(
-    arg0: string,
-    arg1: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  allowance(arg0: string, arg1: string, overrides?: CallOverrides): Promise<BigNumber>
 
   approve(
     spender: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+  balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>
 
   burn(
     token: string,
@@ -418,9 +335,9 @@ export class CoFiXPair extends BaseContract {
     liquidity: BigNumberish,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  decimals(overrides?: CallOverrides): Promise<number>;
+  decimals(overrides?: CallOverrides): Promise<number>
 
   estimate(
     newBalance0: BigNumberish,
@@ -428,46 +345,32 @@ export class CoFiXPair extends BaseContract {
     ethAmount: BigNumberish,
     tokenAmount: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumber>
 
-  ethBalance(overrides?: CallOverrides): Promise<BigNumber>;
+  ethBalance(overrides?: CallOverrides): Promise<BigNumber>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
+  getConfig(overrides?: CallOverrides): Promise<
     [number, BigNumber, BigNumber] & {
-      theta: number;
-      impactCostVOL: BigNumber;
-      nt: BigNumber;
+      theta: number
+      impactCostVOL: BigNumber
+      nt: BigNumber
     }
-  >;
+  >
 
-  getInitialAssetRatio(
-    overrides?: CallOverrides
-  ): Promise<
+  getInitialAssetRatio(overrides?: CallOverrides): Promise<
     [BigNumber, BigNumber] & {
-      initToken0Amount: BigNumber;
-      initToken1Amount: BigNumber;
+      initToken0Amount: BigNumber
+      initToken1Amount: BigNumber
     }
-  >;
+  >
 
-  getNAVPerShare(
-    ethAmount: BigNumberish,
-    tokenAmount: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  getNAVPerShare(ethAmount: BigNumberish, tokenAmount: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-  getXToken(token: string, overrides?: CallOverrides): Promise<string>;
+  getXToken(token: string, overrides?: CallOverrides): Promise<string>
 
-  impactCostForBuyInETH(
-    vol: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  impactCostForBuyInETH(vol: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-  impactCostForSellOutETH(
-    vol: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  impactCostForSellOutETH(vol: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
   init(
     governance: string,
@@ -477,18 +380,18 @@ export class CoFiXPair extends BaseContract {
     initToken0Amount: BigNumberish,
     initToken1Amount: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   initialize(
     governance: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   migrate(
     tokenAddress: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   mint(
     token: string,
@@ -497,20 +400,18 @@ export class CoFiXPair extends BaseContract {
     amountToken: BigNumberish,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  name(overrides?: CallOverrides): Promise<string>;
+  name(overrides?: CallOverrides): Promise<string>
 
   setConfig(
     theta: BigNumberish,
     impactCostVOL: BigNumberish,
     nt: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  settle(
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  settle(overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   swap(
     src: string,
@@ -519,48 +420,40 @@ export class CoFiXPair extends BaseContract {
     to: string,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  symbol(overrides?: CallOverrides): Promise<string>;
+  symbol(overrides?: CallOverrides): Promise<string>
 
-  totalFee(overrides?: CallOverrides): Promise<BigNumber>;
+  totalFee(overrides?: CallOverrides): Promise<BigNumber>
 
-  totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+  totalSupply(overrides?: CallOverrides): Promise<BigNumber>
 
   transfer(
     to: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   transferFrom(
     from: string,
     to: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   update(
     newGovernance: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    _governance(overrides?: CallOverrides): Promise<string>;
+    _governance(overrides?: CallOverrides): Promise<string>
 
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    allowance(arg0: string, arg1: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    approve(
-      spender: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    approve(spender: string, value: BigNumberish, overrides?: CallOverrides): Promise<boolean>
 
-    balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+    balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>
 
     burn(
       token: string,
@@ -570,12 +463,12 @@ export class CoFiXPair extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber] & {
-        amountETHOut: BigNumber;
-        amountTokenOut: BigNumber;
+        amountETHOut: BigNumber
+        amountTokenOut: BigNumber
       }
-    >;
+    >
 
-    decimals(overrides?: CallOverrides): Promise<number>;
+    decimals(overrides?: CallOverrides): Promise<number>
 
     estimate(
       newBalance0: BigNumberish,
@@ -583,46 +476,32 @@ export class CoFiXPair extends BaseContract {
       ethAmount: BigNumberish,
       tokenAmount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    ethBalance(overrides?: CallOverrides): Promise<BigNumber>;
+    ethBalance(overrides?: CallOverrides): Promise<BigNumber>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [number, BigNumber, BigNumber] & {
-        theta: number;
-        impactCostVOL: BigNumber;
-        nt: BigNumber;
+        theta: number
+        impactCostVOL: BigNumber
+        nt: BigNumber
       }
-    >;
+    >
 
-    getInitialAssetRatio(
-      overrides?: CallOverrides
-    ): Promise<
+    getInitialAssetRatio(overrides?: CallOverrides): Promise<
       [BigNumber, BigNumber] & {
-        initToken0Amount: BigNumber;
-        initToken1Amount: BigNumber;
+        initToken0Amount: BigNumber
+        initToken1Amount: BigNumber
       }
-    >;
+    >
 
-    getNAVPerShare(
-      ethAmount: BigNumberish,
-      tokenAmount: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNAVPerShare(ethAmount: BigNumberish, tokenAmount: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    getXToken(token: string, overrides?: CallOverrides): Promise<string>;
+    getXToken(token: string, overrides?: CallOverrides): Promise<string>
 
-    impactCostForBuyInETH(
-      vol: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    impactCostForBuyInETH(vol: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    impactCostForSellOutETH(
-      vol: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    impactCostForSellOutETH(vol: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
     init(
       governance: string,
@@ -632,15 +511,11 @@ export class CoFiXPair extends BaseContract {
       initToken0Amount: BigNumberish,
       initToken1Amount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    initialize(governance: string, overrides?: CallOverrides): Promise<void>;
+    initialize(governance: string, overrides?: CallOverrides): Promise<void>
 
-    migrate(
-      tokenAddress: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    migrate(tokenAddress: string, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
     mint(
       token: string,
@@ -649,18 +524,18 @@ export class CoFiXPair extends BaseContract {
       amountToken: BigNumberish,
       payback: string,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { xtoken: string; liquidity: BigNumber }>;
+    ): Promise<[string, BigNumber] & { xtoken: string; liquidity: BigNumber }>
 
-    name(overrides?: CallOverrides): Promise<string>;
+    name(overrides?: CallOverrides): Promise<string>
 
     setConfig(
       theta: BigNumberish,
       impactCostVOL: BigNumberish,
       nt: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    settle(overrides?: CallOverrides): Promise<void>;
+    settle(overrides?: CallOverrides): Promise<void>
 
     swap(
       src: string,
@@ -669,41 +544,27 @@ export class CoFiXPair extends BaseContract {
       to: string,
       payback: string,
       overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { amountOut: BigNumber; mined: BigNumber }
-    >;
+    ): Promise<[BigNumber, BigNumber] & { amountOut: BigNumber; mined: BigNumber }>
 
-    symbol(overrides?: CallOverrides): Promise<string>;
+    symbol(overrides?: CallOverrides): Promise<string>
 
-    totalFee(overrides?: CallOverrides): Promise<BigNumber>;
+    totalFee(overrides?: CallOverrides): Promise<BigNumber>
 
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+    totalSupply(overrides?: CallOverrides): Promise<BigNumber>
 
-    transfer(
-      to: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    transfer(to: string, value: BigNumberish, overrides?: CallOverrides): Promise<boolean>
 
-    transferFrom(
-      from: string,
-      to: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    transferFrom(from: string, to: string, value: BigNumberish, overrides?: CallOverrides): Promise<boolean>
 
-    update(newGovernance: string, overrides?: CallOverrides): Promise<void>;
-  };
+    update(newGovernance: string, overrides?: CallOverrides): Promise<void>
+  }
 
   filters: {
     Approval(
       owner?: string | null,
       spender?: string | null,
       value?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { owner: string; spender: string; value: BigNumber }
-    >;
+    ): TypedEventFilter<[string, string, BigNumber], { owner: string; spender: string; value: BigNumber }>
 
     Burn(
       token?: null,
@@ -714,13 +575,13 @@ export class CoFiXPair extends BaseContract {
     ): TypedEventFilter<
       [string, string, BigNumber, BigNumber, BigNumber],
       {
-        token: string;
-        to: string;
-        liquidity: BigNumber;
-        amountETHOut: BigNumber;
-        amountTokenOut: BigNumber;
+        token: string
+        to: string
+        liquidity: BigNumber
+        amountETHOut: BigNumber
+        amountTokenOut: BigNumber
       }
-    >;
+    >
 
     Mint(
       token?: null,
@@ -731,13 +592,13 @@ export class CoFiXPair extends BaseContract {
     ): TypedEventFilter<
       [string, string, BigNumber, BigNumber, BigNumber],
       {
-        token: string;
-        to: string;
-        amountETH: BigNumber;
-        amountToken: BigNumber;
-        liquidity: BigNumber;
+        token: string
+        to: string
+        amountETH: BigNumber
+        amountToken: BigNumber
+        liquidity: BigNumber
       }
-    >;
+    >
 
     SwapForETH(
       amountIn?: null,
@@ -747,12 +608,12 @@ export class CoFiXPair extends BaseContract {
     ): TypedEventFilter<
       [BigNumber, string, BigNumber, BigNumber],
       {
-        amountIn: BigNumber;
-        to: string;
-        amountETHOut: BigNumber;
-        mined: BigNumber;
+        amountIn: BigNumber
+        to: string
+        amountETHOut: BigNumber
+        mined: BigNumber
       }
-    >;
+    >
 
     SwapForToken(
       amountIn?: null,
@@ -762,39 +623,32 @@ export class CoFiXPair extends BaseContract {
     ): TypedEventFilter<
       [BigNumber, string, BigNumber, BigNumber],
       {
-        amountIn: BigNumber;
-        to: string;
-        amountTokenOut: BigNumber;
-        mined: BigNumber;
+        amountIn: BigNumber
+        to: string
+        amountTokenOut: BigNumber
+        mined: BigNumber
       }
-    >;
+    >
 
     Transfer(
       from?: string | null,
       to?: string | null,
       value?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { from: string; to: string; value: BigNumber }
-    >;
-  };
+    ): TypedEventFilter<[string, string, BigNumber], { from: string; to: string; value: BigNumber }>
+  }
 
   estimateGas: {
-    _governance(overrides?: CallOverrides): Promise<BigNumber>;
+    _governance(overrides?: CallOverrides): Promise<BigNumber>
 
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    allowance(arg0: string, arg1: string, overrides?: CallOverrides): Promise<BigNumber>
 
     approve(
       spender: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+    balanceOf(arg0: string, overrides?: CallOverrides): Promise<BigNumber>
 
     burn(
       token: string,
@@ -802,9 +656,9 @@ export class CoFiXPair extends BaseContract {
       liquidity: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    decimals(overrides?: CallOverrides): Promise<BigNumber>;
+    decimals(overrides?: CallOverrides): Promise<BigNumber>
 
     estimate(
       newBalance0: BigNumberish,
@@ -812,31 +666,21 @@ export class CoFiXPair extends BaseContract {
       ethAmount: BigNumberish,
       tokenAmount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    ethBalance(overrides?: CallOverrides): Promise<BigNumber>;
+    ethBalance(overrides?: CallOverrides): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
-    getInitialAssetRatio(overrides?: CallOverrides): Promise<BigNumber>;
+    getInitialAssetRatio(overrides?: CallOverrides): Promise<BigNumber>
 
-    getNAVPerShare(
-      ethAmount: BigNumberish,
-      tokenAmount: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNAVPerShare(ethAmount: BigNumberish, tokenAmount: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    getXToken(token: string, overrides?: CallOverrides): Promise<BigNumber>;
+    getXToken(token: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    impactCostForBuyInETH(
-      vol: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    impactCostForBuyInETH(vol: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    impactCostForSellOutETH(
-      vol: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    impactCostForSellOutETH(vol: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
     init(
       governance: string,
@@ -846,18 +690,15 @@ export class CoFiXPair extends BaseContract {
       initToken0Amount: BigNumberish,
       initToken1Amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    initialize(
-      governance: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    initialize(governance: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     mint(
       token: string,
@@ -866,20 +707,18 @@ export class CoFiXPair extends BaseContract {
       amountToken: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    name(overrides?: CallOverrides): Promise<BigNumber>;
+    name(overrides?: CallOverrides): Promise<BigNumber>
 
     setConfig(
       theta: BigNumberish,
       impactCostVOL: BigNumberish,
       nt: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    settle(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    settle(overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     swap(
       src: string,
@@ -888,52 +727,42 @@ export class CoFiXPair extends BaseContract {
       to: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    symbol(overrides?: CallOverrides): Promise<BigNumber>;
+    symbol(overrides?: CallOverrides): Promise<BigNumber>
 
-    totalFee(overrides?: CallOverrides): Promise<BigNumber>;
+    totalFee(overrides?: CallOverrides): Promise<BigNumber>
 
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+    totalSupply(overrides?: CallOverrides): Promise<BigNumber>
 
     transfer(
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     transferFrom(
       from: string,
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    update(
-      newGovernance: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    update(newGovernance: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    allowance(
-      arg0: string,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    allowance(arg0: string, arg1: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     approve(
       spender: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    balanceOf(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    balanceOf(arg0: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     burn(
       token: string,
@@ -941,9 +770,9 @@ export class CoFiXPair extends BaseContract {
       liquidity: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     estimate(
       newBalance0: BigNumberish,
@@ -951,36 +780,25 @@ export class CoFiXPair extends BaseContract {
       ethAmount: BigNumberish,
       tokenAmount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    ethBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    ethBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getInitialAssetRatio(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getInitialAssetRatio(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     getNAVPerShare(
       ethAmount: BigNumberish,
       tokenAmount: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getXToken(
-      token: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getXToken(token: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    impactCostForBuyInETH(
-      vol: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    impactCostForBuyInETH(vol: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    impactCostForSellOutETH(
-      vol: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    impactCostForSellOutETH(vol: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     init(
       governance: string,
@@ -990,18 +808,18 @@ export class CoFiXPair extends BaseContract {
       initToken0Amount: BigNumberish,
       initToken1Amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     initialize(
       governance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     mint(
       token: string,
@@ -1010,20 +828,18 @@ export class CoFiXPair extends BaseContract {
       amountToken: BigNumberish,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    name(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setConfig(
       theta: BigNumberish,
       impactCostVOL: BigNumberish,
       nt: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    settle(
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    settle(overrides?: Overrides & { from?: string | Promise<string> }): Promise<PopulatedTransaction>
 
     swap(
       src: string,
@@ -1032,30 +848,30 @@ export class CoFiXPair extends BaseContract {
       to: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    totalFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    totalFee(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     transfer(
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     transferFrom(
       from: string,
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     update(
       newGovernance: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

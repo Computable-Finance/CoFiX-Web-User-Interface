@@ -13,123 +13,87 @@ import {
   ContractTransaction,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface CoFiXControllerInterface extends ethers.utils.Interface {
   functions: {
-    "_calcRevisedSigmaSQ(uint256,uint256,uint256,uint256,uint256)": FunctionFragment;
-    "calcK(uint256,uint256)": FunctionFragment;
-    "calcRevisedK(uint256,uint256,uint256,uint256,uint256)": FunctionFragment;
-    "latestPriceInfo(address,address)": FunctionFragment;
-    "queryOracle(address,address)": FunctionFragment;
-    "queryPrice(address,address)": FunctionFragment;
-  };
+    '_calcRevisedSigmaSQ(uint256,uint256,uint256,uint256,uint256)': FunctionFragment
+    'calcK(uint256,uint256)': FunctionFragment
+    'calcRevisedK(uint256,uint256,uint256,uint256,uint256)': FunctionFragment
+    'latestPriceInfo(address,address)': FunctionFragment
+    'queryOracle(address,address)': FunctionFragment
+    'queryPrice(address,address)': FunctionFragment
+  }
 
   encodeFunctionData(
-    functionFragment: "_calcRevisedSigmaSQ",
-    values: [
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish
-    ]
-  ): string;
+    functionFragment: '_calcRevisedSigmaSQ',
+    values: [BigNumberish, BigNumberish, BigNumberish, BigNumberish, BigNumberish]
+  ): string
+  encodeFunctionData(functionFragment: 'calcK', values: [BigNumberish, BigNumberish]): string
   encodeFunctionData(
-    functionFragment: "calcK",
-    values: [BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "calcRevisedK",
-    values: [
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish
-    ]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "latestPriceInfo",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "queryOracle",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "queryPrice",
-    values: [string, string]
-  ): string;
+    functionFragment: 'calcRevisedK',
+    values: [BigNumberish, BigNumberish, BigNumberish, BigNumberish, BigNumberish]
+  ): string
+  encodeFunctionData(functionFragment: 'latestPriceInfo', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'queryOracle', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'queryPrice', values: [string, string]): string
 
-  decodeFunctionResult(
-    functionFragment: "_calcRevisedSigmaSQ",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "calcK", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "calcRevisedK",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "latestPriceInfo",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "queryOracle",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "queryPrice", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: '_calcRevisedSigmaSQ', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'calcK', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'calcRevisedK', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'latestPriceInfo', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'queryOracle', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'queryPrice', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class CoFiXController extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: CoFiXControllerInterface;
+  interface: CoFiXControllerInterface
 
   functions: {
     _calcRevisedSigmaSQ(
@@ -139,13 +103,9 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { revisedSigmaSQ: BigNumber }>;
+    ): Promise<[BigNumber] & { revisedSigmaSQ: BigNumber }>
 
-    calcK(
-      sigmaSQ: BigNumberish,
-      bn: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { k: BigNumber }>;
+    calcK(sigmaSQ: BigNumberish, bn: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber] & { k: BigNumber }>
 
     calcRevisedK(
       sigmaSQ: BigNumberish,
@@ -154,26 +114,26 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { k: BigNumber }>;
+    ): Promise<[BigNumber] & { k: BigNumber }>
 
     latestPriceInfo(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     queryOracle(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     queryPrice(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
   _calcRevisedSigmaSQ(
     sigmaSQ: BigNumberish,
@@ -182,13 +142,9 @@ export class CoFiXController extends BaseContract {
     p: BigNumberish,
     bn: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumber>
 
-  calcK(
-    sigmaSQ: BigNumberish,
-    bn: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  calcK(sigmaSQ: BigNumberish, bn: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
   calcRevisedK(
     sigmaSQ: BigNumberish,
@@ -197,25 +153,25 @@ export class CoFiXController extends BaseContract {
     p: BigNumberish,
     bn: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumber>
 
   latestPriceInfo(
     tokenAddress: string,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   queryOracle(
     tokenAddress: string,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   queryPrice(
     tokenAddress: string,
     payback: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
     _calcRevisedSigmaSQ(
@@ -225,13 +181,9 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    calcK(
-      sigmaSQ: BigNumberish,
-      bn: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    calcK(sigmaSQ: BigNumberish, bn: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
     calcRevisedK(
       sigmaSQ: BigNumberish,
@@ -240,7 +192,7 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     latestPriceInfo(
       tokenAddress: string,
@@ -248,14 +200,14 @@ export class CoFiXController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
-        blockNumber: BigNumber;
-        priceEthAmount: BigNumber;
-        priceTokenAmount: BigNumber;
-        avgPriceEthAmount: BigNumber;
-        avgPriceTokenAmount: BigNumber;
-        sigmaSQ: BigNumber;
+        blockNumber: BigNumber
+        priceEthAmount: BigNumber
+        priceTokenAmount: BigNumber
+        avgPriceEthAmount: BigNumber
+        avgPriceTokenAmount: BigNumber
+        sigmaSQ: BigNumber
       }
-    >;
+    >
 
     queryOracle(
       tokenAddress: string,
@@ -263,12 +215,12 @@ export class CoFiXController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber, BigNumber] & {
-        k: BigNumber;
-        ethAmount: BigNumber;
-        tokenAmount: BigNumber;
-        blockNumber: BigNumber;
+        k: BigNumber
+        ethAmount: BigNumber
+        tokenAmount: BigNumber
+        blockNumber: BigNumber
       }
-    >;
+    >
 
     queryPrice(
       tokenAddress: string,
@@ -276,14 +228,14 @@ export class CoFiXController extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber, BigNumber] & {
-        ethAmount: BigNumber;
-        tokenAmount: BigNumber;
-        blockNumber: BigNumber;
+        ethAmount: BigNumber
+        tokenAmount: BigNumber
+        blockNumber: BigNumber
       }
-    >;
-  };
+    >
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
     _calcRevisedSigmaSQ(
@@ -293,13 +245,9 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    calcK(
-      sigmaSQ: BigNumberish,
-      bn: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    calcK(sigmaSQ: BigNumberish, bn: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
     calcRevisedK(
       sigmaSQ: BigNumberish,
@@ -308,26 +256,26 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     latestPriceInfo(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     queryOracle(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     queryPrice(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
     _calcRevisedSigmaSQ(
@@ -337,13 +285,9 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    calcK(
-      sigmaSQ: BigNumberish,
-      bn: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    calcK(sigmaSQ: BigNumberish, bn: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     calcRevisedK(
       sigmaSQ: BigNumberish,
@@ -352,24 +296,24 @@ export class CoFiXController extends BaseContract {
       p: BigNumberish,
       bn: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     latestPriceInfo(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     queryOracle(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     queryPrice(
       tokenAddress: string,
       payback: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

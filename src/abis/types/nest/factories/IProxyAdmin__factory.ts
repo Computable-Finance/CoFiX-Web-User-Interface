@@ -2,72 +2,69 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { IProxyAdmin, IProxyAdminInterface } from "../IProxyAdmin";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { IProxyAdmin, IProxyAdminInterface } from '../IProxyAdmin'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "proxy",
-        type: "address",
+        internalType: 'address',
+        name: 'proxy',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "implementation",
-        type: "address",
+        internalType: 'address',
+        name: 'implementation',
+        type: 'address',
       },
     ],
-    name: "upgrade",
+    name: 'upgrade',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
       },
     ],
-    name: "transferOwnership",
+    name: 'transferOwnership',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "proxy",
-        type: "address",
+        internalType: 'address',
+        name: 'proxy',
+        type: 'address',
       },
     ],
-    name: "getProxyImplementation",
+    name: 'getProxyImplementation',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
-];
+]
 
 export class IProxyAdmin__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): IProxyAdminInterface {
-    return new utils.Interface(_abi) as IProxyAdminInterface;
+    return new utils.Interface(_abi) as IProxyAdminInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): IProxyAdmin {
-    return new Contract(address, _abi, signerOrProvider) as IProxyAdmin;
+  static connect(address: string, signerOrProvider: Signer | Provider): IProxyAdmin {
+    return new Contract(address, _abi, signerOrProvider) as IProxyAdmin
   }
 }

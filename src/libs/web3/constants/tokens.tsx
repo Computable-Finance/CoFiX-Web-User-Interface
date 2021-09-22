@@ -5,7 +5,8 @@ import {
   TokenPETH,
   TokenPUSD,
   TokenUSDC,
-  TokenUSDT, TokenWETH
+  TokenUSDT,
+  TokenWETH,
 } from 'src/components/Icon'
 
 import { TokenProps } from '../api/Token'

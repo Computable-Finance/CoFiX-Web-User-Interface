@@ -2,60 +2,57 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { IBMapping, IBMappingInterface } from "../IBMapping";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { IBMapping, IBMappingInterface } from '../IBMapping'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "string",
-        name: "name",
-        type: "string",
+        internalType: 'string',
+        name: 'name',
+        type: 'string',
       },
     ],
-    name: "checkAddress",
+    name: 'checkAddress',
     outputs: [
       {
-        internalType: "address",
-        name: "contractAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'contractAddress',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "man",
-        type: "address",
+        internalType: 'address',
+        name: 'man',
+        type: 'address',
       },
     ],
-    name: "checkOwners",
+    name: 'checkOwners',
     outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
-];
+]
 
 export class IBMapping__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): IBMappingInterface {
-    return new utils.Interface(_abi) as IBMappingInterface;
+    return new utils.Interface(_abi) as IBMappingInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): IBMapping {
-    return new Contract(address, _abi, signerOrProvider) as IBMapping;
+  static connect(address: string, signerOrProvider: Signer | Provider): IBMapping {
+    return new Contract(address, _abi, signerOrProvider) as IBMapping
   }
 }

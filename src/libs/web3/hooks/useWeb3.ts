@@ -7,7 +7,14 @@ import { createContainer } from 'unstated-next'
 import { ERC20TokenWhitelist } from '../constants/tokens'
 import { CoFiXPairWhitelist } from '../constants/pairs'
 import { AnchorPoolWhitelist } from '../constants/anchor-pool'
-import { CoFiXController, CoFiXDAO, CoFiXRouter, CoFiXVaultForStaking, NestPriceFacade, UniswapQuoter } from '../constants/contracts'
+import {
+  CoFiXController,
+  CoFiXDAO,
+  CoFiXRouter,
+  CoFiXVaultForStaking,
+  NestPriceFacade,
+  UniswapQuoter,
+} from '../constants/contracts'
 
 const _useWeb3 = <T extends Web3Provider>() => {
   const core = useWeb3React<T>()
@@ -45,7 +52,7 @@ const _useWeb3 = <T extends Web3Provider>() => {
       CoFiXRouter: CoFiXRouter,
       CoFiXDAO: CoFiXDAO,
       CoFiXVaultForStaking: CoFiXVaultForStaking,
-      UniswapQuoter: UniswapQuoter
+      UniswapQuoter: UniswapQuoter,
     })
     api.init().then(async () => {
       setAPI(api)

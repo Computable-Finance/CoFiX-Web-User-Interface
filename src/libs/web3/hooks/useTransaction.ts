@@ -1,8 +1,8 @@
-import {ContractTransaction} from '@ethersproject/contracts'
-import {t} from '@lingui/macro'
-import {useEffect, useState} from 'react'
-import {notifyTransaction} from 'src/pages/shared/TransactionNotification'
-import {createContainer} from 'unstated-next'
+import { ContractTransaction } from '@ethersproject/contracts'
+import { t } from '@lingui/macro'
+import { useEffect, useState } from 'react'
+import { notifyTransaction } from 'src/pages/shared/TransactionNotification'
+import { createContainer } from 'unstated-next'
 
 import useWeb3 from './useWeb3'
 
@@ -164,7 +164,9 @@ const _useTransaction = () => {
     if (transaction == undefined || transaction.status !== TransactionStatus.Success) {
       return
     }
-    if (transaction.hash === undefined) { return }
+    if (transaction.hash === undefined) {
+      return
+    }
     const receipt = await api?.provider?.getTransactionReceipt(transaction.hash)
     if (typeof receipt?.status !== 'undefined') {
       transaction.receiptStatus = receipt.status

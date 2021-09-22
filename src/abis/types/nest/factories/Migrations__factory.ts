@@ -2,61 +2,58 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { Migrations, MigrationsInterface } from "../Migrations";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { Migrations, MigrationsInterface } from '../Migrations'
 
 const _abi = [
   {
     inputs: [],
-    name: "last_completed_migration",
+    name: 'last_completed_migration',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "owner",
+    name: 'owner',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "completed",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'completed',
+        type: 'uint256',
       },
     ],
-    name: "setCompleted",
+    name: 'setCompleted',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
-];
+]
 
 export class Migrations__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): MigrationsInterface {
-    return new utils.Interface(_abi) as MigrationsInterface;
+    return new utils.Interface(_abi) as MigrationsInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): Migrations {
-    return new Contract(address, _abi, signerOrProvider) as Migrations;
+  static connect(address: string, signerOrProvider: Signer | Provider): Migrations {
+    return new Contract(address, _abi, signerOrProvider) as Migrations
   }
 }

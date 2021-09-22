@@ -13,213 +13,170 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface Nest3VoteFactoryInterface extends ethers.utils.Interface {
   functions: {
-    "checkAddress(string)": FunctionFragment;
-    "addContractAddress(string,address)": FunctionFragment;
-    "addSuperMan(address)": FunctionFragment;
-    "deleteSuperMan(address)": FunctionFragment;
-    "checkOwners(address)": FunctionFragment;
-  };
+    'checkAddress(string)': FunctionFragment
+    'addContractAddress(string,address)': FunctionFragment
+    'addSuperMan(address)': FunctionFragment
+    'deleteSuperMan(address)': FunctionFragment
+    'checkOwners(address)': FunctionFragment
+  }
 
-  encodeFunctionData(
-    functionFragment: "checkAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "addContractAddress",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(functionFragment: "addSuperMan", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "deleteSuperMan",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "checkOwners", values: [string]): string;
+  encodeFunctionData(functionFragment: 'checkAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'addContractAddress', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'addSuperMan', values: [string]): string
+  encodeFunctionData(functionFragment: 'deleteSuperMan', values: [string]): string
+  encodeFunctionData(functionFragment: 'checkOwners', values: [string]): string
 
-  decodeFunctionResult(
-    functionFragment: "checkAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addContractAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addSuperMan",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "deleteSuperMan",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "checkOwners",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'checkAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addContractAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addSuperMan', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'deleteSuperMan', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'checkOwners', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class Nest3VoteFactory extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: Nest3VoteFactoryInterface;
+  interface: Nest3VoteFactoryInterface
 
   functions: {
-    checkAddress(
-      name: string,
-      overrides?: CallOverrides
-    ): Promise<[string] & { contractAddress: string }>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<[string] & { contractAddress: string }>
 
     addContractAddress(
       name: string,
       contractAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     addSuperMan(
       superMan: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     deleteSuperMan(
       superMan: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    checkOwners(man: string, overrides?: CallOverrides): Promise<[boolean]>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<[boolean]>
+  }
 
-  checkAddress(name: string, overrides?: CallOverrides): Promise<string>;
+  checkAddress(name: string, overrides?: CallOverrides): Promise<string>
 
   addContractAddress(
     name: string,
     contractAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   addSuperMan(
     superMan: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   deleteSuperMan(
     superMan: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>;
+  checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>
 
   callStatic: {
-    checkAddress(name: string, overrides?: CallOverrides): Promise<string>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<string>
 
-    addContractAddress(
-      name: string,
-      contractAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    addContractAddress(name: string, contractAddress: string, overrides?: CallOverrides): Promise<void>
 
-    addSuperMan(superMan: string, overrides?: CallOverrides): Promise<void>;
+    addSuperMan(superMan: string, overrides?: CallOverrides): Promise<void>
 
-    deleteSuperMan(superMan: string, overrides?: CallOverrides): Promise<void>;
+    deleteSuperMan(superMan: string, overrides?: CallOverrides): Promise<void>
 
-    checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<boolean>
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    checkAddress(name: string, overrides?: CallOverrides): Promise<BigNumber>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<BigNumber>
 
     addContractAddress(
       name: string,
       contractAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    addSuperMan(
-      superMan: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    addSuperMan(superMan: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    deleteSuperMan(
-      superMan: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    deleteSuperMan(superMan: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    checkOwners(man: string, overrides?: CallOverrides): Promise<BigNumber>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    checkAddress(
-      name: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    checkAddress(name: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     addContractAddress(
       name: string,
       contractAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     addSuperMan(
       superMan: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     deleteSuperMan(
       superMan: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    checkOwners(
-      man: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
+    checkOwners(man: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

@@ -2,213 +2,210 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { UniswapQuoter, UniswapQuoterInterface } from "../UniswapQuoter";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { UniswapQuoter, UniswapQuoterInterface } from '../UniswapQuoter'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "_factory",
-        type: "address",
+        internalType: 'address',
+        name: '_factory',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "_WETH9",
-        type: "address",
+        internalType: 'address',
+        name: '_WETH9',
+        type: 'address',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
     inputs: [],
-    name: "WETH9",
+    name: 'WETH9',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "factory",
+    name: 'factory',
     outputs: [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "bytes",
-        name: "path",
-        type: "bytes",
+        internalType: 'bytes',
+        name: 'path',
+        type: 'bytes',
       },
       {
-        internalType: "uint256",
-        name: "amountIn",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
       },
     ],
-    name: "quoteExactInput",
+    name: 'quoteExactInput',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenIn",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenIn',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "tokenOut",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenOut',
+        type: 'address',
       },
       {
-        internalType: "uint24",
-        name: "fee",
-        type: "uint24",
+        internalType: 'uint24',
+        name: 'fee',
+        type: 'uint24',
       },
       {
-        internalType: "uint256",
-        name: "amountIn",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
       },
       {
-        internalType: "uint160",
-        name: "sqrtPriceLimitX96",
-        type: "uint160",
+        internalType: 'uint160',
+        name: 'sqrtPriceLimitX96',
+        type: 'uint160',
       },
     ],
-    name: "quoteExactInputSingle",
+    name: 'quoteExactInputSingle',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "bytes",
-        name: "path",
-        type: "bytes",
+        internalType: 'bytes',
+        name: 'path',
+        type: 'bytes',
       },
       {
-        internalType: "uint256",
-        name: "amountOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
       },
     ],
-    name: "quoteExactOutput",
+    name: 'quoteExactOutput',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountIn",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenIn",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenIn',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "tokenOut",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenOut',
+        type: 'address',
       },
       {
-        internalType: "uint24",
-        name: "fee",
-        type: "uint24",
+        internalType: 'uint24',
+        name: 'fee',
+        type: 'uint24',
       },
       {
-        internalType: "uint256",
-        name: "amountOut",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
       },
       {
-        internalType: "uint160",
-        name: "sqrtPriceLimitX96",
-        type: "uint160",
+        internalType: 'uint160',
+        name: 'sqrtPriceLimitX96',
+        type: 'uint160',
       },
     ],
-    name: "quoteExactOutputSingle",
+    name: 'quoteExactOutputSingle',
     outputs: [
       {
-        internalType: "uint256",
-        name: "amountIn",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "int256",
-        name: "amount0Delta",
-        type: "int256",
+        internalType: 'int256',
+        name: 'amount0Delta',
+        type: 'int256',
       },
       {
-        internalType: "int256",
-        name: "amount1Delta",
-        type: "int256",
+        internalType: 'int256',
+        name: 'amount1Delta',
+        type: 'int256',
       },
       {
-        internalType: "bytes",
-        name: "path",
-        type: "bytes",
+        internalType: 'bytes',
+        name: 'path',
+        type: 'bytes',
       },
     ],
-    name: "uniswapV3SwapCallback",
+    name: 'uniswapV3SwapCallback',
     outputs: [],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
-];
+]
 
 export class UniswapQuoter__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): UniswapQuoterInterface {
-    return new utils.Interface(_abi) as UniswapQuoterInterface;
+    return new utils.Interface(_abi) as UniswapQuoterInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): UniswapQuoter {
-    return new Contract(address, _abi, signerOrProvider) as UniswapQuoter;
+  static connect(address: string, signerOrProvider: Signer | Provider): UniswapQuoter {
+    return new Contract(address, _abi, signerOrProvider) as UniswapQuoter
   }
 }

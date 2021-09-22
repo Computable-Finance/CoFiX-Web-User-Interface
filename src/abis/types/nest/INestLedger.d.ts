@@ -14,169 +14,122 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface INestLedgerInterface extends ethers.utils.Interface {
   functions: {
-    "setConfig(tuple)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "setApplication(address,uint256)": FunctionFragment;
-    "checkApplication(address)": FunctionFragment;
-    "carveETHReward(address)": FunctionFragment;
-    "addETHReward(address)": FunctionFragment;
-    "totalETHRewards(address)": FunctionFragment;
-    "pay(address,address,address,uint256)": FunctionFragment;
-    "settle(address,address,address,uint256)": FunctionFragment;
-  };
+    'setConfig(tuple)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'setApplication(address,uint256)': FunctionFragment
+    'checkApplication(address)': FunctionFragment
+    'carveETHReward(address)': FunctionFragment
+    'addETHReward(address)': FunctionFragment
+    'totalETHRewards(address)': FunctionFragment
+    'pay(address,address,address,uint256)': FunctionFragment
+    'settle(address,address,address,uint256)': FunctionFragment
+  }
 
-  encodeFunctionData(
-    functionFragment: "setConfig",
-    values: [{ nestRewardScale: BigNumberish }]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "setApplication",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "checkApplication",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "carveETHReward",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "addETHReward",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "totalETHRewards",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "pay",
-    values: [string, string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "settle",
-    values: [string, string, string, BigNumberish]
-  ): string;
+  encodeFunctionData(functionFragment: 'setConfig', values: [{ nestRewardScale: BigNumberish }]): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'setApplication', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'checkApplication', values: [string]): string
+  encodeFunctionData(functionFragment: 'carveETHReward', values: [string]): string
+  encodeFunctionData(functionFragment: 'addETHReward', values: [string]): string
+  encodeFunctionData(functionFragment: 'totalETHRewards', values: [string]): string
+  encodeFunctionData(functionFragment: 'pay', values: [string, string, string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'settle', values: [string, string, string, BigNumberish]): string
 
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setApplication",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "checkApplication",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "carveETHReward",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addETHReward",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "totalETHRewards",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "pay", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "settle", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setApplication', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'checkApplication', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'carveETHReward', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'addETHReward', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'totalETHRewards', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'pay', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'settle', data: BytesLike): Result
 
   events: {
-    "ApplicationChanged(address,uint256)": EventFragment;
-  };
+    'ApplicationChanged(address,uint256)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "ApplicationChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'ApplicationChanged'): EventFragment
 }
 
 export class INestLedger extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: INestLedgerInterface;
+  interface: INestLedgerInterface
 
   functions: {
     setConfig(
       config: { nestRewardScale: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<[[number] & { nestRewardScale: number }]>;
+    getConfig(overrides?: CallOverrides): Promise<[[number] & { nestRewardScale: number }]>
 
     setApplication(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     carveETHReward(
       ntokenAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     addETHReward(
       ntokenAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    totalETHRewards(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    totalETHRewards(ntokenAddress: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     pay(
       ntokenAddress: string,
@@ -184,7 +137,7 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     settle(
       ntokenAddress: string,
@@ -192,40 +145,35 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
   setConfig(
     config: { nestRewardScale: BigNumberish },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<[number] & { nestRewardScale: number }>;
+  getConfig(overrides?: CallOverrides): Promise<[number] & { nestRewardScale: number }>
 
   setApplication(
     addr: string,
     flag: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+  checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
   carveETHReward(
     ntokenAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   addETHReward(
     ntokenAddress: string,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  totalETHRewards(
-    ntokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  totalETHRewards(ntokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
   pay(
     ntokenAddress: string,
@@ -233,7 +181,7 @@ export class INestLedger extends BaseContract {
     to: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   settle(
     ntokenAddress: string,
@@ -241,43 +189,22 @@ export class INestLedger extends BaseContract {
     to: string,
     value: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    setConfig(
-      config: { nestRewardScale: BigNumberish },
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setConfig(config: { nestRewardScale: BigNumberish }, overrides?: CallOverrides): Promise<void>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<[number] & { nestRewardScale: number }>;
+    getConfig(overrides?: CallOverrides): Promise<[number] & { nestRewardScale: number }>
 
-    setApplication(
-      addr: string,
-      flag: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setApplication(addr: string, flag: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    carveETHReward(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    carveETHReward(ntokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    addETHReward(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    addETHReward(ntokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    totalETHRewards(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    totalETHRewards(ntokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
     pay(
       ntokenAddress: string,
@@ -285,7 +212,7 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
     settle(
       ntokenAddress: string,
@@ -293,49 +220,43 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
-  };
+    ): Promise<void>
+  }
 
   filters: {
     ApplicationChanged(
       addr?: null,
       flag?: null
-    ): TypedEventFilter<[string, BigNumber], { addr: string; flag: BigNumber }>;
-  };
+    ): TypedEventFilter<[string, BigNumber], { addr: string; flag: BigNumber }>
+  }
 
   estimateGas: {
     setConfig(
       config: { nestRewardScale: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
     setApplication(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
     carveETHReward(
       ntokenAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     addETHReward(
       ntokenAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    totalETHRewards(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    totalETHRewards(ntokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
     pay(
       ntokenAddress: string,
@@ -343,7 +264,7 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     settle(
       ntokenAddress: string,
@@ -351,42 +272,36 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
     setConfig(
       config: { nestRewardScale: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setApplication(
       addr: string,
       flag: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    checkApplication(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    checkApplication(addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     carveETHReward(
       ntokenAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     addETHReward(
       ntokenAddress: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    totalETHRewards(
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    totalETHRewards(ntokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     pay(
       ntokenAddress: string,
@@ -394,7 +309,7 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     settle(
       ntokenAddress: string,
@@ -402,6 +317,6 @@ export class INestLedger extends BaseContract {
       to: string,
       value: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

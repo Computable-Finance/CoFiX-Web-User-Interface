@@ -13,189 +13,128 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface ICoFiXMappingInterface extends ethers.utils.Interface {
   functions: {
-    "checkAddress(string)": FunctionFragment;
-    "getBuiltinAddress()": FunctionFragment;
-    "getCoFiNodeAddress()": FunctionFragment;
-    "getCoFiTokenAddress()": FunctionFragment;
-    "getCoFiXControllerAddress()": FunctionFragment;
-    "getCoFiXDAOAddress()": FunctionFragment;
-    "getCoFiXRouterAddress()": FunctionFragment;
-    "getCoFiXVaultForStakingAddress()": FunctionFragment;
-    "registerAddress(string,address)": FunctionFragment;
-    "setBuiltinAddress(address,address,address,address,address,address)": FunctionFragment;
-  };
+    'checkAddress(string)': FunctionFragment
+    'getBuiltinAddress()': FunctionFragment
+    'getCoFiNodeAddress()': FunctionFragment
+    'getCoFiTokenAddress()': FunctionFragment
+    'getCoFiXControllerAddress()': FunctionFragment
+    'getCoFiXDAOAddress()': FunctionFragment
+    'getCoFiXRouterAddress()': FunctionFragment
+    'getCoFiXVaultForStakingAddress()': FunctionFragment
+    'registerAddress(string,address)': FunctionFragment
+    'setBuiltinAddress(address,address,address,address,address,address)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: 'checkAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'getBuiltinAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getCoFiNodeAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getCoFiTokenAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getCoFiXControllerAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getCoFiXDAOAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getCoFiXRouterAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getCoFiXVaultForStakingAddress', values?: undefined): string
+  encodeFunctionData(functionFragment: 'registerAddress', values: [string, string]): string
   encodeFunctionData(
-    functionFragment: "checkAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getBuiltinAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCoFiNodeAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCoFiTokenAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCoFiXControllerAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCoFiXDAOAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCoFiXRouterAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getCoFiXVaultForStakingAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "registerAddress",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setBuiltinAddress",
+    functionFragment: 'setBuiltinAddress',
     values: [string, string, string, string, string, string]
-  ): string;
+  ): string
 
-  decodeFunctionResult(
-    functionFragment: "checkAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getBuiltinAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCoFiNodeAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCoFiTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCoFiXControllerAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCoFiXDAOAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCoFiXRouterAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getCoFiXVaultForStakingAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "registerAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setBuiltinAddress",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'checkAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getBuiltinAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getCoFiNodeAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getCoFiTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getCoFiXControllerAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getCoFiXDAOAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getCoFiXRouterAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getCoFiXVaultForStakingAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'registerAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setBuiltinAddress', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class ICoFiXMapping extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: ICoFiXMappingInterface;
+  interface: ICoFiXMappingInterface
 
   functions: {
-    checkAddress(key: string, overrides?: CallOverrides): Promise<[string]>;
+    checkAddress(key: string, overrides?: CallOverrides): Promise<[string]>
 
-    getBuiltinAddress(
-      overrides?: CallOverrides
-    ): Promise<
+    getBuiltinAddress(overrides?: CallOverrides): Promise<
       [string, string, string, string, string, string] & {
-        cofiToken: string;
-        cofiNode: string;
-        cofixDAO: string;
-        cofixRouter: string;
-        cofixController: string;
-        cofixVaultForStaking: string;
+        cofiToken: string
+        cofiNode: string
+        cofixDAO: string
+        cofixRouter: string
+        cofixController: string
+        cofixVaultForStaking: string
       }
-    >;
+    >
 
-    getCoFiNodeAddress(overrides?: CallOverrides): Promise<[string]>;
+    getCoFiNodeAddress(overrides?: CallOverrides): Promise<[string]>
 
-    getCoFiTokenAddress(overrides?: CallOverrides): Promise<[string]>;
+    getCoFiTokenAddress(overrides?: CallOverrides): Promise<[string]>
 
-    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<[string]>;
+    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<[string]>
 
-    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<[string]>;
+    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<[string]>
 
-    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<[string]>;
+    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<[string]>
 
-    getCoFiXVaultForStakingAddress(
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<[string]>
 
     registerAddress(
       key: string,
       addr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setBuiltinAddress(
       cofiToken: string,
@@ -205,41 +144,39 @@ export class ICoFiXMapping extends BaseContract {
       cofixController: string,
       cofixVaultForStaking: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
-  checkAddress(key: string, overrides?: CallOverrides): Promise<string>;
+  checkAddress(key: string, overrides?: CallOverrides): Promise<string>
 
-  getBuiltinAddress(
-    overrides?: CallOverrides
-  ): Promise<
+  getBuiltinAddress(overrides?: CallOverrides): Promise<
     [string, string, string, string, string, string] & {
-      cofiToken: string;
-      cofiNode: string;
-      cofixDAO: string;
-      cofixRouter: string;
-      cofixController: string;
-      cofixVaultForStaking: string;
+      cofiToken: string
+      cofiNode: string
+      cofixDAO: string
+      cofixRouter: string
+      cofixController: string
+      cofixVaultForStaking: string
     }
-  >;
+  >
 
-  getCoFiNodeAddress(overrides?: CallOverrides): Promise<string>;
+  getCoFiNodeAddress(overrides?: CallOverrides): Promise<string>
 
-  getCoFiTokenAddress(overrides?: CallOverrides): Promise<string>;
+  getCoFiTokenAddress(overrides?: CallOverrides): Promise<string>
 
-  getCoFiXControllerAddress(overrides?: CallOverrides): Promise<string>;
+  getCoFiXControllerAddress(overrides?: CallOverrides): Promise<string>
 
-  getCoFiXDAOAddress(overrides?: CallOverrides): Promise<string>;
+  getCoFiXDAOAddress(overrides?: CallOverrides): Promise<string>
 
-  getCoFiXRouterAddress(overrides?: CallOverrides): Promise<string>;
+  getCoFiXRouterAddress(overrides?: CallOverrides): Promise<string>
 
-  getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<string>;
+  getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<string>
 
   registerAddress(
     key: string,
     addr: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setBuiltinAddress(
     cofiToken: string,
@@ -249,41 +186,35 @@ export class ICoFiXMapping extends BaseContract {
     cofixController: string,
     cofixVaultForStaking: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    checkAddress(key: string, overrides?: CallOverrides): Promise<string>;
+    checkAddress(key: string, overrides?: CallOverrides): Promise<string>
 
-    getBuiltinAddress(
-      overrides?: CallOverrides
-    ): Promise<
+    getBuiltinAddress(overrides?: CallOverrides): Promise<
       [string, string, string, string, string, string] & {
-        cofiToken: string;
-        cofiNode: string;
-        cofixDAO: string;
-        cofixRouter: string;
-        cofixController: string;
-        cofixVaultForStaking: string;
+        cofiToken: string
+        cofiNode: string
+        cofixDAO: string
+        cofixRouter: string
+        cofixController: string
+        cofixVaultForStaking: string
       }
-    >;
+    >
 
-    getCoFiNodeAddress(overrides?: CallOverrides): Promise<string>;
+    getCoFiNodeAddress(overrides?: CallOverrides): Promise<string>
 
-    getCoFiTokenAddress(overrides?: CallOverrides): Promise<string>;
+    getCoFiTokenAddress(overrides?: CallOverrides): Promise<string>
 
-    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<string>;
+    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<string>
 
-    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<string>;
+    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<string>
 
-    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<string>;
+    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<string>
 
-    getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<string>;
+    getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<string>
 
-    registerAddress(
-      key: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    registerAddress(key: string, addr: string, overrides?: CallOverrides): Promise<void>
 
     setBuiltinAddress(
       cofiToken: string,
@@ -293,35 +224,33 @@ export class ICoFiXMapping extends BaseContract {
       cofixController: string,
       cofixVaultForStaking: string,
       overrides?: CallOverrides
-    ): Promise<void>;
-  };
+    ): Promise<void>
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    checkAddress(key: string, overrides?: CallOverrides): Promise<BigNumber>;
+    checkAddress(key: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getBuiltinAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    getBuiltinAddress(overrides?: CallOverrides): Promise<BigNumber>
 
-    getCoFiNodeAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    getCoFiNodeAddress(overrides?: CallOverrides): Promise<BigNumber>
 
-    getCoFiTokenAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    getCoFiTokenAddress(overrides?: CallOverrides): Promise<BigNumber>
 
-    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<BigNumber>
 
-    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<BigNumber>
 
-    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<BigNumber>;
+    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<BigNumber>
 
-    getCoFiXVaultForStakingAddress(
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<BigNumber>
 
     registerAddress(
       key: string,
       addr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setBuiltinAddress(
       cofiToken: string,
@@ -331,46 +260,31 @@ export class ICoFiXMapping extends BaseContract {
       cofixController: string,
       cofixVaultForStaking: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    checkAddress(
-      key: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    checkAddress(key: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getBuiltinAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getBuiltinAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getCoFiNodeAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCoFiNodeAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getCoFiTokenAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCoFiTokenAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getCoFiXControllerAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCoFiXControllerAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getCoFiXDAOAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCoFiXDAOAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getCoFiXRouterAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCoFiXRouterAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getCoFiXVaultForStakingAddress(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getCoFiXVaultForStakingAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     registerAddress(
       key: string,
       addr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setBuiltinAddress(
       cofiToken: string,
@@ -380,6 +294,6 @@ export class ICoFiXMapping extends BaseContract {
       cofixController: string,
       cofixVaultForStaking: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

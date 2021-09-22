@@ -360,9 +360,7 @@
   "ast": {
     "absolutePath": "/D/lianer/002.项目/007.NEST3.6/NEST-Oracle-V3.6/contracts/interface/INestQuery.sol",
     "exportedSymbols": {
-      "INestQuery": [
-        11096
-      ]
+      "INestQuery": [11096]
     },
     "id": 11097,
     "license": "GPL-3.0-or-later",
@@ -370,12 +368,7 @@
     "nodes": [
       {
         "id": 10950,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".6"
-        ],
+        "literals": ["solidity", "^", "0.8", ".6"],
         "nodeType": "PragmaDirective",
         "src": "48:23:20"
       },
@@ -392,9 +385,7 @@
         },
         "fullyImplemented": false,
         "id": 11096,
-        "linearizedBaseContracts": [
-          11096
-        ],
+        "linearizedBaseContracts": [11096],
         "name": "INestQuery",
         "nameLocation": "146:10:20",
         "nodeType": "ContractDefinition",
@@ -2165,9 +2156,7 @@
   "legacyAST": {
     "absolutePath": "/D/lianer/002.项目/007.NEST3.6/NEST-Oracle-V3.6/contracts/interface/INestQuery.sol",
     "exportedSymbols": {
-      "INestQuery": [
-        11096
-      ]
+      "INestQuery": [11096]
     },
     "id": 11097,
     "license": "GPL-3.0-or-later",
@@ -2175,12 +2164,7 @@
     "nodes": [
       {
         "id": 10950,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".6"
-        ],
+        "literals": ["solidity", "^", "0.8", ".6"],
         "nodeType": "PragmaDirective",
         "src": "48:23:20"
       },
@@ -2197,9 +2181,7 @@
         },
         "fullyImplemented": false,
         "id": 11096,
-        "linearizedBaseContracts": [
-          11096
-        ],
+        "linearizedBaseContracts": [11096],
         "name": "INestQuery",
         "nameLocation": "146:10:20",
         "nodeType": "ContractDefinition",

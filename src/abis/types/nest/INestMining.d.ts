@@ -14,273 +14,192 @@ import {
   Overrides,
   PayableOverrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface INestMiningInterface extends ethers.utils.Interface {
   functions: {
-    "setConfig(tuple)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "setNTokenAddress(address,address)": FunctionFragment;
-    "getNTokenAddress(address)": FunctionFragment;
-    "post(address,uint256,uint256)": FunctionFragment;
-    "post2(address,uint256,uint256,uint256)": FunctionFragment;
-    "takeToken(address,uint256,uint256,uint256)": FunctionFragment;
-    "takeEth(address,uint256,uint256,uint256)": FunctionFragment;
-    "close(address,uint256)": FunctionFragment;
-    "closeList(address,uint256[])": FunctionFragment;
-    "closeList2(address,uint256[],uint256[])": FunctionFragment;
-    "stat(address)": FunctionFragment;
-    "settle(address)": FunctionFragment;
-    "list(address,uint256,uint256,uint256)": FunctionFragment;
-    "estimate(address)": FunctionFragment;
-    "getMinedBlocks(address,uint256)": FunctionFragment;
-    "withdraw(address,uint256)": FunctionFragment;
-    "balanceOf(address,address)": FunctionFragment;
-    "indexAddress(uint256)": FunctionFragment;
-    "getAccountIndex(address)": FunctionFragment;
-    "getAccountCount()": FunctionFragment;
-  };
+    'setConfig(tuple)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'setNTokenAddress(address,address)': FunctionFragment
+    'getNTokenAddress(address)': FunctionFragment
+    'post(address,uint256,uint256)': FunctionFragment
+    'post2(address,uint256,uint256,uint256)': FunctionFragment
+    'takeToken(address,uint256,uint256,uint256)': FunctionFragment
+    'takeEth(address,uint256,uint256,uint256)': FunctionFragment
+    'close(address,uint256)': FunctionFragment
+    'closeList(address,uint256[])': FunctionFragment
+    'closeList2(address,uint256[],uint256[])': FunctionFragment
+    'stat(address)': FunctionFragment
+    'settle(address)': FunctionFragment
+    'list(address,uint256,uint256,uint256)': FunctionFragment
+    'estimate(address)': FunctionFragment
+    'getMinedBlocks(address,uint256)': FunctionFragment
+    'withdraw(address,uint256)': FunctionFragment
+    'balanceOf(address,address)': FunctionFragment
+    'indexAddress(uint256)': FunctionFragment
+    'getAccountIndex(address)': FunctionFragment
+    'getAccountCount()': FunctionFragment
+  }
 
   encodeFunctionData(
-    functionFragment: "setConfig",
+    functionFragment: 'setConfig',
     values: [
       {
-        postEthUnit: BigNumberish;
-        postFeeUnit: BigNumberish;
-        minerNestReward: BigNumberish;
-        minerNTokenReward: BigNumberish;
-        doublePostThreshold: BigNumberish;
-        ntokenMinedBlockLimit: BigNumberish;
-        maxBiteNestedLevel: BigNumberish;
-        priceEffectSpan: BigNumberish;
-        pledgeNest: BigNumberish;
+        postEthUnit: BigNumberish
+        postFeeUnit: BigNumberish
+        minerNestReward: BigNumberish
+        minerNTokenReward: BigNumberish
+        doublePostThreshold: BigNumberish
+        ntokenMinedBlockLimit: BigNumberish
+        maxBiteNestedLevel: BigNumberish
+        priceEffectSpan: BigNumberish
+        pledgeNest: BigNumberish
       }
     ]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "setNTokenAddress",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNTokenAddress",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "post",
-    values: [string, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "post2",
-    values: [string, BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "takeToken",
-    values: [string, BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "takeEth",
-    values: [string, BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "close",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "closeList",
-    values: [string, BigNumberish[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "closeList2",
-    values: [string, BigNumberish[], BigNumberish[]]
-  ): string;
-  encodeFunctionData(functionFragment: "stat", values: [string]): string;
-  encodeFunctionData(functionFragment: "settle", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "list",
-    values: [string, BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "estimate", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "getMinedBlocks",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "withdraw",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "balanceOf",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "indexAddress",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getAccountIndex",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getAccountCount",
-    values?: undefined
-  ): string;
+  ): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'setNTokenAddress', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'getNTokenAddress', values: [string]): string
+  encodeFunctionData(functionFragment: 'post', values: [string, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'post2', values: [string, BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'takeToken', values: [string, BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'takeEth', values: [string, BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'close', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'closeList', values: [string, BigNumberish[]]): string
+  encodeFunctionData(functionFragment: 'closeList2', values: [string, BigNumberish[], BigNumberish[]]): string
+  encodeFunctionData(functionFragment: 'stat', values: [string]): string
+  encodeFunctionData(functionFragment: 'settle', values: [string]): string
+  encodeFunctionData(functionFragment: 'list', values: [string, BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'estimate', values: [string]): string
+  encodeFunctionData(functionFragment: 'getMinedBlocks', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'withdraw', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'balanceOf', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'indexAddress', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getAccountIndex', values: [string]): string
+  encodeFunctionData(functionFragment: 'getAccountCount', values?: undefined): string
 
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setNTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNTokenAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "post", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "post2", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "takeToken", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "takeEth", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "close", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "closeList", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "closeList2", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "stat", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "settle", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "list", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "estimate", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getMinedBlocks",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "indexAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getAccountIndex",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getAccountCount",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setNTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNTokenAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'post', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'post2', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'takeToken', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'takeEth', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'close', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'closeList', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'closeList2', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'stat', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'settle', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'list', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'estimate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getMinedBlocks', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'withdraw', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'indexAddress', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getAccountIndex', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getAccountCount', data: BytesLike): Result
 
   events: {
-    "Post(address,address,uint256,uint256,uint256)": EventFragment;
-  };
+    'Post(address,address,uint256,uint256,uint256)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "Post"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Post'): EventFragment
 }
 
 export class INestMining extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: INestMiningInterface;
+  interface: INestMiningInterface
 
   functions: {
     setConfig(
       config: {
-        postEthUnit: BigNumberish;
-        postFeeUnit: BigNumberish;
-        minerNestReward: BigNumberish;
-        minerNTokenReward: BigNumberish;
-        doublePostThreshold: BigNumberish;
-        ntokenMinedBlockLimit: BigNumberish;
-        maxBiteNestedLevel: BigNumberish;
-        priceEffectSpan: BigNumberish;
-        pledgeNest: BigNumberish;
+        postEthUnit: BigNumberish
+        postFeeUnit: BigNumberish
+        minerNestReward: BigNumberish
+        minerNTokenReward: BigNumberish
+        doublePostThreshold: BigNumberish
+        ntokenMinedBlockLimit: BigNumberish
+        maxBiteNestedLevel: BigNumberish
+        priceEffectSpan: BigNumberish
+        pledgeNest: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [
-        [
-          number,
-          number,
-          number,
-          number,
-          number,
-          number,
-          number,
-          number,
-          number
-        ] & {
-          postEthUnit: number;
-          postFeeUnit: number;
-          minerNestReward: number;
-          minerNTokenReward: number;
-          doublePostThreshold: number;
-          ntokenMinedBlockLimit: number;
-          maxBiteNestedLevel: number;
-          priceEffectSpan: number;
-          pledgeNest: number;
+        [number, number, number, number, number, number, number, number, number] & {
+          postEthUnit: number
+          postFeeUnit: number
+          minerNestReward: number
+          minerNTokenReward: number
+          doublePostThreshold: number
+          ntokenMinedBlockLimit: number
+          maxBiteNestedLevel: number
+          priceEffectSpan: number
+          pledgeNest: number
         }
       ]
-    >;
+    >
 
     setNTokenAddress(
       tokenAddress: string,
       ntokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<[string]>
 
     post(
       tokenAddress: string,
       ethNum: BigNumberish,
       tokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     post2(
       tokenAddress: string,
@@ -288,7 +207,7 @@ export class INestMining extends BaseContract {
       tokenAmountPerEth: BigNumberish,
       ntokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     takeToken(
       tokenAddress: string,
@@ -296,7 +215,7 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     takeEth(
       tokenAddress: string,
@@ -304,36 +223,36 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     close(
       tokenAddress: string,
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     closeList(
       tokenAddress: string,
       indices: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     closeList2(
       tokenAddress: string,
       tokenIndices: BigNumberish[],
       ntokenIndices: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     stat(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     settle(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     list(
       tokenAddress: string,
@@ -343,36 +262,22 @@ export class INestMining extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [
-        ([
-          number,
-          string,
-          number,
-          number,
-          number,
-          number,
-          number,
-          number,
-          number,
-          BigNumber
-        ] & {
-          index: number;
-          miner: string;
-          height: number;
-          remainNum: number;
-          ethNumBal: number;
-          tokenNumBal: number;
-          nestNum1k: number;
-          level: number;
-          shares: number;
-          price: BigNumber;
+        ([number, string, number, number, number, number, number, number, number, BigNumber] & {
+          index: number
+          miner: string
+          height: number
+          remainNum: number
+          ethNumBal: number
+          tokenNumBal: number
+          nestNum1k: number
+          level: number
+          shares: number
+          price: BigNumber
         })[]
       ]
-    >;
+    >
 
-    estimate(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    estimate(tokenAddress: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     getMinedBlocks(
       tokenAddress: string,
@@ -380,84 +285,69 @@ export class INestMining extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber] & {
-        minedBlocks: BigNumber;
-        totalShares: BigNumber;
+        minedBlocks: BigNumber
+        totalShares: BigNumber
       }
-    >;
+    >
 
     withdraw(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    balanceOf(
-      tokenAddress: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    balanceOf(tokenAddress: string, addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
-    indexAddress(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    indexAddress(index: BigNumberish, overrides?: CallOverrides): Promise<[string]>
 
-    getAccountIndex(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getAccountIndex(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
-    getAccountCount(overrides?: CallOverrides): Promise<[BigNumber]>;
-  };
+    getAccountCount(overrides?: CallOverrides): Promise<[BigNumber]>
+  }
 
   setConfig(
     config: {
-      postEthUnit: BigNumberish;
-      postFeeUnit: BigNumberish;
-      minerNestReward: BigNumberish;
-      minerNTokenReward: BigNumberish;
-      doublePostThreshold: BigNumberish;
-      ntokenMinedBlockLimit: BigNumberish;
-      maxBiteNestedLevel: BigNumberish;
-      priceEffectSpan: BigNumberish;
-      pledgeNest: BigNumberish;
+      postEthUnit: BigNumberish
+      postFeeUnit: BigNumberish
+      minerNestReward: BigNumberish
+      minerNTokenReward: BigNumberish
+      doublePostThreshold: BigNumberish
+      ntokenMinedBlockLimit: BigNumberish
+      maxBiteNestedLevel: BigNumberish
+      priceEffectSpan: BigNumberish
+      pledgeNest: BigNumberish
     },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
+  getConfig(overrides?: CallOverrides): Promise<
     [number, number, number, number, number, number, number, number, number] & {
-      postEthUnit: number;
-      postFeeUnit: number;
-      minerNestReward: number;
-      minerNTokenReward: number;
-      doublePostThreshold: number;
-      ntokenMinedBlockLimit: number;
-      maxBiteNestedLevel: number;
-      priceEffectSpan: number;
-      pledgeNest: number;
+      postEthUnit: number
+      postFeeUnit: number
+      minerNestReward: number
+      minerNTokenReward: number
+      doublePostThreshold: number
+      ntokenMinedBlockLimit: number
+      maxBiteNestedLevel: number
+      priceEffectSpan: number
+      pledgeNest: number
     }
-  >;
+  >
 
   setNTokenAddress(
     tokenAddress: string,
     ntokenAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getNTokenAddress(
-    tokenAddress: string,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
   post(
     tokenAddress: string,
     ethNum: BigNumberish,
     tokenAmountPerEth: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   post2(
     tokenAddress: string,
@@ -465,7 +355,7 @@ export class INestMining extends BaseContract {
     tokenAmountPerEth: BigNumberish,
     ntokenAmountPerEth: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   takeToken(
     tokenAddress: string,
@@ -473,7 +363,7 @@ export class INestMining extends BaseContract {
     takeNum: BigNumberish,
     newTokenAmountPerEth: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   takeEth(
     tokenAddress: string,
@@ -481,36 +371,33 @@ export class INestMining extends BaseContract {
     takeNum: BigNumberish,
     newTokenAmountPerEth: BigNumberish,
     overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   close(
     tokenAddress: string,
     index: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   closeList(
     tokenAddress: string,
     indices: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   closeList2(
     tokenAddress: string,
     tokenIndices: BigNumberish[],
     ntokenIndices: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  stat(
-    tokenAddress: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  stat(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   settle(
     tokenAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   list(
     tokenAddress: string,
@@ -519,118 +406,82 @@ export class INestMining extends BaseContract {
     order: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    ([
-      number,
-      string,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      BigNumber
-    ] & {
-      index: number;
-      miner: string;
-      height: number;
-      remainNum: number;
-      ethNumBal: number;
-      tokenNumBal: number;
-      nestNum1k: number;
-      level: number;
-      shares: number;
-      price: BigNumber;
+    ([number, string, number, number, number, number, number, number, number, BigNumber] & {
+      index: number
+      miner: string
+      height: number
+      remainNum: number
+      ethNumBal: number
+      tokenNumBal: number
+      nestNum1k: number
+      level: number
+      shares: number
+      price: BigNumber
     })[]
-  >;
+  >
 
-  estimate(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>;
+  estimate(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
   getMinedBlocks(
     tokenAddress: string,
     index: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber] & { minedBlocks: BigNumber; totalShares: BigNumber }
-  >;
+  ): Promise<[BigNumber, BigNumber] & { minedBlocks: BigNumber; totalShares: BigNumber }>
 
   withdraw(
     tokenAddress: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  balanceOf(
-    tokenAddress: string,
-    addr: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  balanceOf(tokenAddress: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-  indexAddress(index: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  indexAddress(index: BigNumberish, overrides?: CallOverrides): Promise<string>
 
-  getAccountIndex(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+  getAccountIndex(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-  getAccountCount(overrides?: CallOverrides): Promise<BigNumber>;
+  getAccountCount(overrides?: CallOverrides): Promise<BigNumber>
 
   callStatic: {
     setConfig(
       config: {
-        postEthUnit: BigNumberish;
-        postFeeUnit: BigNumberish;
-        minerNestReward: BigNumberish;
-        minerNTokenReward: BigNumberish;
-        doublePostThreshold: BigNumberish;
-        ntokenMinedBlockLimit: BigNumberish;
-        maxBiteNestedLevel: BigNumberish;
-        priceEffectSpan: BigNumberish;
-        pledgeNest: BigNumberish;
+        postEthUnit: BigNumberish
+        postFeeUnit: BigNumberish
+        minerNestReward: BigNumberish
+        minerNTokenReward: BigNumberish
+        doublePostThreshold: BigNumberish
+        ntokenMinedBlockLimit: BigNumberish
+        maxBiteNestedLevel: BigNumberish
+        priceEffectSpan: BigNumberish
+        pledgeNest: BigNumberish
       },
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
-      [
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-      ] & {
-        postEthUnit: number;
-        postFeeUnit: number;
-        minerNestReward: number;
-        minerNTokenReward: number;
-        doublePostThreshold: number;
-        ntokenMinedBlockLimit: number;
-        maxBiteNestedLevel: number;
-        priceEffectSpan: number;
-        pledgeNest: number;
+    getConfig(overrides?: CallOverrides): Promise<
+      [number, number, number, number, number, number, number, number, number] & {
+        postEthUnit: number
+        postFeeUnit: number
+        minerNestReward: number
+        minerNTokenReward: number
+        doublePostThreshold: number
+        ntokenMinedBlockLimit: number
+        maxBiteNestedLevel: number
+        priceEffectSpan: number
+        pledgeNest: number
       }
-    >;
+    >
 
-    setNTokenAddress(
-      tokenAddress: string,
-      ntokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setNTokenAddress(tokenAddress: string, ntokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<string>
 
     post(
       tokenAddress: string,
       ethNum: BigNumberish,
       tokenAmountPerEth: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
     post2(
       tokenAddress: string,
@@ -638,7 +489,7 @@ export class INestMining extends BaseContract {
       tokenAmountPerEth: BigNumberish,
       ntokenAmountPerEth: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
     takeToken(
       tokenAddress: string,
@@ -646,7 +497,7 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
     takeEth(
       tokenAddress: string,
@@ -654,30 +505,22 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    close(
-      tokenAddress: string,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    close(tokenAddress: string, index: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    closeList(
-      tokenAddress: string,
-      indices: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<void>;
+    closeList(tokenAddress: string, indices: BigNumberish[], overrides?: CallOverrides): Promise<void>
 
     closeList2(
       tokenAddress: string,
       tokenIndices: BigNumberish[],
       ntokenIndices: BigNumberish[],
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    stat(tokenAddress: string, overrides?: CallOverrides): Promise<void>;
+    stat(tokenAddress: string, overrides?: CallOverrides): Promise<void>
 
-    settle(tokenAddress: string, overrides?: CallOverrides): Promise<void>;
+    settle(tokenAddress: string, overrides?: CallOverrides): Promise<void>
 
     list(
       tokenAddress: string,
@@ -686,35 +529,21 @@ export class INestMining extends BaseContract {
       order: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      ([
-        number,
-        string,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        BigNumber
-      ] & {
-        index: number;
-        miner: string;
-        height: number;
-        remainNum: number;
-        ethNumBal: number;
-        tokenNumBal: number;
-        nestNum1k: number;
-        level: number;
-        shares: number;
-        price: BigNumber;
+      ([number, string, number, number, number, number, number, number, number, BigNumber] & {
+        index: number
+        miner: string
+        height: number
+        remainNum: number
+        ethNumBal: number
+        tokenNumBal: number
+        nestNum1k: number
+        level: number
+        shares: number
+        price: BigNumber
       })[]
-    >;
+    >
 
-    estimate(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    estimate(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
     getMinedBlocks(
       tokenAddress: string,
@@ -722,35 +551,21 @@ export class INestMining extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber] & {
-        minedBlocks: BigNumber;
-        totalShares: BigNumber;
+        minedBlocks: BigNumber
+        totalShares: BigNumber
       }
-    >;
+    >
 
-    withdraw(
-      tokenAddress: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    withdraw(tokenAddress: string, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    balanceOf(
-      tokenAddress: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    balanceOf(tokenAddress: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    indexAddress(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    indexAddress(index: BigNumberish, overrides?: CallOverrides): Promise<string>
 
-    getAccountIndex(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getAccountIndex(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getAccountCount(overrides?: CallOverrides): Promise<BigNumber>;
-  };
+    getAccountCount(overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   filters: {
     Post(
@@ -762,50 +577,47 @@ export class INestMining extends BaseContract {
     ): TypedEventFilter<
       [string, string, BigNumber, BigNumber, BigNumber],
       {
-        tokenAddress: string;
-        miner: string;
-        index: BigNumber;
-        ethNum: BigNumber;
-        price: BigNumber;
+        tokenAddress: string
+        miner: string
+        index: BigNumber
+        ethNum: BigNumber
+        price: BigNumber
       }
-    >;
-  };
+    >
+  }
 
   estimateGas: {
     setConfig(
       config: {
-        postEthUnit: BigNumberish;
-        postFeeUnit: BigNumberish;
-        minerNestReward: BigNumberish;
-        minerNTokenReward: BigNumberish;
-        doublePostThreshold: BigNumberish;
-        ntokenMinedBlockLimit: BigNumberish;
-        maxBiteNestedLevel: BigNumberish;
-        priceEffectSpan: BigNumberish;
-        pledgeNest: BigNumberish;
+        postEthUnit: BigNumberish
+        postFeeUnit: BigNumberish
+        minerNestReward: BigNumberish
+        minerNTokenReward: BigNumberish
+        doublePostThreshold: BigNumberish
+        ntokenMinedBlockLimit: BigNumberish
+        maxBiteNestedLevel: BigNumberish
+        priceEffectSpan: BigNumberish
+        pledgeNest: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
     setNTokenAddress(
       tokenAddress: string,
       ntokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
     post(
       tokenAddress: string,
       ethNum: BigNumberish,
       tokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     post2(
       tokenAddress: string,
@@ -813,7 +625,7 @@ export class INestMining extends BaseContract {
       tokenAmountPerEth: BigNumberish,
       ntokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     takeToken(
       tokenAddress: string,
@@ -821,7 +633,7 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     takeEth(
       tokenAddress: string,
@@ -829,36 +641,30 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     close(
       tokenAddress: string,
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     closeList(
       tokenAddress: string,
       indices: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     closeList2(
       tokenAddress: string,
       tokenIndices: BigNumberish[],
       ntokenIndices: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    stat(
-      tokenAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    stat(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    settle(
-      tokenAddress: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    settle(tokenAddress: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     list(
       tokenAddress: string,
@@ -866,79 +672,59 @@ export class INestMining extends BaseContract {
       count: BigNumberish,
       order: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    estimate(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    estimate(tokenAddress: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getMinedBlocks(
-      tokenAddress: string,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getMinedBlocks(tokenAddress: string, index: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
     withdraw(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    balanceOf(
-      tokenAddress: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    balanceOf(tokenAddress: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    indexAddress(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    indexAddress(index: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    getAccountIndex(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getAccountIndex(addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getAccountCount(overrides?: CallOverrides): Promise<BigNumber>;
-  };
+    getAccountCount(overrides?: CallOverrides): Promise<BigNumber>
+  }
 
   populateTransaction: {
     setConfig(
       config: {
-        postEthUnit: BigNumberish;
-        postFeeUnit: BigNumberish;
-        minerNestReward: BigNumberish;
-        minerNTokenReward: BigNumberish;
-        doublePostThreshold: BigNumberish;
-        ntokenMinedBlockLimit: BigNumberish;
-        maxBiteNestedLevel: BigNumberish;
-        priceEffectSpan: BigNumberish;
-        pledgeNest: BigNumberish;
+        postEthUnit: BigNumberish
+        postFeeUnit: BigNumberish
+        minerNestReward: BigNumberish
+        minerNTokenReward: BigNumberish
+        doublePostThreshold: BigNumberish
+        ntokenMinedBlockLimit: BigNumberish
+        maxBiteNestedLevel: BigNumberish
+        priceEffectSpan: BigNumberish
+        pledgeNest: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     setNTokenAddress(
       tokenAddress: string,
       ntokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getNTokenAddress(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getNTokenAddress(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     post(
       tokenAddress: string,
       ethNum: BigNumberish,
       tokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     post2(
       tokenAddress: string,
@@ -946,7 +732,7 @@ export class INestMining extends BaseContract {
       tokenAmountPerEth: BigNumberish,
       ntokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     takeToken(
       tokenAddress: string,
@@ -954,7 +740,7 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     takeEth(
       tokenAddress: string,
@@ -962,36 +748,36 @@ export class INestMining extends BaseContract {
       takeNum: BigNumberish,
       newTokenAmountPerEth: BigNumberish,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     close(
       tokenAddress: string,
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     closeList(
       tokenAddress: string,
       indices: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     closeList2(
       tokenAddress: string,
       tokenIndices: BigNumberish[],
       ntokenIndices: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     stat(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     settle(
       tokenAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     list(
       tokenAddress: string,
@@ -999,41 +785,24 @@ export class INestMining extends BaseContract {
       count: BigNumberish,
       order: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    estimate(
-      tokenAddress: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    estimate(tokenAddress: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getMinedBlocks(
-      tokenAddress: string,
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getMinedBlocks(tokenAddress: string, index: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     withdraw(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    balanceOf(
-      tokenAddress: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    balanceOf(tokenAddress: string, addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    indexAddress(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    indexAddress(index: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getAccountIndex(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getAccountIndex(addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getAccountCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-  };
+    getAccountCount(overrides?: CallOverrides): Promise<PopulatedTransaction>
+  }
 }

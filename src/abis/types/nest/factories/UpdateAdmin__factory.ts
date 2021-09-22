@@ -2,58 +2,55 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type { UpdateAdmin, UpdateAdminInterface } from "../UpdateAdmin";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { UpdateAdmin, UpdateAdminInterface } from '../UpdateAdmin'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestMappingAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestMappingAddress',
+        type: 'address',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "flag",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'flag',
+        type: 'uint256',
       },
     ],
-    name: "setAddress",
+    name: 'setAddress',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "run",
+    name: 'run',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
-];
+]
 
 export class UpdateAdmin__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): UpdateAdminInterface {
-    return new utils.Interface(_abi) as UpdateAdminInterface;
+    return new utils.Interface(_abi) as UpdateAdminInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): UpdateAdmin {
-    return new Contract(address, _abi, signerOrProvider) as UpdateAdmin;
+  static connect(address: string, signerOrProvider: Signer | Provider): UpdateAdmin {
+    return new Contract(address, _abi, signerOrProvider) as UpdateAdmin
   }
 }

@@ -13,419 +13,303 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface ICoFiXVaultForStakingInterface extends ethers.utils.Interface {
   functions: {
-    "balanceOf(address,address)": FunctionFragment;
-    "batchSetPoolWeight(address[],uint256[])": FunctionFragment;
-    "earned(address,address)": FunctionFragment;
-    "getChannelInfo(address)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "getReward(address)": FunctionFragment;
-    "routerStake(address,address,uint256)": FunctionFragment;
-    "setConfig(tuple)": FunctionFragment;
-    "stake(address,uint256)": FunctionFragment;
-    "withdraw(address,uint256)": FunctionFragment;
-  };
+    'balanceOf(address,address)': FunctionFragment
+    'batchSetPoolWeight(address[],uint256[])': FunctionFragment
+    'earned(address,address)': FunctionFragment
+    'getChannelInfo(address)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'getReward(address)': FunctionFragment
+    'routerStake(address,address,uint256)': FunctionFragment
+    'setConfig(tuple)': FunctionFragment
+    'stake(address,uint256)': FunctionFragment
+    'withdraw(address,uint256)': FunctionFragment
+  }
 
-  encodeFunctionData(
-    functionFragment: "balanceOf",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "batchSetPoolWeight",
-    values: [string[], BigNumberish[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "earned",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getChannelInfo",
-    values: [string]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(functionFragment: "getReward", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "routerStake",
-    values: [string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setConfig",
-    values: [{ cofiUnit: BigNumberish }]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "stake",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "withdraw",
-    values: [string, BigNumberish]
-  ): string;
+  encodeFunctionData(functionFragment: 'balanceOf', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'batchSetPoolWeight', values: [string[], BigNumberish[]]): string
+  encodeFunctionData(functionFragment: 'earned', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'getChannelInfo', values: [string]): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'getReward', values: [string]): string
+  encodeFunctionData(functionFragment: 'routerStake', values: [string, string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'setConfig', values: [{ cofiUnit: BigNumberish }]): string
+  encodeFunctionData(functionFragment: 'stake', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'withdraw', values: [string, BigNumberish]): string
 
-  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "batchSetPoolWeight",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "earned", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getChannelInfo",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getReward", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "routerStake",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "stake", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'batchSetPoolWeight', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'earned', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getChannelInfo', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getReward', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'routerStake', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'stake', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'withdraw', data: BytesLike): Result
 
-  events: {};
+  events: {}
 }
 
 export class ICoFiXVaultForStaking extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: ICoFiXVaultForStakingInterface;
+  interface: ICoFiXVaultForStakingInterface
 
   functions: {
-    balanceOf(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    balanceOf(xtoken: string, addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     batchSetPoolWeight(
       xtokens: string[],
       weights: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    earned(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    earned(xtoken: string, addr: string, overrides?: CallOverrides): Promise<[BigNumber]>
 
     getChannelInfo(
       xtoken: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber] & {
-        totalStaked: BigNumber;
-        cofiPerBlock: BigNumber;
+        totalStaked: BigNumber
+        cofiPerBlock: BigNumber
       }
-    >;
+    >
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<[[BigNumber] & { cofiUnit: BigNumber }]>;
+    getConfig(overrides?: CallOverrides): Promise<[[BigNumber] & { cofiUnit: BigNumber }]>
 
-    getReward(
-      xtoken: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    getReward(xtoken: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
     routerStake(
       xtoken: string,
       to: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setConfig(
       config: { cofiUnit: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     stake(
       xtoken: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     withdraw(
       xtoken: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
-  balanceOf(
-    xtoken: string,
-    addr: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  balanceOf(xtoken: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
   batchSetPoolWeight(
     xtokens: string[],
     weights: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  earned(
-    xtoken: string,
-    addr: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  earned(xtoken: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
   getChannelInfo(
     xtoken: string,
     overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber] & { totalStaked: BigNumber; cofiPerBlock: BigNumber }
-  >;
+  ): Promise<[BigNumber, BigNumber] & { totalStaked: BigNumber; cofiPerBlock: BigNumber }>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<[BigNumber] & { cofiUnit: BigNumber }>;
+  getConfig(overrides?: CallOverrides): Promise<[BigNumber] & { cofiUnit: BigNumber }>
 
-  getReward(
-    xtoken: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  getReward(xtoken: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   routerStake(
     xtoken: string,
     to: string,
     amount: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setConfig(
     config: { cofiUnit: BigNumberish },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   stake(
     xtoken: string,
     amount: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   withdraw(
     xtoken: string,
     amount: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    balanceOf(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    balanceOf(xtoken: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    batchSetPoolWeight(
-      xtokens: string[],
-      weights: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<void>;
+    batchSetPoolWeight(xtokens: string[], weights: BigNumberish[], overrides?: CallOverrides): Promise<void>
 
-    earned(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    earned(xtoken: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
     getChannelInfo(
       xtoken: string,
       overrides?: CallOverrides
     ): Promise<
       [BigNumber, BigNumber] & {
-        totalStaked: BigNumber;
-        cofiPerBlock: BigNumber;
+        totalStaked: BigNumber
+        cofiPerBlock: BigNumber
       }
-    >;
+    >
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { cofiUnit: BigNumber }>;
+    getConfig(overrides?: CallOverrides): Promise<[BigNumber] & { cofiUnit: BigNumber }>
 
-    getReward(xtoken: string, overrides?: CallOverrides): Promise<void>;
+    getReward(xtoken: string, overrides?: CallOverrides): Promise<void>
 
-    routerStake(
-      xtoken: string,
-      to: string,
-      amount: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    routerStake(xtoken: string, to: string, amount: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    setConfig(
-      config: { cofiUnit: BigNumberish },
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setConfig(config: { cofiUnit: BigNumberish }, overrides?: CallOverrides): Promise<void>
 
-    stake(
-      xtoken: string,
-      amount: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    stake(xtoken: string, amount: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    withdraw(
-      xtoken: string,
-      amount: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-  };
+    withdraw(xtoken: string, amount: BigNumberish, overrides?: CallOverrides): Promise<void>
+  }
 
-  filters: {};
+  filters: {}
 
   estimateGas: {
-    balanceOf(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    balanceOf(xtoken: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
     batchSetPoolWeight(
       xtokens: string[],
       weights: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    earned(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    earned(xtoken: string, addr: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getChannelInfo(
-      xtoken: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getChannelInfo(xtoken: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
-    getReward(
-      xtoken: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    getReward(xtoken: string, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
     routerStake(
       xtoken: string,
       to: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setConfig(
       config: { cofiUnit: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     stake(
       xtoken: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     withdraw(
       xtoken: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    balanceOf(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    balanceOf(xtoken: string, addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     batchSetPoolWeight(
       xtokens: string[],
       weights: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    earned(
-      xtoken: string,
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    earned(xtoken: string, addr: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getChannelInfo(
-      xtoken: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getChannelInfo(xtoken: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     getReward(
       xtoken: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     routerStake(
       xtoken: string,
       to: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setConfig(
       config: { cofiUnit: BigNumberish },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     stake(
       xtoken: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     withdraw(
       xtoken: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

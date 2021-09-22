@@ -13,341 +13,248 @@ import {
   ContractTransaction,
   Overrides,
   CallOverrides,
-} from "ethers";
-import { BytesLike } from "@ethersproject/bytes";
-import { Listener, Provider } from "@ethersproject/providers";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+} from 'ethers'
+import { BytesLike } from '@ethersproject/bytes'
+import { Listener, Provider } from '@ethersproject/providers'
+import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi'
+import { TypedEventFilter, TypedEvent, TypedListener } from './commons'
 
 interface NestVoteInterface extends ethers.utils.Interface {
   functions: {
-    "_governance()": FunctionFragment;
-    "_proposalList(uint256)": FunctionFragment;
-    "_stakedLedger(uint256,address)": FunctionFragment;
-    "initialize(address)": FunctionFragment;
-    "migrate(address,uint256)": FunctionFragment;
-    "update(address)": FunctionFragment;
-    "setConfig(tuple)": FunctionFragment;
-    "getConfig()": FunctionFragment;
-    "propose(address,string)": FunctionFragment;
-    "vote(uint256,uint256)": FunctionFragment;
-    "withdraw(uint256)": FunctionFragment;
-    "execute(uint256)": FunctionFragment;
-    "cancel(uint256)": FunctionFragment;
-    "getProposeInfo(uint256)": FunctionFragment;
-    "getProposeCount()": FunctionFragment;
-    "list(uint256,uint256,uint256)": FunctionFragment;
-    "getNestCirculation()": FunctionFragment;
-    "upgradeProxy(address,address,address)": FunctionFragment;
-    "transferUpgradeAuthority(address,address)": FunctionFragment;
-  };
+    '_governance()': FunctionFragment
+    '_proposalList(uint256)': FunctionFragment
+    '_stakedLedger(uint256,address)': FunctionFragment
+    'initialize(address)': FunctionFragment
+    'migrate(address,uint256)': FunctionFragment
+    'update(address)': FunctionFragment
+    'setConfig(tuple)': FunctionFragment
+    'getConfig()': FunctionFragment
+    'propose(address,string)': FunctionFragment
+    'vote(uint256,uint256)': FunctionFragment
+    'withdraw(uint256)': FunctionFragment
+    'execute(uint256)': FunctionFragment
+    'cancel(uint256)': FunctionFragment
+    'getProposeInfo(uint256)': FunctionFragment
+    'getProposeCount()': FunctionFragment
+    'list(uint256,uint256,uint256)': FunctionFragment
+    'getNestCirculation()': FunctionFragment
+    'upgradeProxy(address,address,address)': FunctionFragment
+    'transferUpgradeAuthority(address,address)': FunctionFragment
+  }
 
+  encodeFunctionData(functionFragment: '_governance', values?: undefined): string
+  encodeFunctionData(functionFragment: '_proposalList', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: '_stakedLedger', values: [BigNumberish, string]): string
+  encodeFunctionData(functionFragment: 'initialize', values: [string]): string
+  encodeFunctionData(functionFragment: 'migrate', values: [string, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'update', values: [string]): string
   encodeFunctionData(
-    functionFragment: "_governance",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "_proposalList",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "_stakedLedger",
-    values: [BigNumberish, string]
-  ): string;
-  encodeFunctionData(functionFragment: "initialize", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "migrate",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "update", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "setConfig",
+    functionFragment: 'setConfig',
     values: [
       {
-        acceptance: BigNumberish;
-        voteDuration: BigNumberish;
-        proposalStaking: BigNumberish;
+        acceptance: BigNumberish
+        voteDuration: BigNumberish
+        proposalStaking: BigNumberish
       }
     ]
-  ): string;
-  encodeFunctionData(functionFragment: "getConfig", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "propose",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "vote",
-    values: [BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "withdraw",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "execute",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "cancel",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getProposeInfo",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getProposeCount",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "list",
-    values: [BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNestCirculation",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "upgradeProxy",
-    values: [string, string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferUpgradeAuthority",
-    values: [string, string]
-  ): string;
+  ): string
+  encodeFunctionData(functionFragment: 'getConfig', values?: undefined): string
+  encodeFunctionData(functionFragment: 'propose', values: [string, string]): string
+  encodeFunctionData(functionFragment: 'vote', values: [BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'withdraw', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: 'execute', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: 'cancel', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getProposeInfo', values: [BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getProposeCount', values?: undefined): string
+  encodeFunctionData(functionFragment: 'list', values: [BigNumberish, BigNumberish, BigNumberish]): string
+  encodeFunctionData(functionFragment: 'getNestCirculation', values?: undefined): string
+  encodeFunctionData(functionFragment: 'upgradeProxy', values: [string, string, string]): string
+  encodeFunctionData(functionFragment: 'transferUpgradeAuthority', values: [string, string]): string
 
-  decodeFunctionResult(
-    functionFragment: "_governance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "_proposalList",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "_stakedLedger",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "migrate", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "update", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "setConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getConfig", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "propose", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "vote", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "execute", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "cancel", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getProposeInfo",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getProposeCount",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "list", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getNestCirculation",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "upgradeProxy",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferUpgradeAuthority",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: '_governance', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: '_proposalList', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: '_stakedLedger', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'initialize', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'migrate', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'update', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'setConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getConfig', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'propose', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'vote', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'withdraw', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'execute', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'cancel', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getProposeInfo', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getProposeCount', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'list', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'getNestCirculation', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'upgradeProxy', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'transferUpgradeAuthority', data: BytesLike): Result
 
   events: {
-    "NIPExecute(address,uint256)": EventFragment;
-    "NIPSubmitted(address,address,uint256)": EventFragment;
-    "NIPVote(address,uint256,uint256)": EventFragment;
-  };
+    'NIPExecute(address,uint256)': EventFragment
+    'NIPSubmitted(address,address,uint256)': EventFragment
+    'NIPVote(address,uint256,uint256)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "NIPExecute"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "NIPSubmitted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "NIPVote"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'NIPExecute'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'NIPSubmitted'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'NIPVote'): EventFragment
 }
 
 export class NestVote extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
   listeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
+  ): Array<TypedListener<EventArgsArray, EventArgsObject>>
   off<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   on<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   once<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
     listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
   removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
     eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  ): this
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
+  listeners(eventName?: string): Array<Listener>
+  off(eventName: string, listener: Listener): this
+  on(eventName: string, listener: Listener): this
+  once(eventName: string, listener: Listener): this
+  removeListener(eventName: string, listener: Listener): this
+  removeAllListeners(eventName?: string): this
 
   queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
     event: TypedEventFilter<EventArgsArray, EventArgsObject>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>
 
-  interface: NestVoteInterface;
+  interface: NestVoteInterface
 
   functions: {
-    _governance(overrides?: CallOverrides): Promise<[string]>;
+    _governance(overrides?: CallOverrides): Promise<[string]>
 
     _proposalList(
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [
-        string,
-        string,
-        number,
-        number,
-        string,
-        BigNumber,
-        BigNumber,
-        number,
-        string
-      ] & {
-        brief: string;
-        contractAddress: string;
-        startTime: number;
-        stopTime: number;
-        proposer: string;
-        staked: BigNumber;
-        gainValue: BigNumber;
-        state: number;
-        executor: string;
+      [string, string, number, number, string, BigNumber, BigNumber, number, string] & {
+        brief: string
+        contractAddress: string
+        startTime: number
+        stopTime: number
+        proposer: string
+        staked: BigNumber
+        gainValue: BigNumber
+        state: number
+        executor: string
       }
-    >;
+    >
 
     _stakedLedger(
       arg0: BigNumberish,
       arg1: string,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { value: BigNumber }>;
+    ): Promise<[BigNumber] & { value: BigNumber }>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     setConfig(
       config: {
-        acceptance: BigNumberish;
-        voteDuration: BigNumberish;
-        proposalStaking: BigNumberish;
+        acceptance: BigNumberish
+        voteDuration: BigNumberish
+        proposalStaking: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [
         [number, BigNumber, BigNumber] & {
-          acceptance: number;
-          voteDuration: BigNumber;
-          proposalStaking: BigNumber;
+          acceptance: number
+          voteDuration: BigNumber
+          proposalStaking: BigNumber
         }
       ]
-    >;
+    >
 
     propose(
       contractAddress: string,
       brief: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     vote(
       index: BigNumberish,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     withdraw(
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     execute(
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     cancel(
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     getProposeInfo(
       index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
       [
-        [
-          BigNumber,
-          string,
-          string,
-          number,
-          number,
-          string,
-          BigNumber,
-          BigNumber,
-          number,
-          string,
-          BigNumber
-        ] & {
-          index: BigNumber;
-          brief: string;
-          contractAddress: string;
-          startTime: number;
-          stopTime: number;
-          proposer: string;
-          staked: BigNumber;
-          gainValue: BigNumber;
-          state: number;
-          executor: string;
-          nestCirculation: BigNumber;
+        [BigNumber, string, string, number, number, string, BigNumber, BigNumber, number, string, BigNumber] & {
+          index: BigNumber
+          brief: string
+          contractAddress: string
+          startTime: number
+          stopTime: number
+          proposer: string
+          staked: BigNumber
+          gainValue: BigNumber
+          state: number
+          executor: string
+          nestCirculation: BigNumber
         }
       ]
-    >;
+    >
 
-    getProposeCount(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getProposeCount(overrides?: CallOverrides): Promise<[BigNumber]>
 
     list(
       offset: BigNumberish,
@@ -356,179 +263,136 @@ export class NestVote extends BaseContract {
       overrides?: CallOverrides
     ): Promise<
       [
-        ([
-          BigNumber,
-          string,
-          string,
-          number,
-          number,
-          string,
-          BigNumber,
-          BigNumber,
-          number,
-          string,
-          BigNumber
-        ] & {
-          index: BigNumber;
-          brief: string;
-          contractAddress: string;
-          startTime: number;
-          stopTime: number;
-          proposer: string;
-          staked: BigNumber;
-          gainValue: BigNumber;
-          state: number;
-          executor: string;
-          nestCirculation: BigNumber;
+        ([BigNumber, string, string, number, number, string, BigNumber, BigNumber, number, string, BigNumber] & {
+          index: BigNumber
+          brief: string
+          contractAddress: string
+          startTime: number
+          stopTime: number
+          proposer: string
+          staked: BigNumber
+          gainValue: BigNumber
+          state: number
+          executor: string
+          nestCirculation: BigNumber
         })[]
       ]
-    >;
+    >
 
-    getNestCirculation(overrides?: CallOverrides): Promise<[BigNumber]>;
+    getNestCirculation(overrides?: CallOverrides): Promise<[BigNumber]>
 
     upgradeProxy(
       proxyAdmin: string,
       proxy: string,
       implementation: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    ): Promise<ContractTransaction>
 
     transferUpgradeAuthority(
       proxyAdmin: string,
       newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-  };
+    ): Promise<ContractTransaction>
+  }
 
-  _governance(overrides?: CallOverrides): Promise<string>;
+  _governance(overrides?: CallOverrides): Promise<string>
 
   _proposalList(
     arg0: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [
-      string,
-      string,
-      number,
-      number,
-      string,
-      BigNumber,
-      BigNumber,
-      number,
-      string
-    ] & {
-      brief: string;
-      contractAddress: string;
-      startTime: number;
-      stopTime: number;
-      proposer: string;
-      staked: BigNumber;
-      gainValue: BigNumber;
-      state: number;
-      executor: string;
+    [string, string, number, number, string, BigNumber, BigNumber, number, string] & {
+      brief: string
+      contractAddress: string
+      startTime: number
+      stopTime: number
+      proposer: string
+      staked: BigNumber
+      gainValue: BigNumber
+      state: number
+      executor: string
     }
-  >;
+  >
 
-  _stakedLedger(
-    arg0: BigNumberish,
-    arg1: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  _stakedLedger(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<BigNumber>
 
   initialize(
     nestGovernanceAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   migrate(
     tokenAddress: string,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   update(
     nestGovernanceAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   setConfig(
     config: {
-      acceptance: BigNumberish;
-      voteDuration: BigNumberish;
-      proposalStaking: BigNumberish;
+      acceptance: BigNumberish
+      voteDuration: BigNumberish
+      proposalStaking: BigNumberish
     },
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  getConfig(
-    overrides?: CallOverrides
-  ): Promise<
+  getConfig(overrides?: CallOverrides): Promise<
     [number, BigNumber, BigNumber] & {
-      acceptance: number;
-      voteDuration: BigNumber;
-      proposalStaking: BigNumber;
+      acceptance: number
+      voteDuration: BigNumber
+      proposalStaking: BigNumber
     }
-  >;
+  >
 
   propose(
     contractAddress: string,
     brief: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   vote(
     index: BigNumberish,
     value: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   withdraw(
     index: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   execute(
     index: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
-  cancel(
-    index: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  cancel(index: BigNumberish, overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
   getProposeInfo(
     index: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [
-      BigNumber,
-      string,
-      string,
-      number,
-      number,
-      string,
-      BigNumber,
-      BigNumber,
-      number,
-      string,
-      BigNumber
-    ] & {
-      index: BigNumber;
-      brief: string;
-      contractAddress: string;
-      startTime: number;
-      stopTime: number;
-      proposer: string;
-      staked: BigNumber;
-      gainValue: BigNumber;
-      state: number;
-      executor: string;
-      nestCirculation: BigNumber;
+    [BigNumber, string, string, number, number, string, BigNumber, BigNumber, number, string, BigNumber] & {
+      index: BigNumber
+      brief: string
+      contractAddress: string
+      startTime: number
+      stopTime: number
+      proposer: string
+      staked: BigNumber
+      gainValue: BigNumber
+      state: number
+      executor: string
+      nestCirculation: BigNumber
     }
-  >;
+  >
 
-  getProposeCount(overrides?: CallOverrides): Promise<BigNumber>;
+  getProposeCount(overrides?: CallOverrides): Promise<BigNumber>
 
   list(
     offset: BigNumberish,
@@ -536,169 +400,111 @@ export class NestVote extends BaseContract {
     order: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    ([
-      BigNumber,
-      string,
-      string,
-      number,
-      number,
-      string,
-      BigNumber,
-      BigNumber,
-      number,
-      string,
-      BigNumber
-    ] & {
-      index: BigNumber;
-      brief: string;
-      contractAddress: string;
-      startTime: number;
-      stopTime: number;
-      proposer: string;
-      staked: BigNumber;
-      gainValue: BigNumber;
-      state: number;
-      executor: string;
-      nestCirculation: BigNumber;
+    ([BigNumber, string, string, number, number, string, BigNumber, BigNumber, number, string, BigNumber] & {
+      index: BigNumber
+      brief: string
+      contractAddress: string
+      startTime: number
+      stopTime: number
+      proposer: string
+      staked: BigNumber
+      gainValue: BigNumber
+      state: number
+      executor: string
+      nestCirculation: BigNumber
     })[]
-  >;
+  >
 
-  getNestCirculation(overrides?: CallOverrides): Promise<BigNumber>;
+  getNestCirculation(overrides?: CallOverrides): Promise<BigNumber>
 
   upgradeProxy(
     proxyAdmin: string,
     proxy: string,
     implementation: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   transferUpgradeAuthority(
     proxyAdmin: string,
     newOwner: string,
     overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  ): Promise<ContractTransaction>
 
   callStatic: {
-    _governance(overrides?: CallOverrides): Promise<string>;
+    _governance(overrides?: CallOverrides): Promise<string>
 
     _proposalList(
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [
-        string,
-        string,
-        number,
-        number,
-        string,
-        BigNumber,
-        BigNumber,
-        number,
-        string
-      ] & {
-        brief: string;
-        contractAddress: string;
-        startTime: number;
-        stopTime: number;
-        proposer: string;
-        staked: BigNumber;
-        gainValue: BigNumber;
-        state: number;
-        executor: string;
+      [string, string, number, number, string, BigNumber, BigNumber, number, string] & {
+        brief: string
+        contractAddress: string
+        startTime: number
+        stopTime: number
+        proposer: string
+        staked: BigNumber
+        gainValue: BigNumber
+        state: number
+        executor: string
       }
-    >;
+    >
 
-    _stakedLedger(
-      arg0: BigNumberish,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    _stakedLedger(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<BigNumber>
 
-    initialize(
-      nestGovernanceAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    initialize(nestGovernanceAddress: string, overrides?: CallOverrides): Promise<void>
 
-    migrate(
-      tokenAddress: string,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    migrate(tokenAddress: string, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    update(
-      nestGovernanceAddress: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    update(nestGovernanceAddress: string, overrides?: CallOverrides): Promise<void>
 
     setConfig(
       config: {
-        acceptance: BigNumberish;
-        voteDuration: BigNumberish;
-        proposalStaking: BigNumberish;
+        acceptance: BigNumberish
+        voteDuration: BigNumberish
+        proposalStaking: BigNumberish
       },
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<void>
 
-    getConfig(
-      overrides?: CallOverrides
-    ): Promise<
+    getConfig(overrides?: CallOverrides): Promise<
       [number, BigNumber, BigNumber] & {
-        acceptance: number;
-        voteDuration: BigNumber;
-        proposalStaking: BigNumber;
+        acceptance: number
+        voteDuration: BigNumber
+        proposalStaking: BigNumber
       }
-    >;
+    >
 
-    propose(
-      contractAddress: string,
-      brief: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    propose(contractAddress: string, brief: string, overrides?: CallOverrides): Promise<void>
 
-    vote(
-      index: BigNumberish,
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    vote(index: BigNumberish, value: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    withdraw(index: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    withdraw(index: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    execute(index: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    execute(index: BigNumberish, overrides?: CallOverrides): Promise<void>
 
-    cancel(index: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    cancel(index: BigNumberish, overrides?: CallOverrides): Promise<void>
 
     getProposeInfo(
       index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [
-        BigNumber,
-        string,
-        string,
-        number,
-        number,
-        string,
-        BigNumber,
-        BigNumber,
-        number,
-        string,
-        BigNumber
-      ] & {
-        index: BigNumber;
-        brief: string;
-        contractAddress: string;
-        startTime: number;
-        stopTime: number;
-        proposer: string;
-        staked: BigNumber;
-        gainValue: BigNumber;
-        state: number;
-        executor: string;
-        nestCirculation: BigNumber;
+      [BigNumber, string, string, number, number, string, BigNumber, BigNumber, number, string, BigNumber] & {
+        index: BigNumber
+        brief: string
+        contractAddress: string
+        startTime: number
+        stopTime: number
+        proposer: string
+        staked: BigNumber
+        gainValue: BigNumber
+        state: number
+        executor: string
+        nestCirculation: BigNumber
       }
-    >;
+    >
 
-    getProposeCount(overrides?: CallOverrides): Promise<BigNumber>;
+    getProposeCount(overrides?: CallOverrides): Promise<BigNumber>
 
     list(
       offset: BigNumberish,
@@ -706,272 +512,206 @@ export class NestVote extends BaseContract {
       order: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      ([
-        BigNumber,
-        string,
-        string,
-        number,
-        number,
-        string,
-        BigNumber,
-        BigNumber,
-        number,
-        string,
-        BigNumber
-      ] & {
-        index: BigNumber;
-        brief: string;
-        contractAddress: string;
-        startTime: number;
-        stopTime: number;
-        proposer: string;
-        staked: BigNumber;
-        gainValue: BigNumber;
-        state: number;
-        executor: string;
-        nestCirculation: BigNumber;
+      ([BigNumber, string, string, number, number, string, BigNumber, BigNumber, number, string, BigNumber] & {
+        index: BigNumber
+        brief: string
+        contractAddress: string
+        startTime: number
+        stopTime: number
+        proposer: string
+        staked: BigNumber
+        gainValue: BigNumber
+        state: number
+        executor: string
+        nestCirculation: BigNumber
       })[]
-    >;
+    >
 
-    getNestCirculation(overrides?: CallOverrides): Promise<BigNumber>;
+    getNestCirculation(overrides?: CallOverrides): Promise<BigNumber>
 
-    upgradeProxy(
-      proxyAdmin: string,
-      proxy: string,
-      implementation: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    upgradeProxy(proxyAdmin: string, proxy: string, implementation: string, overrides?: CallOverrides): Promise<void>
 
-    transferUpgradeAuthority(
-      proxyAdmin: string,
-      newOwner: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
-  };
+    transferUpgradeAuthority(proxyAdmin: string, newOwner: string, overrides?: CallOverrides): Promise<void>
+  }
 
   filters: {
     NIPExecute(
       executor?: null,
       index?: null
-    ): TypedEventFilter<
-      [string, BigNumber],
-      { executor: string; index: BigNumber }
-    >;
+    ): TypedEventFilter<[string, BigNumber], { executor: string; index: BigNumber }>
 
     NIPSubmitted(
       proposer?: null,
       contractAddress?: null,
       index?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { proposer: string; contractAddress: string; index: BigNumber }
-    >;
+    ): TypedEventFilter<[string, string, BigNumber], { proposer: string; contractAddress: string; index: BigNumber }>
 
     NIPVote(
       voter?: null,
       index?: null,
       amount?: null
-    ): TypedEventFilter<
-      [string, BigNumber, BigNumber],
-      { voter: string; index: BigNumber; amount: BigNumber }
-    >;
-  };
+    ): TypedEventFilter<[string, BigNumber, BigNumber], { voter: string; index: BigNumber; amount: BigNumber }>
+  }
 
   estimateGas: {
-    _governance(overrides?: CallOverrides): Promise<BigNumber>;
+    _governance(overrides?: CallOverrides): Promise<BigNumber>
 
-    _proposalList(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    _proposalList(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    _stakedLedger(
-      arg0: BigNumberish,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    _stakedLedger(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<BigNumber>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     setConfig(
       config: {
-        acceptance: BigNumberish;
-        voteDuration: BigNumberish;
-        proposalStaking: BigNumberish;
+        acceptance: BigNumberish
+        voteDuration: BigNumberish
+        proposalStaking: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    getConfig(overrides?: CallOverrides): Promise<BigNumber>;
+    getConfig(overrides?: CallOverrides): Promise<BigNumber>
 
     propose(
       contractAddress: string,
       brief: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     vote(
       index: BigNumberish,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
-    withdraw(
-      index: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    withdraw(index: BigNumberish, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    execute(
-      index: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    execute(index: BigNumberish, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    cancel(
-      index: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    cancel(index: BigNumberish, overrides?: Overrides & { from?: string | Promise<string> }): Promise<BigNumber>
 
-    getProposeInfo(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getProposeInfo(index: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    getProposeCount(overrides?: CallOverrides): Promise<BigNumber>;
+    getProposeCount(overrides?: CallOverrides): Promise<BigNumber>
 
-    list(
-      offset: BigNumberish,
-      count: BigNumberish,
-      order: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    list(offset: BigNumberish, count: BigNumberish, order: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>
 
-    getNestCirculation(overrides?: CallOverrides): Promise<BigNumber>;
+    getNestCirculation(overrides?: CallOverrides): Promise<BigNumber>
 
     upgradeProxy(
       proxyAdmin: string,
       proxy: string,
       implementation: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber>
 
     transferUpgradeAuthority(
       proxyAdmin: string,
       newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-  };
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
-    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    _governance(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    _proposalList(
-      arg0: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    _proposalList(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    _stakedLedger(
-      arg0: BigNumberish,
-      arg1: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    _stakedLedger(arg0: BigNumberish, arg1: string, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     initialize(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     migrate(
       tokenAddress: string,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     update(
       nestGovernanceAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     setConfig(
       config: {
-        acceptance: BigNumberish;
-        voteDuration: BigNumberish;
-        proposalStaking: BigNumberish;
+        acceptance: BigNumberish
+        voteDuration: BigNumberish
+        proposalStaking: BigNumberish
       },
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getConfig(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     propose(
       contractAddress: string,
       brief: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     vote(
       index: BigNumberish,
       value: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     withdraw(
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     execute(
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     cancel(
       index: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getProposeInfo(
-      index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getProposeInfo(index: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    getProposeCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getProposeCount(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     list(
       offset: BigNumberish,
       count: BigNumberish,
       order: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
-    getNestCirculation(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getNestCirculation(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     upgradeProxy(
       proxyAdmin: string,
       proxy: string,
       implementation: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
+    ): Promise<PopulatedTransaction>
 
     transferUpgradeAuthority(
       proxyAdmin: string,
       newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-  };
+    ): Promise<PopulatedTransaction>
+  }
 }

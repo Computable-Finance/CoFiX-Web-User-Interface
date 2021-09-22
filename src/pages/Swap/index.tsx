@@ -12,7 +12,7 @@ import TokenInput from 'src/components/TokenInput'
 import useSwap from 'src/libs/web3/hooks/useSwap'
 import { TransactionType } from 'src/libs/web3/hooks/useTransaction'
 import useWeb3 from 'src/libs/web3/hooks/useWeb3'
-import {toBigNumber} from 'src/libs/web3/util'
+import { toBigNumber } from 'src/libs/web3/util'
 
 import { RiskAction, useRiskModal } from '../shared/RiskModal'
 import TransactionButtonGroup from '../shared/TransactionButtonGroup'
@@ -44,7 +44,6 @@ const Swap: FC = () => {
 
   const handleChange = async (action: 'src' | 'dest', amount: string, symbol: string) => {
     if (action === 'src') {
-
       pair.src = {
         symbol,
         amount,
@@ -97,7 +96,7 @@ const Swap: FC = () => {
       const curVer = ++ver
       setChange('dest')
 
-      const info = await api?.getSwapInfo(pair.src.symbol, symbol, "1")
+      const info = await api?.getSwapInfo(pair.src.symbol, symbol, '1')
       if (ver > curVer) {
         return
       }
@@ -133,14 +132,16 @@ const Swap: FC = () => {
             onFocus={() => setChange('src')}
           />
           <button className="token-input-pair-middleButton" onClick={handleSwitch}>
-            <SwitchOutline/>
+            <SwitchOutline />
           </button>
-          
+
           <TokenInput
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}
             value={dest.amount}
-            noExtra={dest.symbol === "ETH" && src.symbol === "USDT" || dest.symbol === "USDT" && src.symbol === "ETH"}
+            noExtra={
+              (dest.symbol === 'ETH' && src.symbol === 'USDT') || (dest.symbol === 'USDT' && src.symbol === 'ETH')
+            }
             onChange={(amount: string, symbol: string) => handleChange('dest', amount, symbol)}
             loading={swap.loading && change != 'dest'}
             onFocus={() => setChange('dest')}
@@ -174,7 +175,10 @@ const Swap: FC = () => {
               <ul>
                 <li>
                   <span>
-                    {src.symbol === "USDT" && dest.symbol === "ETH" || src.symbol === "ETH" && dest.symbol === "USDT" ? t`Uniswap Price`: t`NEST Oracle Price`}
+                    {(src.symbol === 'USDT' && dest.symbol === 'ETH') ||
+                    (src.symbol === 'ETH' && dest.symbol === 'USDT')
+                      ? t`Uniswap Price`
+                      : t`NEST Oracle Price`}
                   </span>
                   <span>{`1 ${src.symbol} = ${swap?.amount?.oracleFormat || '--'} ${dest.symbol}`}</span>
                 </li>

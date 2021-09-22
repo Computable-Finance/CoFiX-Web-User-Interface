@@ -2,12 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type {
-  INestRedeeming,
-  INestRedeemingInterface,
-} from "../INestRedeeming";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { INestRedeeming, INestRedeemingInterface } from '../INestRedeeming'
 
 const _abi = [
   {
@@ -15,144 +12,141 @@ const _abi = [
       {
         components: [
           {
-            internalType: "uint32",
-            name: "activeThreshold",
-            type: "uint32",
+            internalType: 'uint32',
+            name: 'activeThreshold',
+            type: 'uint32',
           },
           {
-            internalType: "uint16",
-            name: "nestPerBlock",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'nestPerBlock',
+            type: 'uint16',
           },
           {
-            internalType: "uint32",
-            name: "nestLimit",
-            type: "uint32",
+            internalType: 'uint32',
+            name: 'nestLimit',
+            type: 'uint32',
           },
           {
-            internalType: "uint16",
-            name: "ntokenPerBlock",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'ntokenPerBlock',
+            type: 'uint16',
           },
           {
-            internalType: "uint32",
-            name: "ntokenLimit",
-            type: "uint32",
+            internalType: 'uint32',
+            name: 'ntokenLimit',
+            type: 'uint32',
           },
           {
-            internalType: "uint16",
-            name: "priceDeviationLimit",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'priceDeviationLimit',
+            type: 'uint16',
           },
         ],
-        internalType: "struct INestRedeeming.Config",
-        name: "config",
-        type: "tuple",
+        internalType: 'struct INestRedeeming.Config',
+        name: 'config',
+        type: 'tuple',
       },
     ],
-    name: "setConfig",
+    name: 'setConfig',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],
-    name: "getConfig",
+    name: 'getConfig',
     outputs: [
       {
         components: [
           {
-            internalType: "uint32",
-            name: "activeThreshold",
-            type: "uint32",
+            internalType: 'uint32',
+            name: 'activeThreshold',
+            type: 'uint32',
           },
           {
-            internalType: "uint16",
-            name: "nestPerBlock",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'nestPerBlock',
+            type: 'uint16',
           },
           {
-            internalType: "uint32",
-            name: "nestLimit",
-            type: "uint32",
+            internalType: 'uint32',
+            name: 'nestLimit',
+            type: 'uint32',
           },
           {
-            internalType: "uint16",
-            name: "ntokenPerBlock",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'ntokenPerBlock',
+            type: 'uint16',
           },
           {
-            internalType: "uint32",
-            name: "ntokenLimit",
-            type: "uint32",
+            internalType: 'uint32',
+            name: 'ntokenLimit',
+            type: 'uint32',
           },
           {
-            internalType: "uint16",
-            name: "priceDeviationLimit",
-            type: "uint16",
+            internalType: 'uint16',
+            name: 'priceDeviationLimit',
+            type: 'uint16',
           },
         ],
-        internalType: "struct INestRedeeming.Config",
-        name: "",
-        type: "tuple",
+        internalType: 'struct INestRedeeming.Config',
+        name: '',
+        type: 'tuple',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
       {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
       },
       {
-        internalType: "address",
-        name: "paybackAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'paybackAddress',
+        type: 'address',
       },
     ],
-    name: "redeem",
+    name: 'redeem',
     outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "ntokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'ntokenAddress',
+        type: 'address',
       },
     ],
-    name: "quotaOf",
+    name: 'quotaOf',
     outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
-    stateMutability: "view",
-    type: "function",
+    stateMutability: 'view',
+    type: 'function',
   },
-];
+]
 
 export class INestRedeeming__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): INestRedeemingInterface {
-    return new utils.Interface(_abi) as INestRedeemingInterface;
+    return new utils.Interface(_abi) as INestRedeemingInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): INestRedeeming {
-    return new Contract(address, _abi, signerOrProvider) as INestRedeeming;
+  static connect(address: string, signerOrProvider: Signer | Provider): INestRedeeming {
+    return new Contract(address, _abi, signerOrProvider) as INestRedeeming
   }
 }

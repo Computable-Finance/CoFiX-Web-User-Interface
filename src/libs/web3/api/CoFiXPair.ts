@@ -5,10 +5,10 @@ import { TIME_TO_NEXT_BLOCK } from 'src/constants/parameter'
 
 import API from '.'
 import { BLOCK_DAILY } from '../constants/constant'
-import {formatETH, formatUSDT, toBigNumber} from '../util'
+import { formatETH, formatUSDT, toBigNumber } from '../util'
 import ERC20Token, { ERC20TokenProps } from './ERC20Token'
 import Token from './Token'
-import {USDT, WETH} from "../constants/tokens";
+import { USDT, WETH } from '../constants/tokens'
 
 export type PoolInfo = {
   totalFunds: BigNumber
@@ -259,38 +259,52 @@ class CoFiXPair extends ERC20Token {
       throw new Error(`coifx pair ${this.symbol} not found`)
     }
 
-    if (src === "ETH" && dest === "USDT" || src === "USDT" && dest === "ETH") {
+    if ((src === 'ETH' && dest === 'USDT') || (src === 'USDT' && dest === 'ETH')) {
       const amountIn = toBigNumber(amount)
-      if (src === "ETH"){
-        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId], USDT.addresses[this.api.chainId], this.api.Tokens.ETH.parse(amountIn).toFixed(0))
-        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(WETH.addresses[this.api.chainId], USDT.addresses[this.api.chainId], this.api.Tokens.ETH.parse(1).toFixed(0))
+      if (src === 'ETH') {
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(
+          WETH.addresses[this.api.chainId],
+          USDT.addresses[this.api.chainId],
+          this.api.Tokens.ETH.parse(amountIn).toFixed(0)
+        )
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(
+          WETH.addresses[this.api.chainId],
+          USDT.addresses[this.api.chainId],
+          this.api.Tokens.ETH.parse(1).toFixed(0)
+        )
 
         return {
           fee: {
-            symbol: "ETH",
+            symbol: 'ETH',
             amount: toBigNumber(0),
           },
           oracleOut: toBigNumber(formatUSDT(oraclePrice)).multipliedBy(amountIn),
           amountOut: toBigNumber(formatUSDT(realPrice)),
-          oracleFee: toBigNumber(0)
+          oracleFee: toBigNumber(0),
         }
-
-      }else{
-        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId], WETH.addresses[this.api.chainId], this.api.Tokens.USDT.parse(amountIn).toFixed(0))
-        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(USDT.addresses[this.api.chainId], WETH.addresses[this.api.chainId], this.api.Tokens.USDT.parse(1).toFixed(0))
+      } else {
+        const realPrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(
+          USDT.addresses[this.api.chainId],
+          WETH.addresses[this.api.chainId],
+          this.api.Tokens.USDT.parse(amountIn).toFixed(0)
+        )
+        const oraclePrice = await this.api.Contracts.UniswapQuoter.quoteExactInputSingle(
+          USDT.addresses[this.api.chainId],
+          WETH.addresses[this.api.chainId],
+          this.api.Tokens.USDT.parse(1).toFixed(0)
+        )
 
         return {
           fee: {
-            symbol: "ETH",
+            symbol: 'ETH',
             amount: toBigNumber(0),
           },
           oracleOut: toBigNumber(formatETH(oraclePrice)).multipliedBy(amountIn),
           amountOut: toBigNumber(formatETH(realPrice)),
-          oracleFee: toBigNumber(0)
+          oracleFee: toBigNumber(0),
         }
       }
-
-    }else{
+    } else {
       const { k, tokenAmount } = await this.api.Tokens[this.pair[1].symbol].queryOracle()
       const amountIn = toBigNumber(amount)
       if (src === 'ETH' && dest === this.pair[1].symbol) {

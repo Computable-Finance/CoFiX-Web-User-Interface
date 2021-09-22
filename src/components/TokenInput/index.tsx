@@ -215,7 +215,9 @@ const TokenInput: FC<Props> = ({ ...props }) => {
           )}
         </div>
 
-        {(props.loading || shouldShowBalanceLoading) ? (<Skeleton width={100} />) : (
+        {props.loading || shouldShowBalanceLoading ? (
+          <Skeleton width={100} />
+        ) : (
           <div className={`${classPrefix}-inputDiv`}>
             <input
               className={`${classPrefix}-input`}
@@ -229,7 +231,7 @@ const TokenInput: FC<Props> = ({ ...props }) => {
               min={0}
               onFocus={handleFocus}
             />
-            <hr/>
+            <hr />
           </div>
         )}
       </div>

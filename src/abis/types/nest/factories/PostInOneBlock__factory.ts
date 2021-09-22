@@ -2,91 +2,85 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type {
-  PostInOneBlock,
-  PostInOneBlockInterface,
-} from "../PostInOneBlock";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { PostInOneBlock, PostInOneBlockInterface } from '../PostInOneBlock'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "nestMappingAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'nestMappingAddress',
+        type: 'address',
       },
     ],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
-    stateMutability: "payable",
-    type: "receive",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "ethNum",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "tokenAmountPerEth",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "count",
-        type: "uint256",
-      },
-    ],
-    name: "batchPost",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'receive',
   },
   {
     inputs: [
       {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: 'uint256',
+        name: 'ethNum',
+        type: 'uint256',
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        internalType: 'uint256',
+        name: 'tokenAmountPerEth',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'count',
+        type: 'uint256',
       },
     ],
-    name: "transfer",
+    name: 'batchPost',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'payable',
+    type: 'function',
   },
-];
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'tokenAddress',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'transfer',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+]
 
 export class PostInOneBlock__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): PostInOneBlockInterface {
-    return new utils.Interface(_abi) as PostInOneBlockInterface;
+    return new utils.Interface(_abi) as PostInOneBlockInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): PostInOneBlock {
-    return new Contract(address, _abi, signerOrProvider) as PostInOneBlock;
+  static connect(address: string, signerOrProvider: Signer | Provider): PostInOneBlock {
+    return new Contract(address, _abi, signerOrProvider) as PostInOneBlock
   }
 }

@@ -2,43 +2,37 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import type {
-  NESTNodeAssignment,
-  NESTNodeAssignmentInterface,
-} from "../NESTNodeAssignment";
+import { Contract, Signer, utils } from 'ethers'
+import { Provider } from '@ethersproject/providers'
+import type { NESTNodeAssignment, NESTNodeAssignmentInterface } from '../NESTNodeAssignment'
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "fromAdd",
-        type: "address",
+        internalType: 'address',
+        name: 'fromAdd',
+        type: 'address',
       },
       {
-        internalType: "address",
-        name: "toAdd",
-        type: "address",
+        internalType: 'address',
+        name: 'toAdd',
+        type: 'address',
       },
     ],
-    name: "nodeCount",
+    name: 'nodeCount',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
-];
+]
 
 export class NESTNodeAssignment__factory {
-  static readonly abi = _abi;
+  static readonly abi = _abi
   static createInterface(): NESTNodeAssignmentInterface {
-    return new utils.Interface(_abi) as NESTNodeAssignmentInterface;
+    return new utils.Interface(_abi) as NESTNodeAssignmentInterface
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): NESTNodeAssignment {
-    return new Contract(address, _abi, signerOrProvider) as NESTNodeAssignment;
+  static connect(address: string, signerOrProvider: Signer | Provider): NESTNodeAssignment {
+    return new Contract(address, _abi, signerOrProvider) as NESTNodeAssignment
   }
 }
