@@ -338,6 +338,10 @@ msgid "Pool"
 msgstr "资金池"
 
 #: src/pages/Swap/index.tsx
+msgid "Pool Balance:"
+msgstr "资金池余额："
+
+#: src/pages/Swap/index.tsx
 msgid "Price Spread"
 msgstr "点差"
 
@@ -391,7 +395,7 @@ msgstr "在 CoFiX 中进行反向交易可以对冲挖矿获得 COFI Token。"
 msgid "Risk Warning"
 msgstr "风险提示"
 
-#: src/components/TokenInput/Modal/index.tsx
+#: src/components/TokenInput/Modal/index.tsx"
 msgid "Search name or address"
 msgstr "查询名称或地址"
 

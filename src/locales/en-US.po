@@ -338,6 +338,10 @@ msgid "Pool"
 msgstr "Pool"
 
 #: src/pages/Swap/index.tsx
+msgid "Pool Balance:"
+msgstr "Pool Balance:"
+
+#: src/pages/Swap/index.tsx
 msgid "Price Spread"
 msgstr "Price Spread"
 

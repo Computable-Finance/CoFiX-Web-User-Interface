@@ -16,6 +16,7 @@ import { toBigNumber } from 'src/libs/web3/util'
 
 import { RiskAction, useRiskModal } from '../shared/RiskModal'
 import TransactionButtonGroup from '../shared/TransactionButtonGroup'
+import usePoolBalance from '../../hooks/usePoolBalance'
 
 let ver = 0
 const Swap: FC = () => {
@@ -30,6 +31,7 @@ const Swap: FC = () => {
   const { checkRisk } = useRiskModal()
   const [insufficient, setInsufficient] = useState(false)
   const [change, setChange] = useState('')
+  const balance = usePoolBalance(pair.src.symbol, pair.dest.symbol)
 
   const handleSwitch = () => {
     setPair((pair) => ({
@@ -139,6 +141,8 @@ const Swap: FC = () => {
             title={t`TO(ESTIMATED)`}
             symbol={dest.symbol}
             value={dest.amount}
+            balanceTitle={t`Pool Balance:`}
+            balance={balance.balance}
             noExtra={
               (dest.symbol === 'ETH' && src.symbol === 'USDT') || (dest.symbol === 'USDT' && src.symbol === 'ETH')
             }
