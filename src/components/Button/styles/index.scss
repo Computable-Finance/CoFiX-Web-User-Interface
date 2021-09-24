@@ -8,7 +8,7 @@
 
   box-shadow: $shadow-sm;
 
-  border: none;
+  border: 0;
   border-radius: $border-radius;
 
   font-size: $font-size-lg;
@@ -29,7 +29,7 @@
     border-image-slice: 10;
 
     background-image: $button-gradient-color;
-    background-clip: text;
+    background-clip: initial;
     color: transparent;
 
     &:hover {
