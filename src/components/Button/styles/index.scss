@@ -29,7 +29,7 @@
     border-image-slice: 10;
 
     background-image: $button-gradient-color;
-    background-clip: initial;
+    background-clip: text;
     color: transparent;
 
     &:hover {
